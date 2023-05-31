@@ -6,16 +6,12 @@ This repository contains an updated version of the UMN PhD Thesis Template.
 
 ### Build Locally
 
-To build the thesis locally, on Ubuntu 18.04, you will need to install:
+To build the thesis locally, on Ubuntu 22.04, you will need to install:
 
 ```bash
 # Install the required packages
-sudo apt-get install \
-texlive-latex-base \
-texlive-latex-extra \
-texlive-fonts-recommended \
-texlive-pictures \
-texlive-science \
+#  this is technically overkill but then we don't have to think about it
+sudo apt-get install texlive-full
 ```
 
 You can then build the thesis with `make`:
