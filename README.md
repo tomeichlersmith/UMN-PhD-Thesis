@@ -1,10 +1,13 @@
-# University of Minnesota PhD Thesis Template
+# University of Minnesota PhD Thesis
 
-This repository contains an updated version of the UMN PhD Thesis Template.
+This repository contains the LaTeX code for my UMN PhD Thesis.
+It was written with VS Code using the 
+[WebLaTeX Project's](https://github.com/sanjib-sen/WebLaTex)
+devcontainer definition with a few simplifications.
 
 ## Prerequisites
 
-### Build Locally
+### Build Locally (CLI)
 
 To build the thesis locally, on Ubuntu 22.04, you will need to install:
 
@@ -28,6 +31,14 @@ make tidy
 ```
 
 To just produce the PDF.
+
+### Build Locally (GUI)
+
+One can also build this thesis with a GUI IDE. Install 
+[docker](https://docs.docker.com/engine/install/) and 
+[VSCode](https://code.visualstudio.com/download)
+and then launce VSCode and open this directory. VSCode should then prompt you with a
+request to "reopen" this project in its development container (choose yes).
 
 ### Build On Github
 
