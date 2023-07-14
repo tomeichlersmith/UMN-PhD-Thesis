@@ -5,4 +5,17 @@
 \label{simulation_chapter}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Proper study of the iDM signal model necessitates simulating how the HPS detector
+would respond if interactions originating from such a process were to occur.
+
+Signal event production flow
+\begin{enumerate}
+    \item {\sc MadGraph/MadEvent} generation of prompt iDM events
+    \item Displacement of decay products in a \emph{uniform} distribution
+    \item Simulation of detector response with \textsc{Geant}4 and \texttt{slic}
+    \item Emulation of readout
+    \item Normal reconstruction pipeline that data retrieved from the detector
+          also goes through
+\end{enumerate}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
