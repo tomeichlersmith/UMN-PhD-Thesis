@@ -19,8 +19,9 @@
 \usepackage{siunitx} % \num{} formatting and SI unit formatting
 \usepackage{booktabs} % Enhanced tables with \toprule, etc.
 \usepackage{hyperref} % Add clickable links to other parts of the document
-\usepackage[noabbrev]{cleveref} % Automatically determine \cref type
+\usepackage[noabbrev,capitalise]{cleveref} % Automatically determine \cref type
 
+\usepackage[textsize=tiny]{todonotes}
 
 % Configure the siunitx package
 \sisetup{
@@ -72,14 +73,14 @@
 \include{chapters/intro}
 \include{chapters/theory}
 
-\part{LDMX\\Sub Title}
+\part{LDMX} \label{part:ldmx}
 \include{chapters/ldmx/experiment}
 \include{chapters/ldmx/simulation}
 \include{chapters/ldmx/reconstruction}
 \include{chapters/ldmx/event_selection}
 \include{chapters/ldmx/analysis}
 
-\part{HPS\\Sub Title}
+\part{HPS} \label{part:hps}
 \include{chapters/hps/experiment}
 \include{chapters/hps/simulation}
 \include{chapters/hps/reconstruction}
