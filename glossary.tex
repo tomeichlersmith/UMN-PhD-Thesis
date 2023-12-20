@@ -1,18 +1,49 @@
-\usepackage[sort=none]{glossaries-extra}
+\usepackage[acronym,sort=none]{glossaries-extra}
 \renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
 
-\newacronym[
+\newglossaryentry{dm-full}{
+    name={Dark Matter},
+    description={Hypothesized particles that interact gravitationally with standard matter.}
+}
+\newacronym{dm}{DM}{Dark Matter}
+
+\newglossaryentry{gr-full}{
+    name={Einstein's Theory of General Relativity},
     description={Einstein's description of gravity based on the warping of spacetime}
-]{gr}{GR}{Einstein's Theory of General Relativity}
+}
+\newacronym{gr}{GR}{Einstein's Theory of General Relativity}
+
 \newglossaryentry{grav-lens}{
     name={Gravitational Lensing},
     description={The bending of light's path due to the presence of massive objects.}
 }
-\newglossaryentry{cmb}{
+
+\newglossaryentry{cmb-full}{
     name={Cosmic Microwave Background},
     description={Relic light from the early universe that was initially freed when matter cooled out of a dense plasma.}
 }
-\newglossaryentry{bao}{
+\newacronym{cmb}{CMB}{\gls{cmb-full}}
+
+\newglossaryentry{bao-full}{
     name={Baryon Acoustic Oscilations},
     description={}
 }
+\newacronym{bao}{BAO}{\gls{bao-full}}
+
+\newglossaryentry{hep-full}{
+    name={High Energy Physics},
+    description={The study of physics at high energies which, at these scales, is described by particles and their interactions.}
+}
+\newacronym{hep}{HEP}{\gls{hep-full}}
+
+\newglossaryentry{ldmx-full}{
+    name={Light Dark Matter eXperiment},
+    description={A proposed fixed target experiment aiming to search critical light dark matter phase space.}
+}
+\newacronym{ldmx}{LDMX}{\gls{ldmx-full}}
+
+\newglossaryentry{hps-full}{
+    name={Heavy Photon Search experiment},
+    description={A running fixed target experiment focused on searching for visible signatures of a heavy photon-like mediator.}
+}
+\newacronym{hps}{HPS}{\gls{hps-full}}
