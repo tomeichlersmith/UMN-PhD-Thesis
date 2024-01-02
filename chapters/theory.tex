@@ -44,9 +44,8 @@ which produces oscillations in the density of matter in space and time. These \g
 imprinted on our snapshot of this early-universe plasma, the \gls{cmb}, which we can measure with
 a high degree of accuracy and fit to various models of what existed at this time of the universe.
 The best fit of these models corresponds to only $\sim 5\%$ of the mass density being normal matter
-like we see today while the rest is composed of material that only significantly interacts gravitationally.
-\todo{need citation and figure for cmb and bao}
-
+like we see today while the rest is composed of material that only significantly
+interacts gravitationally \cite{planck-cmb-2015}.
 
 \begin{itemize}
       \item Astronomy observations show lots of measurements
@@ -93,6 +92,22 @@ as \gls{dm} which, in general, needs to satisfy the following requirements.
 Even with these assumptions and the requirements they imply, there still exist a plethora of
 theoretical models that can satisfy all of them.
 
+The upside is that a thermal-relic assumption closely connects the mass of individual \gls{dm} particles
+to the interaction strength it has with standard matter. In this assumption, the \gls{dm} evolves along
+with the universe allowing its number density to follow the density of standard matter until it becomes
+too sparse to annihilate with itself and is thus ``frozen'' at a specific number density. Since this ``frozen''
+density changes depending on how easy it is for the the \gls{dm} to interact with standard matter,
+the ``frozen'' number density goes down as the interaction strength increases (\cref{fig:number-density}).
+The additional requirement of the observed astronomical \emph{mass} density connects
+the mass of individual \gls{dm} particles to their interaction strength with standard matter.
+$$
+      m_\chi \leftrightarrow \text{observed mass density}
+      \leftrightarrow \frac{dN}{dV} \leftrightarrow
+      \text{thermal relic Hypothesis}
+$$
+This connection allows us to define strict ``thermal relic targets'' which can help be measuring
+sticks for how well our experiments search for \gls{dm} (these targets will appear in plots later).
+
 \begin{figure}
       \centering
       \includegraphics[width=0.5\textwidth]{figures/theory/number-density-at-freeze-out.png}
@@ -104,6 +119,24 @@ theoretical models that can satisfy all of them.
       }
       \label{fig:number-density}
 \end{figure}
+
+In addition to the connection between interaction strength and particle mass implied by the thermal
+relic hypothesis, it also puts some loose bounds on mass of individual particles (\cref{fig:dm-mass-scale}).
+If the mass is too low (approximately below the mass of the electron $m_e$), then it is not feasible within our early-universe models to produce enough
+\gls{dm} to match the observed \gls{dm} density currently frozen in. Similarly, if the mass is too
+high ($\gtrapprox 100~\text{TeV}$), the \gls{dm} will be too strongly coupled to the standard matter and would be over-produced.
+\todo{Not sure about correctness of this.}
+
+The mass scale of thermal relic \gls{dm} is further divided by the mass of the proton ($m_p$).
+Above this threshold, the \gls{dm} could be interacting with standard matter through the standard
+Weak Force (capital ``W'')\footnote{The force already known to exist in nature which is responsible for phenomena
+      like muon decay and nuclear fission.}; thus, they are named Weakly Interacting Massing Particles (WIMPs). This phase space was
+first searched due to its theoretical simplicitity: no new forces, just an extra particle (or two)
+creating the clouds of \gls{dm} we see today. Unfortunately, these searches have not found evidence
+of a WIMP-like signature\todo{citations of WIMP exclusions} and the phase space has become tighter
+and more exluded. Below this threshold, the \gls{dm} requires a new force which also does not interact
+strongly with standard matter. In comparison to the heavier WIMPs, this category of \gls{dm} is called
+``Light'' \gls{dm}.
 
 \begin{itemize}
       \item Whole lot of options
