@@ -1,0 +1,31 @@
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \feynmandiagram [layered layout, horizontal=f1 to f2] {
+    standard [particle={\(\gamma\)}] -- [photon] f1
+    -- [fermion, half left, edge label=$\Phi$] f2
+    -- [fermion, half left, edge label=$\Phi$] f1,
+    f2 -- [photon] dark [particle={\(A'\)}],
+    };
+    \caption{Feynman diagram of how a massive field $\Phi$ could allow for a standard photon ($\gamma$)
+        to mix with a dark photon ($A'$).}
+    \label{fig:photon-mixing:with-field}
+\end{subfigure}
+\hfill
+\begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \feynmandiagram [horizontal=sp to dp] {
+    sm1 [particle={\(\ell^-\)}]
+    -- [fermion] sp
+    -- [fermion] sm2 [particle={\(\ell^+\)}],
+    sp
+    -- [photon, edge label=$\gamma$] mix [dot, label={\(\epsilon\)}]
+    -- [photon, edge label=$A'$] dp,
+    dm1 [particle={\(\overline{\chi}\)}]
+    -- [fermion] dp
+    -- [fermion] dm2 [particle={\(\chi\)}];
+    };
+    \caption{Feynman diagram showing how fermionic standard matter ($\ell^\pm$) and dark matter ($\chi$ and $\overline{\chi}$)
+        could exchange particles via the mixing of their photons. The massive field $\Phi$ is encapsulated by the effective mixing
+        parameter $\epsilon$.}
+    \label{fig:photon-mixing:with-matter}
+\end{subfigure}
