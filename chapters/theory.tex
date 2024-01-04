@@ -180,6 +180,30 @@ of our experiments (presumably low enough to avoid creation of a $\Phi$ directly
     \label{fig:photon-mixing}
 \end{figure}
 
+\todo[inline]{Different methods of dark matter particle detection. Production is what we do here.}
+This new vertex within our model for the universe enables a new process to occur: so-called
+``Dark Bremsstrahlung'' (dark brem) where a charged particle exchanges a standard photon with
+a nucleus and then emits a dark photon and recoils.
+
+\begin{figure}
+    \centering
+    \feynmandiagram[horizontal=in to nuc] {
+    in [particle={\(\ell^-\)}]
+    -- [fermion] nuc
+    -- [photon] nucleus [blob],
+    nuc -- [fermion] emit [dot]
+    -- [fermion] out [particle={\(\ell^-\)}],
+    emit
+    -- [photon] dp [particle={\(A'\)}],
+    % emit -- [fermion] out,
+    };
+    \caption{
+        Feynman diagram for the dark brem process.
+        % \todo[inline]{Cleanup}
+    }
+    \label{fig:dark-brem-feynman}
+\end{figure}
+
 But what happens to the dark photon after it interacts with standard matter via this vertex?
 It cannot be the long-lived \gls{dm} we view in the universe today because this vertex allows for
 it to decay \emph{back} into standard matter pretty easily. This is where we expand on the idea of
