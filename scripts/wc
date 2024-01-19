@@ -1,0 +1,4 @@
+#!/bin/sh
+add="$(git diff --word-diff=porcelain -U root.."$1" | sed -n '/^+/ s|^+||p' | wc -w)"
+rem="$(git diff --word-diff=porcelain -U root.."$1" | sed -n '/^-/ s|^-||p' | wc -w)"
+echo "${add} ${rem}"
