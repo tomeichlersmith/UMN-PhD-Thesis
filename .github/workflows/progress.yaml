@@ -1,0 +1,21 @@
+name: Plot Progress
+on: push
+
+jobs:
+  plot:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+        cache: 'pip'
+    - run: pip install -r scripts/requirements.txt
+    - run: python ./scripts/progress.py view.pdf
+    - uses: actions/upload-artifact@v4
+      with:
+        name: progress-view
+        path: view.pdf
+        if-no-files-found: 'error'
