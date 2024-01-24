@@ -205,16 +205,26 @@ a nucleus and then emits a dark photon and recoils.
 
 \begin{figure}
     \centering
-    \feynmandiagram[horizontal=in to nuc] {
-    in [particle={\(\ell^-\)}]
-    -- [fermion] nuc
-    -- [photon] nucleus [blob],
-    nuc -- [fermion] emit [dot]
-    -- [fermion] out [particle={\(\ell^-\)}],
-    emit
-    -- [photon] dp [particle={\(A'\)}],
-    % emit -- [fermion] out,
-    };
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (in) {\(\ell^-\)};
+            \vertex [right=of in] (nuc);
+            \vertex [below=of nuc, blob] (nucleus) {\(Z\)};
+            \vertex [right=of nuc, dot] (emit);
+            \vertex [above right=of emit] (recoil) {\(\ell^-\)};
+            \vertex [below right=of emit] (decay) {\(A'\)};
+            % \vertex [above right=of decay] (chi2) {\(\overline{\chi}\)};
+            % \vertex [below right=of decay] (chi1) {\(\chi\)};
+
+            \diagram*{
+            (in) -- [fermion] (nuc) -- [fermion] (emit) -- [fermion] (recoil),
+            (nucleus) -- [photon] (nuc),
+            (emit) -- [photon] (decay),
+            % (emit) -- [photon, edge label'=\(A'\)] (decay),
+            % (chi2) -- [fermion] (decay) -- [fermion] (chi1),
+            };
+        \end{feynman}
+    \end{tikzpicture}
     \caption{
         Feynman diagram for the dark brem process.
         % \todo[inline]{Cleanup}
