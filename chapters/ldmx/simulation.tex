@@ -18,6 +18,19 @@ Biasing and filtering methodology, configuration for EaT-specific backgrounds.
 Validation of this methodology.
 
 \section{\gls{dm} Signal}
+The particular signal process this analysis channel is looking for is the
+production of a dark photon followed by an \emph{invisible} decay. In this
+regime, what happens to the dark photon after it is produced is irrelevant
+to the analysis since both it and its products are not observable by our
+detector.
+
+With this focus in mind, we developed a dark bremsstrahlung simulation method
+that allows for the visible particle (the recoiling lepton) to be distributed
+according to a full matrix element calculation (via MG/ME) while the incident
+particle can have varied energy and be handled by Geant4 directly. This novel
+simulation technique allows for the dark bremsstrahlung process to be treated
+(from Geant4's perspective) on the same footing as the background processes
+while maintaining the precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
 Description of scaling as well as citation to paper.
