@@ -32,7 +32,7 @@ def list_commits():
 
 def diff_from_root(commit):
     result = subprocess.run(
-            ['git', 'wc', commit],
+            ['./scripts/wc', commit],
             capture_output=True,
             check=True
             )
