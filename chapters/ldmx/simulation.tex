@@ -16,17 +16,20 @@ This chapter is focused on describing this simulation infrastructure -- focusing
 One of the core principles helping organize HEP data is the concept of an ``event.''
 Events are a bit abstract to define in terms of the physical experiment; however, they are slightly easier to define within the confines of our data processing software.
 In essence, each event within the software is independent from one another however they all share a similar structure to the information they hold. A natural example is a data table: a row has the same values in each of its columns as all the other rows. Events behave the same way; however, unlike a data table, the structure of an event can be more intricate than simply a series of values corresponding to different column titles.
-
-While our basic ``unit'' of data is an event, we require many events in order to make statistical conclusions about our data; thus, we have developed a ``event processing framework'' that allows us to unify the various aspects of processing the data held within an event. This data processing framework, colloquially known as ``Framework''
+While our basic ``unit'' of data is an event, we require many events in order to make statistical conclusions about our data; thus, we have developed a ``event processing framework'' that allows us to unify the various aspects of processing the data held within an event.
 
 \begin{figure}
     \centering
-    \includegraphics[width=0.9\textwidth]{figures/ldmx/simulation/data-flow.pdf}
-    \caption{
-        Diagram showing flow of data within LDMX processing.
-    }
+    \includegraphics[width=0.9\textwidth]{figures/ldmx/simulation/FrameworkFlowChart.drawio.pdf}
+    \caption{Flow chart of how data is processed in the LDMX framework. Each processor has the ability to ``add" data to the event as well as ``get" data from the event. The processors are run in a user-defined sequence. Data can also be loaded from one or more input data files where the event data from those files is loaded into memory before the first processor is run. After all processors are done with an event, it is saved to the output data file.}
     \label{fig:ldmx:sim:data-flow}
 \end{figure}
+
+The event processing framework designed, developed, and maintained by LDMX is focused on allowing for the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo{citation?} for logging, and Python \cite{python} for dynamic run-time configuration. The design is a sequential model: each ``event" is passed to individual processors in a certain sequence. The individual processors can put data ``into" the event for later processors to use and eventually serialized into the output ROOT file. The processors can be built separately from the framework and then dynamically loaded and created at run-time by an abstract factory. This design choice allows for all of the computationally-intensive software tasks necessary for LDMX (simulation, reconstruction and some analysis tasks) to use this framework and be organized into separate modules which are only loaded into memory when that module is being used.
+
+The serialization portion of the framework is similarly dynamic; focusing on enabling users' code to add data structures from the most simple (e.g. individual booleans) to the most complicated (e.g. containers of custom classes). This wide array of data types is supported by ROOT's dictionary system during the serialization stage and abstract wrapper classes with partially-specialized template derivatives during run-time. This complexity within the framework is necessary in order to allow a simple interface -- one where the user interacts with simple and complex types in the same way.
+
+Combining this highly dynamic serialization library with the sequential-processing model configured at run-time gives a strong foundation for all of the software needs of LDMX. Written in C++, this software framework enables high performance for all of the major data processing tasks necessary for the experiment. Moreover, its design focuses on flexibility and modularity so that seemingly disparate data processing tasks can be unified under one framework. Everything from simulation to detector emulation to event reconstruction to analysis calculations can be done within this framework, reading and writing files from this framework and enabling our software to be well organized while also centralized in one location.
 
 \section{Standard Processes}
 \todo[inline]{``Backgrounds'' -- version of Geant4 and how it has been configured (broadly).}
