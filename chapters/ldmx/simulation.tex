@@ -31,6 +31,18 @@ The serialization portion of the framework is similarly dynamic; focusing on ena
 
 Combining this highly dynamic serialization library with the sequential-processing model configured at run-time gives a strong foundation for all of the software needs of LDMX. Written in C++, this software framework enables high performance for all of the major data processing tasks necessary for the experiment. Moreover, its design focuses on flexibility and modularity so that seemingly disparate data processing tasks can be unified under one framework. Everything from simulation to detector emulation to event reconstruction to analysis calculations can be done within this framework, reading and writing files from this framework and enabling our software to be well organized while also centralized in one location.
 
+\subsection{Data Processing Stages}
+The centralized nature of the LDMX processing framework makes it much simpler to stay unified as a collaboration. Experts are allowed to work on their specialized area of the software and shares those improvements with the entire collaboration with ease. Since the flexibility of the framework allows for arbitrary groupings of these different data processing stages, we can choose to separate them into natural groups that correspond to the different areas on which experts focus (diagrammed in \cref{fig:ldmx:sim:data-stages}).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.9\textwidth]{figures/ldmx/simulation/data-flow.pdf}
+    \caption{Diagram of processing stages within LDMX showing the external sources of data or software that are used in those stages as well as which stages are commonly done within the centralized processing framework.}
+    \label{fig:ldmx:sim:data-stages}
+\end{figure}
+
+In this work (as the chapter title implies), we focus mainly on the detector simulation stage where data is randomly generated in a way geared towards realistically modeling the detector and particles interacting with it. The downstream stages, namely electronic emulation and reconstruction, are not described further here; however, it should be emphasized that all subsystems of LDMX have their own custom implementations of these stages in order to realistically emulate and reconstruct the data within their subsystem.
+
 \section{Standard Processes}
 \todo[inline]{``Backgrounds'' -- version of Geant4 and how it has been configured (broadly).}
 
@@ -57,6 +69,9 @@ while maintaining the precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
 \todo[inline]{Description of scaling as well as citation to paper.}
+To accurately simulate the kinematics of the dark bremsstrahlung process for electrons in thick targets, the process must be included at the level of experimental simulation instead of using initial state event generators to account for the possibility of energy loss through bremsstrahlung or multiple scattering prior to the dark matter interaction. Accurate kinematic simulation of the outgoing electron are required for optimal experimental sensitivity measurements and appropriate design of search strategies.
+
+For this reason, we utilize G4DarkBreM \cite{g4darkbrem} which performs this embedding of the dark bremmstrahlung process into \textsc{Geant}4. G4DarkBreM calculates the cross section using numerical integrals of the Weizs\"{a}cker-Williams approximation, and the kinematics are simulated using a scaling technique of \textsc{MadGraph/MadEvent} event libraries. The accuracy of the total cross section and kinematics is validated using \textsc{MadGraph/MadEvent} samples.
 
 \subsection{MadGraph/MadEvent}
 \todo[inline]{Detail on MG/ME workspace used to generate DB libraries.}
