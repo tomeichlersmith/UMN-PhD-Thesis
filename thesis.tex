@@ -20,11 +20,16 @@
 \usepackage{booktabs} % Enhanced tables with \toprule, etc.
 \usepackage{hyperref} % Add clickable links to other parts of the document
 \usepackage[noabbrev,capitalise]{cleveref} % Automatically determine \cref type
-\usepackage{tikz-feynman} % for feynman diagrams
+\usepackage[compat=1.1.0]{tikz-feynman} % for feynman diagrams
+\tikzfeynmanset{
+    warn luatex = {false}
+}
 \usepackage{subcaption}
 
 \input{glossary}
 
+% increase margin width to minimum required by todonotes
+\setlength{\marginparwidth}{2cm}
 \usepackage[textsize=tiny]{todonotes}
 
 % Configure the siunitx package
