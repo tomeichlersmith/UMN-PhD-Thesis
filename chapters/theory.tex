@@ -179,20 +179,44 @@ both. These other fields need to be sufficiently massive (or sufficiently weakly
 the standard and dark photons to weakly mix. \cref{fig:photon-mixing} diagrams how the standard and dark
 photons mix which can then be effectively represented by a new vertex in our model.
 \begin{equation*}
-    \feynmandiagram[inline=(darkphoton.base), horizontal=mix to darkphoton] {
-    sm1 [particle={\(\ell^-\)}]
-    -- [fermion] mix [dot, label={left:\(\epsilon\)}]
-    -- [fermion] sm2 [particle={\(\ell^+\)}],
-    mix -- [photon] darkphoton [particle={\(A'\)}],
-    };
-    = i\epsilon g \gamma^\mu
+    \begin{tikzpicture}
+        \begin{feynman}[inline]
+            \vertex (dark) {\(A'\)};
+            \vertex [right=of dark] (vtx);
+            \vertex [above right=of vtx] (ellplus) {\(\ell^+\)};
+            \vertex [below right=of vtx] (ellminus) {\(\ell^-\)};
+
+            \diagram*{
+            (dark) -- [photon] (vtx),
+            (ellplus) -- [fermion] (vtx) -- [fermion] (ellminus),
+            };
+        \end{feynman}
+
+        \node [right=of vtx] (eqn) {\(= i\epsilon g \gamma^\mu\)};
+    \end{tikzpicture}
 \end{equation*}
 where the mixing strength $\epsilon$ encapsulates the effect of a massive field $\Phi$ at the energies
 of our experiments (presumably low enough to avoid creation of a $\Phi$ directly).
 
 \begin{figure}
     \centering
-    \input{figures/theory/photon-mixing}
+    \begin{tikzpicture}
+        \begin{feynman}
+            \vertex (standard) {\(\gamma\)};
+            \vertex [right=of standard] (loopleft);
+            \vertex [right=of loopleft] (loopright);
+            \vertex [right=of loopright] (dark) {\(A'\)};
+
+            \diagram*{
+            (standard)
+            -- [photon] (loopleft)
+            -- [fermion, half left, edge label=\(\Phi\)] (loopright)
+            -- [photon] (dark),
+            (loopright)
+            -- [fermion, half left, edge label=\(\Phi\)] (loopleft),
+            };
+        \end{feynman}
+    \end{tikzpicture}
     \caption{Feynman diagram of how a massive field $\Phi$ could allow for a standard photon ($\gamma$)
         to mix with a dark photon ($A'$).}
     \label{fig:photon-mixing}
@@ -227,7 +251,6 @@ a nucleus and then emits a dark photon and recoils.
     \end{tikzpicture}
     \caption{
         Feynman diagram for the dark brem process.
-        % \todo[inline]{Cleanup}
     }
     \label{fig:dark-brem-feynman}
 \end{figure}
