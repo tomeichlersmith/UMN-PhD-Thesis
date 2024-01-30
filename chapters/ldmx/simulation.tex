@@ -44,7 +44,15 @@ The centralized nature of the LDMX processing framework makes it much simpler to
 In this work (as the chapter title implies), we focus mainly on the detector simulation stage where data is randomly generated in a way geared towards realistically modeling the detector and particles interacting with it. The downstream stages, namely electronic emulation and reconstruction, are not described further here; however, it should be emphasized that all subsystems of LDMX have their own custom implementations of these stages in order to realistically emulate and reconstruct the data within their subsystem.
 
 \section{Standard Processes}
-\todo[inline]{``Backgrounds'' -- version of Geant4 and how it has been configured (broadly).}
+As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes that are described by the standard model and we expect to happen within our experiment. These ``background'' processes -- while interesting for other analyses of LDMX data -- should be rejected by this search for DM since they are understood to \emph{not} be DM by the standard model and other experiments. In order to thoroughly and faithfully estimate our ability to reject these backgrounds, we need to realistically simulate them within our detector volume.
+
+\textsc{Geant4} \cite{geant4} has been developed for precisely this purpose. This study uses a slightly modified copy of \textsc{Geant4} v10.2.3 which focuses on improving the accuracy of processes relevant to a DM search within LDMX.
+\begin{enumerate}
+    \item Updating cross section and sampling of $\gamma\to\mu^+\mu^-$ process to align it better with collected data and calculations of the standard model.
+    \item Update nuclear cascade to align with more recent CLAS data specifically focused on the rate of low-multiplicity forward neutrons (Appendix A.A of \cite{ldmx-whitepaper}).
+    \item Introduction of \emph{back scattering} $\pi^0$ in a $\gamma p \to \pi^0 p$ within a nuclear cascade (Appendix A.B of \cite{ldmx-whitepaper}).
+\end{enumerate}
+These updates enabled us to efficiently study the known and expected background processes interactions with the LDMX detector design and compare this data to simulations of a model of a DM production process.
 
 \subsection{Biasing and Filtering}
 \todo[inline]{Biasing and filtering methodology, configuration for EaT-specific backgrounds.}
