@@ -15,15 +15,14 @@ one -- sharing theoretical motivations, technological designs, and even people. 
 experience of participating in two similar experiments has provided an abundant
 field of learning opportunities (as well as roadblocks) for me and my journey as a new physicist.
 
-Physics is a lazy science and this reductionist perspective is a main attraction for many physicists.
+Physics is a lazy science.
+I would go even further and state that this reductionist perspective is a main attraction for many physicists.
 We\footnote{
-    Here I use the ``royal we'' as representing my point of view of the culture within the field.
-    It should in no way be construed as scientific or exact statements and does not represent every
-    physicist's point of view.
+    Here I use the ``royal we'' as representing my point of view of the culture within the field. It should in no way be construed as scientific or exact statements and does not represent every physicist's point of view.
 } want to avoid memorizing as much as possible; therefore, motivating the idea of condensing sets
 of observations into ``laws'' that can be represented in an even more compact mathematical form.
 We make up these ``laws'' and the vocabulary surrounding them not to decieve but merely to make
-communication about our observations and the experiments that make them easier. We sometimes
+communication about our observations and the experiments that make these observations easier. We sometimes
 debate the origins of these laws and their true philosophical meaning, but often, on a day-to-day
 basis, the background of them is unimportant. The interesting work comes from \emph{testing} them,
 breaking them, and remaking them. For our purposes here, this is what a ``theory'' is: a package
@@ -46,12 +45,14 @@ building block for these experiments and \gls{hep} to grow in the future, and gi
 context for parts with which I am less familiar.
 
 Before partitioning this thesis according to the two experiments in which I participated,
-\cref{sec:sm} summarizes our laws and its representative theory,
-\cref{chapter:dm} will explore the theoretical ground on which both of them rest which will
+\cref{sec:sm} summarizes our current laws and its representative theory that best predict
+our set of observations within \gls{hep},
+\cref{chapter:dm} will explore the theoretical ground on which both of the experiments rest which will
 also provide necessary vocabulary for discussing these two experiments. \cref{part:ldmx} presents
 the work of my initial years as a graduate student developing data processing and realistic simulation
 software for a proposed experiment. This part includes a description of this proposed experiment in
-\cref{chapter:ldmx:experiment}, \todo{insert rest of chapters}.
+\cref{chapter:ldmx:experiment}, the simulation infrastructure for it in \cref{chapter:ldmx:simulation},
+and an analysis of this simulated data showcasing this experiment's performance in its early stages \cref{chapter:ldmx:analysis}.
 \cref{part:hps} describes the work of my last years showing
 the difficulties of working with data taken in the real world (with all the complexities that implies).
 Similar to \cref{part:ldmx}, this part describes the experimental setup in \cref{chapter:hps:experiment},
@@ -61,8 +62,9 @@ from which we can discuss what we have learned about physics via these two exper
 
 \section{Standard Model of Particle Physics}
 \label{sec:sm}
-Short, quippy description of standard model. Mainly focused on giving reader the vocabulary necessary
-to understand later sections on DM.
+\todo[inline]{Short, quippy description of standard model. Mainly focused on giving reader the vocabulary necessary to understand later sections on DM.}
+
+What makes up all the stuff around us? This question has been posed, debated, discussed, and studied since the ancient times. Our best current understanding is that stuff is made of particles that interact with one another. While ``particle'' is difficult to strictly define qualitatively, we have a model for them and their interactions which we creatively named the ``Standard Model'' (SM). \cref{fig:sm} displays the known elementary particles, some of their basic properties, and how they interact with one another. Not all of the particles represented within this diagram are of critical importance to this work, but some deserve further description.
 
 \begin{figure}
     \centering
@@ -75,5 +77,7 @@ to understand later sections on DM.
     }
     \label{fig:sm}
 \end{figure}
+
+The two lowest mass quarks -- the up and the down -- are the fundamental constituents of protons and neutrons which make up the nuclei of atoms which make up all the day-to-day stuff we interact with. These stay bound together within these nuclei via the strong nuclear force (mediated and represented in the diagram by the gluon). These quarks and the top row of leptons also have an electric charge enabling them to interact via with electromagnetic force (or equivalently exchange photons). The electromagnetic force, represented and mediated by the photon, is the force responsible for light and magnetism. The lowest mass charged lepton (electron) is also very abundant -- most commonly residing in orbits around nuclei helping form atoms. Both experiments in this thesis utilize beams of electrons that have been accelerated to high energies.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
