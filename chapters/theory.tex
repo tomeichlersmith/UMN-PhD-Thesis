@@ -265,17 +265,54 @@ the \gls{dm} we observe in the universe today (so-called ``\gls{dm} candidates''
 partition this category of models depending on what happens to the \gls{dark-photon} after we produce
 it within an experiment.
 
-\section{Visible Signature}
-
-\begin{itemize}
-    \item Vanilla with $m_{A'} < 2m_\chi$
-    \item SIMPs, iDM
-\end{itemize}
-
 \section{Invisible Signature}
-\begin{itemize}
-    \item Vanilla with $m_{A'} > 2m_\chi$
-\end{itemize}
+
+One of the simplest options is to simply hypothesize another particle that can take on the role of long-lived DM and only interact ``within'' this dark sector (i.e. it only interacts with the dark photon from our point of view). Calling this particle $\chi$ (and its anti-particle $\overline{\chi}$), we then have an additional dark sector vertex.
+\begin{equation*}
+    \begin{tikzpicture}
+        \begin{feynman}[inline]
+            \vertex (dark) {\(A'\)};
+            \vertex [right=of dark] (vtx);
+            \vertex [above right=of vtx] (ellplus) {\(\overline{\chi}\)};
+            \vertex [below right=of vtx] (ellminus) {\(\chi\)};
+
+            \diagram*{
+            (dark) -- [photon] (vtx),
+            (ellplus) -- [fermion] (vtx) -- [fermion] (ellminus),
+            };
+        \end{feynman}
+
+        \node [right=of vtx] (eqn) {\(= i\alpha_{D} \gamma^\mu\)};
+    \end{tikzpicture}
+\end{equation*}
+If the mass of the dark photon is greater than twice the mass of the $\chi$ ($m_{A'} > 2m_\chi$),
+then this vertex can occur immediately after a dark photon is produced within an experiment.
+Since the $\chi$ does not interact with our normal (standard model) particles, the energy
+they have is ``lost'' from our perspective. \cref{part:ldmx} focuses on a proposed experiment
+designed to precisely measure all of the \emph{visible} energy so that this ``invisible signature''
+of DM being produced could be observed.
+
+\section{Visible Signature}
+There is no a priori reason for $m_{A'} > 2 m_\chi$, so we must accomodate the possiblity
+that $m_{A'} < 2 m_\chi$. In this case, there would be a significant probability that the
+dark photon, after it is produced, would convert \emph{back} into standard model particles.
+Since these decay products are observable by our detectors, this signature is visible.
+
+These visible signatures have a bit more complexity due to the fact that both a production
+process and a decay process need to occur according to the model for DM we are testing.
+With this in mind, many models that provide more detail about how particles exist within
+a dark sector have been created, each of which providing a specific estimate for production and
+decay rates. \cref{part:hps} focuses on an experiment looking for these visible signatures
+and my work specifically was investigating some of these more intricate dark sector models
+in detail. \cref{sec:theory-simps} and \cref{sec:theory-idm} provide more detail on the
+dark sector models studied in this work.
+
+\subsection{Strongly Interacting Massive Particles}
+\label{sec:theory-simps}
+
+\subsection{Inelastic Dark Matter}
+\label{sec:theory-idm}
+
 
 \begin{itemize}
     \item Motivations for complicated model
