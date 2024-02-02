@@ -1,69 +1,20 @@
 # University of Minnesota PhD Thesis
 
 This repository contains the LaTeX code for my UMN PhD Thesis.
-It was written with VS Code using the 
-[WebLaTeX Project's](https://github.com/sanjib-sen/WebLaTex)
-devcontainer definition with a few simplifications.
 
-## Prerequisites
+### Build Locally
 
-### Build Locally (CLI)
-
-To build the thesis locally, on Ubuntu 22.04, you will need to install:
-
-```bash
-# Install the required packages
-#  this is technically overkill but then we don't have to think about it
-sudo apt-get install texlive-full
+One can also build this thesis with a container that already has all the latex
+tools we need. I use [denv](tomeichlersmith.github.io/denv) to interact with
+containers in this way, a config for `denv` is already in this repository so
+one can just run the commands above without having to install anything else
+if a container runner `denv` supports is already installed (e.g. docker).
 ```
-
-You can then build the thesis with `make`:
-
-```bash
-make
+# omit -pvc if you just want to build it once and not watch for changes
+denv latexmk -pvc -pdf thesis.tex
+# also given an alias within the denv
+denv build_and_watch
 ```
-
-This will produce a `thesis.pdf` in the root directory of your repository,
-along with all the intermediate build files. You can instead run:
-
-```bash
-make tidy
-```
-
-To just produce the PDF.
-
-### Build Locally (GUI)
-
-One can also build this thesis with a GUI IDE. Install 
-[docker](https://docs.docker.com/engine/install/) and 
-[VSCode](https://code.visualstudio.com/download)
-and then launce VSCode and open this directory. VSCode should then prompt you with a
-request to "reopen" this project in its development container (choose yes).
-
-### Build On Github
-
-The easiest way to build the PDF is to use [Github Actions][actions]. This
-will build the thesis and produce a PDF all within Github. The repository
-already contains the correct configuration files, but you will need to enable
-actions in Github.
-
-[actions]: https://help.github.com/en/actions
-
-Once this is done, you can click on the _"Actions"_ tab at the top of the
-repository on Github.
-
-<img
-src="https://raw.githubusercontent.com/agude/UMN-PhD-Thesis-Template/master/.github/images/actions.png?raw=true"
-width="800" alt="Actions page"/> 
-
-There you'll see a list of build jobs. The ones with green check marks have
-completed successfully. Clicking on one will bring you to the build page,
-where there will be a section titled **Artifacts**. Click on "Compiled Thesis"
-to download a zip file containing the PDF.
-
-<img
-src="https://raw.githubusercontent.com/agude/UMN-PhD-Thesis-Template/master/.github/images/artifact.png?raw=true"
-width="800" alt="Artifact download"/> 
 
 ## Additional Packages
 
