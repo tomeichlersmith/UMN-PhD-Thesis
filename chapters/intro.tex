@@ -15,9 +15,9 @@ people. This experience of participating in two similar experiments has provided
 of learning opportunities (as well as roadblocks) for me and my journey as a new physicist.
 
 Physics is a lazy science. I would go even further and state that this reductionist perspective is
-a main attraction for many physicists. We\footnote{ Here I use the ``royal we'' as representing my
+a main attraction for many physicists. We\footnote{Here I use the ``royal we'' as representing my
   point of view of the culture within the field. It should in no way be construed as scientific or
-  exact statements and does not represent every physicist's point of view. } want to avoid memorizing
+  exact statements and does not represent every physicist's point of view.} want to avoid memorizing
 as much as possible; therefore, motivating the idea of condensing sets of observations into
 ``laws'' that can be represented in an even more compact mathematical form. We make up these
 ``laws'' and the vocabulary surrounding them not to decieve but merely to make communication about
@@ -25,7 +25,7 @@ our observations and the experiments that make these observations easier. We som
 origins of these laws and their true philosophical meaning, but often, on a day-to-day basis, the
 background of them is unimportant. The interesting work comes from \emph{testing} them, breaking
 them, and remaking them. For our purposes here, this is what a ``theory'' is: a package of laws and
-their mathematical forms with which we can make predictions of the observations of our experiments.
+their mathematical forms with which we can make predictions of the observations of our experiments.%%
 
 While I speak in the context of all physics, in reality, I am residing within a small corner.
 Primarily concerned with individual particles and how they interact with one another, my field can
@@ -60,7 +60,6 @@ we have learned about physics via these two experiments.
 
 \section{Standard Model of Particle Physics}
 \label{sec:sm}
-\todo[inline]{Short, quippy description of standard model. Mainly focused on giving reader the vocabulary necessary to understand later sections on DM.}
 
 What makes up all the stuff around us? This question has been posed, debated, discussed, and
 studied since the ancient times. Our best current understanding is that stuff is made of particles
@@ -92,5 +91,46 @@ responsible for light and magnetism. The lowest mass charged lepton (electron) i
 abundant -- most commonly residing in orbits around nuclei helping form atoms. Both experiments in
 this thesis utilize beams of electrons that have been accelerated to high energies.
 
-\todo[inline]{Explain the concept of Feynman diagrams and vertices. I'd like to avoid writing lagrangians if possible and instead stick to diagrammatic representations.}
+The mathematical expressions to calculate how these particles interact are complicated. As
+mentioned earlier, physicists are lazy and so we have developed a method to represent the specifics
+of these interactions without needing to write down any of the long mathematical formulae. These
+representations are called ``Feynman diagrams'' after the 20th century physicist Richard Feynman.
+Feynman diagrams allow us to represent interactions by defining a set of ``vertices'' that are
+allowed by our theory and then constructing processes from these vertices that include the in- and
+out- going particles that we wish to study. The further calculation of these diagrams is a defined
+process that has been written into various computer programs (I say this to emphasize that these
+diagrams directly represent the mathematics that can be used to calculate them).
+\cref{fig:brem-feynman} shows an example Feynman diagram representing the bremsstrahlung process
+where a charged lepton (\(\ell^\)) interacts with a nucleus (\(Z\)) via a photon (\(\gamma\)) and
+then emits another photon before recoiling. We can see three verticies in this diagram: two
+``fundamental'' vertices whree the lepton and photon lines connect and one ``effective'' vertex
+where the photon connects with the nucleus. The fundamental vertices are actually strictly defined
+within the Standard Model, but the effective vertex represents a helpful approximation that is
+accurate at the energy scales we are studying.\footnote{ The distinction between fundamental and
+  effective vertices is not a well defined one. I find it helpful here, but it is not necessarily
+  made elsewhere in physics literature. }
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (in) {\(\ell^-\)};
+      \vertex [right=of in] (nuc);
+      \vertex [below=of nuc, blob] (nucleus) {\(Z\)};
+      \vertex [right=of nuc, dot] (emit);
+      \vertex [above right=of emit] (recoil) {\(\ell^-\)};
+      \vertex [below right=of emit] (decay) {\(\gamma\)};
+      \diagram*{
+      (in) -- [fermion] (nuc) -- [fermion] (emit) -- [fermion] (recoil),
+      (nucleus) -- [photon, edge label'=\(\gamma\)] (nuc),
+      (emit) -- [photon] (decay),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{
+    Feynman diagram for the bremsstrahlung process.
+  }
+  \label{fig:brem-feynman}
+\end{figure}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
