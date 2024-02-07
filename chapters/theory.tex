@@ -83,7 +83,7 @@ today while the rest is composed of material that only significantly interacts g
 \end{figure}
 
 \section{Particle Nature of Dark Matter}
-The theoretical possibilities explaining dark matter are broad \cite{darksectors-2016} event when
+The theoretical possibilities explaining dark matter are broad \cite{darksectors-2016} even when
 excluding ourselves to the assumption that the dark matter phenomenum is explained by the existence
 of a dark matter particle since the start of the start of the universe alongside our normal matter
 particles. Here, I will refer to this particular dark matter as \gls{dm} which, in general, needs
@@ -230,7 +230,7 @@ a nucleus and then emits a dark photon and recoils.
     \begin{feynman}
       \vertex (in) {\(\ell^-\)};
       \vertex [right=of in] (nuc);
-      \vertex [below=of nuc, blob] (nucleus) {\(Z\)};
+      \vertex [below=of nuc, blob, label={below:\(Z\)}] (nucleus) {};
       \vertex [right=of nuc, dot] (emit);
       \vertex [above right=of emit] (recoil) {\(\ell^-\)};
       \vertex [below right=of emit] (decay) {\(A'\)};
@@ -239,7 +239,7 @@ a nucleus and then emits a dark photon and recoils.
 
       \diagram*{
       (in) -- [fermion] (nuc) -- [fermion] (emit) -- [fermion] (recoil),
-      (nucleus) -- [photon] (nuc),
+      (nucleus) -- [photon, edge label'=\(\gamma\)] (nuc),
       (emit) -- [photon] (decay),
       % (emit) -- [photon, edge label'=\(A'\)] (decay),
       % (chi2) -- [fermion] (decay) -- [fermion] (chi1),
@@ -307,12 +307,6 @@ specifically was investigating some of these more intricate dark sector models i
 \cref{sec:theory-simps} and \cref{sec:theory-idm} provide more detail on the dark sector models
 studied in this work.
 
-\subsection{Strongly Interacting Massive Particles}
-\label{sec:theory-simps}
-
-\subsection{Inelastic Dark Matter}
-\label{sec:theory-idm}
-
 \begin{itemize}
   \item Motivations for complicated model
         \begin{itemize}
@@ -321,5 +315,57 @@ studied in this work.
           \item iDM is interesting for others as well \cite{darkseaquest-2018}
         \end{itemize}
 \end{itemize}
+
+\subsection{Inelastic Dark Matter}
+\label{sec:theory-idm}
+
+One slightly more complicated extension simply proposes the existence of two more dark fermions:
+\(\chi_2\) and \(\chi_1\) instead of just the \(\chi\). There is no reason for the DM to only
+consist of one type of particle and indeed our standard matter is made up of several types of
+particles (mostly three). The introduction of multiple fermions produces more complexity within the
+dark sector, specifically enabling production and decay chains that, while still visible within
+many of our experiments, would not follow the distribution or the rate described by the more
+simplistic single-dark-fermion model. \cref{fig:dark-brem-idm-decay} shows a Feynman diagram of
+dark brem production of the dark photon followed by its decay back into an electron-positron
+pair which could be observed within a detector.
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) {$e^{-}$};
+      \vertex [right= of a](d);
+      \vertex [below=of d, blob,label={below:$Z$}] (e) {};
+      \vertex [right= of d] (b);
+      \vertex [above right= of b] (g) {$e^{-}$};
+      \vertex [below right= of b] (aprime_decay);
+      \vertex [below right= of aprime_decay] (rhod_decay);
+      \vertex [above right= of aprime_decay] (dm) {$\chi_1$};
+      \vertex [above right= of rhod_decay] (dm2) {$\chi_1$};
+      \vertex [below right= of rhod_decay] (i);
+      \vertex [above right= of i] (j) {$e^{-}$};
+      \vertex [below right= of i] (k) {$e^{+}$};
+      \diagram*[large] {
+      (a) -- [fermion] (d),
+      (d) -- [boson] (e),
+      (d) -- [fermion] (b),
+      (b) -- [fermion] (g),
+      (b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$\chi_2$}] (rhod_decay),
+      (aprime_decay) -- [scalar] (dm),
+      (rhod_decay) -- [scalar] (dm2),
+      (rhod_decay) -- [boson, edge label={$A'^*$}] (i),
+      (k) -- [fermion] (i) -- [fermion] (j),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{
+    Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair.
+    The details of the $A'-\chi_2-\chi_1$ vertex are kept general and here are left as effective vertices.
+  }
+  \label{fig:dark-brem-idm-decay}
+\end{figure}
+
+\subsection{Strongly Interacting Massive Particles}
+\label{sec:theory-simps}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
