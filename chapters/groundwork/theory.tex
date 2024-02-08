@@ -11,14 +11,15 @@ surely one of the biggest puzzles. While many astronomical observations at vario
 confirmed the existence of dark matter, we have yet seen any observations of its particle
 interacting with our detectors. This has ruled out many models for dark matter's particle nature,
 but there are still many more available which can both explain the current observations of dark
-matter gravitational and cosmological effects while skirt the limitations defined by the
+matter gravitational and cosmological effects while skirting the limitations defined by the
 \emph{lack} of observation in particle experiments.
 
 \section{Dark Matter?}
 As mentioned earlier, we physicists are a lazy bunch. Instead of referring to these phenomena
 (\cref{sec:dm:evidence}) with a more accurate description, we invented a new term for our community
 to refer to it. ``Matter'' originates from comparison to the particles that make ourselves up and
-with which we are familiar -- both interact gravitationally, attracting other groups of ``matter''
+with which we are familiar -- both this new phenomena and our normal ``stuff'' interact gravitationally, 
+attracting other groups of ``matter''
 into complex cosmological systems. The adjective ``dark'' refers to the literal fact that we cannot
 see it with our telescopes. Other matter out in the universe can be seen via the light\footnote{
   Technically, I should say ``electromagnetic radiation'' since some observations use non-visible
@@ -31,11 +32,11 @@ That is it. \gls{dm-full} is merely a shorthand for this unknown aspect of the u
 \section{Evidence for Dark Matter}
 \label{sec:dm:evidence}
 
-The first evidence physicists had for an unseen material floating throughout the universe was the
+The first (replicable) evidence physicists had for an unseen material floating throughout the universe was the
 observation of galactic rotation curves \cite{rubin-rotationcurve-1980,rotationcurve-2000}. These
 observations measure the speed of different stars within a galaxy and compare this speed to the
 distance of that star from the center of the galaxy. We can calculate this relationship using
-\gls{gr} \cite{rotationcurve-predictions-2007} and the observations differ drastically from this
+General Relativity (\gls{gr}) \cite{rotationcurve-predictions-2007} and the observations differ drastically from this
 calculation. The stars within galaxies we've observed move much faster than \gls{gr} would predict
 (\cref{fig:rotation-curve}) leaving us with two explanations: either \gls{gr} is not the correct
 theory to use in this situation or there is more un-seen mass floating within the galaxy allowing
@@ -51,24 +52,22 @@ both explain the rotation curves and gravitational lensing. Additionally, measur
 the largest scales and from the early universe display signs of a certain mass density attributed
 to non-baryonic matter. \todo{bullet cluster figure}
 
-The \gls{cmb} and \gls{bao} provide a method for deducing densities of various classes of matter in
-the early universe. Gravity attracts while pressure from the squeezing of the plasma repules which
-produces oscillations in the density of matter in space and time. These \gls{bao} are imprinted on
-our snapshot of this early-universe plasma, the \gls{cmb}, which we can measure with a high degree
+In the early universe, standard matter was compressed into high densities and existed at high
+temperature creating a sea of plasma. Gravity attracts while pressure from the squeezing of this
+plasma repulses which produces oscillations in the density of matter in space and time.
+These Baryon Acoustic Oscillations (\gls{bao}) are imprinted on
+our snapshot of this early-universe plasma, the Cosmic Microwave Background (\gls{cmb}), 
+which we can measure with a high degree
 of accuracy and fit to various models of what existed at this time of the universe. The best fit of
 these models corresponds to only $\sim 5\%$ of the mass density being normal matter like we see
 today while the rest is composed of material that only significantly interacts gravitationally
 \cite{planck-cmb-2015}.
 
-\begin{itemize}
-  \item Astronomy observations show lots of measurements
-        \begin{itemize}
-          \item Type1a Supernovae \cite{type1a-supernova-2010}
-          \item Big Bang Nucleosynthesis \cite{nucleosynthesis-1998}
-          \item Probably not mini black holes \cite{constraints-primordial-black-holes-2021}
-        \end{itemize}
-  \item Can conclude pretty comfortably that DM exists
-\end{itemize}
+Additional astromomy observations from Type1a supernovae \cite{type1a-supernova-2010}, fitting
+models of big bang nucleosynthesis \cite{nucleosynthesis-1998}, and constraints on non-particulate
+theories explaining these phenomena (for example mini black holes
+\cite{constraints-primordial-black-holes-2021})
+all allow us to conclude pretty comfortably that DM exists as a particle in our universe.
 
 \begin{figure}
   \centering
@@ -85,9 +84,10 @@ today while the rest is composed of material that only significantly interacts g
 \section{Particle Nature of Dark Matter}
 The theoretical possibilities explaining dark matter are broad \cite{darksectors-2016} even when
 excluding ourselves to the assumption that the dark matter phenomenum is explained by the existence
-of a dark matter particle since the start of the start of the universe alongside our normal matter
-particles. Here, I will refer to this particular dark matter as \gls{dm} which, in general, needs
-to satisfy the following requirements.
+of a dark matter particle. The \gls{cmb} observations are tied to very early on in the existence
+of the universe, so it is natural to assume that this dark matter particle has existed since the
+start of the universe alongside our normal matter particles. With this in mind, we can outline
+a few criteria that must be met by a proposed dark matter candidate (\gls{dm}).
 \begin{itemize}
   \item \textbf{Dark} There has been no detection of these particles via the light observed with our telescopes;
         therefore, the dark matter has to not interact via the electromagnetic force.
@@ -143,6 +143,15 @@ match the observed \gls{dm} density currently frozen in. Similarly, if the mass 
 ($\gtrapprox 100~\text{TeV}$), the \gls{dm} will be too strongly coupled to the standard matter and
 would be over-produced. \todo{Not sure about correctness of this.}
 
+\begin{figure}
+  \centering
+  \input{figures/theory/mass-scale}
+  \caption{Mass scale of Thermal Relic \gls{dm}.
+    The regions in red are excluded by applying the thermal relic assumption
+    to our observations of the universe's early evolution.}
+  \label{fig:dm-mass-scale}
+\end{figure}
+
 The mass scale of thermal relic \gls{dm} is further divided by the mass of the proton ($m_p$).
 Above this threshold, the \gls{dm} could be interacting with standard matter through the standard
 Weak Force (capital ``W'')\footnote{ The force already known to exist in nature which is
@@ -151,17 +160,32 @@ Interacting Massing Particles (WIMPs). This phase space was first searched due t
 simplicitity: no new forces, just an extra particle (or two) creating the clouds of \gls{dm} we see
 today. Unfortunately, these searches have not found evidence of a WIMP-like
 signature\cite{supercdms-2018,damic-2020,xenon1t-2018} and the phase space has become tighter and
-more exluded after many years of searching. Below this threshold, the \gls{dm} requires a new force
+more exluded after many years of searching. Below $m_p$, the \gls{dm} requires a new force
 which also does not interact strongly with standard matter. In comparison to the heavier WIMPs,
 this category of \gls{dm} is called ``Light'' \gls{dm}.
 
 \begin{figure}
   \centering
-  \input{figures/theory/mass-scale}
-  \caption{Mass scale of Thermal Relic \gls{dm}.
-    The regions in red are excluded by applying the thermal relic assumption
-    to our observations of the universe's early evolution.}
-  \label{fig:dm-mass-scale}
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (standard) {\(\gamma\)};
+      \vertex [right=of standard] (loopleft);
+      \vertex [right=of loopleft] (loopright);
+      \vertex [right=of loopright] (dark) {\(A'\)};
+
+      \diagram*{
+      (standard)
+      -- [photon] (loopleft)
+      -- [fermion, half left, edge label=\(\Phi\)] (loopright)
+      -- [photon] (dark),
+      (loopright)
+      -- [fermion, half left, edge label=\(\Phi\)] (loopleft),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{Feynman diagram of how a massive field $\Phi$ could allow for a standard photon ($\gamma$)
+    to mix with a dark photon ($A'$).}
+  \label{fig:photon-mixing}
 \end{figure}
 
 In general, the definition of a new force of nature is not well constrained; however, we can define
@@ -189,37 +213,13 @@ which can then be effectively represented by a new vertex in our model.
       };
     \end{feynman}
 
-    \node [right=of vtx] (eqn) {\(= i\epsilon g \gamma^\mu\)};
+    \node [right=of vtx] (eqn) {\(\propto \epsilon\)};
   \end{tikzpicture}
 \end{equation*}
 where the mixing strength $\epsilon$ encapsulates the effect of a massive field $\Phi$ at the energies
-of our experiments (presumably low enough to avoid creation of a $\Phi$ directly).
+of our experiments (presumably low enough to avoid creation of a $\Phi$ directly) and is generally
+small ($\ll 1$).
 
-\begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \begin{feynman}
-      \vertex (standard) {\(\gamma\)};
-      \vertex [right=of standard] (loopleft);
-      \vertex [right=of loopleft] (loopright);
-      \vertex [right=of loopright] (dark) {\(A'\)};
-
-      \diagram*{
-      (standard)
-      -- [photon] (loopleft)
-      -- [fermion, half left, edge label=\(\Phi\)] (loopright)
-      -- [photon] (dark),
-      (loopright)
-      -- [fermion, half left, edge label=\(\Phi\)] (loopleft),
-      };
-    \end{feynman}
-  \end{tikzpicture}
-  \caption{Feynman diagram of how a massive field $\Phi$ could allow for a standard photon ($\gamma$)
-    to mix with a dark photon ($A'$).}
-  \label{fig:photon-mixing}
-\end{figure}
-
-\todo[inline]{Different methods of dark matter particle detection. Production is what we do here.}
 This new vertex within our model for the universe enables a new process to occur: so-called
 ``Dark Bremsstrahlung'' (dark brem) where a charged particle exchanges a standard photon with
 a nucleus and then emits a dark photon and recoils.
@@ -282,9 +282,12 @@ $\overline{\chi}$), we then have an additional dark sector vertex.
       };
     \end{feynman}
 
-    \node [right=of vtx] (eqn) {\(= i\alpha_{D} \gamma^\mu\)};
+    \node [right=of vtx] (eqn) {\(\propto \alpha_{D}\)};
   \end{tikzpicture}
 \end{equation*}
+where $\alpha_D$ is a parameter representing the strength of this dark sector interaction, limited
+to be below $1$ but usually much larger than $\epsilon$ so that this interaction is more likely
+that the one with standard matter.
 If the mass of the dark photon is greater than twice the mass of the $\chi$ ($m_{A'} > 2m_\chi$),
 then this vertex can occur immediately after a dark photon is produced within an experiment.
 Since the $\chi$ does not interact with our normal (standard model) particles, the energy
@@ -296,7 +299,7 @@ of DM being produced could be observed.
 There is no a priori reason for $m_{A'} > 2 m_\chi$, so we must accomodate the possiblity that
 $m_{A'} < 2 m_\chi$. In this case, there would be a significant probability that the dark photon,
 after it is produced, would convert \emph{back} into standard model particles. Since these decay
-products are observable by our detectors, this signature is visible.
+products are observable by our detectors, this signature is called visible.
 
 These visible signatures have a bit more complexity due to the fact that both a production process
 and a decay process need to occur according to the model for DM we are testing. With this in mind,
@@ -307,22 +310,13 @@ specifically was investigating some of these more intricate dark sector models i
 \cref{sec:theory-simps} and \cref{sec:theory-idm} provide more detail on the dark sector models
 studied in this work.
 
-\begin{itemize}
-  \item Motivations for complicated model
-        \begin{itemize}
-          \item Direct detection is hard with LDM \cite{ldmconstraints-2019}
-          \item super-WIMPs at keV mass scale \cite{superwimps-2008}
-          \item iDM is interesting for others as well \cite{darkseaquest-2018}
-        \end{itemize}
-\end{itemize}
-
 \subsection{Inelastic Dark Matter}
 \label{sec:theory-idm}
 
 One slightly more complicated extension simply proposes the existence of two more dark fermions:
 \(\chi_2\) and \(\chi_1\) instead of just the \(\chi\). There is no reason for the DM to only
 consist of one type of particle and indeed our standard matter is made up of several types of
-particles (mostly three). The introduction of multiple fermions produces more complexity within the
+particles. The introduction of multiple fermions produces more complexity within the
 dark sector, specifically enabling production and decay chains that, while still visible within
 many of our experiments, would not follow the distribution or the rate described by the more
 simplistic single-dark-fermion model. \cref{fig:dark-brem-idm-decay} shows a Feynman diagram of
@@ -365,7 +359,62 @@ pair which could be observed within a detector.
   \label{fig:dark-brem-idm-decay}
 \end{figure}
 
+The emission of these extra $\chi_1$ particles has a significant effect on the properties of the electrons
+and positrons we can observe and is discussed in more detail in \cref{sec:hps-idm}. This dark sector model
+is actively being studied within HEP and has potential for observation by the experiment in \cref{part:hps}
+\cite{darkseaquest-2018}.
+
 \subsection{Strongly Interacting Massive Particles}
 \label{sec:theory-simps}
+
+To be even more specific, we could hypothesize that the dark sector consists of particles that
+interact with each other strongly in the same sense of the standard quarks. These Strongly
+Interacting Massive Particles (SIMPs) \cite{simp-mechanism-2014,simp-pheno-2018} would then form composite particles similar to how standard
+quarks form composite particles like protons and neutrons. Since we expect our experiments to
+not reach the energies required to separate the constiuents of these composite particles,
+the composite particles themselves would be the dark matter candidates and the ones we represent
+within our diagrams. A dark sector consisting of SIMPs would have a plethora of composite particles
+which we could observe, including ones that would produce a diagram with the same structure as
+\cref{fig:dark-brem-idm-decay}; however of particular importance is that there could be a composite
+particle that has similar enough properties to the dark photon that it could ``mix'' with it and 
+decay in a way that emits less dark particles: \cref{fig:dark-brem-simp-decay}. This decay, since
+it has less energy ``lost'' to the dark particles, has a greater potentail of being observed within
+the experiment described in \cref{part:hps} and is discussed there.
+
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{feynman}
+      \vertex (a) {$e^{-}$};
+      \vertex [right= of a](d);
+      \vertex [below=of d, blob,label={below:$Z$}] (e) {};
+      \vertex [right= of d] (b);
+      \vertex [above right= of b] (g) {$e^{-}$};
+      \vertex [below right= of b] (aprime_decay);
+      \vertex [below right= of aprime_decay] (rhod_decay);
+      \vertex [above right= of aprime_decay] (dm) {$\pi_D$};
+      \vertex [below right= of rhod_decay] (i);
+      \vertex [above right= of i] (j) {$e^{-}$};
+      \vertex [below right= of i] (k) {$e^{+}$};
+      \diagram*[large] {
+      (a) -- [fermion] (d),
+      (d) -- [boson] (e),
+      (d) -- [fermion] (b),
+      (b) -- [fermion] (g),
+      (b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$V_D$}] (rhod_decay),
+      (aprime_decay) -- [scalar] (dm),
+      (rhod_decay) -- [boson, edge label={$A'^*$}] (i),
+      (k) -- [fermion] (i) -- [fermion] (j),
+      };
+    \end{feynman}
+  \end{tikzpicture}
+  \caption{
+    Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair
+    through SIMP composite particle $V_D$ with the emission of a lighter SIMP composite particle $\pi_D$.
+    The two-particle vertex $V_D-A'$ is only allowed since they share enough quantum properties to mix.
+  }
+  \label{fig:dark-brem-simp-decay}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
