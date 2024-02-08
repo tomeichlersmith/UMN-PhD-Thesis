@@ -48,8 +48,8 @@
 % Compile only the chapters listed here
 \includeonly{
     preliminaries/title,
-    chapters/intro,
-    chapters/theory,
+    chapters/groundwork/intro,
+    chapters/groundwork/theory,
     chapters/ldmx/experiment,
     chapters/ldmx/simulation,
     chapters/ldmx/reconstruction,
@@ -62,7 +62,7 @@
     chapters/hps/data_set,
     chapters/hps/event_selection,
     chapters/hps/analysis,
-    chapters/conclusion,
+    chapters/conclusion/conclusion,
     chapters/app/glossary,
 }
 
@@ -79,8 +79,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Now lets include the body of the document...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{chapters/intro}
-\include{chapters/theory}
+\part{Laying the Groundwork}
+\include{chapters/groundwork/intro}
+\include{chapters/groundwork/theory}
 
 \part{LDMX} \label{part:ldmx}
 \include{chapters/ldmx/experiment}
@@ -95,8 +96,8 @@
 \include{chapters/hps/event_selection}
 \include{chapters/hps/analysis}
 
-%Conclusion
-\include{chapters/conclusion}
+\part{Conclusion} \label{part:conclusion}
+\include{chapters/conclusion/conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
