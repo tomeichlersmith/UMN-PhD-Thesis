@@ -26,7 +26,17 @@
 }
 \usepackage{subcaption}
 
-\input{glossary}
+\usepackage{acronym}
+\acrodef{dm}[DM]{Dark Matter}
+\acrodef{sm}[SM]{Standard Model}
+\acrodef{gr}[GR]{General Relativity}
+\acrodef{cmb}[CMB]{Cosmic Microwave Background}
+\acrodef{bao}[BAO]{Baryon Acoustic Oscillations}
+\acrodef{hep}[HEP]{High Energy Physics}
+\acrodef{ecal}[ECal]{Electromagnetic Calorimeter}
+\acrodef{hcal}[HCal]{Hadronic Calorimeter}
+\acrodef{ldmx}[LDMX]{Light Dark Matter eXperiment}
+\acrodef{hps}[HPS]{Heavy Photon Search experiment}
 
 \usepackage{todo}
 
@@ -38,8 +48,6 @@
 
 % Configure the cleveref package
 \newcommand{\creflastconjunction}{, and } % Always use the serial comma
-
-\input{my_definitions}
 
 \linespread{1.3}
 
@@ -61,7 +69,6 @@
     chapters/hps/event_selection,
     chapters/hps/analysis,
     chapters/conclusion/conclusion,
-    chapters/app/glossary,
 }
 
 \begin{document}
@@ -109,7 +116,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Appendices}
 \appendix
-\include{chapters/app/glossary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \todos
 

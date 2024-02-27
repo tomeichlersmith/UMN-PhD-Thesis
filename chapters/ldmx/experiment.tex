@@ -1,13 +1,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % experiment.tex: Chapter describing the experiment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{\gls{ldmx-full}}
+\chapter{Light Dark Matter eXperiment}
 \label{chapter:ldmx:experiment}
 
-\gls{ldmx} is a proposed fixed-target experiment aiming to definitively explore
+\ac{ldmx} is a proposed fixed-target experiment aiming to definitively explore
 the light dark matter phase space. Even as a proposed experiment, it has a detailed
 plan for construction, a beam already in construction, and well established connections
-with current technologies used within \gls{hep}. While \gls{ldmx} is not yet built,
+with current technologies used within \ac{hep}. While \ac{ldmx} is not yet built,
 it has a well formulated simulation infrastructure that can realistically model
 how the detector design responds to various types of interactions happening within it.
 
@@ -15,12 +15,12 @@ how the detector design responds to various types of interactions happening with
 \begin{todoenv}
   Confirm correctness of this section
 \end{todoenv}
-\gls{ldmx} is situated at the end of the Linear Accelerator (Linac) at SLAC National Accelerator
+\ac{ldmx} is situated at the end of the Linear Accelerator (Linac) at SLAC National Accelerator
 Laboratory. The SLAC Linac can provide high energy, high rate, and low intensity electron beams for
 the various experiments it hosts. Specifically, the Linac Coherent Light Source (LCLS) is
 used to guide the beam (of a certain energy) towards the experimental hall - the upgraded
 phase of LCLS (LCLS II \cite{lcls-ii}) is currently under construction and is what will
-be used for running with \gls{ldmx}.
+be used for running with \ac{ldmx}.
 
 The experiment is hosted in End Station A (ESA) at SLAC which requires an additional upgrade to the
 Linac in order to recieve its beam. LESA (Linac to ESA) \cite{lesa-design} is also currently being
@@ -35,8 +35,8 @@ led to four subsystems each with specialized roles.
 \begin{enumerate}
   \item \textbf{Trigger Scintillator} Count the number of electrons incident on the target in time to make a trigger decision.
   \item \textbf{Tracker} Measure charged particle momenta both before (``Tagger'') and after (``Recoil'') the target.
-  \item \textbf{Electromagnetic Calorimeter} (\gls{ecal}) Measure the total energy of electrons, positrons, and photons.
-  \item \textbf{Hadronic Calorimeter} (\gls{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
+  \item \textbf{Electromagnetic Calorimeter} (\ac{ecal}) Measure the total energy of electrons, positrons, and photons.
+  \item \textbf{Hadronic Calorimeter} (\ac{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
 \end{enumerate}
 \cref{fig:ldmx-det} displays these subsystems in a diagram along with a representation of
 a dark brem interaction occurrring within the target.
@@ -47,7 +47,7 @@ each pair are offset from one another to cover any gaps between the bars. These 
 time to be used within a trigger decision.\todo{What is a ``trigger'' and how do these bars help?}
 
 The Tracker (purple in \cref{fig:ldmx-det}) is a thin silicon strip detector modeled after the
-\gls{hps} tracker. These silicon strips are also arranged in layer pairs where one layer is angled
+\ac{hps} tracker. These silicon strips are also arranged in layer pairs where one layer is angled
 slightly askew relative to the other in the pair to enable reconstruction of three dimensional hit
 locations. The part of the tracker upstream of the target (to the left in \cref{fig:ldmx-det}) is
 named the ``tagger'' since its purpose is to measure the incident electrons' momenta, rejecting
@@ -58,14 +58,14 @@ named the ``recoil'' tracker since its job is to measure the momenta of all char
 recoiling from interactions within the target. While it is not located within the magnet volume, it
 is still situated within the fringe field, allowing functional momentum resolution.
 
-The \gls{hcal} (green in \cref{fig:ldmx-det}) is a sampling calorimeter made up of alternating
-layers of steel absorber and plastic scintillator bars. The \gls{hcal} is further subdivided into
-the ``side'' \gls{hcal} which is situated around the \gls{ecal} and the ``back'' \gls{hcal}
-downstream of the \gls{ecal}. The back \gls{hcal} has the orientation of the scintillator bars
+The \ac{hcal} (green in \cref{fig:ldmx-det}) is a sampling calorimeter made up of alternating
+layers of steel absorber and plastic scintillator bars. The \ac{hcal} is further subdivided into
+the ``side'' \ac{hcal} which is situated around the \ac{ecal} and the ``back'' \ac{hcal}
+downstream of the \ac{ecal}. The back \ac{hcal} has the orientation of the scintillator bars
 alternate between vertical and horizontal so that clusters and tracks can have three-dimensional
 coordinates more preceisely identified.
 
-The \gls{ecal} (blue in \cref{fig:ldmx-det}), as a primary volume of interest within the analysis
+The \ac{ecal} (blue in \cref{fig:ldmx-det}), as a primary volume of interest within the analysis
 discussed here, is given its own section below \cref{sec:ldmx:ecal}.
 
 \begin{figure}
@@ -101,27 +101,27 @@ discussed here, is given its own section below \cref{sec:ldmx:ecal}.
   \label{fig:ldmx-bkgd-staircase}
 \end{figure}
 
-\section{\gls{ecal}}
+\section{\ac{ecal}}
 \label{sec:ldmx:ecal}
 
-More detail about \gls{ecal} since it relates to the ME search later.
+More detail about \ac{ecal} since it relates to the ME search later.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/ecal.pdf}
   \caption{
-    Diagram of LDMX \gls{ecal} construction showing the longitudinal segmentation
+    Diagram of LDMX \ac{ecal} construction showing the longitudinal segmentation
     (top and bottom right) and the transverse segmentation (bottom left).
     Credit to Joe Muse.
   }
   \label{fig:ldmx-ecal}
 \end{figure}
 
-\section{Missing Momentum \gls{dm} Search}
+\section{Missing Momentum \ac{dm} Search}
 
 Description of MM search using the thin target.
 
-\section{Missing Energy \gls{dm} Search} One of the primary strengths of the LDMX detector design is its ability to use the tagging
+\section{Missing Energy \ac{dm} Search} One of the primary strengths of the LDMX detector design is its ability to use the tagging
 and recoil tracker system to reject a large number of background events by separating a nominal
 beam with non-standard energy loss from a nominal beam with standard energy loss or even low-energy
 beam. Moreover, the tagging and recoil tracker system gives LDMX the potential to further suppress
