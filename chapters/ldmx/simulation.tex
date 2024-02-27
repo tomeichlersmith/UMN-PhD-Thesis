@@ -5,8 +5,10 @@
 \label{chapter:ldmx:simulation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\todo[inline]{General description of LDMX software and how it constructs a data processing
-    pipeline. Geant4, MadGraph/MadEvent, electronics emulation, and reconstruction.}
+\begin{todoenv}
+  General description of LDMX software and how it constructs a data processing
+    pipeline. Geant4, MadGraph/MadEvent, electronics emulation, and reconstruction.
+\end{todoenv}
 
 LDMX (like many other HEP experiments) uses an intricate software stack in order to realistically and efficiently simulate particle interactions with the detector, emulate the electronics that would be used to measure these interactions, and reconstruct the output of these electronics into physically-understandable variables.
 These software tasks are accomplished by a wide swath of different software packages, some of which custom-written for LDMX, most of which written in C++.
@@ -55,10 +57,12 @@ As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of ph
 These updates enabled us to efficiently study the known and expected background processes interactions with the LDMX detector design and compare this data to simulations of a model of a DM production process.
 
 \subsection{Biasing and Filtering}
-\todo[inline]{Biasing and filtering methodology, configuration for EaT-specific backgrounds.}
+\begin{todoenv}
+Biasing and filtering methodology, configuration for EaT-specific backgrounds.
+\end{todoenv}
 
 \subsection{Validation}
-\todo[inline]{Validation of this methodology.}
+\begin{todoenv}Validation of this methodology.\end{todoenv}
 
 \section{\gls{dm} Signal}
 The particular signal process this analysis channel is looking for is the
@@ -76,15 +80,15 @@ simulation technique allows for the dark bremsstrahlung process to be treated
 while maintaining the precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
-\todo[inline]{Description of scaling as well as citation to paper.}
+\begin{todoenv}Description of scaling as well as citation to paper.\end{todoenv}
 To accurately simulate the kinematics of the dark bremsstrahlung process for electrons in thick targets, the process must be included at the level of experimental simulation instead of using initial state event generators to account for the possibility of energy loss through bremsstrahlung or multiple scattering prior to the dark matter interaction. Accurate kinematic simulation of the outgoing electron are required for optimal experimental sensitivity measurements and appropriate design of search strategies.
 
 For this reason, we utilize G4DarkBreM \cite{g4darkbrem} which performs this embedding of the dark bremmstrahlung process into \textsc{Geant}4. G4DarkBreM calculates the cross section using numerical integrals of the Weizs\"{a}cker-Williams approximation, and the kinematics are simulated using a scaling technique of \textsc{MadGraph/MadEvent} event libraries. The accuracy of the total cross section and kinematics is validated using \textsc{MadGraph/MadEvent} samples.
 
 \subsection{MadGraph/MadEvent}
-\todo[inline]{Detail on MG/ME workspace used to generate DB libraries.}
+\begin{todoenv}Detail on MG/ME workspace used to generate DB libraries.\end{todoenv}
 
 \subsection{Characterization}
-\todo[inline]{Describe how these samples "look"?}
+\begin{todoenv}Describe how these samples "look"?\end{todoenv}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

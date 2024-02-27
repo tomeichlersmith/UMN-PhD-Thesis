@@ -28,9 +28,7 @@
 
 \input{glossary}
 
-% increase margin width to minimum required by todonotes
-\setlength{\marginparwidth}{2cm}
-\usepackage[textsize=tiny]{todonotes}
+\usepackage{todo}
 
 % Configure the siunitx package
 \sisetup{
@@ -109,9 +107,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Appendices
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Appendices}
 \appendix
 \include{chapters/app/glossary}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\todos
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % End the Document
