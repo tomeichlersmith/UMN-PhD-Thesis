@@ -12,9 +12,7 @@ it has a well formulated simulation infrastructure that can realistically model
 how the detector design responds to various types of interactions happening within it.
 
 \section{The Beam Line}
-\begin{todoenv}
-  Confirm correctness of this section
-\end{todoenv}
+\todo[Correctness]{Confirm correctness of this section}
 \ac{ldmx} is situated at the end of the Linear Accelerator (Linac) at SLAC National Accelerator
 Laboratory. The SLAC Linac can provide high energy, high rate, and low intensity electron beams for
 the various experiments it hosts. Specifically, the Linac Coherent Light Source (LCLS) is
@@ -30,21 +28,31 @@ components are expected to participate in a test beam run in summer 2024.
 
 \section{Detector Design}
 LDMX is a missing momentum experiment and its design is focused on measuring \emph{both} the
-incoming and outgoing momenta of charged particles interacting with a thin target. This design has
-led to four subsystems each with specialized roles.
+incoming and outgoing momenta of charged particles interacting with a thin target such that
+any momentum given to undetectable (dark) particles can be precisely determined. This design has
+led to four subsystems each with specialized roles.\footnote{These subsystems also take on
+additional roles when the full breadth of the \ac{ldmx} physics program is taken into account.
+This description just focuses on the \ac{dm} search.}
 \begin{enumerate}
-  \item \textbf{Trigger Scintillator} Count the number of electrons incident on the target in time to make a trigger decision.
+  \item \textbf{Trigger Scintillator} Count the number of electrons incident on the target in time to make a trigger decision (more on what a ``trigger'' is below).
   \item \textbf{Tracker} Measure charged particle momenta both before (``Tagger'') and after (``Recoil'') the target.
   \item \textbf{Electromagnetic Calorimeter} (\ac{ecal}) Measure the total energy of electrons, positrons, and photons.
-  \item \textbf{Hadronic Calorimeter} (\ac{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
+  \item \textbf{Hadronic Calorimeter} (\acs{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
 \end{enumerate}
 \cref{fig:ldmx-det} displays these subsystems in a diagram along with a representation of
-a dark brem interaction occurrring within the target.
+a dark brem interaction occurrring within the target. \cref{fig:ldmx-render} shows a rendering
+of the detector design.
 
-The Trigger Scintillator (yellow-orange in \cref{fig:ldmx-det}) is made of layers of vertically
+In many \ac{hep} experiments, a ``trigger'' system is necessary in order to filter data defined to
+be interesting by the experiment from the wealth of uninteresting (or normal) data that is expected
+to be collected at a much higher rate. These trigger systems are the first filter that any data goes
+through and are designed to help the experiment obtain a statistically large data sample without
+collecting an overwhelming amount of data.
+The Trigger Scintillator (yellow-orange in \cref{fig:ldmx-det}) is designed to help inform the trigger
+decision by counting the number of electrons present within the detector. It is made of layers of vertically
 segmented bars of plastic scintillator. These layers are arranged in pairs where the layers within
 each pair are offset from one another to cover any gaps between the bars. These bars are readout in
-time to be used within a trigger decision.\todo{What is a ``trigger'' and how do these bars help?}
+time to be used within a trigger decision combined with information from the \ac{ecal} and \ac{hcal}.
 
 The Tracker (purple in \cref{fig:ldmx-det}) is a thin silicon strip detector modeled after the
 \ac{hps} tracker. These silicon strips are also arranged in layer pairs where one layer is angled
@@ -101,10 +109,11 @@ discussed here, is given its own section below \cref{sec:ldmx:ecal}.
   \label{fig:ldmx-bkgd-staircase}
 \end{figure}
 
-\section{\ac{ecal}}
+\section{ECal}
 \label{sec:ldmx:ecal}
-
+\begin{todoenv}
 More detail about \ac{ecal} since it relates to the ME search later.
+\end{todoenv}
 
 \begin{figure}
   \centering
@@ -117,11 +126,13 @@ More detail about \ac{ecal} since it relates to the ME search later.
   \label{fig:ldmx-ecal}
 \end{figure}
 
-\section{Missing Momentum \ac{dm} Search}
-
+\section{Missing Momentum DM Search}
+\begin{todoenv}
 Description of MM search using the thin target.
+\end{todoenv}
 
-\section{Missing Energy \ac{dm} Search} One of the primary strengths of the LDMX detector design is its ability to use the tagging
+\section{Missing Energy DM Search}
+One of the primary strengths of the LDMX detector design is its ability to use the tagging
 and recoil tracker system to reject a large number of background events by separating a nominal
 beam with non-standard energy loss from a nominal beam with standard energy loss or even low-energy
 beam. Moreover, the tagging and recoil tracker system gives LDMX the potential to further suppress
