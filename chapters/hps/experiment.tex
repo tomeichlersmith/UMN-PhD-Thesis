@@ -44,7 +44,20 @@ on reconstruction of the momentum and charge of charged particles
 and the \ac{ecal} focused on energy reconstruction and online triggering of the data.
 
 \section{Silicon Vertex Tracker}
-The \ac{svt}...
+The \ac{svt} is made of eighteen modules each of which is a pair of silicon-strip detectors
+offset from each other by a small angle to enable three-dimensional position reconstruction.
+The modules are arranged in the two halves separated by the center beam line. In each half,
+the modules are put into layers with the first three layers consisting of one module while
+the last three layers consisting of two modules to increase angular acceptance relative
+to the target. \cref{fig:hps-svt-render} shows a rendering of the \ac{svt} with the sensitive
+detector elements shown as red rectangles.
+
+\begin{todoenv}
+    \begin{itemize}
+        \item Positions of layers relative to target, beamline, and each other
+        \item Readout mechanism
+    \end{itemize}
+\end{todoenv}
 
 \begin{figure}
     \centering
@@ -59,6 +72,13 @@ The \ac{svt}...
 \end{figure}
 
 \section{Electromagnetic Calorimeter}
+The \ac{ecal} consists of 500\todo[look up]{look up number of crystals in HPS ECal}
+ lead-tungstate crystals and is a fully-sensitive calorimeter.
+The crystals are arranged in symmetric grids separated by the beamline similar to the \ac{svt}.
+\cref{fig:hps-pair-trigger-depiction} shows this grid in addition to example clusters and \ac{ecal}-related
+variables. In addition to a horizontal gap separating the halves, a few more crystals in the highest
+radiation area are removed to form a ``hole'' to allow the majority of non-interacting (or minimally interacting)
+beam electrons to pass through the detector volume.
 
 \section{Currently-Available Datasets}
 
