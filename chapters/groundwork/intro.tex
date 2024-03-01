@@ -134,9 +134,32 @@ accurate at the energy scales we are studying.\footnote{ The distinction between
   \label{fig:brem-feynman}
 \end{figure}
 
-\begin{todoenv}
-Dive/derive brem differential xsec at LO. Comment on how it is primarily forward and low energy.
-\end{todoenv}
+\todo[transition]{More carefully step into discussion of brem itself}
+Due to the complexity of the nucleus itself, the calculation of \cref{fig:brem-feynman} into
+any observables is difficult to do without any approximations. However, one of the initial parametrizations of
+bremsstrahlung offers a good glimpse of how it behaves.\todo[cite]{Bethe Heitler citation of brem parametrizations}
+When doing experiments, we often count the number of particles produced with certain criteria.
+These ``rates'' can then be translated into estimates of process cross sections (how likely a process
+is to occur producing particles with the observed properties) with knowledge of
+how the experiment was conducted. These cross sections are also calculatable from diagrams like
+\cref{fig:brem-feynman} and the initial parameterization can be summarized as
+\[
+  \frac{d\sigma}{d E_\gamma} \propto \frac{1}{E_\gamma}
+\]
+This shows the dominant shape of the cross section \todo[figure]{brem photon figure of some kind}
+-- it grows as the energy of the produced photon
+(\(E_\gamma\)) gets smaller. The full expression prevents the cross section from diverging as the
+photon energy approaches zero; nevertheless, the general inverse relationship between the rate and
+the energy of the produced photon holds in both the \ac{sm} calculations and observations from
+experiments.\todo[citation]{need a citation for observation of bremsstrahlung photon energies?}
+
+This inverse relationship is somewhat special and is mostly due to the fact that photons
+do not have any mass; however, this special relationship opens a door towards potential
+discovery. The vast majority of electrons interacting with a material will do so softly,
+only emitting low energy photons, which distinctly separates these electrons from ones
+that undergo rarer processes (or perhaps so-far undiscovered processes). Both experiments
+described in this work make heavy use of this fact.\todo[more]{make sure to reference back
+to softness of sm brem in experiment sections.}
 
 For the rest of this thesis, I intend to stay within this diagrammatic realm -- representing the theoretical
 calculations being tested with these diagrams and limiting the scope of mathematical formulae
