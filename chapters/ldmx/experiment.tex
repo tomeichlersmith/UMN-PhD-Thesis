@@ -74,7 +74,23 @@ alternate between vertical and horizontal so that clusters and tracks can have t
 coordinates more preceisely identified.
 
 The \ac{ecal} (blue in \cref{fig:ldmx-det}), as a primary volume of interest within the analysis
-discussed here, is given its own section below \cref{sec:ldmx:ecal}.
+discussed here, is given its own diagram \cref{fig:ldmx-ecal}. The \ac{ecal} is also a sampling
+calorimeter; however, it uses a different absorber material and a different sensing mechanism to
+more precisely measure the energy of electrons, positrons, and photons. The calorimeter is constructed
+out of seventeen layers each consisting of tungsten absorber, service materials, and sensitive silicon
+sensors. Each of the layers of the detector has two sub-layers of sensitive silicon sensors and each
+of these sub-layers are built up out of the hexagonal High-Density boards designed for the CMS
+HGCAL upgrade\todo[citation]{CMS HGCAL Citation needed}. These hexagons are arranged in a ``flower''
+providing excellent transverse resolution of shower location and shower shape. The layers are built
+and arranged in order to space the sensitive silicon sub-layers to give good longitudinal resolution
+of showers as well. In total, the designed \ac{ecal} has more than one hundred thousand channels that
+can each individually detect particles depositing energies from $\approx 0.1$ MeV up to $\gtrapprox 1$ GeV\todo[confirm]{Confirm extimate of maximum single-hit energy}.
+This high granularity calorimeter gives \ac{ldmx} excellent discrimination power
+since it can measure the amplitude and location of several incident particles\todo[evidence]{provide
+evidence for this precision claim}.
+Due to its high performance, the \ac{ecal} is a primary tool for
+both designing a trigger decision (with the aid of the Trigger Scintillator's electron count) as well
+as downstream analysis separating \ac{sm} background processes from potential \ac{dm} signal.
 
 \begin{figure}
   \centering
@@ -99,24 +115,6 @@ discussed here, is given its own section below \cref{sec:ldmx:ecal}.
 
 \begin{figure}
   \centering
-  \includegraphics[width=\textwidth]{figures/ldmx/experiment/reaction_staircase_with_designDrivers.pdf}
-  \caption{
-    Diagram showing relative rates of background processes within LDMX along with
-    how they motivate various aspects of the design. $\slash{E}$ stands for ``missing''
-    energy or energy that is ``lost'' to neutrinos that are extremely unlikely to be
-    detectable within LDMX.
-  }
-  \label{fig:ldmx-bkgd-staircase}
-\end{figure}
-
-\section{ECal}
-\label{sec:ldmx:ecal}
-\begin{todoenv}
-More detail about \ac{ecal} since it relates to the ME search later.
-\end{todoenv}
-
-\begin{figure}
-  \centering
   \includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/ecal.pdf}
   \caption{
     Diagram of LDMX \ac{ecal} construction showing the longitudinal segmentation
@@ -127,9 +125,25 @@ More detail about \ac{ecal} since it relates to the ME search later.
 \end{figure}
 
 \section{Missing Momentum DM Search}
+All of these subsystems can collaborate to help \ac{ldmx} reject known \ac{sm} backgrounds
+down to $\sim 10^{-16}$ fraction of all incoming electrons. \cref{fig:ldmx-bkgd-staircase}
+displays how the various subsystems veto listed by their relative rate.
+
 \begin{todoenv}
 Description of MM search using the thin target.
 \end{todoenv}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{figures/ldmx/experiment/reaction_staircase_with_designDrivers.pdf}
+  \caption{
+    Diagram showing relative rates of background processes within LDMX along with
+    how they motivate various aspects of the design. $\slash{E}$ stands for ``missing''
+    energy or energy that is ``lost'' to neutrinos that are extremely unlikely to be
+    detectable within LDMX.
+  }
+  \label{fig:ldmx-bkgd-staircase}
+\end{figure}
 
 \section{Missing Energy DM Search}
 One of the primary strengths of the LDMX detector design is its ability to use the tagging
