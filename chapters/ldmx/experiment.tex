@@ -128,10 +128,22 @@ as downstream analysis separating \ac{sm} background processes from potential \a
 All of these subsystems can collaborate to help \ac{ldmx} reject known \ac{sm} backgrounds
 down to $\sim 10^{-16}$ fraction of all incoming electrons. \cref{fig:ldmx-bkgd-staircase}
 displays how the various subsystems veto listed by their relative rate.
+With the \ac{ecal}'s excellent energy resolution, it is able to veto the first several
+orders of magnitude in basic energy fluctuations including simple interactions in the
+target like bremsstrahlung or trident production of an electron-positron pair.
+The \ac{ecal}'s capability in this regard has led to the design of the primary
+trigger mechanism for \ac{ldmx}: less than $30\%$ of the beam energy observed in the
+first twenty senstive silicon layers.
 
-\begin{todoenv}
-Description of MM search using the thin target.
-\end{todoenv}
+Entering the pink region in \cref{fig:ldmx-bkgd-staircase} is where the background processes
+become rarer and more complicated. One of the first ways to partition these backgrounds is
+whether charged secondary particles are produced within the target. These ``prompt'' backgrounds
+help define the recoil tracker's design and are thus left to be caught by it. More frequently,
+a photon is produced within the target (which is not observable by the tracker) and then undergoes
+complicated photon-nuclear interactions within the \ac{ecal} producing particles that are difficult
+for the \ac{ecal} itself to observe. The \ac{hcal} is able to detect the presence of these hadrons
+and muons, acting as a ``pure'' veto in the sense that the signal process should not create
+significant activity within it.
 
 \begin{figure}
   \centering
@@ -145,6 +157,11 @@ Description of MM search using the thin target.
   \label{fig:ldmx-bkgd-staircase}
 \end{figure}
 
+Detailed study of the missing momentum search strategy\cite{ldmx-whitepaper,ldmx-photon-reject-2020,ldmx-8gev-2023} show that \ac{ldmx} can reject all simulated backgrounds to a relative rate of $\sim 10^{-14}$\todo[detail]{do we want to report on the detail EoT of the MM analysis?}.
+This performance is accomplished through the basic design drivers outlined above and in \cref{fig:ldmx-bkgd-staircase}, but also through the additional granularity of the \ac{ecal} enabling
+the use of a \ac{bdt} to distinguish between background and signal events using features of the
+showers within the \ac{ecal}.
+
 \section{Missing Energy DM Search}
 One of the primary strengths of the LDMX detector design is its ability to use the tagging
 and recoil tracker system to reject a large number of background events by separating a nominal
@@ -153,16 +170,18 @@ beam. Moreover, the tagging and recoil tracker system gives LDMX the potential t
 backgrounds or potentially study DM properties by studying the transverse momenta of electrons
 recoiling from dark-bremsstrahlung candidate events.
 
-While this design is optimal for a large number of EoT, the strategy has some limitations for a low
-EoT data run. To limit multiple scattering which ruins momentum measurements, the baseline detector
-configuration requires a thin ($\approx 0.1 \,\mathrm{X}_\circ$) target. In the early stages of
-LDMX, when the total EoT will be lower, a different analysis strategy and detector configuration
-may be optimal to probe the largest amount of the $y$--$m_\chi$ phase space. The alternative
-strategy would ignore the dedicated target inside the tracker volume and instead use the ECal as an
-active target. Using the ECal as Target (EaT) for this early-running phase increases the potential
+While this design is optimal for a large number of \ac{eot}, the strategy has some limitations for a low
+\ac{eot} data run. To limit multiple scattering which ruins momentum measurements, the baseline detector
+configuration requires a thin ($\approx 0.1 \,\mathrm{X}_0$) target. In the early stages of
+LDMX, when the total \ac{eot} will be lower, a different analysis strategy and detector configuration
+may be optimal to probe the largest amount of the $y$--$m_\chi$ phase space.\todo[introduce]{Provide MM search reach to help give conext to y and mchi.} The alternative
+strategy would ignore the dedicated target inside the tracker volume and instead use the \ac{ecal} as an
+active target. Using the \ac{eat} for this early-running phase increases the potential
 number of dark-bremsstrahlung events and, as long as backgrounds can be suppressed relative to
-signal, allows a stronger search capability for a fixed EoT.
+signal, allows a stronger search capability for a fixed \ac{eot}.
 
-%An initial study of the EaT analysis channel is the primary focus of \cref{part:ldmx} of this thesis. Comparing various signal hypotheses against the pesky photon-nuclear and electron-nuclear background (here called ``Enriched Nuclear") shows that a simple missing energy cut in the ECal and a maximum activity cut in the HCal eliminates the background events to less than one event out of $10^{13}$ EoT (Table \ref{tab:eat_cutflow}). While LDMX has many other handles for eliminating these Enriched Nuclear events, these rudimentary cuts already show that LDMX has the capability to reach into new DM phase space with only a small fraction of events in the first phase of running (Figure \ref{fig:eat_reach}).
+An initial study of the \ac{eat} analysis channel is the primary focus of \cref{part:ldmx} of this thesis. Comparing various signal hypotheses against the pesky photon-nuclear and electron-nuclear background (here called ``Enriched Nuclear") shows that various simple cuts on acitivity in the
+\ac{ecal} and \ac{hcal} are able to eliminate necessary amounts of background to achieve significant
+and world-leading reach.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
