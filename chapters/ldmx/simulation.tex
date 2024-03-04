@@ -22,7 +22,7 @@ While our basic ``unit'' of data is an event, we require many events in order to
     \label{fig:ldmx:sim:data-flow}
 \end{figure}
 
-The event processing framework designed, developed, and maintained by LDMX is focused on allowing for the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo{citation?} for logging, and Python \cite{python} for dynamic run-time configuration. The design is a sequential model: each ``event" is passed to individual processors in a certain sequence. The individual processors can put data ``into" the event for later processors to use and eventually serialized into the output ROOT file. The processors can be built separately from the framework and then dynamically loaded and created at run-time by an abstract factory. This design choice allows for all of the computationally-intensive software tasks necessary for LDMX (simulation, reconstruction and some analysis tasks) to use this framework and be organized into separate modules which are only loaded into memory when that module is being used.
+The event processing framework designed, developed, and maintained by LDMX is focused on allowing for the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo[citation]{need a citaiton for Boost libraries} for logging, and Python \cite{python} for dynamic run-time configuration. The design is a sequential model: each ``event" is passed to individual processors in a certain sequence. The individual processors can put data ``into" the event for later processors to use and eventually serialized into the output ROOT file. The processors can be built separately from the framework and then dynamically loaded and created at run-time by an abstract factory. This design choice allows for all of the computationally-intensive software tasks necessary for LDMX (simulation, reconstruction and some analysis tasks) to use this framework and be organized into separate modules which are only loaded into memory when that module is being used.
 
 The serialization portion of the framework is similarly dynamic; focusing on enabling users' code to add data structures from the most simple (e.g. individual booleans) to the most complicated (e.g. containers of custom classes). This wide array of data types is supported by ROOT's dictionary system during the serialization stage and abstract wrapper classes with partially-specialized template derivatives during run-time. This complexity within the framework is necessary in order to allow a simple interface -- one where the user interacts with simple and complex types in the same way.
 
@@ -52,12 +52,10 @@ As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of ph
 These updates enabled us to efficiently study the known and expected background processes interactions with the LDMX detector design and compare this data to simulations of a model of a DM production process.
 
 \subsection{Biasing and Filtering}
-\begin{todoenv}
 Biasing and filtering methodology, configuration for EaT-specific backgrounds.
-\end{todoenv}
 
 \subsection{Validation}
-\begin{todoenv}Validation of this methodology.\end{todoenv}
+Validation of this methodology.
 
 \section{DM Signal}
 The particular signal process this analysis channel is looking for is the
@@ -75,15 +73,14 @@ simulation technique allows for the dark bremsstrahlung process to be treated
 while maintaining the precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
-\begin{todoenv}Description of scaling as well as citation to paper.\end{todoenv}
 To accurately simulate the kinematics of the dark bremsstrahlung process for electrons in thick targets, the process must be included at the level of experimental simulation instead of using initial state event generators to account for the possibility of energy loss through bremsstrahlung or multiple scattering prior to the dark matter interaction. Accurate kinematic simulation of the outgoing electron are required for optimal experimental sensitivity measurements and appropriate design of search strategies.
 
 For this reason, we utilize G4DarkBreM \cite{g4darkbrem} which performs this embedding of the dark bremmstrahlung process into \textsc{Geant}4. G4DarkBreM calculates the cross section using numerical integrals of the Weizs\"{a}cker-Williams approximation, and the kinematics are simulated using a scaling technique of \textsc{MadGraph/MadEvent} event libraries. The accuracy of the total cross section and kinematics is validated using \textsc{MadGraph/MadEvent} samples.
 
 \subsection{MadGraph/MadEvent}
-\begin{todoenv}Detail on MG/ME workspace used to generate DB libraries.\end{todoenv}
+Detail on MG/ME workspace used to generate DB libraries.
 
 \subsection{Characterization}
-\begin{todoenv}Describe how these samples "look"?\end{todoenv}
+Describe how these samples "look"?
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
