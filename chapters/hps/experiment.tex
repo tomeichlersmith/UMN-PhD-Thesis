@@ -3,6 +3,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Heavy Photon Search}
 \label{chapter:hps:experiment}
+\todo[citation]{How do I cite this HPS detector chapter? I'm mainly taking this information
+from theses but those theses cite a proposal document hosted on confluence.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ac{hps} is currently installed behind the CLAS-12 experiment in the Hall B
 alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
@@ -50,14 +52,25 @@ The modules are arranged in the two halves separated by the center beam line. In
 the modules are put into layers with the first three layers consisting of one module while
 the last three layers consisting of two modules to increase angular acceptance relative
 to the target. \cref{fig:hps-svt-render} shows a rendering of the \ac{svt} with the sensitive
-detector elements shown as red rectangles.
+detector elements shown as red rectangles.\todo[caveat]{Should I include the detail that
+this description of the HPS SVT is for 2016 and before? An additional layer was included
+for later runs.}
 
-\begin{todoenv}
-    \begin{itemize}
-        \item Positions of layers relative to target, beamline, and each other
-        \item Readout mechanism
-    \end{itemize}
-\end{todoenv}
+The two halves of the \ac{svt} are positioned to form a \qty{15}{\milli\radian} angular gap relative
+to the target in order to avoid the largest amount of radiation from the beam. The first layer
+(closest to the target, left size of \cref{fig:hps-svt-render}) is placed \qty{10}{\cm} from
+the target and \qty{0.5}{\mm} from the beam line in order to maximize acceptance. The entire
+\ac{svt} is enclosed in a vacuum box to limit secondary production of particles and is liquid
+cooled to help prevent radiation damage.
+
+The \ac{svt} modules are readout by APV25 chips which report six samples every \qty{24}{\ns}.
+These samples are only dumped to disk upon receiving a trigger signal from the calorimter
+system (\cref{sec:hps-ecal}).
+
+All together, the \ac{svt} has been observed to have \num{10}~\% momentum resolution,
+\qty{2.4}{\ns} time resolution, and \qty{6}{\micro\meter} position resolution. These
+properties enable the necessary momentum and vertex reconstruction for \ac{dm} searches
+via visible decays.
 
 \begin{figure}
     \centering
@@ -72,13 +85,19 @@ detector elements shown as red rectangles.
 \end{figure}
 
 \section{Electromagnetic Calorimeter}
-The \ac{ecal} consists of 442 lead-tungstate crystals and is a fully-sensitive calorimeter.
+\label{sec:hps-ecal}
+The \ac{ecal} consists of \num{442} lead-tungstate crystals and is a fully-sensitive calorimeter.
 The crystals are arranged in symmetric grids separated by the beamline similar to the \ac{svt}.
 \cref{fig:hps-pair-trigger-depiction} shows this grid in addition to example clusters and \ac{ecal}-related
 variables. In addition to a horizontal gap separating the halves, a few more crystals in the highest
 radiation area are removed to form a ``hole'' to allow the majority of non-interacting (or minimally interacting)
 beam electrons to pass through the detector volume. The calorimeter is sized to fit the same
-angular acceptance as the \ac{svt} located $139~$cm away from the target.
+angular acceptance as the \ac{svt} located \qty{139}{\cm} away from the target.
+
+As mentioned above, one of the primary purposes of the \ac{ecal} is to be the triggering mechanism
+for data collection. Many different trigger algorithms with different purposes have been used within
+\ac{hps} and the specific trigger algorithm designed for collection of data relevant to a \ac{dm}
+search is studied and motivated in detail in \cite{skmccarty-thesis-2020}.
 
 \section{Currently-Available Datasets}
 
