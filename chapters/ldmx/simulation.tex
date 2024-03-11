@@ -5,8 +5,8 @@
 \label{chapter:ldmx:simulation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-LDMX (like many other HEP experiments) uses an intricate software stack in order to realistically and efficiently simulate particle interactions with the detector, emulate the electronics that would be used to measure these interactions, and reconstruct the output of these electronics into physically-understandable variables.
-These software tasks are accomplished by a wide swath of different software packages, some of which custom-written for LDMX, most of which written in C++.
+\ac{ldmx} (like many other HEP experiments) uses an intricate software stack in order to realistically and efficiently simulate particle interactions with the detector, emulate the electronics that would be used to measure these interactions, and reconstruct the output of these electronics into physically-understandable variables.
+These software tasks are accomplished by a wide swath of different software packages, some of which custom-written for \ac{ldmx}, most of which written in C++.
 This chapter is focused on describing this simulation infrastructure -- focusing particularly on parts of the infrastructure I was involved in -- while also pointing out areas that are expected to remain constant in the presence of data gathered from a real detector.
 
 \section{General Data Process}
@@ -18,46 +18,48 @@ While our basic ``unit'' of data is an event, we require many events in order to
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{figures/ldmx/simulation/FrameworkFlowChart.drawio.pdf}
-    \caption{Flow chart of how data is processed in the LDMX framework. Each processor has the ability to ``add" data to the event as well as ``get" data from the event. The processors are run in a user-defined sequence. Data can also be loaded from one or more input data files where the event data from those files is loaded into memory before the first processor is run. After all processors are done with an event, it is saved to the output data file.}
+    \caption{Flow chart of how data is processed in the \ac{ldmx} framework. Each processor has the ability to ``add" data to the event as well as ``get" data from the event. The processors are run in a user-defined sequence. Data can also be loaded from one or more input data files where the event data from those files is loaded into memory before the first processor is run. After all processors are done with an event, it is saved to the output data file.}
     \label{fig:ldmx:sim:data-flow}
 \end{figure}
 
-The event processing framework designed, developed, and maintained by LDMX is focused on allowing for the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo[citation]{need a citaiton for Boost libraries} for logging, and Python \cite{python} for dynamic run-time configuration. The design is a sequential model: each ``event" is passed to individual processors in a certain sequence. The individual processors can put data ``into" the event for later processors to use and eventually serialized into the output ROOT file. The processors can be built separately from the framework and then dynamically loaded and created at run-time by an abstract factory. This design choice allows for all of the computationally-intensive software tasks necessary for LDMX (simulation, reconstruction and some analysis tasks) to use this framework and be organized into separate modules which are only loaded into memory when that module is being used.
+The event processing framework designed, developed, and maintained by \ac{ldmx} is focused on allowing for the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo[citation]{need a citaiton for Boost libraries} for logging, and Python \cite{python} for dynamic run-time configuration. The design is a sequential model: each ``event" is passed to individual processors in a certain sequence. The individual processors can put data ``into" the event for later processors to use and eventually serialized into the output ROOT file. The processors can be built separately from the framework and then dynamically loaded and created at run-time by an abstract factory. This design choice allows for all of the computationally-intensive software tasks necessary for \ac{ldmx} (simulation, reconstruction and some analysis tasks) to use this framework and be organized into separate modules which are only loaded into memory when that module is being used.
 
 The serialization portion of the framework is similarly dynamic; focusing on enabling users' code to add data structures from the most simple (e.g. individual booleans) to the most complicated (e.g. containers of custom classes). This wide array of data types is supported by ROOT's dictionary system during the serialization stage and abstract wrapper classes with partially-specialized template derivatives during run-time. This complexity within the framework is necessary in order to allow a simple interface -- one where the user interacts with simple and complex types in the same way.
 
-Combining this highly dynamic serialization library with the sequential-processing model configured at run-time gives a strong foundation for all of the software needs of LDMX. Written in C++, this software framework enables high performance for all of the major data processing tasks necessary for the experiment. Moreover, its design focuses on flexibility and modularity so that seemingly disparate data processing tasks can be unified under one framework. Everything from simulation to detector emulation to event reconstruction to analysis calculations can be done within this framework, reading and writing files from this framework and enabling our software to be well organized while also centralized in one location.
+Combining this highly dynamic serialization library with the sequential-processing model configured at run-time gives a strong foundation for all of the software needs of \ac{ldmx}. Written in C++, this software framework enables high performance for all of the major data processing tasks necessary for the experiment. Moreover, its design focuses on flexibility and modularity so that seemingly disparate data processing tasks can be unified under one framework. Everything from simulation to detector emulation to event reconstruction to analysis calculations can be done within this framework, reading and writing files from this framework and enabling our software to be well organized while also centralized in one location.
 
 \subsection{Data Processing Stages}
-The centralized nature of the LDMX processing framework makes it much simpler to stay unified as a collaboration. Experts are allowed to work on their specialized area of the software and shares those improvements with the entire collaboration with ease. Since the flexibility of the framework allows for arbitrary groupings of these different data processing stages, we can choose to separate them into natural groups that correspond to the different areas on which experts focus (diagrammed in \cref{fig:ldmx:sim:data-stages}).
+The centralized nature of the \ac{ldmx} processing framework makes it much simpler to stay unified as a collaboration. Experts are allowed to work on their specialized area of the software and shares those improvements with the entire collaboration with ease. Since the flexibility of the framework allows for arbitrary groupings of these different data processing stages, we can choose to separate them into natural groups that correspond to the different areas on which experts focus (diagrammed in \cref{fig:ldmx:sim:data-stages}).
 
 \begin{figure}
     \centering
     \includegraphics[width=0.9\textwidth]{figures/ldmx/simulation/data-flow.pdf}
-    \caption{Diagram of processing stages within LDMX showing the external sources of data or software that are used in those stages as well as which stages are commonly done within the centralized processing framework.}
+    \caption{Diagram of processing stages within \ac{ldmx} showing the external sources of data or software that are used in those stages as well as which stages are commonly done within the centralized processing framework.}
     \label{fig:ldmx:sim:data-stages}
 \end{figure}
 
-In this work (as the chapter title implies), we focus mainly on the detector simulation stage where data is randomly generated in a way geared towards realistically modeling the detector and particles interacting with it. The downstream stages, namely electronic emulation and reconstruction, are not described further here; however, it should be emphasized that all subsystems of LDMX have their own custom implementations of these stages in order to realistically emulate and reconstruct the data within their subsystem.
+In this work (as the chapter title implies), we focus mainly on the detector simulation stage where data is randomly generated in a way geared towards realistically modeling the detector and particles interacting with it. The downstream stages, namely electronic emulation and reconstruction, are not described further here; however, it should be emphasized that all subsystems of \ac{ldmx} have their own custom implementations of these stages in order to realistically emulate and reconstruct the data within their subsystem.
 
 \section{Standard Processes}
-As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes that are described by the standard model and we expect to happen within our experiment. These ``background'' processes -- while interesting for other analyses of LDMX data -- should be rejected by this search for DM since they are understood to \emph{not} be DM by the standard model and other experiments. In order to thoroughly and faithfully estimate our ability to reject these backgrounds, we need to realistically simulate them within our detector volume.
+As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes that are described by the standard model and we expect to happen within our experiment. These ``background'' processes -- while interesting for other analyses of \ac{ldmx} data -- should be rejected by this search for \ac{dm} since they are understood to \emph{not} be \ac{dm} by the standard model and other experiments. In order to thoroughly and faithfully estimate our ability to reject these backgrounds, we need to realistically simulate them within our detector volume.
 
-\textsc{Geant4} \cite{geant4} has been developed for precisely this purpose. This study uses a slightly modified copy of \textsc{Geant4} v10.2.3 which focuses on improving the accuracy of processes relevant to a DM search within LDMX.
+\textsc{Geant4} \cite{geant4} has been developed for precisely this purpose. This study uses a slightly modified copy of \textsc{Geant4} v10.2.3 which focuses on improving the accuracy of processes relevant to a \ac{dm} search within \ac{ldmx}.
 \begin{enumerate}
     \item Updating cross section and sampling of $\gamma\to\mu^+\mu^-$ process to align it better with collected data and calculations of the standard model.
     \item Update nuclear cascade to align with more recent CLAS data specifically focused on the rate of low-multiplicity forward neutrons (Appendix A.A of \cite{ldmx-whitepaper}).
     \item Introduction of \emph{back scattering} $\pi^0$ in a $\gamma p \to \pi^0 p$ within a nuclear cascade (Appendix A.B of \cite{ldmx-whitepaper}).
 \end{enumerate}
-These updates enabled us to efficiently study the known and expected background processes interactions with the LDMX detector design and compare this data to simulations of a model of a DM production process.
+These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
 \subsection{Biasing and Filtering}
 Biasing and filtering methodology, configuration for EaT-specific backgrounds.
+\todo[copy]{Copy MidShower Parameters appendix from EaT internal note.}
 
 \subsection{Validation}
 Validation of this methodology.
+\todo[copy]{Copy background sample validation appendices from EaT internal note.}
 
-\section{DM Signal}
+\section{Dark Matter Signal}
 The particular signal process this analysis channel is looking for is the
 production of a dark photon followed by an \emph{invisible} decay. In this
 regime, what happens to the dark photon after it is produced is irrelevant
