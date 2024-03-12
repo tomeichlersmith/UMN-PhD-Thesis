@@ -5,10 +5,39 @@
 \label{chapter:ldmx:analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-General analysis purpose: we want a \emph{simple} and \emph{robust} analysis that can withstand the test of time and complexity of real data.
-
-Point out that we check two beam energies since there is some uncertainty about which
-beam energy LDMX will be able to see first.
+The \ac{eat} analysis channel for \ac{ldmx} has two primary purposes which can
+be separated by the timeline over which they are relevant.
+\begin{enumerate}
+    \item \textbf{Short Term}: In early running, when the number of \ac{eot} is
+    relatively small, the nominal \ac{mm} analysis will not have obtained
+    significant reach into new \ac{dm} phase space (yet). The \ac{eat} channel
+    serves here as a way to obtain world-leading sensitivity early in the lifetime
+    of \ac{ldmx} and give the collaboration a first look at the data the apparatus
+    has collected.
+    \item \textbf{Long Term}: As \ac{ldmx} collects data, the \ac{mm}
+    analysis enters into unexplored phase space and serves as a better discovery
+    mechanism due to its access to the Tagger and Recoil trackers. The \ac{eat}
+    channel, while struggling to suppress complicated backgrounds with relatively
+    limited analysis handles, can operate ``orthogonally'' in the collected data
+    since its primary selection (an approximately beam-energy electron passing
+    through the Recoil tracker) is inverted relative to the \ac{mm} analysis
+    (the electron passing through the Recoil tracker has significantly less
+    energy than the beam).
+\end{enumerate}
+As a first investigation of the \ac{eat} analysis channel, this work is focused on
+the first (short term) purpose. In this regard, we target an \ac{eot} that is reasonable
+to accomplish early in the running of \ac{ldmx} and avoids particularly intricate backgrounds
+from arising. \num{1e13} \ac{eot} fits these requirements by avoiding the charged current production
+of neutrinos and obtainable within approximately a week of beam time\footnote{
+    We expect the beam to be delivered on a frequency of \qty{40}{\mega\hertz} with a
+    duty cycle of $\approx$\num{0.5}. 
+    $\qty{40}{\mega\hertz}\times0.5\times\qty{1}{week}\approx\num{1.2e13}$~\ac{eot}.
+}. 
+Since \ac{eat} is expected to be the \emph{first} physics
+analysis on \ac{ldmx} data, we want a \emph{simple} and \emph{robust} analysis that can withstand
+the test of time and the complexities of real data.
+With these design goals in mind, a simple ``cut-and-count'' analysis has been developed
+on top of the necessary work done to enable study of these midshower processes.
 
 \section{Trigger}
 Use same on-line trigger as MM analysis.
