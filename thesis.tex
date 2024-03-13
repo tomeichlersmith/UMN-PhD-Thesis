@@ -53,6 +53,23 @@
     list-final-separator = {, and } % Always use the serial comma in \SIlist
 }
 
+%Environment for drawing on pictures using tikz
+%   #1 Width to adjust image to (default: \textwidth)
+%   #2 Filepath to image
+%Use like:
+%   \begin{tikzimage}[height]{filepath}
+%       ...\draw...( coordinates are in fractions of width/height of image )
+%   \end{tikzimage}
+\newenvironment{tikzimage}[2][\textwidth]{%
+    \begin{tikzpicture}
+        \node[anchor=south west, inner sep=0] (image) at (0,0)
+            {\includegraphics[width=#1]{{#2}}};
+        \begin{scope}[x={(image.south east)},y={(image.north west)}]
+}{%
+        \end{scope}
+    \end{tikzpicture}
+}%
+
 % Configure the cleveref package
 \newcommand{\creflastconjunction}{, and } % Always use the serial comma
 

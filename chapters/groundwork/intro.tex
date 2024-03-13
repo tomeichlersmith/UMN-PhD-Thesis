@@ -16,8 +16,8 @@ of learning opportunities (as well as roadblocks) for me and my journey as a new
 
 Physics is a lazy science. I would go even further and state that this reductionist perspective is
 a main attraction for many physicists. We\footnote{Here I use the ``royal we'' as representing my
-  point of view of the culture within the field. It should in no way be construed as scientific or
-  exact statements and does not represent every physicist's point of view.} want to avoid memorizing
+	point of view of the culture within the field. It should in no way be construed as scientific or
+	exact statements and does not represent every physicist's point of view.} want to avoid memorizing
 as much as possible; therefore, motivating the idea of condensing sets of observations into
 ``laws'' that can be represented in an even more compact mathematical form. We make up these
 ``laws'' and the vocabulary surrounding them not to decieve but merely to make communication about
@@ -70,15 +70,15 @@ how they interact with one another. Not all of the particles represented within 
 critical importance to this work, but some deserve further description.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{figures/intro/Standard_Model_of_Elementary_Particles.svg.png}
-  \caption{
-    The Standard Model of Particle Physics showing the twelve fermions and five bosons,
-    their various properities (mass, charge, spin), labels (box and circle colors),
-    and interactions (brown loops). Credit to Cush on wikipedia for
-    providing this diagram freely accessible and usable for any purpose.
-  }
-  \label{fig:sm}
+	\centering
+	\includegraphics[width=\textwidth]{figures/intro/Standard_Model_of_Elementary_Particles.svg.png}
+	\caption{
+		The Standard Model of Particle Physics showing the twelve fermions and five bosons,
+		their various properities (mass, charge, spin), labels (box and circle colors),
+		and interactions (brown loops). Credit to Cush on wikipedia for
+		providing this diagram freely accessible and usable for any purpose.
+	}
+	\label{fig:sm}
 \end{figure}
 
 The two lowest mass quarks -- the up and the down -- are the fundamental constituents of protons
@@ -108,30 +108,30 @@ then emits another photon before recoiling. We can see three verticies in this d
 where the photon connects with the nucleus. The fundamental vertices are actually strictly defined
 within the Standard Model, but the effective vertex represents a helpful approximation that is
 accurate at the energy scales we are studying.\footnote{ The distinction between fundamental and
-  effective vertices is not a well defined one. I find it helpful here, but it is not necessarily
-  made elsewhere in physics literature. }
+	effective vertices is not a well defined one. I find it helpful here, but it is not necessarily
+	made elsewhere in physics literature. }
 
 \begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \begin{feynman}
-      \vertex (in) {\(\ell^-\)};
-      \vertex [right=of in] (nuc);
-      \vertex [below=of nuc, blob] (nucleus) {\(Z\)};
-      \vertex [right=of nuc, dot] (emit);
-      \vertex [above right=of emit] (recoil) {\(\ell^-\)};
-      \vertex [below right=of emit] (decay) {\(\gamma\)};
-      \diagram*{
-      (in) -- [fermion] (nuc) -- [fermion] (emit) -- [fermion] (recoil),
-      (nucleus) -- [photon, edge label'=\(\gamma\)] (nuc),
-      (emit) -- [photon] (decay),
-      };
-    \end{feynman}
-  \end{tikzpicture}
-  \caption{
-    Feynman diagram for the bremsstrahlung process.
-  }
-  \label{fig:brem-feynman}
+	\centering
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (in) {\(\ell^-\)};
+			\vertex [right=of in] (nuc);
+			\vertex [below=of nuc, blob] (nucleus) {\(Z\)};
+			\vertex [right=of nuc, dot] (emit);
+			\vertex [above right=of emit] (recoil) {\(\ell^-\)};
+			\vertex [below right=of emit] (decay) {\(\gamma\)};
+			\diagram*{
+			(in) -- [fermion] (nuc) -- [fermion] (emit) -- [fermion] (recoil),
+			(nucleus) -- [photon, edge label'=\(\gamma\)] (nuc),
+			(emit) -- [photon] (decay),
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	\caption{
+		Feynman diagram for the bremsstrahlung process.
+	}
+	\label{fig:brem-feynman}
 \end{figure}
 
 Due to the complexity of the nucleus itself, the calculation of \cref{fig:brem-feynman} into
@@ -143,7 +143,7 @@ is to occur producing particles with the observed properties) with knowledge of
 how the experiment was conducted. These cross sections are also calculatable from diagrams like
 \cref{fig:brem-feynman} and the initial parameterization can be summarized as
 \[
-  \frac{d\sigma}{d E_\gamma} \propto \frac{1}{E_\gamma}
+	\frac{d\sigma}{d E_\gamma} \propto \frac{1}{E_\gamma}
 \]
 This shows the dominant shape of the cross section
 -- it grows as the energy of the produced photon
@@ -158,14 +158,14 @@ produce a photon and we can observe a large difference between this \ac{sm} proc
 possible processes that we search for.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.5\textwidth]{figures/intro/photon-reject-fig-3-recoil-electron-energy.png}
-  \caption{
-    Energy of the outgoing electron ($E_e$) for standard processes (dominated by bremsstrahlung)
-    in gray and some dark bremsstrahlung (see \cref{sec:dm:invisible}) in colors.
-    Figure 3 from \cite{ldmx-photon-reject-2020}.
-  }
-  \label{fig:recoil-electron-energy}
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/intro/photon-reject-fig-3-recoil-electron-energy.png}
+	\caption{
+		Energy of the outgoing electron ($E_e$) for standard processes (dominated by bremsstrahlung)
+		in gray and some dark bremsstrahlung (see \cref{sec:dm:invisible}) in colors.
+		Figure 3 from \cite{ldmx-photon-reject-2020}.
+	}
+	\label{fig:recoil-electron-energy}
 \end{figure}
 
 This inverse relationship is somewhat special and is mostly due to the fact that photons
@@ -174,7 +174,7 @@ discovery. The vast majority of electrons interacting with a material will do so
 only emitting low energy photons, which distinctly separates these electrons from ones
 that undergo rarer processes (or perhaps so-far undiscovered processes). Both experiments
 described in this work make heavy use of this fact.\todo[more]{make sure to reference back
-to softness of sm brem in experiment sections.}
+	to softness of sm brem in experiment sections.}
 
 For the rest of this thesis, I intend to stay within this diagrammatic realm -- representing the theoretical
 calculations being tested with these diagrams and limiting the scope of mathematical formulae
@@ -182,41 +182,106 @@ presented. Occasionally, the weight of these vertices which can be interpreted a
 of the interaction is presented along with the vertices in order to give a sense of scale
 and connect these diagrams to the formulae that are included here.
 
-\subsection{Mixing and Displacement in the Standard Model}
-One of the key aspects of the projects included here are the concepts of particle mixing
-and particle decays displaced in position compared to where the particle was produced.
-Neither of these concepts are purely theoretical both can be observed with known
-particles and known interactions. The Kaon system can provide examples of both of these
-phenomena.
+\section{Standard Model Analogies}
+The \ac{sm} has been extremely successful in describing the current world of particle physics,
+including some intricate behaviors of particles that were incredibly confusing when first
+encountered.
+When attempting to describe unknown phenomena (\cref{chapter:dm}), we often drawn on this
+previous experience to form new ideas and models.
+This section, while a brief detour, will help give context for two key behaviors that
+the models we are searching for would give their particles.
+
+\subsection{Particle Mixing}
+All of the models tested for in this work use the idea of ``particle mixing'' in order
+to connect the realm of theoretical/undiscovered particles with the realm of \ac{sm}
+particles. In the quantum realm, we treat individual particles in a probabilistic
+manner -- often times when we observe a particle with certain properties, it can
+be observed again in a different context with different properties.
+While this sounds odd, several experiments have shown this seemingly-random nature
+of the smallest particles over the course of twentieth century physics.
+Specifically, kaons have been observed to ``swap'' with their own anti-particle,
+which we can describe via this concept of mixing.
+
+Kaons are particles that contain two quarks, one of which is a strange quark (or its
+anti-quark). Describing kaons in this way allows us to mix neutral kaons with their
+anti-particles, diagrammed in \cref{fig:kaon-box-diagram}. From a higher-level view,
+where we are unaware of the constituents of the kaon, it appears like the neutral kaon (\(K_0\))
+and its anti-particle (\(\overline{K}_0\)) are swapping places with some probability.
+Our experiments can observe this probability by counting the frequency with which we
+see \(K_0\) compared to \(\overline{K}_0\)\todo[citation]{Neutral kaon mixing citation}.
+We can also use our model of the kaons (as composed of quarks) and calculate this
+same probability (specifically, using the Feynman diagram shown in \cref{fig:kaon-box-diagram}).
+Comparing the two gives us information about the \ac{sm} and how the quarks
+interact with one another.
 
 \begin{figure}
-    \centering
-    \includegraphics[width=0.5\textwidth]{figures/intro/Kaon-box-diagram-with-bar.pdf}
-    \caption{
-        Dipiction of neutral kaon and anti-kaon mixing including the underlying
-        Feynman diagram that results from applying the \ac{sm} to this system.
-        This figure was created by user
-        \href{https://commons.wikimedia.org/wiki/File:Kaon-box-diagram-with-bar.svg}{NikNaks on Wikipedia}
-        and is licensed under
-        \href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC Attribution-Share Alike 3.0 Unported}.
-    }
-    \label{fig:kaon-box-diagram}
+	\centering
+	\includegraphics[width=0.5\textwidth]{figures/intro/Kaon-box-diagram-with-bar.pdf}
+	\caption{
+		Dipiction of neutral kaon and anti-kaon mixing including the underlying
+		Feynman diagram that results from applying the \ac{sm} to this system.
+		This figure was created by user
+		\href{https://commons.wikimedia.org/wiki/File:Kaon-box-diagram-with-bar.svg}{NikNaks on Wikipedia}
+		and is licensed under
+		\href{https://creativecommons.org/licenses/by-sa/3.0/deed.en}{CC Attribution-Share Alike 3.0 Unported}.
+	}
+	\label{fig:kaon-box-diagram}
+\end{figure}
+
+\subsection{Displaced Particle Decays}
+Ever since particle physicists have started designing detectors, we have also observed
+particles that are ``missed'' by our detector mechanisms. \cref{fig:bubble-chamber}
+shows an early example of this where a ``bubble chamber'' is able to show images of
+charged particles passing through the liquid (the white lines). In the middle of this
+image, you can observe two lines emerging seemingly out of nowhere (the red annotations were
+added later). This is a displaced decay of a neutral particle (a \(\Lambda\) for those curious)
+which was produced by a high energy (\qty{16}{\giga\electronvolt}) negative pion interacted
+with the liquid in the bubble chamber.
+
+The mechanism that allows a bubble chamber to observe the path of particles requires the particle
+to have a charge, so the neutral \(\Lambda\) does not leave a path itself. The only signal that
+it was there is the \emph{displaced vertex} from which two other particles (probably a proton
+and a negative pion) emerge (emphasized with a red circle in \cref{fig:bubble-chamber}).
+
+While particle physicists have developed other detector apparatuses some of which can observe
+neutral particles more directly, this more indirect detection mechanism is still extremely
+useful especially if a model being tested has particles that have no way of directly interacting
+with \ac{sm} matter (the stuff we make our detectors out of). \cref{part:hps} of this thesis
+focuses entirely on an experiment designed to search for these displaced vertices, the displacment
+of the vertex coming from the presence of a as-yet undiscovered particle being produced and then
+decaying back into \ac{sm} particles.
+
+\begin{figure}
+	\centering
+	\begin{tikzimage}[0.8\textwidth]{figures/intro/bubble-chamber.jpeg}
+		% \draw[step=0.1,black,thin] (0.0,0.0) grid (1.0,1.0);
+		\node (prod) at (0.4,0.54) {};
+		\node[circle,draw=red] (decay) at (0.515,0.54) {};
+		\draw[dashed,red,thick] (prod) -- (decay);
+
+		\node (beam1) at (0.1,0.5) {\color{red}\(\pi^-\)};
+		\node (beam2) at (0.2,0.5) {};
+		\draw[->,red,thick] (beam1) -- (beam2);
+	\end{tikzimage}
+	\caption{
+		Image of CERN's first liquid hydrogen bubble chamber from 1960 \cite{bubble-chamber-image-1960}
+		with red annotations added. The red circle highlights the location described in the text where
+		a \(\Lambda\) baryon decays into two particles (most likely a proton and a negative pion). The
+		red dashed line traces out a possible path the \(\Lambda\) traveled before its decay.
+	}
+	\label{fig:bubble-chamber}
 \end{figure}
 
 \begin{todoenv}
-The Kaon system in the SM is rich with interesting physics and provides examples of specific
-physical phenomena that we can apply to our search for new physics.
+	The Kaon system in the SM is rich with interesting physics and provides examples of specific
+	physical phenomena that we can apply to our search for new physics.
 
-\begin{itemize}
-  \item \(\overline{K}_0 \leftrightarrow K_0\) via the box diagram observable via oscillation
-  \begin{itemize}
-    \item https://commons.wikimedia.org/wiki/File:Kaon-box-diagram-with-bar.svg is a good diagram, just need to figure out how to cite
-  \end{itemize}
-  \item \(K_S\) 2-body decay is displaced by $O(3~\text{cm})$
-\end{itemize}
+	\begin{itemize}
+		\item \(K_S\) 2-body decay is displaced by $O(3~\text{cm})$
+	\end{itemize}
 
-Look into a kinetic mixing example from SM. Point out how particles can ``mix'' with one another
-in this quantum realm. Strong KM of photon (hadronix FF), maybe photon and Z mixing?
+	Look into a kinetic mixing example from SM. Point out how particles can ``mix'' with one another
+	in this quantum realm. Strong KM of photon (hadronix FF), maybe photon and Z mixing?
 \end{todoenv}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
