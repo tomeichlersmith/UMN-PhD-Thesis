@@ -4,7 +4,7 @@
 \chapter{Heavy Photon Search}
 \label{chapter:hps:experiment}
 \todo[citation]{How do I cite this HPS detector chapter? I'm mainly taking this information
-from theses but those theses cite a proposal document hosted on confluence.}
+	from theses but those theses cite a proposal document hosted on confluence.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ac{hps} is currently installed behind the CLAS-12 experiment in the Hall B
 alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
@@ -24,16 +24,28 @@ handle these high radiation loads. Designed to be a small experiment to fit with
 the Hall B alcove, \ac{hps} elected to be built in two halves that straddle the primary
 path of the beam where the highest amount of radiation would be. Both of the subsystems
 within \ac{hps} are split into these two halves as shown in \cref{fig:hps-full-render}
-and other diagrams below.
+and \cref{fig:hps-diagram}.
 
 \begin{figure}
-    \centering
-    \includegraphics[trim={15cm 10cm 10cm 5cm},clip,width=\textwidth]{figures/hps/experiment/hps_full_render.jpg}
-    \caption{
-        Full rendering of \ac{hps}.
-        Beam would enter the detector from the left and exit to the right if it does not interact.
-    }
-    \label{fig:hps-full-render}
+	\centering
+	\includegraphics[trim={15cm 10cm 10cm 5cm},clip,width=\textwidth]{figures/hps/experiment/hps_full_render.jpg}
+	\caption{
+		Full rendering of \ac{hps}.
+		Beam would enter the detector from the left and exit to the right if it does not interact.
+	}
+	\label{fig:hps-full-render}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/hps/experiment/hps-diagram.pdf}
+	\caption{
+		Simplified diagram of \ac{hps} showing an example displaced decay within the named subsystems.
+		Not to scale.
+		The dotted, unlabeled arrow is some \ac{dm} candidate particle that has a macroscopic lifetime causing
+		the decay vertex to be observably displaced from the production within the target.
+	}
+	\label{fig:hps-diagram}
 \end{figure}
 
 \ac{hps} is designed to focus on visible signatures of \ac{dm} (\cref{sec:theory-visible}) with
@@ -53,8 +65,8 @@ the modules are put into layers with the first three layers consisting of one mo
 the last three layers consisting of two modules to increase angular acceptance relative
 to the target. \cref{fig:hps-svt-render} shows a rendering of the \ac{svt} with the sensitive
 detector elements shown as red rectangles.\todo[caveat]{Should I include the detail that
-this description of the HPS SVT is for 2016 and before? An additional layer was included
-for later runs.}
+	this description of the HPS SVT is for 2016 and before? An additional layer was included
+	for later runs.}
 
 The two halves of the \ac{svt} are positioned to form a \qty{15}{\milli\radian} angular gap relative
 to the target in order to avoid the largest amount of radiation from the beam. The first layer
@@ -73,15 +85,15 @@ properties enable the necessary momentum and vertex reconstruction for \ac{dm} s
 via visible decays.
 
 \begin{figure}
-    \centering
-    \includegraphics*[width=\textwidth]{figures/hps/experiment/smkcarty-thesis-fig-10-svt-render.png}
-    \caption{
-        Figure 10 of \cite{skmccarty-thesis-2020}. Rendering of the \ac{svt} with the vacuum
-        enclosure shown in gray, active silicon components in red, and readout electronics in
-        green. Similar to \cref{fig:hps-full-render}, the beam would traverse this rendering
-        from left to right.
-    }
-    \label{fig:hps-svt-render}
+	\centering
+	\includegraphics*[width=\textwidth]{figures/hps/experiment/smkcarty-thesis-fig-10-svt-render.png}
+	\caption{
+		Figure 10 of \cite{skmccarty-thesis-2020}. Rendering of the \ac{svt} with the vacuum
+		enclosure shown in gray, active silicon components in red, and readout electronics in
+		green. Similar to \cref{fig:hps-full-render}, the beam would traverse this rendering
+		from left to right.
+	}
+	\label{fig:hps-svt-render}
 \end{figure}
 
 \section{Electromagnetic Calorimeter}
@@ -102,12 +114,12 @@ search is studied and motivated in detail in \cite{skmccarty-thesis-2020}.
 \section{Currently-Available Datasets}
 
 \begin{figure}
-    \centering
-    \includegraphics[width=\textwidth]{figures/hps/experiment/smckarty-thesis-fig-27-pair-trigger-depiction.png}
-    \caption{
-        Figure 27 of \cite{skmccarty-thesis-2020}. Depiction of an event passing the pair trigger
-        in the 2016 data collection run. This depiction also displays the variables used in order
-        to evaluate events and make the trigger decision.
-    }
-    \label{fig:hps-pair-trigger-depiction}
+	\centering
+	\includegraphics[width=\textwidth]{figures/hps/experiment/smckarty-thesis-fig-27-pair-trigger-depiction.png}
+	\caption{
+		Figure 27 of \cite{skmccarty-thesis-2020}. Depiction of an event passing the pair trigger
+		in the 2016 data collection run. This depiction also displays the variables used in order
+		to evaluate events and make the trigger decision.
+	}
+	\label{fig:hps-pair-trigger-depiction}
 \end{figure}
