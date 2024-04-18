@@ -34,8 +34,8 @@ particles comparatively large amounts of energy, contextualizing the name \ac{he
 such small particles such large amounts of energy requires extrodinarily large and complex
 apparatuses. \ac{hep} is filled with experiments many stories tall, collaborations consisting of
 hundreds of institutions and thousands of people, and observations lasting years if not decades.
-This grand scale is helpful to keep in mind when I speak of the experiments in this thesis -- only
-a few institutions (less than 10 in each) and only dozens of collaborators. Contrary to many other
+This grand scale is helpful to keep in mind when I speak of the experiments in this thesis -- 
+constructed and operated by only a few institutions (less than 10 in each) and only dozens of collaborators. Contrary to many other
 sciences and experimental methods, these experiments still last longer than a typical doctoral
 student career. While I report on these experiments, I will not detail their full operation,
 design, or capabilities. I will focus on the work that I was able to contribute; hopefully
@@ -50,11 +50,12 @@ experiments. \cref{part:ldmx} presents the work of my initial years as a graduat
 developing data processing and realistic simulation software for a proposed experiment. This part
 includes a description of this proposed experiment in \cref{chapter:ldmx:experiment}, the
 simulation infrastructure for it in \cref{chapter:ldmx:simulation}, and an analysis of this
-simulated data showcasing this experiment's performance in its early stages
-\cref{chapter:ldmx:analysis}. \cref{part:hps} describes the work of my last years showing the
+simulated data showcasing this experiment's performance with $\sim\qty{1}{percent}$ of its
+target data set. \cref{chapter:ldmx:analysis}.
+\cref{part:hps} describes the work of my last years showing the
 difficulties of working with data taken in the real world (with all the complexities that implies).
 Similar to \cref{part:ldmx}, this part describes the experimental setup in
-\cref{chapter:hps:experiment}, \todo{insert rest of chapters}. We then conclude with
+\cref{chapter:hps:experiment}, \todo[list chapters]{insert rest of chapters}. We then conclude with
 \cref{chapter:conclusion} which returns back to this high-level-view from which we can discuss what
 we have learned about physics via these two experiments.
 
@@ -94,13 +95,17 @@ impinge upon a material of high density to initiate interactions for further stu
 
 The mathematical expressions to calculate how these particles interact are complicated. As
 mentioned earlier, physicists are lazy and so we have developed a method to represent the specifics
-of these interactions without needing to write down any of the long mathematical formulae. These
+of these interactions graphically in a form where many key aspects of the interaction can be understood
+at an intuitive level without needing to write down any of the long mathematical formulae. These
 representations are called ``Feynman diagrams'' after the 20th century physicist Richard Feynman.
 Feynman diagrams allow us to represent interactions by defining a set of ``vertices'' that are
 allowed by our theory and then constructing processes from these vertices that include the in- and
-out- going particles that we wish to study. The further calculation of these diagrams is a defined
-process that has been written into various computer programs (I say this to emphasize that these
-diagrams directly represent the mathematics that can be used to calculate them).
+out- going particles that we wish to study. Such diagrams are more than visual sketches; they can
+be algorithmically converted into precise mathematical forms which can be used to directly calculate
+measurable predictions of the model containing this set of vertices. The conversion of these diagrams
+into mathematical forms and the calculation of these forms has been written into various computer
+programs (I say this to emphasize that these diagrams directly represent the mathematics that
+can be used to calculate them).
 \cref{fig:brem-feynman} shows an example Feynman diagram representing the bremsstrahlung process
 where a charged lepton (\(\ell^-\)) interacts with a nucleus (\(Z\)) via a photon (\(\gamma\)) and
 then emits another photon before recoiling. We can see three verticies in this diagram: two
@@ -114,11 +119,11 @@ accurate at the energy scales we are studying.\footnote{ The distinction between
 \begin{figure}
 	\centering
 	\begin{tikzpicture}
-		\begin{feynman}
+		\begin{feynman}{every vertex={dot}}
 			\vertex (in) {\(\ell^-\)};
-			\vertex [right=of in] (nuc);
+			\vertex [right=of in, dot] (nuc) {};
 			\vertex [below=of nuc, blob] (nucleus) {\(Z\)};
-			\vertex [right=of nuc, dot] (emit);
+			\vertex [right=of nuc, dot] (emit) {};
 			\vertex [above right=of emit] (recoil) {\(\ell^-\)};
 			\vertex [below right=of emit] (decay) {\(\gamma\)};
 			\diagram*{
@@ -129,7 +134,9 @@ accurate at the energy scales we are studying.\footnote{ The distinction between
 		\end{feynman}
 	\end{tikzpicture}
 	\caption{
-		Feynman diagram for the bremsstrahlung process.
+		Feynman diagram for the bremsstrahlung process where a charged lepton (\(\ell^-\))
+		interacts with a nucleus (\(Z\)) via a photon (\(\gamma\)) and then emits another 
+		photon before recoiling.
 	}
 	\label{fig:brem-feynman}
 \end{figure}
@@ -140,13 +147,14 @@ bremsstrahlung offers a good glimpse of how it behaves \cite{bethe-heitler-1934}
 When doing experiments, we often count the number of particles produced with certain criteria.
 These ``rates'' can then be translated into estimates of process cross sections (how likely a process
 is to occur producing particles with the observed properties) with knowledge of
-how the experiment was conducted. These cross sections are also calculatable from diagrams like
-\cref{fig:brem-feynman} and the initial parameterization can be summarized as
-\[
+how the experiment was conducted.
+
+These cross sections are also calculatable from diagrams like \cref{fig:brem-feynman} and
+the initial parameterization can be summarized as
+\begin{equation}\label{eqn:bethe-heitler-brem}
 	\frac{d\sigma}{d E_\gamma} \propto \frac{1}{E_\gamma}
-\]
-This shows the dominant shape of the cross section
--- it grows as the energy of the produced photon
+\end{equation}
+This shows the dominant shape of the cross section -- it grows as the energy of the produced photon
 (\(E_\gamma\)) gets smaller. The full expression prevents the cross section from diverging as the
 photon energy approaches zero; nevertheless, the general inverse relationship between the rate and
 the energy of the produced photon holds in both the \ac{sm} calculations and observations from
@@ -157,6 +165,7 @@ it emits the photon ($E_e$). This is more readily compared to other processes th
 produce a photon and we can observe a large difference between this \ac{sm} process and other
 possible processes that we search for.
 
+\todo[fig change]{look for figure of recoiling electron energy that only has standard brem to avoid confusion}
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{figures/intro/photon-reject-fig-3-recoil-electron-energy.png}
@@ -176,7 +185,8 @@ that undergo rarer processes (or perhaps so-far undiscovered processes). Both ex
 described in this work make heavy use of this fact.\todo[more]{make sure to reference back
 	to softness of sm brem in experiment sections.}
 
-For the rest of this thesis, I intend to stay within this diagrammatic realm -- representing the theoretical
+As the work carried out for this dissertation is experimental rather than the definition and
+calculation of a model, I intend to stay within this diagrammatic realm -- representing the theoretical
 calculations being tested with these diagrams and limiting the scope of mathematical formulae
 presented. Occasionally, the weight of these vertices which can be interpreted as the strength
 of the interaction is presented along with the vertices in order to give a sense of scale
@@ -199,14 +209,18 @@ manner -- often times when we observe a particle with certain properties, it can
 be observed again in a different context with different properties.
 While this sounds odd, several experiments have supported this random nature
 of the smallest particles over the course of twentieth century physics.
-Specifically, kaons have been observed to ``swap'' with their own anti-particle,
-which we can describe via this concept of mixing.
+As a well-understood example, neutral kaons have been observed to ``swap'' with
+their own anti-particle, which we can describe via this concept of mixing.
 
 Kaons are particles that contain two quarks, one of which is a strange quark (or its
-anti-quark). Describing kaons in this way allows us to mix neutral kaons with their
-anti-particles, diagrammed in \cref{fig:kaon-box-diagram}. From a higher-level view,
-where we are unaware of the constituents of the kaon, it appears like the neutral kaon (\(K_0\))
-and its anti-particle (\(\overline{K}_0\)) are swapping places with some probability.
+anti-quark). A neutral kaon (\(K_0\)) and its anti-particle (\(\overline{K}_0\)) are
+nearly indistinguishable -- they have the same electric charge ($0$) and the same mass
+amongst other shared properties -- but we can distinguish them by
+observing the types of particles they produce when they decay.
+Describing kaons as consisting of two quarks allows us to understand the mixing of \(K_0\)
+and \(\overline{K}_0\), diagrammed in \cref{fig:kaon-box-diagram}. From a higher-level view,
+where we are unaware of the constituents of the kaon, it appears like the \(K_0\)
+and \(\overline{K}_0\) are swapping places with some probability.
 Our experiments can observe this probability by counting the frequency with which we
 see \(K_0\) compared to \(\overline{K}_0\)\todo[citation]{Neutral kaon mixing citation}.
 We can also use our model of the kaons (as composed of quarks) and calculate this
@@ -254,25 +268,23 @@ decaying back into \ac{sm} particles.
 \begin{figure}
 	\centering
 	\begin{tikzimage}[0.8\textwidth]{figures/intro/bubble-chamber.jpeg}
+		\definecolor{brilliantrose}{rgb}{1.0, 0.33, 0.64}
 		% \draw[step=0.1,black,thin] (0.0,0.0) grid (1.0,1.0);
 		\node (prod) at (0.4,0.54) {};
-		\node[circle,draw=red] (decay) at (0.515,0.54) {};
-		\draw[dashed,red,thick] (prod) -- (decay);
+		\node[circle,draw=brilliantrose] (decay) at (0.515,0.54) {};
+		\draw[dashed,brilliantrose,thick] (prod) -- (decay);
 
-		\node (beam1) at (0.1,0.5) {\color{red}\(\pi^-\)};
+		\node (beam1) at (0.1,0.5) {\color{brilliantrose}\(\pi^-\)};
 		\node (beam2) at (0.2,0.5) {};
-		\draw[->,red,thick] (beam1) -- (beam2);
+		\draw[->,brilliantrose,thick] (beam1) -- (beam2);
 	\end{tikzimage}
 	\caption{
 		Image of CERN's first liquid hydrogen bubble chamber from 1960 \cite{bubble-chamber-image-1960}
-		with red annotations added. The red circle highlights the location described in the text where
+		with pink annotations added. The pink circle highlights the location described in the text where
 		a \(\Lambda\) baryon decays into two particles (most likely a proton and a negative pion). The
-		red dashed line traces out a possible path the \(\Lambda\) traveled before its decay.
+		pink dashed line traces out a possible path the \(\Lambda\) traveled before its decay.
 	}
 	\label{fig:bubble-chamber}
 \end{figure}
-
-\todo[addition]{Look into kinetic mixing of photon and gluon via quark loops.
-Could be related to the hadronic form factor?}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
