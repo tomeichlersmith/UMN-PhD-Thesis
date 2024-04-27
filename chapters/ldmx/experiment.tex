@@ -4,8 +4,15 @@
 \chapter{Light Dark Matter eXperiment}
 \label{chapter:ldmx:experiment}
 
+\todo{restructure}{
+	Start experiment chapter with signature we are looking for
+	and then go through the background cascade to motivate the LDMX design
+	(then given overview of LDMX design). Include diagrams of the primary
+	backgrounds to help give context.
+}
+
 \ac{ldmx} is a proposed fixed-target experiment aiming to definitively explore
-the light dark matter phase space. Even as a proposed experiment, it has a detailed
+the thermal relic light dark matter phase space. Even as a proposed experiment, it has a detailed
 plan for construction, a beam already in construction, and well established connections
 with current technologies used within \ac{hep}. While \ac{ldmx} is not yet built,
 it has a well formulated simulation infrastructure that can realistically model
@@ -13,15 +20,16 @@ how the detector design responds to various types of interactions happening with
 
 \section{The Beam Line}
 \todo[correctness]{Confirm correctness of LDMX beamline quick facts.}
-\ac{ldmx} is situated at the end of the Linear Accelerator (Linac) at SLAC National Accelerator
-Laboratory. The SLAC Linac can provide high energy, high rate, and low intensity electron beams for
+\ac{ldmx} is planned to be situated at the end of the Linear Accelerator (Linac) at SLAC National Accelerator
+Laboratory. The SLAC Linac can provide high energy, high rate, and low intensity\todo[correctness]{
+	I think I mean low current here, i.e. few electrons per bunc.} electron beams for
 the various experiments it hosts. Specifically, the Linac Coherent Light Source (LCLS) is
 used to guide the beam (of a certain energy) towards the experimental hall - the upgraded
 phase of LCLS (LCLS II \cite{lcls-ii}) is currently under construction and is what will
 be used for running with \ac{ldmx}.
 
 The experiment is hosted in End Station A (ESA) at SLAC which requires an additional upgrade to the
-Linac in order to recieve its beam. LESA (Linac to ESA) \cite{lesa-design} is also currently being
+accelerator complex in order to recieve its beam. LESA (Linac to ESA) \cite{lesa-design} is also currently being
 constructed and will be ready for test beam in early 2025. Part of the infrastructure that
 transfers the beam to ESA (Sector 30 Transfer Line -- S30XL) is already constructed and LDMX
 components are expected to participate in a test beam run in summer 2024.
@@ -29,15 +37,20 @@ components are expected to participate in a test beam run in summer 2024.
 \section{Detector Design}
 LDMX is a missing momentum experiment and its design is focused on measuring \emph{both} the
 incoming and outgoing momenta of charged particles interacting with a thin target such that
-any momentum given to undetectable (dark) particles can be precisely determined. This design has
-led to four subsystems each with specialized roles.\footnote{These subsystems also take on
-additional roles when the full breadth of the \ac{ldmx} physics program is taken into account.
-This description just focuses on the \ac{dm} search.}
+any momentum given to undetectable (dark) particles can be precisely determined.
+In addition, the energy of neutral particles must be measured.
+This design has led to four subsystems each with specialized roles.\footnote{
+	These subsystems also take on additional roles when the full breadth of the
+	\ac{ldmx} physics program is taken into account.
+	This description just focuses on the \ac{dm} search.}
+
+\todo[restructure]{Move describing TS to last since we can motivate its existence
+	and design by discussing the ECal and how the Tracker is not fast enough.}
 \begin{enumerate}
-  \item \textbf{Trigger Scintillator} Count the number of electrons incident on the target in time to make a trigger decision (more on what a ``trigger'' is below).
-  \item \textbf{Tracker} Measure charged particle momenta both before (``Tagger'') and after (``Recoil'') the target.
-  \item \textbf{Electromagnetic Calorimeter} (\ac{ecal}) Measure the total energy of electrons, positrons, and photons.
-  \item \textbf{Hadronic Calorimeter} (\acs{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
+	\item \textbf{Trigger Scintillator} Count the number of electrons incident on the target in time to make a trigger decision (more on what a ``trigger'' is below).
+	\item \textbf{Tracker} Measure charged particle momenta both before (``Tagger'') and after (``Recoil'') the target.
+	\item \textbf{Electromagnetic Calorimeter} (\ac{ecal}) Measure the total energy of electrons, positrons, and photons.
+	\item \textbf{Hadronic Calorimeter} (\acs{hcal}) Veto additional particles difficult for other subsystems to measured (muons, pions, hadrons,...).
 \end{enumerate}
 \cref{fig:ldmx-det} displays these subsystems in a diagram along with a representation of
 a dark brem interaction occurrring within the target. \cref{fig:ldmx-render} shows a rendering
@@ -55,7 +68,7 @@ each pair are offset from one another to cover any gaps between the bars. These 
 time to be used within a trigger decision combined with information from the \ac{ecal} and \ac{hcal}.
 
 The Tracker (purple in \cref{fig:ldmx-det}) is a thin silicon strip detector modeled after the
-\ac{hps} tracker. These silicon strips are also arranged in layer pairs where one layer is angled
+\ac{hps} tracker. These silicon strips are arranged in layer pairs where one layer is angled
 slightly askew relative to the other in the pair to enable reconstruction of three dimensional hit
 locations. The part of the tracker upstream of the target (to the left in \cref{fig:ldmx-det}) is
 named the ``tagger'' since its purpose is to measure the incident electrons' momenta, rejecting
@@ -84,45 +97,45 @@ Phase II High Granularity Calorimeter upgrade\cite{cms-phase-2-tdr}. These hexag
 providing excellent transverse resolution of shower location and shower shape. The layers are built
 and arranged in order to space the sensitive silicon sub-layers to give good longitudinal resolution
 of showers as well. In total, the designed \ac{ecal} has more than one hundred thousand channels that
-can each individually detect particles depositing energies from $\approx 0.1$ MeV up to
-$\approx 10$ MeV\todo[confirm]{Confirm extimate of maximum single-hit energy}.
+can each individually detect particles depositing energies from $\approx \qty{0.1}{\mega\electronvolt}$ up to
+$\approx\qty{1}{\giga\electronvolt}$\todo[confirm]{Confirm extimate of maximum single-hit energy}.
 This high granularity calorimeter gives \ac{ldmx} excellent discrimination power
 since it can measure the amplitude and location of several incident particles\todo[evidence]{provide
-evidence for this precision claim}.
+	evidence for this precision claim}.
 Due to its high performance, the \ac{ecal} is a primary tool for
 both designing a trigger decision (with the aid of the Trigger Scintillator's electron count) as well
 as downstream analysis separating \ac{sm} background processes from potential \ac{dm} signal.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/detector.png}
-  \caption{
-    Diagram of LDMX detector apparatus with a representation of a signal event where
-    a dark brem occurs within the target. Diagram is not to scale. Credit to Christian Herwig
-    for original development of diagram.
-  }
-  \label{fig:ldmx-det}
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/detector.png}
+	\caption{
+		Diagram of LDMX detector apparatus with a representation of a signal event where
+		a dark brem occurs within the target. Diagram is not to scale. Credit to Christian Herwig
+		for original development of diagram.
+	}
+	\label{fig:ldmx-det}
 \end{figure}
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/LDMX_FOA_CLOSE.PNG}
-  \caption{
-    Rendering of LDMX detector apparatus focusing on tracker, target, and ECal.
-    The magnet would fully encompass the tracker, target and trigger scintillator.
-  }
-  \label{fig:ldmx-render}
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/LDMX_FOA_CLOSE.PNG}
+	\caption{
+		Rendering of LDMX detector apparatus focusing on tracker, target, and ECal.
+		The magnet would fully encompass the tracker, target and trigger scintillator.
+	}
+	\label{fig:ldmx-render}
 \end{figure}
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/ecal.pdf}
-  \caption{
-    Diagram of LDMX \ac{ecal} construction showing the longitudinal segmentation
-    (top and bottom right) and the transverse segmentation (bottom left).
-    Credit to Joe Muse.
-  }
-  \label{fig:ldmx-ecal}
+	\centering
+	\includegraphics[width=0.9\textwidth]{figures/ldmx/experiment/ecal.pdf}
+	\caption{
+		Diagram of LDMX \ac{ecal} construction showing the longitudinal segmentation
+		(top and bottom right) and the transverse segmentation (bottom left).
+		Credit to Joe Muse.
+	}
+	\label{fig:ldmx-ecal}
 \end{figure}
 
 \section{Missing Momentum DM Search}
@@ -147,15 +160,15 @@ and muons, acting as a ``pure'' veto in the sense that the signal process should
 significant activity within it.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=\textwidth]{figures/ldmx/experiment/reaction_staircase_with_designDrivers.pdf}
-  \caption{
-    Diagram showing relative rates of background processes within LDMX along with
-    how they motivate various aspects of the design. $\slash{E}$ stands for ``missing''
-    energy or energy that is ``lost'' to neutrinos that are extremely unlikely to be
-    detectable within LDMX.
-  }
-  \label{fig:ldmx-bkgd-staircase}
+	\centering
+	\includegraphics[width=\textwidth]{figures/ldmx/experiment/reaction_staircase_with_designDrivers.pdf}
+	\caption{
+		Diagram showing relative rates of background processes within LDMX along with
+		how they motivate various aspects of the design. $\slash{E}$ stands for ``missing''
+		energy or energy that is ``lost'' to neutrinos that are extremely unlikely to be
+		detectable within LDMX.
+	}
+	\label{fig:ldmx-bkgd-staircase}
 \end{figure}
 
 Detailed study of the missing momentum search strategy\cite{ldmx-whitepaper,ldmx-photon-reject-2020,ldmx-8gev-2023} show that \ac{ldmx} can reject all simulated backgrounds to a relative rate of $\sim 10^{-14}$\todo[detail]{do we want to report on the detail EoT of the MM analysis?}.
@@ -164,6 +177,7 @@ the use of a \ac{bdt} to distinguish between background and signal events using 
 showers within the \ac{ecal}.
 
 \section{Missing Energy DM Search}
+\todo[restructure]{Move ME DM search introduction to beginning of analysis section.}
 One of the primary strengths of the LDMX detector design is its ability to use the tagging
 and recoil tracker system to reject a large number of background events by separating a nominal
 beam with non-standard energy loss from a nominal beam with standard energy loss or even low-energy
