@@ -5,7 +5,21 @@
 \label{chapter:ldmx:analysis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The \ac{eat} analysis channel for \ac{ldmx} has two primary purposes which can
+One of the primary strengths of the \ac{ldmx} detector design is its ability to use the tagging
+and recoil tracker system to reject a large number of background events by separating a nominal
+beam with non-standard energy loss from a nominal beam with standard energy loss or even low-energy
+beam. Moreover, the tagging and recoil tracker system gives \ac{ldmx} the potential to further suppress
+backgrounds or potentially study \ac{dm} properties by studying the transverse momenta of electrons
+recoiling from dark-bremsstrahlung candidate events.
+
+While this design is optimal for a large number of \ac{eot}, the strategy has some limitations for a low
+\ac{eot} data run. To limit multiple scattering which ruins momentum measurements, the baseline detector
+configuration requires a thin ($\approx 0.1\mathrm{X}_0$) target. In the early stages of
+\ac{ldmx}, when the total \ac{eot} will be lower, a different analysis strategy and detector configuration
+may be optimal to probe the largest amount of the $y$--$m_\chi$ phase space.\todo[introduce]{Provide MM search reach to help give conext to y and mchi.} The alternative
+strategy would ignore the dedicated target inside the tracker volume and instead use the \ac{ecal} as an
+active target.
+The \ac{eat} analysis channel for \ac{ldmx} thus has two primary purposes which can
 be separated by the timeline over which they are relevant.
 \begin{enumerate}
 	\item \textbf{Short Term}: In early running, when the number of \ac{eot} is
@@ -24,8 +38,10 @@ be separated by the timeline over which they are relevant.
 	      (the electron passing through the Recoil tracker has significantly less
 	      energy than the beam).
 \end{enumerate}
-As a first investigation of the \ac{eat} analysis channel, this work is focused on
-the first (short term) purpose. In this regard, we target an \ac{eot} that is reasonable
+
+An initial study of the \ac{eat} analysis channel is the primary focus of \cref{part:ldmx} of this thesis,
+focusing primarily on the first (short term) purpose.
+In this regard, we target an \ac{eot} that is reasonable
 to accomplish early in the running of \ac{ldmx} and avoids particularly intricate backgrounds.
 \num{1e13} \ac{eot} fits these requirements by avoiding the charged current production
 of neutrinos and represents $\sim\qty{10}{percent}$ of the first full \ac{ldmx} dataset.
@@ -47,10 +63,13 @@ and a dark bremsstrahlung simulatin process described in \cref{chapter:ldmx:simu
 \section{Trigger}
 Use same on-line trigger as MM analysis.
 
-Re-apply trigger threshold to entire ecal energy sum off-line (same as MM analysis)
-
 \section{Cut and Count}
 List cuts for different beams, provide final background yields and signal efficiencies.
+
+
+\section{Systematics and Background Uncertainty}
+Calibration errors (i.e. putting requirements on the accuracy of initial calibration for this analysis to function)
+Estimate of background uncertainty informing how the toy counting experiments are done when estimating reach.
 
 \section{Reach}
 Display reach of ME analysis with different background hypotheses and signal efficiencies
