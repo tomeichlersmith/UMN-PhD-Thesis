@@ -5,4 +5,26 @@
 \label{chapter:hps:dataset}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\section{Simulated Data} \label{sec:hps:sim}
+Proper study of the iDM signal model necessitates simulating how the HPS detector
+would respond if interactions originating from such a process were to occur.
+
+Signal event production flow
+\begin{enumerate}
+	\item {\sc MadGraph/MadEvent} generation of prompt iDM events
+	\item Displacement of decay products in a \emph{uniform} distribution
+	\item Simulation of detector response with \textsc{Geant}4 and \texttt{slic}
+	\item Emulation of readout
+	\item Normal reconstruction pipeline that data retrieved from the detector
+	      also goes through
+\end{enumerate}
+
+Moreover, simulated samples of standard data allows us to study how the detector
+responds in the absence of such a signal process. These samples are produced in
+a similar way as iDM signal - just with a different original generation step
+initializing the event (and inserting the physical displacement distribution
+instead of a uniform one).
+
+\section{Collected Data} \label{sec:hps:data}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
