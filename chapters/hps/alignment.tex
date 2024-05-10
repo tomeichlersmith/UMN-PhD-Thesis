@@ -1,2 +1,34 @@
 \chapter{Alignment}
 \label{chapter:hps:alignment}
+
+Particle detectors used to ``track'' particles (often called ``trackers'')
+largely operate by precisely measuring the position of the particle at several
+different points along its trajectory.
+From these position measurements, we are able to extract other,
+more physically helpful, measurements such as momentum and charge
+(as long as the particles move through a magnetic field so their resulting
+trajectory is curved in a well known shape).
+We will not go into the process of converting these position measurements
+into trajectories of individual particles (``tracks'')
+or estimating physical variables of these tracks.
+Instead, this serves as motivation:
+without precise knowledge of position, we are unable to precisely estimate
+momenta of particles -- significantly impacting the capabilities of the
+experiment.
+
+We need all of these position measurements to be relative
+to the same reference point (i.e. in the same coordinate system);
+thus, the process of measuring particle positions is practically
+done by combining two position measurements.
+\begin{enumerate}
+	\item Position relative to individual pieces of the tracker.
+	      While there are different stragies to do this measurement
+	      (e.g. pixel vs strip tracking detectors), this measurement
+	      is not the limiting factor in the context of this chapter.
+	\item ``Global'' position of these individual pieces.
+	      We construct the detector and thus know where we put the
+	      individual pieces, but placing them into position with
+	      the precision we desire is extremely difficult (not to
+	      mention their position could shift slightly once the
+	      magnet is turned on).
+\end{enumerate}
