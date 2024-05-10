@@ -78,3 +78,4 @@ Session.vim
 *.vrb
 *.xdy
 *.tdo
+*.synctex*
