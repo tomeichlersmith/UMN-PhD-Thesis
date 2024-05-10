@@ -21,14 +21,42 @@ to the same reference point (i.e. in the same coordinate system);
 thus, the process of measuring particle positions is practically
 done by combining two position measurements.
 \begin{enumerate}
-	\item Position relative to individual pieces of the tracker.
-	      While there are different stragies to do this measurement
-	      (e.g. pixel vs strip tracking detectors), this measurement
-	      is not the limiting factor in the context of this chapter.
-	\item ``Global'' position of these individual pieces.
-	      We construct the detector and thus know where we put the
-	      individual pieces, but placing them into position with
-	      the precision we desire is extremely difficult (not to
-	      mention their position could shift slightly once the
-	      magnet is turned on).
+	\item Position relative to individual pieces of the tracker (here called ``sensors'')
+	\item ``Global'' position of these sensors
 \end{enumerate}
+More specifically, the software we use to deduce physical measurements from the data
+output by a tracker consists of a detector model (which stores the positions of all
+sensors in the same coordinate system) and a series of algorithms we can apply to
+this detector model along with data from the sensors.
+
+While there are different stragies to measure position within
+an individual sensor of the tracker (e.g. pixel vs strip tracking detectors),
+this measurement is not the limiting factor in the context of this chapter
+and is often the measurement whose precision is easier to characterize
+since the individual sensors can be designed, built, and tested individual
+for a pre-determined precision.
+
+The second position measurement -- the global position of the sensors themselves
+-- is where a lot of complexity arises.
+We construct the detector and thus know where we put the sensors,
+but placing them into position with the precision we desire is extremely difficult
+(not to mention their position could shift slightly once the magnet is turned on).
+
+
+\todo[example]{I'd like some back-of-the-envelope position error $\to$ momentum
+	error as an example motivating the O(dozen micron) position precision we desire.}
+
+While we can determine the position of these sensors within millimeter precision
+during construction, gaining another few orders of magnitude in precision knowledge
+of position is not feasible with physical-access tools.
+\todo[phrasing]{not sure how to separate design position from construction survey
+	from post-construction survey from in-situ alignment measurements with beam particles.}
+This motivates another measurement ``tool'' that allows us to determine
+(or more accurately, constrain) the position measurements of our sensors.
+
+\section{Alignment Procedure}
+The tool that we choose to use is the same particles that we will use the tracker
+to study for our experimental goals.
+The one change is instead of using the tracker to measure the properties of these particles,
+we will select particles according to our knowledge of their properties so that we can use
+them to constrain the position of the tracker sensors.
