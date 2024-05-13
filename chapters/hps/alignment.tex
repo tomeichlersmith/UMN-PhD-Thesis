@@ -33,7 +33,7 @@ While there are different stragies to measure position within
 an individual sensor of the tracker (e.g. pixel vs strip tracking detectors),
 this measurement is not the limiting factor in the context of this chapter
 and is often the measurement whose precision is easier to characterize
-since the individual sensors can be designed, built, and tested individual
+since the individual sensors can be designed, built, and tested individually
 for a pre-determined precision.
 
 The second position measurement -- the global position of the sensors themselves
@@ -42,15 +42,41 @@ We construct the detector and thus know where we put the sensors,
 but placing them into position with the precision we desire is extremely difficult
 (not to mention their position could shift slightly once the magnet is turned on).
 
+We can gain some understanding of the position precision required with the help of
+\cref{fig:momentum-error-from-position-error}.
+There, we see that the momentum error roughly scales by a factor of five relative to
+the position error and, as the position error goes up,
+the momentum's distribution starts to distort away from a normal shape.
+In addition to the scaling of the \emph{relative} error, the overall scale of these
+measurements are an important factor as well.
+
 \begin{figure}
 	\centering
 	\includegraphics[width=0.5\textwidth]{one-offs/position-momentum-uncertainty/momentum-error-from-position-error.pdf}
-	\caption{}
+	\caption{
+		Momentum error derived from injecting a certain amount of position error
+		(blue and orange) compared to normal distributions (red and purple)
+		with known momentum error.
+		These distributions are normalized to have unit integrals.
+		The trials were done in a simplified experimental model with quantities
+		similar to \ac{hps}: a \qty{2}{\giga\electronvolt} electron curving within a
+		\qty{1}{\tesla} magnetic field, the sensors measuring the position were
+		separated by \qty{5}{\centi\meter} but their separation were also allowed to
+		deviate from the true value by the position error given.
+	}
 	\label{fig:momentum-error-from-position-error}
 \end{figure}
 
-\todo[example]{I'd like some back-of-the-envelope position error $\to$ momentum
-	error as an example motivating the O(dozen micron) position precision we desire.}
+Just to achieve a rough estimate of the scale of these position measurements,
+consider a \qty{2}{\giga\electronvolt} electron curving within a \qty{1}{\tesla}
+magnetic field.
+This electron would then have a \qty{6.6}{\meter} radius of curvature
+due to this magnetic field, meaning the position measurements within
+sensors separated by \qty{5}{\centi\meter} would change relative to one another
+by \emph{less than} \qty{1}{\milli\meter}.
+This absolute measurement of $\sim\qty{100}{\micro\meter}$ combined with the
+necessary \qty{1}{\percent} relative error means we need to know the position
+measurements to the level of \qty{1}{\micro\meter}.
 
 While we can determine the position of these sensors within millimeter precision
 during construction, gaining another few orders of magnitude in precision knowledge
