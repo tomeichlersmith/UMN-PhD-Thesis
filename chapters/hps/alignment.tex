@@ -92,3 +92,32 @@ to study for our experimental goals.
 The one change is instead of using the tracker to measure the properties of these particles,
 we will select particles according to our knowledge of their properties so that we can use
 them to constrain the position of the tracker sensors.
+
+This constraint is born out of concrete connection between the physical
+kinematics of the particles and the positions they record in the tracker sensors.
+We can imbue our knowledge of the shape of particle trajectories in magnetic field
+into the mathematical form of the equations that are fit to the position measurements.
+If the sensors in the detector model were in slightly different positions
+that where they are in the real detector, the data would present fits that are
+not as good (quantitatively, have a higher $\chi^2$). With this in mind, we
+can slightly ``move'' the sensors in the detector model with focus once
+improving the fits in the data (lowering the $\chi^2$). In order to account
+for the fact that individual tracks may still vary due to our imperfect knowledge
+of their trajectory shapes (e.g. the trajectory shape assumes only soft interactions
+with the detector material but some tracks could have harder interactions distorting
+their trajectory), we do this procedure over many tracks at once and focus on improving
+all of their fits (minimizing the sum of their $\chi^2$).
+
+This technique relies on the movements of the sensors to be small.
+The process can easily fall into a so-called ``Weak Mode'' where our quantitative
+measure of how good the fits are is achieving a locally minimum value, but
+the trajectories do not actually align with data. This motivates a multi-stage
+approach to alignment after a tracking detector has already been built.
+
+\begin{enumerate}
+	\item \textbf{Survey}: Directly measure positions of the sensors relative to other
+	      detector components as precisely as possible.
+	\item \textbf{In-Situ Alignment}: While only allowing for certain types of movements,
+	      minimize the total $\chi^2$ of well-known tracks.
+\end{enumerate}
+
