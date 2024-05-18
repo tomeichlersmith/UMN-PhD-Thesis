@@ -121,3 +121,22 @@ approach to alignment after a tracking detector has already been built.
 	      minimize the total $\chi^2$ of well-known tracks.
 \end{enumerate}
 
+Since physical measurements obtaining the precision we require are so difficult,
+the survey is often split into multiple, cascading measurements as well
+For example, the positions of the sensors are precisely determined relative to their
+mounting brackets which are then measured relative to the holding frame
+which is then measured relative to the global coordinates within which the
+experiment operates.
+
+The second stage where we perform small movements of the sensors in order to optimize
+the fit of our data to our software detector model is also broken into many smaller
+stages. The most common way is to only allow a certain set of physically motivated
+movements to occur during certain alignment iterations. This can allow us to ``walk''
+towards a detector model that is more aligned with the physical detector while
+maintaining physical understanding of the changes being made.
+
+In some sense, both of these stages inform the detector model and, as such,
+a critical piece of alignment is a quantitative visualization of this detector
+model and how it is being modified.
+
+\todo[figure]{Comparison of multiple detector models in Tom-style multi-panel figures.}
