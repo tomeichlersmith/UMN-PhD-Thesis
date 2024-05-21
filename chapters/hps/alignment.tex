@@ -137,6 +137,41 @@ maintaining physical understanding of the changes being made.
 
 In some sense, both of these stages inform the detector model and, as such,
 a critical piece of alignment is a quantitative visualization of this detector
-model and how it is being modified.
+model and how it is being modified. \cref{fig:example-det-vis-abs} demonstrates a
+quantitative visualization used within \ac{hps} where the positions and orientations of 
+all the sensors within a specific coordinate system are shown.
+This visualization is helpful for verifying that the detector model being used
+within the software is placing the sensors in expected positions and orientations.
+For example, we observe the $y$ and $z$ positions steadily increasing as the layer
+number of the sensor increases -- representing the opening angle as designed within
+\ac{hps}. Additionally, we see many of the sensors ``flipped'' along one or more
+directions (the angle is $\pi \approx \qty{3141}{\milli\radian}$) which can be
+double checked against design and construction.
 
-\todo[figure]{Comparison of multiple detector models in Tom-style multi-panel figures.}
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-abs.pdf}
+	\caption{Plotting all six global coordinates completely specifying position and orientation
+	of each of the sensors in the \ac{hps} tracking detector. Three different versions of the
+	in-software detector model are plotted; however, on this scale, they all overlap one another.}
+	\label{fig:example-det-vis-abs}
+\end{figure}
+
+Of more specific help is looking at the differences of these coordinates between
+multiple versions of the detector model. \cref{fig:example-det-vis-diff} demonstrates
+this strategy by subtracting the coordinates of the original detector model (``OG'')
+from the subsequent attempts to further align it. Specifically, we can observe that
+the alignment iterations only allowing translations along the vertical did in fact
+only change in the global $y$ direction. Similarly, when we allowed for rotations as
+well as these translations, some angles in the global frame changed (orange).
+In both cases, neither $x$ nor $z$ coordinates changed relative to the original model.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-diff.pdf}
+	\caption{Plotting all six global coordinates completely specifying position and
+	orientation of each of the sensors in the \ac{hps} tracking detector relative to
+	the base detector ``OG'' from \cref{fig:example-det-vis-abs}. We can now observe
+	the quantitative differences between the different versions.}
+	\label{fig:example-det-vis-diff}
+\end{figure}
