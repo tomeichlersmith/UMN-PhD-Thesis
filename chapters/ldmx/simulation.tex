@@ -95,6 +95,31 @@ The accuracy of the total cross section and kinematics is validated using
 For this study in \ac{ldmx}, the code package used to develop and validate G4DarkBreM
 was also used to generate the input refernece libraries for sample generation.
 This code is a custom version of \textsc{MadGraph/MadEvent4} with the following updates.
+\begin{itemize}
+	\item Introduction of basic dark sector particles
+	(massive boson and spin-$1/2$ fermion) which act as the representatives of
+	the dark sector interacting with the standard model particles.
+	\item Definition of a nuclear particle (electrically neutral, spin-$1/2$ fermion)
+	with new couplings to the dark photon including the nuclear form factors.
+	\item Updating the definition of the electron to include its small (but non-zero)
+	mass to prevent divergence of the cross section at lower energies.
+\end{itemize}
+These updates, along with some wrapping code, enables the generation of
+dark bremmstrahlung events for a range of target nuclei, incident energies,
+and either incident electrons or muons.
+
+As suggested by the validation of G4DarkBreM \cite{g4darkbrem},
+we generate libraries where the incident electron's energy drops in steps of 10\%
+down from the beam energy.
+Since the dark photon is required to be simulated with at least 50\% of the beam energy, 
+we stop the library generation also at 50\% of the beam energy.
+The primary nuclei that could dark brem within the \ac{ecal} are tungsten, silicon, 
+oxygen, and copper so those are the nuclei for which we generate libraries.
+The rest of the nuclei within the simulated \ac{ecal} (sodium, calcium, carbon
+for example) have atomic numbers close to those nuclei already sampled
+and so can be faithfully simulated with these libraries.
+In order to avoid duplicating the same event, a unique reference library is generated
+for each simulation run even when keeping the dark photon mass and beam energy the same.
 
 \subsection{Characterization}
 Describe how these samples "look"?
