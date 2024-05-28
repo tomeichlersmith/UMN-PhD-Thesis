@@ -75,12 +75,26 @@ simulation technique allows for the dark bremsstrahlung process to be treated
 while maintaining the precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
-To accurately simulate the kinematics of the dark bremsstrahlung process for electrons in thick targets, the process must be included at the level of experimental simulation instead of using initial state event generators to account for the possibility of energy loss through bremsstrahlung or multiple scattering prior to the dark matter interaction. Accurate kinematic simulation of the outgoing electron are required for optimal experimental sensitivity measurements and appropriate design of search strategies.
+To accurately simulate the kinematics of the dark bremsstrahlung process for
+electrons in thick targets, the process must be included at the level of experimental
+simulation instead of using initial state event generators to account for the
+possibility of energy loss through bremsstrahlung or multiple scattering prior to
+the dark matter interaction.
+Accurate kinematic simulation of the outgoing electron are required for optimal 
+experimental sensitivity measurements and appropriate design of search strategies.
 
-For this reason, we utilize G4DarkBreM \cite{g4darkbrem} which performs this embedding of the dark bremmstrahlung process into \textsc{Geant}4. G4DarkBreM calculates the cross section using numerical integrals of the Weizs\"{a}cker-Williams approximation, and the kinematics are simulated using a scaling technique of \textsc{MadGraph/MadEvent} event libraries. The accuracy of the total cross section and kinematics is validated using \textsc{MadGraph/MadEvent} samples.
+For this reason, we utilize G4DarkBreM \cite{g4darkbrem} which performs this 
+embedding of the dark bremmstrahlung process into \textsc{Geant}4.
+G4DarkBreM calculates the cross section using numerical integrals of the
+Weizs\"{a}cker-Williams approximation, and the kinematics are simulated using
+a scaling technique of \textsc{MadGraph/MadEvent} event libraries.
+The accuracy of the total cross section and kinematics is validated using
+\textsc{MadGraph/MadEvent} samples at a range of incident lepton energies.
 
 \subsection{MadGraph/MadEvent}
-Detail on MG/ME workspace used to generate DB libraries.
+For this study in \ac{ldmx}, the code package used to develop and validate G4DarkBreM
+was also used to generate the input refernece libraries for sample generation.
+This code is a custom version of \textsc{MadGraph/MadEvent4} with the following updates.
 
 \subsection{Characterization}
 Describe how these samples "look"?
