@@ -3,9 +3,146 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Heavy Photon Search}
 \label{chapter:hps:experiment}
-\todo[citation]{How do I cite this HPS detector chapter? I'm mainly taking this information
-	from theses but those theses cite a proposal document hosted on confluence.}
 
+\acf{hps} is a fixed-target experiment currently in operation at \ac{jlab}
+which is focused on search for short-length (few centimeter) decays of new particles.
+In order to search for these visible signatures of new particles,
+\ac{hps} must be able to precisely reconstruct the produced \ac{sm} particle
+kinematics and then use this information to estimate their origin point (their
+``vertex'').
+This reconstruction is enabled by two key detector components whose design
+will be motivated using the model studied in more detail in this part.
+
+\section{Strongly Interacting Massive Particles}
+\label{sec:hps:simps}
+
+As mentioned in \cref{sec:theory:visible}, our search for \ac{dm} must accomodate the
+possibility that any \ac{dm} produced within our experiments subsequently decays back
+into \ac{sm} particles.
+In order to model these types of \ac{dm}, we must account for both how the \ac{dm} is
+produced and how it decays back to \ac{sm} particles.
+These theories propose new specific vertex rules for constructing the Feynman diagrams
+and for the vertex factors within the calculations.
+
+To be even more specific, we could hypothesize that the dark sector consists of particles that
+interact with each other strongly in the same sense of the standard quarks.
+These Strongly Interacting Massive Particles (SIMPs) \cite{simp-mechanism-2014,simp-pheno-2018}
+would then form composite particles similar to how standard quarks form composite particles
+like protons and neutrons.
+Since we expect our experiments to not reach the energies required to separate the constiuents
+of these composite particles, the composite particles themselves would be the dark matter candidates
+and the ones we represent within our diagrams.
+A dark sector consisting of SIMPs would have a plethora of composite particles which we could observe;
+however of particular importance is that there could be a composite particle that has similar enough
+properties to the dark photon that it could ``mix'' with it and decay in a way that emits fewer dark
+particles: \cref{fig:dark-brem-simp-decay}.
+This decay, since it has less energy ``lost'' to the dark particles,
+has a greater potential of being observed within \ac{hps} and is discussed here.
+
+\begin{figure}
+	\centering
+	\begin{tikzpicture}
+		\begin{feynman}
+			\vertex (a) {$e^{-}$};
+			\vertex [right= of a](d);
+			\vertex [below=of d, blob,label={below:$Z$}] (e) {};
+			\vertex [right= of d] (b);
+			\vertex [above right= of b] (g) {$e^{-}$};
+			\vertex [below right= of b] (aprime_decay);
+			\vertex [below right= of aprime_decay] (rhod_decay);
+			\vertex [above right= of aprime_decay] (dm) {$\pi_D$};
+			\vertex [below right= of rhod_decay] (i);
+			\vertex [above right= of i] (j) {$e^{-}$};
+			\vertex [below right= of i] (k) {$e^{+}$};
+			\diagram*[large] {
+			(a) -- [fermion] (d),
+			(d) -- [boson] (e),
+			(d) -- [fermion] (b),
+			(b) -- [fermion] (g),
+			(b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$V_D$}] (rhod_decay),
+			(aprime_decay) -- [scalar] (dm),
+			(rhod_decay) -- [boson, edge label={$A'^*$}] (i),
+			(k) -- [fermion] (i) -- [fermion] (j),
+			};
+		\end{feynman}
+	\end{tikzpicture}
+	\caption{
+		Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair
+		through SIMP composite particle $V_D$ with the emission of a lighter SIMP composite particle $\pi_D$.
+		The two-particle vertex $V_D-A'$ is only allowed since they share enough quantum properties to mix.
+	}
+	\label{fig:dark-brem-simp-decay}
+\end{figure}
+
+Importantly, \cref{fig:dark-brem-simp-decay} has two vertices where \ac{dm} and \ac{sm} particles
+interact -- these two vertices represent the fact that such a visible decay is subsequently less
+probable since both of these vertices carry with them the weak mixing factor $\epsilon$.
+The lower probability of these visible decays is a general property of such signatures and motivates
+experiments focused on collecting large data volumes in order to overcome the limitation imposed
+by this lower probability.
+With this in mind, \ac{hps} has been built to observe a beam whose rate is significantly high --
+high enough to prevent sensitive detector elements from being placed directly within its path.
+
+The observable outgoing particles of \cref{fig:dark-brem-simp-decay} can be mimiced by existing \ac{sm}
+processes.
+The most prominent background process is trident production \cref{fig:trident} which enables
+the production of the electron-positron pair through the radiation of the virtual photon (\cref{fig:trident:radiative})
+or through direct electromagnetic interaction with the nucleus and a virtual lepton (\cref{fig:trident:bethe-heitler}).
+
+\begin{figure}
+	\centering
+	\begin{subfigure}[t]{0.4\textwidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (a) {$e^{-}$};
+				\vertex [right= of a](d);
+				\vertex [below=of d, blob,label={below:$Z$}] (e) {};
+				\vertex [right= of d] (b);
+				\vertex [above right= of b] (g) {$e^{-}$};
+				\vertex [below right= of b] (rad);
+				\vertex [above right= of rad] (j) {$e^{-}$};
+				\vertex [below right= of rad] (k) {$e^{+}$};
+				\diagram*[large] {
+				(a) -- [fermion] (d),
+				(d) -- [boson] (e),
+				(d) -- [fermion] (b),
+				(b) -- [fermion] (g),
+				(b) -- [boson, edge label={\(\gamma^*\)}] (rad),
+				(k) -- [fermion] (rad) -- [fermion] (j),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+		\caption{Radiative trident}
+		\label{fig:trident:radiative}
+	\end{subfigure}%
+	~
+	\begin{subfigure}[t]{0.4\textwidth}
+		\begin{tikzpicture}
+			\begin{feynman}
+				\vertex (a) {$e^{-}$};
+				\vertex [right= of a] (d);
+				\vertex [above right= of d] (g) {$e^{-}$};
+				\vertex [below right=of d] (eleprod);
+				\vertex [below=of eleprod] (posprod);
+				\vertex [right=of eleprod] (j) {$e^{-}$};
+				\vertex [right=of posprod] (k) {$e^{+}$};
+				\vertex [below left=of posprod, blob,label={below:$Z$}] (e) {};
+				\diagram*[large] {
+				(a) -- [fermion] (d) -- [fermion] (g),
+				(d) -- [boson] (eleprod),
+				(e) -- [boson] (posprod),
+				(k) -- [fermion] (posprod) -- [fermion] (eleprod) -- [fermion] (j),
+				};
+			\end{feynman}
+		\end{tikzpicture}
+		\caption{Bethe-Heitler trident}
+		\label{fig:trident:bethe-heitler}
+	\end{subfigure}
+	\caption{Feynman diagrams for the \ac{sm} process of trident production.}
+	\label{fig:trident}
+\end{figure}
+
+\section{Detector Apparatus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ac{hps} is currently installed behind the CLAS-12 experiment in the Hall B
 alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
@@ -58,7 +195,7 @@ background process. The two subsystems included within \ac{hps} are the \ac{svt}
 on reconstruction of the momentum and charge of charged particles
 and the \ac{ecal} focused on energy reconstruction and online triggering of the data.
 
-\section{Silicon Vertex Tracker}
+\subsection{Silicon Vertex Tracker}
 The \ac{svt} is made of eighteen modules each of which is a pair of silicon-strip detectors
 offset from each other by a small angle to enable three-dimensional position reconstruction.
 The modules are arranged in the two halves separated by the center beam line. In each half,
@@ -97,7 +234,7 @@ via visible decays.
 	\label{fig:hps-svt-render}
 \end{figure}
 
-\section{Electromagnetic Calorimeter}
+\subsection{Electromagnetic Calorimeter}
 \label{sec:hps-ecal}
 The \ac{ecal} consists of \num{442} lead-tungstate crystals and is a fully-sensitive calorimeter.
 The crystals are arranged in symmetric grids separated by the beamline similar to the \ac{svt}.
@@ -111,8 +248,6 @@ As mentioned above, one of the primary purposes of the \ac{ecal} is to be the tr
 for data collection. Many different trigger algorithms with different purposes have been used within
 \ac{hps} and the specific trigger algorithm designed for collection of data relevant to a \ac{dm}
 search is studied and motivated in detail in \cite{skmccarty-thesis-2020}.
-
-\section{Currently-Available Datasets}
 
 \begin{figure}
 	\centering

@@ -319,140 +319,20 @@ designed to precisely measure all of the \emph{visible} energy so that this ``in
 of DM being produced could be observed.
 
 \section{Visible Signature}
-\label{sec:theory-visible}
-\todo[refactor]{Refactor visible signature section. Put SIMP detail into HPS part and use initial
-	section to allude to trade-offs between visible and invisible search strategies.}
+\label{sec:theory:visible}
 
-There is no a priori reason for $m_{A'} > 2 m_\chi$, so we must accomodate the possiblity that
-$m_{A'} < 2 m_\chi$. In this case, there would be a significant probability that the dark photon,
-after it is produced, would convert \emph{back} into \ac{sm} particles. Since these decay
-products are observable by our detectors, this signature is called visible.\todo[clarify]{
-	Clarify that even when $m_{A'} < 2m_\chi$, it can still be used produce the cosmological $\chi$.
-	(i.e. virtual particles can deviate from their mass in the quantum realm.)
-}
+There is no a priori reason for $m_{A'} > 2 m_\chi$ -- the quantum nature of these fundamental
+particles allows for ``virtual'' dark photons to have more or less energy than precisely $m_{A'}$
+allowing them to mediate the interactions between $\chi$ and \ac{sm} particles,
+so we must accomodate the possiblity that $m_{A'} < 2 m_\chi$.
+In this case, there would be a significant probability that the dark photon,
+after it is produced, would convert \emph{back} into \ac{sm} particles.
+Since these decay products are observable by our detectors, this signature is called visible.
 
-These visible signatures have a bit more complexity due to the fact that both a production process
-and a decay process need to occur according to the model for DM we are testing. With this in mind,
+These visible signatures are a bit more complex to model due to the fact that both a production process
+and a decay process need to occur according to the model of \ac{dm} we are testing. With this in mind,
 many models that provide more detail about how particles exist within a dark sector have been
 created, each of which providing a specific estimate for production and decay rates.
 \cref{part:hps} focuses on an experiment looking for these visible signatures and my work
-specifically was investigating some of these more intricate dark sector models in detail.
-\cref{sec:theory-simps} and \cref{sec:theory-idm} provide more detail on the dark sector models
-studied in this work.\todo[reword]{reword the visible signature paragraphs to include vanilla model
-	as a reasonable visible signature to search for. Remind the reader that the quantum nature of
-	virtual particles allow them to deviate from the mass.}
-
-%\subsection{Inelastic Dark Matter}
-%\label{sec:theory-idm}
-%
-%One slightly more complicated extension simply proposes the existence of two more dark fermions:
-%\(\chi_2\) and \(\chi_1\) instead of just the \(\chi\). There is no reason for the DM to only
-%consist of one type of particle and indeed our standard matter is made up of several types of
-%particles. The introduction of multiple fermions produces more complexity within the
-%dark sector, specifically enabling production and decay chains that, while still visible within
-%many of our experiments, would not follow the distribution or the rate described by the more
-%simplistic single-dark-fermion model. \cref{fig:dark-brem-idm-decay} shows a Feynman diagram of
-%dark brem production of the dark photon followed by its decay back into an electron-positron
-%pair which could be observed within a detector.
-%
-%\begin{figure}
-%	\centering
-%	\begin{tikzpicture}
-%		\begin{feynman}
-%			\vertex (a) {$e^{-}$};
-%			\vertex [right= of a](d);
-%			\vertex [below=of d, blob,label={below:$Z$}] (e) {};
-%			\vertex [right= of d] (b);
-%			\vertex [above right= of b] (g) {$e^{-}$};
-%			\vertex [below right= of b] (aprime_decay);
-%			\vertex [below right= of aprime_decay] (rhod_decay);
-%			\vertex [above right= of aprime_decay] (dm) {$\chi_1$};
-%			\vertex [above right= of rhod_decay] (dm2) {$\chi_1$};
-%			\vertex [below right= of rhod_decay] (i);
-%			\vertex [above right= of i] (j) {$e^{-}$};
-%			\vertex [below right= of i] (k) {$e^{+}$};
-%			\diagram*[large] {
-%			(a) -- [fermion] (d),
-%			(d) -- [boson] (e),
-%			(d) -- [fermion] (b),
-%			(b) -- [fermion] (g),
-%			(b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$\chi_2$}] (rhod_decay),
-%			(aprime_decay) -- [scalar] (dm),
-%			(rhod_decay) -- [scalar] (dm2),
-%			(rhod_decay) -- [boson, edge label={$A'^*$}] (i),
-%			(k) -- [fermion] (i) -- [fermion] (j),
-%			};
-%		\end{feynman}
-%	\end{tikzpicture}
-%	\caption{
-%		Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair.
-%		The details of the $A'-\chi_2-\chi_1$ vertex are kept general and here are left as effective vertices.
-%	}
-%	\label{fig:dark-brem-idm-decay}
-%\end{figure}
-%
-%The emission of these extra $\chi_1$ particles has a significant effect on the properties of the electrons
-%and positrons we can observe and is discussed in more detail in
-%\todo[cref]{point reader towards idm feasibility}.
-%This dark sector model
-%is actively being studied within HEP and has potential for observation by the experiment in \cref{part:hps}
-%\cite{darkseaquest-2018}.
-
-\subsection{Strongly Interacting Massive Particles}
-\label{sec:theory-simps}
-
-\todo[reword]{
-	These theories propose new specific vertex rules for constructing the diagram
-	and the vertex factors for calculations.
-}
-To be even more specific, we could hypothesize that the dark sector consists of particles that
-interact with each other strongly in the same sense of the standard quarks. These Strongly
-Interacting Massive Particles (SIMPs) \cite{simp-mechanism-2014,simp-pheno-2018} would then form composite particles similar to how standard
-quarks form composite particles like protons and neutrons. Since we expect our experiments to
-not reach the energies required to separate the constiuents of these composite particles,
-the composite particles themselves would be the dark matter candidates and the ones we represent
-within our diagrams. A dark sector consisting of SIMPs would have a plethora of composite particles
-which we could observe, including ones that would produce a diagram with the same structure as
-\cref{fig:dark-brem-idm-decay}; however of particular importance is that there could be a composite
-particle that has similar enough properties to the dark photon that it could ``mix'' with it and
-decay in a way that emits fewer dark particles: \cref{fig:dark-brem-simp-decay}. This decay, since
-it has less energy ``lost'' to the dark particles, has a greater potential of being observed within
-the experiment described in \cref{part:hps} and is discussed there.
-
-\begin{figure}
-	\centering
-	\begin{tikzpicture}
-		\begin{feynman}
-			\vertex (a) {$e^{-}$};
-			\vertex [right= of a](d);
-			\vertex [below=of d, blob,label={below:$Z$}] (e) {};
-			\vertex [right= of d] (b);
-			\vertex [above right= of b] (g) {$e^{-}$};
-			\vertex [below right= of b] (aprime_decay);
-			\vertex [below right= of aprime_decay] (rhod_decay);
-			\vertex [above right= of aprime_decay] (dm) {$\pi_D$};
-			\vertex [below right= of rhod_decay] (i);
-			\vertex [above right= of i] (j) {$e^{-}$};
-			\vertex [below right= of i] (k) {$e^{+}$};
-			\diagram*[large] {
-			(a) -- [fermion] (d),
-			(d) -- [boson] (e),
-			(d) -- [fermion] (b),
-			(b) -- [fermion] (g),
-			(b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$V_D$}] (rhod_decay),
-			(aprime_decay) -- [scalar] (dm),
-			(rhod_decay) -- [boson, edge label={$A'^*$}] (i),
-			(k) -- [fermion] (i) -- [fermion] (j),
-			};
-		\end{feynman}
-	\end{tikzpicture}
-	\caption{
-		Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair
-		through SIMP composite particle $V_D$ with the emission of a lighter SIMP composite particle $\pi_D$.
-		The two-particle vertex $V_D-A'$ is only allowed since they share enough quantum properties to mix.
-	}
-	\label{fig:dark-brem-simp-decay}
-\end{figure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+specifically was investigating one of these more intricate dark sector models in detail.
+\cref{sec:hps:simps} provides more detail on the dark sector model studied in this work.
