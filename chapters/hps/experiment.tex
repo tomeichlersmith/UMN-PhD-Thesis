@@ -88,6 +88,11 @@ processes.
 The most prominent background process is trident production \cref{fig:trident} which enables
 the production of the electron-positron pair through the radiation of the virtual photon (\cref{fig:trident:radiative})
 or through direct electromagnetic interaction with the nucleus and a virtual lepton (\cref{fig:trident:bethe-heitler}).
+The upside of this trident production process is that it is \emph{prompt}
+-- i.e. the produced electron and positron originate from within the target.
+The position of this vertex is a separation from the signal process \cref{fig:dark-brem-simp-decay}
+where the vertex of the produced electron and positron would be observably displaced downstream
+of the target due to the non-zero lifetime of the dark sector particle $V_D$.
 
 \begin{figure}
 	\centering
@@ -142,13 +147,21 @@ or through direct electromagnetic interaction with the nucleus and a virtual lep
 	\label{fig:trident}
 \end{figure}
 
+\ac{hps} is designed to focus on visible signatures of \ac{dm} like SIMPs with
+a dual strategy of searching for mass resonances and displaced vertices.
+Both of these strategies require high data volume and precise reconstruction of a produced
+electron-positron pair originating from the decay of some \ac{dm} particle.
+The precision of this reconstruction is one of the main limiting factors in distinguishing
+whether a specific pair originated from \ac{dm} or from some other \ac{sm} background process.
+These design drivers have led to the the apparatus discussed below.
+
 \section{Detector Apparatus}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \ac{hps} is currently installed behind the CLAS-12 experiment in the Hall B
 alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
 \cite{mrsolt-thesis-2020,skmccarty-thesis-2020}.
-Hall B primarily hosts the CLAS-12 experiment \todo[citation]{Add citation for CLAS-12}
-in the bulk of its hall; nevertheless, behind the CLAS-12 experiment \ac{hps} is situated
+Hall B primarily hosts the CLAS-12 experiment in the bulk of its hall; nevertheless,
+behind the CLAS-12 experiment \ac{hps} is situated
 within an alcove such that it can collect data whenever CLAS-12 is not operational (for example,
 when its components are being upgraded or fixed).
 
@@ -186,12 +199,7 @@ and \cref{fig:hps-diagram}.
 	\label{fig:hps-diagram}
 \end{figure}
 
-\ac{hps} is designed to focus on visible signatures of \ac{dm} (\cref{sec:theory-visible}) with
-a dual strategy of searching for mass resonances and displaced vertices. Both of these strategies
-require precise reconstruction of a produced electron-positron pair originating from the decay of
-some \ac{dm} particle. The precision of this reconstruction is one of the main limiting factors
-in distinguishing whether a specific pair originated from \ac{dm} or from some other \ac{sm}
-background process. The two subsystems included within \ac{hps} are the \ac{svt} focused
+The two subsystems included within \ac{hps} are the \ac{svt} focused
 on reconstruction of the momentum and charge of charged particles
 and the \ac{ecal} focused on energy reconstruction and online triggering of the data.
 
@@ -202,9 +210,11 @@ The modules are arranged in the two halves separated by the center beam line. In
 the modules are put into layers with the first three layers consisting of one module while
 the last three layers consisting of two modules to increase angular acceptance relative
 to the target. \cref{fig:hps-svt-render} shows a rendering of the \ac{svt} with the sensitive
-detector elements shown as red rectangles.\todo[caveat]{Should I include the detail that
-	this description of the HPS SVT is for 2016 and before? An additional layer was included
-	for later runs.}
+detector elements shown as red rectangles.\footnote{
+	This diagram and the description within this thesis is focused on the \ac{hps} \ac{svt}
+	from its physics run in 2016. Various \ac{hps} components have been upgraded for
+	subsequent runs.
+}
 
 The two halves of the \ac{svt} are positioned to form a \qty{15}{\milli\radian} angular gap relative
 to the target in order to avoid the largest amount of radiation from the beam. The first layer
@@ -248,6 +258,13 @@ As mentioned above, one of the primary purposes of the \ac{ecal} is to be the tr
 for data collection. Many different trigger algorithms with different purposes have been used within
 \ac{hps} and the specific trigger algorithm designed for collection of data relevant to a \ac{dm}
 search is studied and motivated in detail in \cite{skmccarty-thesis-2020}.
+\cref{fig:hps-pair-trigger-depiction} diagrams an event that would pass the pair-wise trigger
+used for the collection of the data within this study.
+The trigger requirements include two spatially-separated clusters of energy which are in
+separate vertical and horizontal halves of the detector.
+These clusters must also have minimum energies of \qty{0.4}{\giga\electronvolt} individually
+and total energy together of more than \qty{1}{\giga\electronvolt}.
+\todo[lookup]{get details of pair trigger used for the collected data.}
 
 \begin{figure}
 	\centering
