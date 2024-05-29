@@ -135,6 +135,8 @@ movements to occur during certain alignment iterations. This can allow us to ``w
 towards a detector model that is more aligned with the physical detector while
 maintaining physical understanding of the changes being made.
 
+\section{Detector Visualization}
+
 In some sense, both of these stages inform the detector model and, as such,
 a critical piece of alignment is a quantitative visualization of this detector
 model and how it is being modified. \cref{fig:example-det-vis-abs} demonstrates a
@@ -151,6 +153,7 @@ double checked against design and construction.
 \begin{figure}
 	\centering
 	\includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-abs.pdf}
+	\todo[figure]{patch axis angles column label in absolute det vis}
 	\caption{Plotting all six global coordinates completely specifying position and orientation
 	of each of the sensors in the \ac{hps} tracking detector. Three different versions of the
 	in-software detector model are plotted; however, on this scale, they all overlap one another.}
@@ -175,3 +178,7 @@ In both cases, neither $x$ nor $z$ coordinates changed relative to the original 
 	the quantitative differences between the different versions.}
 	\label{fig:example-det-vis-diff}
 \end{figure}
+
+\section{Results}
+\todo[find]{find some figures of unaligned vs aligned physical quantities to show
+that this process is necessary and helpful.}
