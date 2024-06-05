@@ -82,29 +82,9 @@ namely electronic emulation and reconstruction, are not described further here; 
 be emphasized that all subsystems of \ac{ldmx} have their own custom implementations of these
 stages in order to realistically emulate and reconstruct the data within their subsystem.
 
-\section{Standard Processes}
-As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes
-that are described by the standard model and we expect to happen within our experiment. These
-``background'' processes -- while interesting for other analyses of \ac{ldmx} data -- should be
-rejected by this search for \ac{dm} since they are understood to \emph{not} be \ac{dm} by the
-standard model and other experiments. In order to thoroughly and faithfully estimate our ability to
-reject these backgrounds, we need to realistically simulate them within our detector volume.
-
-\textsc{Geant4} \cite{geant4} has been developed for precisely this purpose. This study uses a slightly modified copy of \textsc{Geant4} v10.2.3 which focuses on improving the accuracy of processes relevant to a \ac{dm} search within \ac{ldmx} with the following needs.
-\begin{enumerate}
-  \item Updating cross section and sampling of $\gamma\to\mu^+\mu^-$ process to align it better with
-        collected data and calculations of the standard model.
-  \item Update nuclear cascade to align with more recent CLAS data specifically focused on the rate of
-        low-multiplicity forward neutrons (Appendix A.A of \cite{ldmx-whitepaper}).
-  \item Introduction of \emph{back scattering} $\pi^0$ in a $\gamma p \to \pi^0 p$ within a nuclear cascade
-        (Appendix A.B of \cite{ldmx-whitepaper}).
-\end{enumerate}
-These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
-
-\subsection{Biasing and Filtering}
-While these standard processes have been observed and measured, many of the processes most
-interesting for a \ac{dm} search within \ac{ldmx} are rare relative to processes that are
-``easier'' to reject by normal data processing.
+\subsection{Biasing and Filtering Technique}
+Many of the processes most interesting for a \ac{dm} search within \ac{ldmx} are rare relative to
+processes that are ``easier'' to reject by normal data processing.
 In many cases, the rarity of these more interesting processes is a computational roadblock
 since waiting for the entire detector simulation to complete before looking for these processes
 of interest wastes a lot of computer time when only one out of every ten thousand events actually
@@ -112,8 +92,6 @@ contains a process we are interested in.
 To make simulation of these processes more computationally feasible, we turn to the common simulation
 techniques of biasing (artificially increasing the probability of a certain process occurring) and
 filtering (ending the simulation of events if certain criteria are not met).
-
-\todo[weights]{Discuss how biasing then alters the event weight and how we interpret it.}
 
 In the \ac{eat} analysis channel, all of our interesting processes occur within the developing
 shower of particles in the \ac{ecal}.
@@ -149,6 +127,14 @@ certain energy threshold (the ``Biasing Threshold'') to avoid over-sampling of t
 In addition, we also need to define the factor that we will multiply the cross section by
 when a particle is above the Biasing Threshold and in the \ac{ecal} volumes (the ``Biasing Factor'').
 
+Artificially increasing the rate of a process relative to its true rate measured in nature
+is obviously unphysical, but we can account for this by weighting the events depending on this
+Biasing Factor when counting them.
+The simulation engine we use does this weight calculation for us and it accounts for both the
+biasing factor (beginning the weight with a factor of $1/B$) and unbiased processes happening
+to a particle with biasing enabled (increasing the event weight to reflect that physical processes
+at the natural rate have ocurred)
+
 \begin{table}[htb]
     \centering
     \begin{tabular}{c|cc|p{0.4\textwidth}}
@@ -168,6 +154,26 @@ Practically, we choose to have the Biasing and Sorting Thresholds share the same
 of the samples in this work in order to reduce the number of parameters needed to tune and
 to process all of the biased particles (as well as particles of similar energies
 but different flavors) before making any filtering decision.
+
+\section{Standard Processes}
+As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes
+that are described by the standard model and we expect to happen within our experiment. These
+``background'' processes -- while interesting for other analyses of \ac{ldmx} data -- should be
+rejected by this search for \ac{dm} since they are understood to \emph{not} be \ac{dm} by the
+standard model and other experiments. In order to thoroughly and faithfully estimate our ability to
+reject these backgrounds, we need to realistically simulate them within our detector volume.
+
+\textsc{Geant4} \cite{geant4} has been developed for precisely this purpose. This study uses a slightly modified copy of \textsc{Geant4} v10.2.3 which focuses on improving the accuracy of processes relevant to a \ac{dm} search within \ac{ldmx} with the following needs.
+\begin{enumerate}
+  \item Updating cross section and sampling of $\gamma\to\mu^+\mu^-$ process to align it better with
+        collected data and calculations of the standard model.
+  \item Update nuclear cascade to align with more recent CLAS data specifically focused on the rate of
+        low-multiplicity forward neutrons (Appendix A.A of \cite{ldmx-whitepaper}).
+  \item Introduction of \emph{back scattering} $\pi^0$ in a $\gamma p \to \pi^0 p$ within a nuclear cascade
+        (Appendix A.B of \cite{ldmx-whitepaper}).
+\end{enumerate}
+These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
+
 
 \subsection{Validation}
 Generally, validation of this biasing and filtering technique can be done by checking that
