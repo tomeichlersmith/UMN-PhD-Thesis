@@ -155,6 +155,13 @@ of the samples in this work in order to reduce the number of parameters needed t
 to process all of the biased particles (as well as particles of similar energies
 but different flavors) before making any filtering decision.
 
+Generally, validation of this biasing and filtering technique can be done by checking that
+the samples generated with this technique match samples generated without this technique
+and with the filtering applied after the fact.
+This validation needs to be done on a per-sample basis since the specific aspects of
+the simulation that need to align may change depending on the specific physics
+for which we are biasing and filtering.
+
 \section{Standard Processes}
 As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes
 that are described by the standard model and we expect to happen within our experiment. These
@@ -174,14 +181,26 @@ reject these backgrounds, we need to realistically simulate them within our dete
 \end{enumerate}
 These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
+\subsection{Dominate Contributors in this Analysis}
+From prior experience with \ac{ldmx} (e.g. \cite{ldmx-whitepaper,ldmx-photon-reject-2020}),
+we expect certain types of standard processes to dominate the backgrounds that we could observe
+within the \ac{eat} analysis channel.
 
-\subsection{Validation}
-Generally, validation of this biasing and filtering technique can be done by checking that
-the samples generated with this technique match samples generated without this technique
-and with the filtering applied after the fact.
+\todo[intro]{Need to introduce concepts of ``nuclear'' energy, trigger, reconstructed energy, and gamma conversion to muons in order to properly comment on the plot.}
 
-Validation of this methodology. \todo[copy]{Copy background sample validation appendices from EaT
-  internal note.}
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/4gev-ecal-by-nuc.pdf}
+    &
+    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/8gev-ecal-by-nuc.pdf}
+  \end{tabular}
+  \caption{}
+  \label{fig:rec-efrac-by-nuc}
+\end{figure}
+
+\subsection{Expanding Production of these Processes}
+\todo[copy]{Copy background sample validation appendices from EaT internal note.}
 
 \section{Dark Matter Signal}
 The particular signal process this analysis channel is looking for is the production of a dark
