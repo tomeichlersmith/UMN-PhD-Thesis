@@ -8,6 +8,8 @@
 \ac{ldmx} (like many other HEP experiments) uses an intricate software stack in order to realistically and efficiently simulate particle interactions with the detector, emulate the electronics that would be used to measure these interactions, and reconstruct the output of these electronics into physically-understandable variables.
 These software tasks are accomplished by a wide swath of different software packages, some of which custom-written for \ac{ldmx}, most of which written in C++.
 This chapter is focused on describing this simulation infrastructure -- focusing particularly on parts of the infrastructure I was involved in -- while also pointing out areas that are expected to remain constant in the presence of data gathered from a real detector.
+After a discussion of general data processing, I move into discussing the specific samples
+used to do this simulation study.
 
 \section{General Data Process}
 One of the core principles helping organize HEP data is the concept of an ``event.'' In the context
