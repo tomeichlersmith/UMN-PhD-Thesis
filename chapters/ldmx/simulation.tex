@@ -184,11 +184,29 @@ reject these backgrounds, we need to realistically simulate them within our dete
 These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
 \subsection{Dominate Contributors in this Analysis}
+Generally, we focus on processes that would cause the energy in the \ac{ecal} to be
+estimated at a significantly smaller value than the known beam energy.
+This ``missing'' energy is used as a key piece of evidence that the event in question
+should be stored for further study and thus is the main ingredient in the infrastructure
+deciding whether a specific event should be stored (the ``trigger'').
 From prior experience with \ac{ldmx} (e.g. \cite{ldmx-whitepaper,ldmx-photon-reject-2020}),
-we expect certain types of standard processes to dominate the backgrounds that we could observe
-within the \ac{eat} analysis channel.
+we expect certain types of standard processes to dominate the backgrounds that pass this
+trigger requirement on missing energy: interactions with the nuclei of the detector
+material producing hard-to-detect hadrons (so-called ``nuclear'' processes) and conversion
+of photons into a pair of muons (which are also difficult for the \ac{ecal} to detect).
 
-\todo[intro]{Need to introduce concepts of ``nuclear'' energy, trigger, reconstructed energy, and gamma conversion to muons in order to properly comment on the plot.}
+Nevertheless, we still can use a large, unbiased simulation sample in order to verify
+these previous conclusions and inform our decisions on how the subsequent biased samples
+should be produced.
+\cref{fig:rec-efrac-by-nuc} is a key piece of evidence along these lines
+where we separate the total reconstructed energy (the estimate from our detector)
+as a fraction of the known beam energy by the amount of energy going into these nuclear
+processes (so-called ``nuclear'' energy).
+We see that as more energy is given to these nuclear interactions,
+the reconstructed fraction decreases.
+Eventually, we reach a point where enough energy has gone to these nuclear interactions
+that we expect the event to be below the trigger threshold and be kept by the trigger
+system at a significant rate.
 
 \begin{figure}
   \centering
@@ -197,9 +215,19 @@ within the \ac{eat} analysis channel.
     &
     \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/8gev-ecal-by-nuc.pdf}
   \end{tabular}
-  \caption{}
+  \caption{The total reconstructed energy within the \ac{ecal} as a fraction of the beam energy
+  separated by the total nuclear energy within the event (the energy going into the photon-nuclear
+  and electron-nuclear processes).}
   \label{fig:rec-efrac-by-nuc}
 \end{figure}
+
+\cref{fig:rec-efrac-by-nuc} shows that a significant fraction of events whose total nuclear
+energy is greater than \qty{62.5}{\percent} of the beam energy fall below the threshold for
+the trigger.
+This figure also shows that there are other types of events that do not have much (if any)
+nuclear interactions (since their nuclear energy is less than \qty{10}{\percent} of the beam
+energy) but still are reconstructed below the trigger threshold.
+\todo[dimuon]{insert dimuon plot to show that these other events are dimuon events}
 
 \subsection{Expanding Production of these Processes}
 \todo[copy]{Copy background sample validation appendices from EaT internal note.}
