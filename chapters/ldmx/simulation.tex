@@ -84,7 +84,7 @@ namely electronic emulation and reconstruction, are not described further here; 
 be emphasized that all subsystems of \ac{ldmx} have their own custom implementations of these
 stages in order to realistically emulate and reconstruct the data within their subsystem.
 
-\subsection{Biasing and Filtering Technique}
+\subsection{Biasing and Filtering Technique} \label{sec:bias-and-filter}
 Many of the processes most interesting for a \ac{dm} search within \ac{ldmx} are rare relative to
 processes that are ``easier'' to reject by normal data processing.
 In many cases, the rarity of these more interesting processes is a computational roadblock
@@ -227,10 +227,54 @@ the trigger.
 This figure also shows that there are other types of events that do not have much (if any)
 nuclear interactions (since their nuclear energy is less than \qty{10}{\percent} of the beam
 energy) but still are reconstructed below the trigger threshold.
-\todo[dimuon]{insert dimuon plot to show that these other events are dimuon events}
+Further investigation reveals that these events are so-called ``di-muon'' events where
+a high-energy photon converts into a pair of muons within the \ac{ecal}.
+These two categories of processes -- nuclear and di-muon -- are the primary background
+processes since they mimic our missing energy trigger selection at a significant rate.
 
 \subsection{Expanding Production of these Processes}
-\todo[copy]{Copy background sample validation appendices from EaT internal note.}
+As mentioned in \cref{sec:bias-and-filter}, the unfiltered and unbiased simulation is
+not very efficient.
+In some sense, this shows that our basic trigger selection is doing a good job of
+rejecting the background processes that our analysis finds uninteresting;
+nevertheless, we need to efficiently sample events that contain these background processes
+at a large scale so we can analyze them in detail.
+This is where the biasing and filtering technique described above is employed --
+our main goal is to improve the speed with which we can generate events originating from
+these background processes while maintaining faithfulness to the unbiased and unfiltered distributions.
+
+The process of tuning these simulation variables is largely a guess-and-check one.
+We test a variety of different settings and see how they perform both in terms of
+their computational speed as well as their faithfulness to the underlying distributions.
+For our purposes, the filtering threshold $T_F$ can be estimated from the large unbiased
+and unfiltered sample since that sample contains events with these processes of interest.
+Specifically, \cref{fig:rec-efrac-by-nuc} displays a value of $T_F = 0.625E_\text{Beam}$ for
+the nuclear processes.
+More detailed study of the events residing in the low-side tail of the blue distribution
+showed that $T_F = 0.5E_\text{Beam}$ was a good choice for the di-muon process.
+
+The other threshold $T_B$ (which we also set to be $T_S$ in this work) is tightly coupled
+with the biasing factor $B$ and so we test them both together.
+A rather simple proxy for checking that the events sampled during biasing and filtering
+matches the underlying distribution is to inspect the longitudinal distribution of where
+the process ocurred.
+While the biasing and filtering should improve the speed of the simulation,
+it should not observably distort this distribution which roughly follows the development of
+the shower (an example of this is shown in \cref{fig:dimuon-z}).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ldmx/simulation/dimuon-z.pdf}
+  \caption{
+    Longitudinal location ($z$) where the $\mu^+$ was produced within the simulation
+    for a variety of biasing factors $B$.
+    The rate $R$ is the equivalent number of unbiased \ac{eot} divided by the CPU time
+    necessary to produce the sample.
+    We can observe that while increasing $B$ also improves the rate $R$,
+    we eventually over-bias and lose access to the late tail of the distribution (gray).
+  }
+  \label{fig:dimuon-z}
+\end{figure}
 
 \section{Dark Matter Signal}
 The particular signal process this analysis channel is looking for is the production of a dark
