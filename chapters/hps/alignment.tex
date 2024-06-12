@@ -124,9 +124,9 @@ the positions and orientations of all the sensors within a specific coordinate s
 This visualization is helpful for verifying that the detector model being used within the software
 is placing the sensors in expected positions and orientations. For example, we observe the $y$ and
 $z$ positions steadily increasing as the layer number of the sensor increases -- representing the
-opening angle as designed within \ac{hps}. Additionally, we see many of the sensors ``flipped''
-along one or more directions (the angle is $\pi \approx \qty{3141}{\milli\radian}$) which can be
-double checked against design and construction.
+opening angle as designed within \ac{hps}. Additionally, we apply the designed ``flipping'' of
+sensors (the factor of $\pm$ when calculating the angles with the axes)
+when plotting to make sure that the sensors in the model are with $\pi$ of their true orientation.
 
 \begin{figure}
   \centering
