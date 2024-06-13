@@ -228,16 +228,24 @@ This figure also shows that there are other types of events that do not have muc
 nuclear interactions (since their nuclear energy is less than \qty{10}{\percent} of the beam
 energy) but still are reconstructed below the trigger threshold.
 Further investigation reveals that these events are so-called ``di-muon'' events where
-a high-energy photon converts into a pair of muons within the \ac{ecal}.
+a high-energy photon converts into a pair of muons within the \ac{ecal} (\cref{fig:dimuon-confirm}).
 These two categories of processes -- nuclear and di-muon -- are the primary background
 processes since they mimic our missing energy trigger selection at a significant rate.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ldmx/simulation/dimuon-confirmation-hcal-hit-fraction.pdf}
+  \caption{Fraction of hits within the \ac{hcal} that were caused by muons or anti-muons.
+  The events lying within the zero bin still have \ac{hcal} hits caused by other types of particles.}
+  \label{fig:dimuon-confirm}
+\end{figure}
 
 \subsection{Expanding Production of these Processes}
 As mentioned in \cref{sec:bias-and-filter}, the unfiltered and unbiased simulation is
 not very efficient.
 In some sense, this shows that our basic trigger selection is doing a good job of
 rejecting the background processes that our analysis finds uninteresting;
-nevertheless, we need to efficiently sample events that contain these background processes
+nevertheless, we need to efficiently sample events that contain interesting background processes
 at a large scale so we can analyze them in detail.
 This is where the biasing and filtering technique described above is employed --
 our main goal is to improve the speed with which we can generate events originating from
@@ -251,7 +259,9 @@ and unfiltered sample since that sample contains events with these processes of 
 Specifically, \cref{fig:rec-efrac-by-nuc} displays a value of $T_F = 0.625E_\text{Beam}$ for
 the nuclear processes.
 More detailed study of the events residing in the low-side tail of the blue distribution
-showed that $T_F = 0.5E_\text{Beam}$ was a good choice for the di-muon process.
+showed that $T_F = 0.5E_\text{Beam}$ was a good choice for the di-muon process; however,
+since there were fewer events containing the di-muon process within this sample,
+other choices of $T_F$ were surveyed in order to confirm this value.
 
 The other threshold $T_B$ (which we also set to be $T_S$ in this work) is tightly coupled
 with the biasing factor $B$ and so we test them both together.
@@ -264,14 +274,19 @@ the shower (an example of this is shown in \cref{fig:dimuon-z}).
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/ldmx/simulation/dimuon-z.pdf}
+  \begin{tabular}{cc}
+    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/dimuon-z-4gev.pdf}
+    &
+    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/dimuon-z-8gev.pdf}
+  \end{tabular}
   \caption{
     Longitudinal location ($z$) where the $\mu^+$ was produced within the simulation
-    for a variety of biasing factors $B$.
+    for a variety of biasing factors $B$ for the 4 GeV beam (left) and 8 GeV beam (right).
     The rate $R$ is the equivalent number of unbiased \ac{eot} divided by the CPU time
     necessary to produce the sample.
     We can observe that while increasing $B$ also improves the rate $R$,
-    we eventually over-bias and lose access to the late tail of the distribution (gray).
+    we eventually over-bias and lose access to the late tail of the distribution
+    (red, puple, and brown in the left plot and gray in the right plot).
   }
   \label{fig:dimuon-z}
 \end{figure}
