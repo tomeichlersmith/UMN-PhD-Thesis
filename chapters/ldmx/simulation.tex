@@ -184,6 +184,30 @@ reject these backgrounds, we need to realistically simulate them within our dete
 These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
 \subsection{Dominate Contributors in this Analysis}
+First and foremost, the analysis given detail in \cref{chapter:ldmx:analysis} is focused
+on utilizing data collected with \ac{ldmx} that is not used in the nominal \ac{mm} analysis.
+This design goal produces two requirements on the samples we will analyze.
+\begin{itemize}
+  \item Same Trigger Requirement -- while designing a separate trigger for different analyses
+        is feasible, this specific analysis is focused on building off of the same data that
+        is collected for the primary \ac{mm} analysis.
+        Fortunately for this analysis, the trigger requirement for the primary \ac{mm} analysis
+        is one of missing energy within the \ac{ecal} making it a good trigger for this analysis
+        as well.
+  \item Opposite Tracking Requirement -- the primary \ac{mm} analysis enforces the assumption that
+        the processes of interest occur within the thin target; thus, the electron track leaving
+        the target (colloquially named the ``recoil'') is required to have less than
+        \qty{30}{\percent} of the beam energy. In this case, we flip this requirement and instead
+        require the electron to arrive at the \ac{ecal} with more than \qty{87.5}{\percent} of the
+        beam energy. While the application of this requirement would be done after the trigger
+        requirement in real data, for simulation we apply this requirement first so that the
+        simulation samples we are studying can be more efficiently produced.
+\end{itemize}
+All of the simulation samples studied here require the primary beam electron to arrive
+at the \ac{ecal} with more than \qty{87.5}{\percent} of its original energy.
+Once this requirement is imposed, we then turn our attention towards the processes
+that occur within the \ac{ecal}.
+
 Generally, we focus on processes that would cause the energy in the \ac{ecal} to be
 estimated at a significantly smaller value than the known beam energy.
 This ``missing'' energy is used as a key piece of evidence that the event in question
