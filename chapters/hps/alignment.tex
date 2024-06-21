@@ -160,7 +160,8 @@ This movement of the sensor positions within our detector model is all well-and-
 but we should actually be investigating how these movements affect the reconstructed
 physical variables of tracks when using the updated detector model.
 In general, the physical variables that should be investigated can depend on the
-priorities of the experiment; for \ac{hps} we wish to inspect
+priorities of the experiment; for this analysis within \ac{hps} we wish to inspect
+two key features.
 \begin{itemize}
   \item Momentum Magnitude -- the total magnitude of the momentum of the reconstructed
     track is a key component in all analyses done with \ac{hps} data and thus is a
@@ -171,19 +172,7 @@ priorities of the experiment; for \ac{hps} we wish to inspect
   \item Beamspot Position -- the extrapolation of the track back to the target is
     another helpful variable for analyses and can be checked directly since \ac{hps}
     has other means for estimating the beam spot on the target.
-  \item Position at \ac{ecal} -- this is helpful for making sure the \ac{svt} and
-    the \ac{ecal} are aligned relative to one another in the detector model.
 \end{itemize}
-
-Unfortunately, due to the number of possible parameters that could be tuned,
-the possibility of improving the alignment of the tracking detector is something
-that can always be done.
-Thus, while there is often a current ``best'' detector model, future analyzers
-may need to re-process data with a later (and hopefully improved) model that
-would be expected to be more accurate to the real detector that data was taken with.
-The results shown here are just this -- a snapshot of the progress in aligning the
-\ac{hps} \ac{svt}.
-
 In these results, we look at a specific subset of the data collected within \ac{hps}
 during 2016. This subset of the data uses a special trigger and analysis cuts that
 focus on selecting events where a \ac{fee} is captured within the \ac{hps} detector volume.
@@ -225,3 +214,12 @@ data was collected.
   the known beam value of \qty{2.3}{\giga\electronvolt}.}
   \label{fig:example-align-p}
 \end{figure}
+
+Unfortunately, due to the number of possible parameters that could be tuned,
+the possibility of improving the alignment of the tracking detector is something
+that can always be done.
+Thus, while there is often a current ``best'' detector model, future analyzers
+may need to re-process data with a later (and hopefully improved) model that
+would be expected to be more accurate to the real detector that data was taken with.
+The results shown here are just this -- a snapshot of the progress in aligning the
+\ac{hps} \ac{svt}.
