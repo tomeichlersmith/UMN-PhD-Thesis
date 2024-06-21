@@ -126,31 +126,31 @@ is placing the sensors in expected positions and orientations. For example, we o
 $z$ positions steadily increasing as the layer number of the sensor increases -- representing the
 opening angle as designed within \ac{hps}. Additionally, we apply the designed ``flipping'' of
 sensors (the factor of $\pm$ when calculating the angles with the axes)
-when plotting to make sure that the sensors in the model are with $\pi$ of their true orientation.
+when plotting to make sure that the sensors in the model are within $\pi/2$ of their true orientation.
 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-abs.pdf}
   \caption{Plotting all six global coordinates completely specifying position and orientation
-    of each of the sensors in the \ac{hps} tracking detector. Three different versions of the
-    in-software detector model are plotted; however, on this scale, they all overlap one another.}
+    of each of the sensors in the \ac{hps} tracking detector. Two different versions of the
+    in-software detector model are plotted; however, on this scale, they overlap one another.}
   \label{fig:example-det-vis-abs}
 \end{figure}
 
 Of more specific help is looking at the differences of these coordinates between multiple versions
 of the detector model. \cref{fig:example-det-vis-diff} demonstrates this strategy by subtracting
-the coordinates of the original detector model (``OG'') from the subsequent attempts to further
-align it. Specifically, we can observe that the alignment iterations only allowing translations
-along the vertical did in fact only change in the global $y$ direction. Similarly, when we allowed
-for rotations as well as these translations, some angles in the global frame changed (orange). In
-both cases, neither $x$ nor $z$ coordinates changed relative to the original model.
+the coordinates of the original detector model (``Original'') from aligned detector model (``Aligned'').
+Specifically, we can observe that the alignment iterations only allowed certain movements
+(for example, no translation along or rotation away from the global $z$ axis was allowed).
+The fact that these movements are very small shows that the physical survey which was done
+to define the Original detector was close in position and orientation.
 
 \begin{figure}
   \centering
   \includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-diff.pdf}
   \caption{Plotting all six global coordinates completely specifying position and
     orientation of each of the sensors in the \ac{hps} tracking detector relative to
-    the base detector ``OG'' from \cref{fig:example-det-vis-abs}. We can now observe
+    the ``Original'' detector from \cref{fig:example-det-vis-abs}. We can now observe
     the quantitative differences between the different versions.}
   \label{fig:example-det-vis-diff}
 \end{figure}
@@ -184,5 +184,44 @@ would be expected to be more accurate to the real detector that data was taken w
 The results shown here are just this -- a snapshot of the progress in aligning the
 \ac{hps} \ac{svt}.
 
-\todo[find]{find some figures of unaligned vs aligned physical quantities to show
-  that this process is necessary and helpful.}
+In these results, we look at a specific subset of the data collected within \ac{hps}
+during 2016. This subset of the data uses a special trigger and analysis cuts that
+focus on selecting events where a \ac{fee} is captured within the \ac{hps} detector volume.
+An \ac{fee} is an electron that passed through the target with minimal interaction and
+so its total energy is close to the known beam energy.
+This dataset provides a fertile ground for studying the alignment since we have
+knowledge about averages of two aspects of the tracks.
+The momentum magnitude of these tracks should be close to the known
+beam energy \qty{2.3}{\giga\electronvolt} and the transverse location of these tracks
+at the target should be near the origin.
+\cref{fig:example-align-d0} and \cref{fig:example-align-p} shows the comparison between
+the Original and Aligned detectors whose models were shown above.
+We can see that the Aligned detector achieves a tighter distribution in both of these
+variables for both the top and bottom half of the \ac{svt} meaning that this detector
+model is able to more precisely represent the true placement of the sensors when the
+data was collected.
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.49\textwidth]{figures/hps/alignment/d0_bottom.pdf}
+    &
+    \includegraphics[width=0.49\textwidth]{figures/hps/alignment/d0_top.pdf}
+  \end{tabular}
+  \caption{The transverse impact parameter of the tracks at the target
+  $d_0 = \sqrt{x_0^2+y_0^2}$ which should be centered on zero to align with
+  the known beamspot at the target.}
+  \label{fig:example-align-d0}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.49\textwidth]{figures/hps/alignment/p_bottom.pdf}
+    &
+    \includegraphics[width=0.49\textwidth]{figures/hps/alignment/p_top.pdf}
+  \end{tabular}
+  \caption{The magnitude of the track momenta which should be centered on
+  the known beam value of \qty{2.3}{\giga\electronvolt}.}
+  \label{fig:example-align-p}
+\end{figure}
