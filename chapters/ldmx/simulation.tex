@@ -391,6 +391,74 @@ libraries. In order to avoid duplicating the same event, a unique reference libr
 for each simulation run even when keeping the dark photon mass and beam energy the same.
 
 \subsection{Characterization}
-Describe how these samples "look"?
+These samples, as expected, show that the dark bremsstrahlung process can occur following
+normal shower development peaking at $\sim 1 X_0$ into the \ac{ecal} (with the exception of
+higher mass dark photon samples which are kinematically prevented from being generated further
+into the shower).
+\cref{fig:db-character-energy-and-z} shows some example distributions from these samples.
+We can observe the normal shower development behavior in the location of the dark bremsstrahlung
+and we can see the simulation-level cut on the dark photon energy at half the beam energy
+(in this case \qty{2}{\giga\electronvolt}) which is imposed to improve computational efficiency
+while maintaining trigger efficiency.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/ap_energy.pdf} &
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/db_z.pdf}
+  \end{tabular}
+  \caption{Distributions of simulated signal events with a \qty{4}{\giga\electronvolt} beam.
+  The energy of the produced dark photon is shown on the left while the longitudinal
+  location where the production occurred is on the right.}
+  \label{fig:db-character-energy-and-z}
+\end{figure}
+
+\section{Summary}
+While this chapter has been a long and winding road through the simulation infrastructure
+of \ac{ldmx}, the key feature that I would like to emphasize is that it is able to
+realistically simulate both background and signal processes within this search for \ac{dm}.
+These samples, after being thoroughly studied and validated, were enlarged to provide
+a sufficiently sized sample for the downstream analysis of \cref{chapter:ldmx:analysis}.
+Specifically, the background samples were generated to be statistically equivalent to
+\num{1e13} \ac{eot} and the signal samples were generated to provide $\sim \qty{1}{M}$
+events for each dark photon mass point to study selection efficiencies.
+\cref{tab:sample-summary} gives a summary of the configuration used to generate these
+samples.
+
+\begin{table}
+  \centering
+  \begin{tabular}{|c|c|c|}
+      \hline
+      Sample & Biasing Factor & Biasing Threshold
+      \\ \hline
+      Signal & $m_A^{\max(\log_{10}(m_A),2))}/\epsilon^2$ & $0.5E_\text{Beam}$
+      \\
+      Enriched Nuclear & $200$ & $0.375E_\text{Beam}$
+      \\
+      Di-Muon & $10^5$ & $0.5E_\text{Beam}$
+      \\
+      \hline \hline
+      Sample & \multicolumn{2}{c|}{Filtering Cuts}
+      \\ \hline
+      Unbiased  
+          & \multicolumn{2}{c|}{$E_{\text{primary}}^{\text{ECal Front}} \geq 0.875E_\text{Beam}$}
+      \\
+      Signal 
+          & \multicolumn{2}{c|}{$E_{\text{primary}}^{\text{ECal Front}} \geq 0.875E_\text{Beam}$ AND $E_{A'}\geq 0.5E_\text{Beam}$}
+      \\
+      Enriched Nuclear
+          & \multicolumn{2}{c|}{$E_{\text{primary}}^{\text{ECal Front}} \geq 0.875E_\text{Beam}$ AND $E_{\text{tot nuc}}\geq 0.625E_\text{Beam}$}
+      \\
+      Di-Muon
+          & \multicolumn{2}{c|}{$E_{\text{primary}}^{\text{ECal Front}} \geq 0.875E_\text{Beam}$ AND $E_{\text{tot}~\mu}\geq 0.5E_\text{Beam}$}
+      \\ \hline
+  \end{tabular}
+  \caption{Configuration of the simulation samples used in this analysis.
+  $E_\mathrm{beam}$ is the beam energy being studied ($4$ or $8$ GeV in this work).
+  $m_A$ is the mass of the A' in MeV, $\epsilon$ is the dark brem mixing strength,
+  $E_{\text{primary}}^{\text{ECal Front}}$ is the energy of the primary electron at the
+  front of the ECal, $E_{A'}$ is the energy of the generated A',
+  $E_{\text{tot nuc}}$ is the total energy transferred to nuclear interactions during the event,
+  and $E_{\text{tot}~\mu}$ is the total energy of produced muons.}
+  \label{tab:sample-summary}
+\end{table}
