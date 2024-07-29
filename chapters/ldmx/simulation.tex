@@ -15,7 +15,7 @@ used to do this simulation study.
 One of the core principles helping organize HEP data is the concept of an ``event.'' In the context
 of \ac{ldmx}, an event is the data collected within a small window of time around the arrival of a
 beam electron into our detector apparatus. In essence, each event within the software is
-independent from one another however they all share a similar structure to the information they
+independent from one another; however, they all share a similar structure to the information they
 hold. A natural example is a data table: a row has the same values in each of its columns as all
 the other rows. Events behave the same way; however, unlike a data table, the structure of an event
 can be more intricate than simply a series of values corresponding to different column titles.
@@ -37,7 +37,7 @@ framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo[c
 configuration. As diagramed in \cref{fig:ldmx:sim:data-flow}, the design is a sequential model: the
 ``event bus" stops at the individual processors in a certain sequence. The individual processors
 can inspect the data currently on the bus and board more passengers onto the bus for later
-processors to use and which are eventually serialized into the output ROOT file. The processors can
+processors to use and which can be eventually serialized into the output ROOT file. The processors can
 be built separately from the framework and then dynamically loaded and created at run-time by an
 abstract factory. This design choice allows for all of the computationally-intensive software tasks
 necessary for \ac{ldmx} (simulation, reconstruction and some analysis tasks) to use this framework
@@ -77,52 +77,53 @@ to separate them into natural groups that correspond to the different areas on w
 \end{figure}
 
 In this work (as the chapter title implies), we focus mainly on the detector simulation stage where
-data\todo[reword]{Distinguish ``data'' in software from the ``data'' of the experiment. What's
-  another word for data that isn't overloaded?} is randomly generated in a way geared towards
+events are produced using random sampling of relevant physical phase spaces in a way geared towards
 realistically modeling the detector and particles interacting with it. The downstream stages,
 namely electronic emulation and reconstruction, are not described further here; however, it should
 be emphasized that all subsystems of \ac{ldmx} have their own custom implementations of these
 stages in order to realistically emulate and reconstruct the data within their subsystem.
 
 \subsection{Biasing and Filtering Technique} \label{sec:bias-and-filter}
+\todo[set scale]{Give number of particle estimates to help set the scale of interactions and particles.}
 Many of the processes most interesting for a \ac{dm} search within \ac{ldmx} are rare relative to
 processes that are ``easier'' to reject by normal data processing.
 In many cases, the rarity of these more interesting processes is a computational roadblock
 since waiting for the entire detector simulation to complete before looking for these processes
-of interest wastes a lot of computer time when only one out of every ten thousand events actually
-contains a process we are interested in.
+of interest wastes a lot of computer time.
+Typically, only one out of every ten thousand events actually contains a process we are interested in.
 To make simulation of these processes more computationally feasible, we turn to the common simulation
 techniques of biasing (artificially increasing the probability of a certain process occurring) and
 filtering (ending the simulation of events if certain criteria are not met).
 
 In the \ac{eat} analysis channel, all of our interesting processes occur within the developing
 shower of particles in the \ac{ecal}.
-While more complicated that checking for proceesses happening to the single beam electron,
-we can enable looking for specific processes ocurring within this shower in a computationally
-efficient way be tuning the order with which the simulation processes particles.
-The detector simulation is focused only on particle-material interactions, so the order 
+While more complicated than checking for processes happening to the single beam electron,
+we can select specific processes occurring within this shower in a computationally
+efficient way by tuning the order with which the simulation processes particles.
+The detector simulation is focused only on particle-material interactions
+and the materials are assumed to not change significantly during these interactions, so the order 
 in which particles are simulated does not change how the physics is modeled.
 We choose to process particles in two groups -- ``high'' and ``low'' energy --
 where the high-energy particles are all processed before the low-energy particles.
-The border between these two (called the ``Sorting Threshold'') is configurable by the user and enables a specific function\footnote{
+The border between these two (called the ``Sorting Threshold'') is configurable by the user and
+enables a specific \textsc{Geant4} function\footnote{
 The \texttt{NewStage} function of any \texttt{STACKING} \texttt{UserAction}s. 
 } to be called mid-shower after all of the high-energy particles are processed
 (i.e. simulated until their total energy falls below the Sorting Threshold).
 
 Suppose we know from studying other (unbiased or low-bias) samples that showers need to have
-a minimum amount of energy ``going into'' a specific process of interest before the shower
+a minimum amount of energy entering a specific process of interest before the shower
 becomes ``important.''
 We can set this minimum energy (here called the ``Filtering Threshold'') as a requirement on
 the \ac{ecal} shower for the simulated event to be kept within the sample and, in order to
 improve the speed of the filtering, we can apply this requirment \emph{during} the simulation
 when the event transitions from the high-energy group to the low-energy group of particles.
 
-
 Now, this infrastructure of determining a minimum simulated energy and having an energy-based
 sorting of the processing order already helps improve the computational efficiency of these 
-simluation samples (from $\sim 6$k CPU-hours to $\sim 30$ CPU-hours for $\sim 1$B EoT equivalent); 
-nevertheless, it is still extremely slow and so we add biasing in order to artificially increase 
-the rate of the process we wish the sample to focus on.
+simluation samples (from $\sim 6$k CPU-hours to $\sim 30$ CPU-hours for $\sim 1$B EoT equivalent).
+Nevertheless, it is still extremely inefficient (most simulated events do not pass our filter requirements)
+and so we add biasing in order to artificially increase the rate of the process we wish the sample to focus on.
 Since the processes we are interested in biasing are connected to particles that are abundant
 within the electromagnetic \ac{ecal} shower, we need to require only particles above a
 certain energy threshold (the ``Biasing Threshold'') to avoid over-sampling of the process.
@@ -181,19 +182,18 @@ reject these backgrounds, we need to realistically simulate them within our dete
   \item Introduction of \emph{back scattering} $\pi^0$ in a $\gamma p \to \pi^0 p$ within a nuclear cascade
         (Appendix A.B of \cite{ldmx-whitepaper}).
 \end{enumerate}
-These updates enabled us to efficiently study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
+These updates enabled us to more reliably study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
 \subsection{Dominate Contributors in this Analysis}
-First and foremost, the analysis given detail in \cref{chapter:ldmx:analysis} is focused
+First and foremost, the \ac{eat} analysis detailed in \cref{chapter:ldmx:analysis} is focused
 on utilizing data collected with \ac{ldmx} that is not used in the nominal \ac{mm} analysis.
 This design goal produces two requirements on the samples we will analyze.
 \begin{itemize}
   \item Same Trigger Requirement -- while designing a separate trigger for different analyses
-        is feasible, this specific analysis is focused on building off of the same data that
+        is feasible, this specific analysis is focused on working with the same data that
         is collected for the primary \ac{mm} analysis.
-        Fortunately for this analysis, the trigger requirement for the primary \ac{mm} analysis
-        is one of missing energy within the \ac{ecal} making it a good trigger for this analysis
-        as well.
+        The trigger requirement for the primary \ac{mm} analysis is one of missing energy
+        within the \ac{ecal} making it an appropriate trigger for this analysis as well.
   \item Opposite Tracking Requirement -- the primary \ac{mm} analysis enforces the assumption that
         the processes of interest occur within the thin target; thus, the electron track leaving
         the target (colloquially named the ``recoil'') is required to have less than
@@ -217,7 +217,7 @@ From prior experience with \ac{ldmx} (e.g. \cite{ldmx-whitepaper,ldmx-photon-rej
 we expect certain types of standard processes to dominate the backgrounds that pass this
 trigger requirement on missing energy: interactions with the nuclei of the detector
 material producing hard-to-detect hadrons (so-called ``nuclear'' processes) and conversion
-of photons into a pair of muons (which are also difficult for the \ac{ecal} to detect).
+of photons into a pair of muons (which are also difficult for the \ac{ecal} to contain).
 
 Nevertheless, we still can use a large, unbiased simulation sample in order to verify
 these previous conclusions and inform our decisions on how the subsequent biased samples
@@ -251,8 +251,7 @@ the trigger.
 This figure also shows that there are other types of events that do not have much (if any)
 nuclear interactions (since their nuclear energy is less than \qty{10}{\percent} of the beam
 energy) but still are reconstructed below the trigger threshold.
-Further investigation reveals that these events are so-called ``di-muon'' events where
-a high-energy photon converts into a pair of muons within the \ac{ecal} (\cref{fig:dimuon-confirm}).
+Further investigation reveals that these events are indeed ``di-muon'' events (\cref{fig:dimuon-confirm}).
 These two categories of processes -- nuclear and di-muon -- are the primary background
 processes since they mimic our missing energy trigger selection at a significant rate.
 
@@ -344,7 +343,7 @@ our detector.
 
 With this focus in mind, we developed a dark bremsstrahlung simulation method that allows for the
 visible particle (the recoiling lepton) to be distributed according to a full matrix element
-calculation (via MG/ME) while the incident particle can have varied energy and be handled by Geant4
+calculation (via MG/ME) while the incident particle can have variable energy and be handled by Geant4
 directly. This novel simulation technique allows for the dark bremsstrahlung process to be treated
 (from Geant4's perspective) on the same footing as the background processes while maintaining the
 precision of a matrix-calculator method.
@@ -376,7 +375,7 @@ to generate the input refernece libraries for sample generation. This code is a 
   \item Updating the definition of the electron to include its small (but non-zero) mass to prevent
         divergence of the cross section at lower energies.
 \end{itemize}
-These updates, along with some wrapping code, enables the generation of
+These updates, along with some wrapping code, enable the generation of
 dark bremmstrahlung events for a range of target nuclei, incident energies,
 and either incident electrons or muons.
 
@@ -403,6 +402,8 @@ while maintaining trigger efficiency.
 
 \begin{figure}
   \centering
+  \todo[figure cleanup]{Comment about phase space requirement, maybe include showing
+  how the distribution evolves with the phase space requirement and then the trigger requirement.}
   \begin{tabular}{cc}
     \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/ap_energy.pdf} &
     \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/db_z.pdf}
@@ -416,7 +417,7 @@ while maintaining trigger efficiency.
 \section{Summary}
 While this chapter has been a long and winding road through the simulation infrastructure
 of \ac{ldmx}, the key feature that I would like to emphasize is that it is able to
-realistically simulate both background and signal processes within this search for \ac{dm}.
+efficiently and reliably simulate both background and signal processes within this search for \ac{dm}.
 These samples, after being thoroughly studied and validated, were enlarged to provide
 a sufficiently sized sample for the downstream analysis of \cref{chapter:ldmx:analysis}.
 Specifically, the background samples were generated to be statistically equivalent to
