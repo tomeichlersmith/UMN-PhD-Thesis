@@ -1,9 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% After generating data, what we do to select signal and prepare for search
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Analysis}
 \label{chapter:ldmx:analysis}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 One of the primary strengths of the \ac{ldmx} detector design is its ability to use the tagging and
 recoil tracker system to reject a large number of background events by separating a nominal beam
@@ -60,8 +56,42 @@ investigation was focused on making this investigation \emph{possible} via the i
 midshower process filtering and a dark bremsstrahlung simulatin process described in
 \cref{chapter:ldmx:simulation}.
 
-\section{Trigger}
-Use same on-line trigger as MM analysis.
+\section{Selection}
+The core goal of most search analyses is to develop a selection that avoids events known to be
+standard processes (i.e. backgrounds) while keeping events containing the process being searched
+for (in this case, the production of \ac{dm} via dark-bremsstrahlung).
+Both the \ac{eat} analysis channel and the primary \ac{mm} channel share the dark-bremsstrahlung
+signature of missing energy within the \ac{ecal} relative to the known incident beam energy.
+This allows for the first selection made to be shared between these two channels -- 
+a requirement that the sum of the observed energy in the first twenty layers of the \ac{ecal}
+is less than \qty{1.5}{\GeV} (\qty{3.16}{\GeV}) for a
+\qty{4}{\GeV} (\qty{8}{\GeV}) beam.
+This preliminary selection acts as the primary trigger for both of these analyses --
+selecting events that resemble dark-bremsstrahlung via their lower-than-average
+observed energy -- however, the \ac{eat} analysis channel in the early-running scenario
+may not be collecting data with a fully calibrated energy scale at the trigger level.
+The potential for mis-calibration motivates tightening this missing energy requirement
+by \qty{400}{\mega\electronvolt} as well as requiring the sum to be performed over all thirty-four
+layers of the \ac{ecal} instead of only the first twenty.
+
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}{cc}
+         \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/energy-after-trigger-4gev.pdf}
+         &
+         \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
+    \end{tabular}
+    \caption{
+    The total reconstructed energy in all layers of the ECal ($E_\text{ECAL}$) as a fraction of the beam energy
+    $E_\text{Beam}$ for all samples that pass the trigger threshold.
+    The signal and background distributions are normalized such that their integral is one.
+    The \qty{4}{\GeV} beam is shown on the left and the \qty{8}{\GeV} beam is shown
+    on the right.
+    The events falling into bins with $E_\text{ECAL} > \qty{1.5}{\GeV}~(\qty{3.16}{\GeV})$
+    for \qty{4}{\GeV} (\qty{8}{GeV}) are omitted from this plot but included in efficiency calculations.
+    }
+    \label{fig:ecal_rec_energy}
+\end{figure}
 
 \section{Cut and Count}
 List cuts for different beams, provide final background yields and signal efficiencies.
@@ -75,4 +105,3 @@ are done when estimating reach.
 Display reach of ME analysis with different background hypotheses and signal efficiencies motivated
 by findings above.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%}}}
