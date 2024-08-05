@@ -64,15 +64,16 @@ Both the \ac{eat} analysis channel and the primary \ac{mm} channel share the dar
 signature of missing energy within the \ac{ecal} relative to the known incident beam energy.
 This allows for the first selection made to be shared between these two channels -- 
 a requirement that the sum of the observed energy in the first twenty layers of the \ac{ecal}
-is less than \qty{1.5}{\GeV} (\qty{3.16}{\GeV}) for a
-\qty{4}{\GeV} (\qty{8}{\GeV}) beam.
+is less than \qty{1.5}{\GeV} (\qty{3.16}{\GeV}) for a \qty{4}{\GeV} (\qty{8}{\GeV}) beam.
 This preliminary selection acts as the primary trigger for both of these analyses --
 selecting events that resemble dark-bremsstrahlung via their lower-than-average
-observed energy -- however, the \ac{eat} analysis channel in the early-running scenario
+observed energy during data collection -- however, the \ac{eat} analysis channel in the early-running scenario
 may not be collecting data with a fully calibrated energy scale at the trigger level.
 The potential for mis-calibration motivates tightening this missing energy requirement
 by \qty{400}{\mega\electronvolt} as well as requiring the sum to be performed over all thirty-four
 layers of the \ac{ecal} instead of only the first twenty.
+\cref{fig:energy-after-trigger} shows the unit-normalized distributions of this total reconstructed
+energy within the \ac{ecal} after the trigger has been applied.
 
 \begin{figure}[htb]
     \centering
@@ -90,8 +91,90 @@ layers of the \ac{ecal} instead of only the first twenty.
     The events falling into bins with $E_\text{ECAL} > \qty{1.5}{\GeV}~(\qty{3.16}{\GeV})$
     for \qty{4}{\GeV} (\qty{8}{GeV}) are omitted from this plot but included in efficiency calculations.
     }
-    \label{fig:ecal_rec_energy}
+    \label{fig:energy-after-trigger}
 \end{figure}
+
+After this total energy requirement, there are still backgrounds left and those that remain are largely
+events where a significant fraction of the energy is carried by particles difficult to contain (or even observe)
+within the \ac{ecal} (neutrons, $K_L$, or muons for example).
+To suppress these types of persistent backgrounds, two more selections are applied.
+First, the event is required to have less than 10 photoelectrons deposited in any single bar of the \ac{hcal}
+-- $\max(\mathrm{PE}_\mathrm{HCal}) < 10$ -- well below the typical signal of a through-going muon of 80
+photoelectrons in any single bar.
+
+While this selection does a good job of removing events containing long-living particles, there are some
+events containing several low-energy particles that range out within the \ac{ecal} itself.
+These particles (often due to their number) distribute the energy over a range of cells,
+so we can suppress these events by requiring the spatial distribution of energy within the \ac{ecal} to be small.
+We choose to measure the spatial distribution using the energy-weighted root-mean-squared spread of the
+hits within the \ac{ecal}\footnote{
+  A ``hit'' is defined as a single cell within the \ac{ecal} registering a signal corresponding to 50\% of
+  the energy deposited by a typical muon or more during the event.
+}
+-- the \ac{ecal} Hit RMS -- which is typically larger for these background processes than for a single,
+truncated electromagnetic shower present within a signal event.
+We therefore require the \ac{ecal} Hit RMS to be less than \qty{20}{\mm}.
+
+These two selection variables are showin in \cref{fig:selection-variables}
+where the distributions are shown after all other selections are applied
+(including the trigger selection and the tighter selection on the total \ac{ecal} energy including all layers).
+\cref{tab:cutflow} shows how the tabulation of this selection for the studied simulation samples.
+\cref{fig:final-selection} shows the signal and background total \ac{ecal} energy distributions after
+these selections are applied where we can still observe difference in the shapes of these distributions which
+we will exploit in the final statistical analysis of these samples.
+
+\begin{figure}
+    \centering
+    \begin{tabular}{cc}
+        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-4gev-1e13norm.pdf} &
+        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-4gev-1e13norm.pdf} \\
+        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-8gev-1e13norm.pdf} &
+        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-8gev-1e13norm.pdf} \\
+    \end{tabular}
+    \caption{Variables used in signal selection for the \ac{eat} analysis channel.
+    In each figure, all other cuts are applied except for the variable in question.
+    Some of the bins are empty in which case the upper Poisson limit given the total
+    sample size is drawn with error bars.
+    The grey line shows the selection cut.
+    The background sample is the enriched nuclear and dimuon samples.
+    The top (bottom) row shows the \qty{4}{\GeV} (\qty{8}{\GeV}) beam.
+    }
+    \label{fig:selection-variables}
+\end{figure}
+
+\begin{table}[htb]
+    \centering
+    \input{tables/ldmx/cutflow}
+    \caption{
+      Cut-flow analysis comparing background and various signal hypotheses for the simple cuts used in this analysis.
+      The event yield for the background sample is calculated using the event weights
+      and represent the number of events out of $10^{13}$ EoT equivalent.
+      The signal efficiency is relative to the full simulation sample.
+      The efficiency and event yield values on a given row are for \emph{after} the analysis stage of that row.
+      The first table is the cutflow for the \qty{4}{\GeV} beam, and the second table is for the \qty{8}{\GeV} beam.
+    }
+    \label{tab:cutflow}
+\end{table}
+
+\begin{figure}[htb]
+    \centering
+    \begin{tabular}{cc}
+       \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-4gev.pdf}
+       &
+       \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-8gev.pdf}
+    \end{tabular}
+    \centering
+    \caption{The total reconstructed energy in all layers of the \ac{ecal} ($E_\text{ECAL}$)
+    as a fraction of the beam energy ($E_\text{Beam}$) for all samples that
+    pass the selection criteria except the selection on \ac{ecal} energy.
+    The \qty{4}{\GeV} beam is shown on the left and the \qty{8}{\GeV} beam is shown on the right.
+    The gray lines mark the edges of the analysis bins used to
+    estimate the expected exclusion limit and the black line is the upper limit
+    on the \ac{ecal} energy which also serves as the upper limit of an analysis bin.
+    }
+    \label{fig:final-selection}
+\end{figure}
+
 
 \section{Cut and Count}
 List cuts for different beams, provide final background yields and signal efficiencies.
