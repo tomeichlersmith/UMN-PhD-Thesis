@@ -115,7 +115,7 @@ hits within the \ac{ecal}\footnote{
 truncated electromagnetic shower present within a signal event.
 We therefore require the \ac{ecal} Hit RMS to be less than \qty{20}{\mm}.
 
-These two selection variables are showin in \cref{fig:selection-variables}
+These two selection variables are shown in \cref{fig:selection-variables}
 where the distributions are shown after all other selections are applied
 (including the trigger selection and the tighter selection on the total \ac{ecal} energy including all layers).
 \cref{tab:cutflow} shows how the tabulation of this selection for the studied simulation samples.
@@ -175,9 +175,63 @@ we will exploit in the final statistical analysis of these samples.
     \label{fig:final-selection}
 \end{figure}
 
+\section{Background Prediction}
+When performing a search for new processes, a common technique is to develop a well-motivated
+prediction for the background processes and then look for excesses above this prediction.
+Before we go through rigourously defining what an ``excess'' means and how to quantify
+what types of new processes we would exclude if no excess is observed,
+we should more precisely define what our background prediction is.
 
-\section{Cut and Count}
-List cuts for different beams, provide final background yields and signal efficiencies.
+We begin with fitting the cumulative background distribution with a simple exponential function.
+\cref{fig:bkgd-fit} shows this cumulative distribution, the resulting fit, and the 95\% confidence
+intervals surrounding the fit.
+This fit is a helpful prediction tool in two keys ways.
+The fit produces a meaningful prediction across the entire range of observable values
+which is a helpful way to ``smooth'' out this sample that is limited in size after the selection
+criteria already applied.
+Moreover, the fit uses the \qty{400}{\MeV}-wide control region between the upper limit on the total
+\ac{ecal} energy and the trigger threshold applied during readout to help constrain its parameters.
+This constraint reduces the uncertainty on the background prediction while also serving
+as an example of what an analysis using real data could do -- this same region could be utilized
+in order to help set the scale of the background in a data-driven way.
+
+\begin{figure}[htb]
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/4gev-cumulative-bkgd-fit.pdf}
+    &
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/8gev-cumulative-bkgd-fit.pdf}
+  \end{tabular}
+  \caption{%
+    Exponential fit of the total simulated background distribution.
+    The shaded region is a 95\% confidence band on the fit which is interpreted
+    as the uncertainty on the value of the fit.
+    Some bins in the simulated distribution are empty in which case the upper Poisson limit
+    given the sample size is drawn as an error bar in that bin.
+  }
+  \label{fig:bkgd-fit}
+\end{figure}
+
+The fit is then used to provide a background prediction within each of the three analysis bins,
+shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction for comparison.
+
+\begin{figure}[htb]
+  \centering
+  \begin{tabular}{cc}
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/4gev-integrated-bkgd-fit.pdf}
+    &
+    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/8gev-integrated-bkgd-fit.pdf}
+  \end{tabular}
+  \caption{%
+    Background prediction within the three final analysis bins (blue)
+    compared to the unconstrained simulation prediction in gray.
+    The uncertainty on the background prediction is taken from the 95\% confidence band
+    shown on the fit.
+    Some bins in the simulation prediction are empty in which case the upper Poisson limit
+    given the sample size is drawn as an error bar in that bin.
+  }
+  \label{fig:bkgd-pred}
+\end{figure}
 
 \section{Systematics and Background Uncertainty}
 Calibration errors (i.e. putting requirements on the accuracy of initial calibration for this
@@ -185,6 +239,8 @@ analysis to function) Estimate of background uncertainty informing how the toy c
 are done when estimating reach.
 
 \section{Reach}
+We can quantitatively define an excess above a prediction using a statistical technique like
+those implemented within \textsc{Combine}\todo[citation]{copy over Combine citation}.
 Display reach of ME analysis with different background hypotheses and signal efficiencies motivated
 by findings above.
 
