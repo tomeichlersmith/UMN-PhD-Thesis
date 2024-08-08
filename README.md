@@ -124,3 +124,31 @@ text instead of hanging over) and the `\spacerows{1.2}` command is defined in
     \end{center}
 \end{table}
 ```
+
+### tikz-feynman
+Need to manually patch warnings when not using LuaTeX (even if disabling the warning
+and manually placing vertices).
+- [Temporary Solution](https://github.com/JP-Ellis/tikz-feynman/issues/49)
+- [Issue for Updating Package](https://github.com/JP-Ellis/tikz-feynman/issues/72)
+
+Basically just comment-out the warning calls within the tex code.
+```
+sed -i 's|\\PackageWarning|%&|' tikzfeynman.keys.code.tex
+```
+For the `denv` compilation, I manually patch the installed version of the code within the container.
+```
+# retag base image for posterity
+docker tag danteev/texlive:{latest,base}
+# patch tikz-feynman source
+docker run danteev/texlive:base \
+  sed -i 's|\\PackageWarning|%&|' \
+  /usr/local/texlive/2023/texmf-dist/tex/latex/tikz-feynman/tikzfeynman.keys.code.tex
+# get ID of container that has the patch
+docker container ls -a
+# commit patched container to new image using name for denv
+docker commit <container-id-from-above> danteev/texlive:latest
+# remove container now that it has been committed to an image
+docker container rm <container-id>
+```
+Although this seems to just produce _more_ `Missing character` errors since these
+raw PGF commands floating around within `tikz` are not handled cleanly.
