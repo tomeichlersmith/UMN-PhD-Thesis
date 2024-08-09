@@ -234,11 +234,106 @@ shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction
 \end{figure}
 
 \section{Systematics and Background Uncertainty}
-Calibration errors (i.e. putting requirements on the accuracy of initial calibration for this
-analysis to function) Estimate of background uncertainty informing how the toy counting experiments
-are done when estimating reach.
+Besides the statistical uncertainty due to the finite size of the simulation sample,
+there is additional sources of uncertainty that originate from the experimental design
+(so-called ``systematic'' uncertainty).
+Most prominently in this early-running analysis, we expect mis-calibration of the \ac{ecal}
+to be a potentially major source of systematic uncertainty especially since the calibration
+of the \ac{ecal} used when applying the trigger selection will probably differ from the
+calibration used later on during the final analysis.\footnote{
+  This difference is expected since we can improve the calibration of the detector as we
+  collect more data; however, acknowledging this difference helps us put requirements on
+  the accuracy of the intial calibration used at the trigger level in order for this
+  analysis to function as expected.
+}
+Estimating this systematic uncertainty is rather direct; we simply vary the calibration
+used at the reconstruction and analysis stage within our data processing and see how that
+changes the results.\footnote{
+  The estimate for both the \ac{ecal} and \ac{hcal} systematics is done with the
+  \qty{4}{\GeV} beam sample since that estimate is expected to be more conservative
+  because the \qty{4}{\GeV} beam sample allows more background yield past its selections
+  compared to the \qty{8}{\GeV} beam sample.
+}
+
+We generated ten different calibrations, smearing the calibration constants by \qty{10}{\percent}
+in an uncorrelated fashion and by an additional, correlated \qty{2}{\percent} (\qty{5}{\percent})
+within the central (outer) modules of the \ac{ecal}.
+These ten different calibrations were then used to re-reconstruct the simulated events
+ten different times yielding \cref{fig:4gev-smeared-unsmeared-comp}
+and \cref{fig:4gev-smeared-unsmeared-ecal-hit-rms}.
+\cref{fig:4gev-smeared-unsmeared-comp:fail-trigger} reassures us that our signal region
+(below \qty{1.1}{\GeV}) is not polluted with events that would have failed the trigger
+selection even these rather large calibration changes relative to the trigger calibrations.
+In addition, we can roughly estimate the resulting systematic variation on the background
+event yield within the three final analysis bins to be \qty{5}{\percent} using
+\cref{fig:4gev-smeared-unsmeared-comp:pass-trigger}.
+The final selection on the \ac{ecal} Hit RMS is only affected negligibly as shown in
+\cref{fig:4gev-smeared-unsmeared-ecal-hit-rms}.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/systematics/4gev-fail-trigger-uncorrcell.pdf}
+    \caption{Events failing the original trigger.}
+    \label{fig:4gev-smeared-unsmeared-comp:fail-trigger}
+  \end{subfigure}%
+  ~
+  \begin{subfigure}[t]{0.49\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/systematics/4gev-pass-trigger-ana-bins-uncorrcell.pdf}
+    \caption{Events passing the original trigger and falling within one of the three
+    final analysis bins over $E_\text{ECAL}$.}
+    \label{fig:4gev-smeared-unsmeared-comp:pass-trigger}
+  \end{subfigure}
+  \caption{The total reconstructed energy in the \ac{ecal} $E_\text{ECAL}$ comparing 
+  ten different smeared calibrations (colors) to the original unsmeared calibrations
+  (black).}
+  \label{fig:4gev-smeared-unsmeared-comp}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ldmx/analysis/systematics/4gev-pass-trigger-uncorrcell-ecal-hit-rms.pdf}
+  \caption{Effect of smeared \ac{ecal} calibrations on the \ac{ecal} hit RMS for events
+  that pass the original trigger.
+  Outside of statistical fluctuations in the lowest-populated bins, the smearing has
+  a less than 5\% effect throughout the range of potential cuts.}
+  \label{fig:4gev-smeared-unsmeared-ecal-hit-rms}
+\end{figure}
+
+Estimating the systematic uncertainty due to the \ac{hcal} variable is not as
+straight forward since we are unsure on how best to directly alter the conditions
+with which the \ac{hcal} is reconstructed.
+We can still estimate the systematic uncertainty due to this cut variable
+by testing a wide range of cut variables, deducing which ones
+are ``acceptable'' and then extracting how the background yield varies between these
+different cut choices.
+(What's really happening is the underlying distribution might be shifting relative
+to our analysis cut, but we are mimicing this by shifting the cut relative to the
+distribution.)
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ldmx/analysis/systematics/max-pe-scan-4gev.pdf}
+  \caption{Various reach lines for the 4GeV beam case as we vary the cut on
+  maximum \ac{hcal} PE. We observe minimal movement in the final reach as a function
+  of this cut; nevertheless, the biggest change occurs around a threshold of 30.}
+  \label{fig:4gev-max-pe-scan}
+\end{figure}
+
+Figure \ref{fig:4gev-max-pe-scan} shows how the final reach (see \cref{sec:ldmx:analysis:reach})
+changes depending on this cut.
+While not much movement is observed, we can see separation ocurring when the threshold
+goves above $\sim 30$.
+With this in mind, we estimate our ``tolerance'' to a systematic error on the maximum
+\ac{hcal} PE to be $1 - B_{< 10}/B_{< 20}$ where $B_{< M}$ is the background yield
+with the maximum \ac{hcal} PE threshold $M$.
+This yields an analysis-bin-dependent systematic uncertainty of $0.0$, $0.6$, and $0.7$
+for the low, medium, and high $E_\text{frac}$ analysis bins respectively.
 
 \section{Reach}
+\label{sec:ldmx:analysis:reach}
 We can quantitatively define an excess above a prediction using a statistical technique like
 those implemented within \textsc{Combine}\todo[citation]{copy over Combine citation}.
 Display reach of ME analysis with different background hypotheses and signal efficiencies motivated
