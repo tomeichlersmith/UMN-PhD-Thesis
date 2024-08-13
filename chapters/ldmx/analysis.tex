@@ -334,8 +334,27 @@ for the low, medium, and high $E_\text{frac}$ analysis bins respectively.
 
 \section{Reach}
 \label{sec:ldmx:analysis:reach}
-We can quantitatively define an excess above a prediction using a statistical technique like
-those implemented within \textsc{Combine}\todo[citation]{copy over Combine citation}.
-Display reach of ME analysis with different background hypotheses and signal efficiencies motivated
-by findings above.
+We can quantitatively define an excess above a background prediction using statistical techniques
+like a one-sided Poisson-distributed p-value test; however, in this context it is often more helpful
+to characterize the signal models that would be excluded if the data was collected and it aligned
+with the background prediction.
+These ``exclusion estimates'' (colloquially referred to as ``reach'') rely on statistical tools
+that are common within \ac{hep} and implemented within \textsc{Combine}\cite{cms-combine}.
+\cref{fig:4gev-max-pe-scan} has already shown an example reach that varies depending on the value
+of the cut we choose to use during the selection; however, the final reach including the statistical
+and systematic uncertainties discussed above is shown in \cref{fig:reach}.
+The \ac{ldmx} \ac{eat} analysis channel is able to search through previously-unexplored phase space
+utilizing simple, physically-motivated cuts and $\sim \qty{2.5}{\percent}$ of the planned \ac{eot}
+for the first phase of \ac{ldmx}
 
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/ldmx/analysis/reach.pdf}
+  \caption{%
+    The sensitivity of the \ac{eat} analysis channel compared to
+    other experiments (gray), various theories (black), and \ac{ldmx} projections (colors).
+    The blue (orange) line corresponds to the \qty{4}{\GeV} (\qty{8}{\GeV}) beam studied in this work.
+    The red line is the nominal LDMX analysis sensitivity.
+  }
+  \label{fig:reach}
+\end{figure}
