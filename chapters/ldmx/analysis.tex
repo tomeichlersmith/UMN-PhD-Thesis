@@ -39,10 +39,10 @@ An initial study of the \ac{eat} analysis channel is the primary focus of \cref{
 thesis, focusing primarily on the first (short term) purpose. In this regard, we target an \ac{eot}
 that is reasonable to accomplish early in the running of \ac{ldmx} and avoids particularly
 intricate backgrounds. \num{1e13} \ac{eot} fits these requirements by avoiding the charged current
-production of neutrinos and represents $\sim\qty{10}{percent}$ of the first full \ac{ldmx} dataset
-obtainable within approximately a two weeks of beam time\footnote{ Assuming the \ac{ldmx} detector
-  apparatus and beam delivery is operating according to specifications, we expect the beam to be
-  delivered on a frequency of \qty{37.5}{\mega\hertz} with a duty cycle of $\approx$\num{0.5} and the
+production of neutrinos and represents $\sim\qty{10}{\percent}$ of the first full \ac{ldmx} dataset
+and is obtainable within approximately a two weeks of beam time\footnote{%
+  Assuming the \ac{ldmx} detector apparatus and beam delivery is operating according to specifications,
+  we expect the beam to be delivered on a frequency of \qty{37.5}{\mega\hertz} with a duty cycle of $\approx$\num{0.5} and the
   number of electrons within each bunch to be Poisson distributed with $\mu=1$.
   $\qty{37.5}{\mega\hertz}\times0.5\times P(\mu=1,1) \times\qty{2}{week}\approx\num{1e13}$~\ac{eot}.
 }. Since \ac{eat} is expected to be the \emph{first} physics analysis on \ac{ldmx} data, we want a
@@ -83,8 +83,7 @@ energy within the \ac{ecal} after the trigger has been applied.
          \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
     \end{tabular}
     \caption{
-    The total reconstructed energy in all layers of the ECal ($E_\text{ECAL}$) as a fraction of the beam energy
-    $E_\text{Beam}$ for all samples that pass the trigger threshold.
+    The total reconstructed energy in all layers of the ECal ($E_\text{ECAL}$).
     The signal and background distributions are normalized such that their integral is one.
     The \qty{4}{\GeV} beam is shown on the left and the \qty{8}{\GeV} beam is shown
     on the right.
@@ -97,10 +96,9 @@ energy within the \ac{ecal} after the trigger has been applied.
 After this total energy requirement, there are still backgrounds left and those that remain are largely
 events where a significant fraction of the energy is carried by particles difficult to contain (or even observe)
 within the \ac{ecal} (neutrons, $K_L$, or muons for example).
-To suppress these types of persistent backgrounds, two more selections are applied.
-First, the event is required to have less than 10 photoelectrons deposited in any single bar of the \ac{hcal}
--- $\max(\mathrm{PE}_\mathrm{HCal}) < 10$ -- well below the typical signal of a through-going muon of 80
-photoelectrons in any single bar.
+To suppress these types of persistent backgrounds, the event is required to have less than 10 photoelectrons
+deposited in any single bar of the \ac{hcal} -- $\max(\mathrm{PE}_\mathrm{HCal}) < 10$ --
+well below the typical signal of a through-going muon of 80 photoelectrons in any single bar.
 
 While this selection does a good job of removing events containing long-living particles, there are some
 events containing several low-energy particles that range out within the \ac{ecal} itself.
@@ -108,8 +106,8 @@ These particles (often due to their number) distribute the energy over a range o
 so we can suppress these events by requiring the spatial distribution of energy within the \ac{ecal} to be small.
 We choose to measure the spatial distribution using the energy-weighted root-mean-squared spread of the
 hits within the \ac{ecal}\footnote{
-  A ``hit'' is defined as a single cell within the \ac{ecal} registering a signal corresponding to 50\% of
-  the energy deposited by a typical muon or more during the event.
+  A ``hit'' is defined as a single cell within the \ac{ecal} registering a signal corresponding to 50\% (or more)
+  of the energy deposited by a typical muon during the event.
 }
 -- the \ac{ecal} Hit RMS -- which is typically larger for these background processes than for a single,
 truncated electromagnetic shower present within a signal event.
@@ -118,7 +116,7 @@ We therefore require the \ac{ecal} Hit RMS to be less than \qty{20}{\mm}.
 These two selection variables are shown in \cref{fig:selection-variables}
 where the distributions are shown after all other selections are applied
 (including the trigger selection and the tighter selection on the total \ac{ecal} energy including all layers).
-\cref{tab:cutflow} shows how the tabulation of this selection for the studied simulation samples.
+\cref{tab:cutflow} shows the tabulation of this selection for the studied simulation samples.
 \cref{fig:final-selection} shows the signal and background total \ac{ecal} energy distributions after
 these selections are applied where we can still observe difference in the shapes of these distributions which
 we will exploit in the final statistical analysis of these samples.
@@ -234,7 +232,8 @@ shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction
 \end{figure}
 
 \section{Systematics and Background Uncertainty}
-Besides the statistical uncertainty due to the finite size of the simulation sample,
+Besides the statistical uncertainty due to the finite size of the simulation sample
+(whose estimation is represented by the \qty{95}{\percent} confidence intervals around the fit),
 there is additional sources of uncertainty that originate from the experimental design
 (so-called ``systematic'' uncertainty).
 Most prominently in this early-running analysis, we expect mis-calibration of the \ac{ecal}
@@ -258,17 +257,20 @@ changes the results.\footnote{
 We generated ten different calibrations, smearing the calibration constants by \qty{10}{\percent}
 in an uncorrelated fashion and by an additional, correlated \qty{2}{\percent} (\qty{5}{\percent})
 within the central (outer) modules of the \ac{ecal}.
+These smearing factors are a conservative estimate of the accuracy of the initial calibrations
+used by the trigger to make data collection decisions.
 These ten different calibrations were then used to re-reconstruct the simulated events
 ten different times yielding \cref{fig:4gev-smeared-unsmeared-comp}
 and \cref{fig:4gev-smeared-unsmeared-ecal-hit-rms}.
 \cref{fig:4gev-smeared-unsmeared-comp:fail-trigger} reassures us that our signal region
 (below \qty{1.1}{\GeV}) is not polluted with events that would have failed the trigger
-selection even these rather large calibration changes relative to the trigger calibrations.
+selection even after these rather large calibration changes relative to the trigger calibrations.
 In addition, we can roughly estimate the resulting systematic variation on the background
 event yield within the three final analysis bins to be \qty{5}{\percent} using
 \cref{fig:4gev-smeared-unsmeared-comp:pass-trigger}.
 The final selection on the \ac{ecal} Hit RMS is only affected negligibly as shown in
-\cref{fig:4gev-smeared-unsmeared-ecal-hit-rms}.
+\cref{fig:4gev-smeared-unsmeared-ecal-hit-rms} where the distribution only chagnes by
+$\lessim\qty{5}{\percent}$ within the range of potential cuts.
 
 \begin{figure}
   \centering
@@ -309,7 +311,7 @@ We can still estimate the systematic uncertainty due to this cut variable
 by testing a wide range of cut variables, deducing which ones
 are ``acceptable'' and then extracting how the background yield varies between these
 different cut choices.
-(What's really happening is the underlying distribution might be shifting relative
+(What we want to be emulating is the underlying distribution shifting relative
 to our analysis cut, but we are mimicing this by shifting the cut relative to the
 distribution.)
 
