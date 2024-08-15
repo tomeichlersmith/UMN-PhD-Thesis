@@ -12,7 +12,7 @@ jobs:
     env:
       USE_DENV: false
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v4
     - uses: extractions/setup-just@v2
       with:
         just-version: 1.26.0
