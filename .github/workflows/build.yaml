@@ -6,10 +6,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     container: 'danteev/texlive:latest'
+    env:
+      USE_DENV: false
     steps:
     - uses: actions/checkout@v1
+    - uses: extractions/setup-just@v2
+      with:
+        just-version: 1.26.0
     - name: Build the Thesis
-      run: latexmk -pdf thesis.tex
+      run: just build
     - uses: actions/upload-artifact@v4
       with:
         name: Compiled Thesis
