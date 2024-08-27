@@ -48,7 +48,7 @@ The serialization portion of the framework is similarly dynamic; focusing on ena
 to add data structures from the most simple (e.g. individual booleans) to the most complicated
 (e.g. containers of custom classes). This wide array of data types is supported by ROOT's
 dictionary system during the serialization stage and abstract wrapper classes with
-partially-specialized template derivatives during run-time. This complexity within the framework is
+partially-specialized template derivatives during run-time. Such complexity within the framework is
 necessary in order to allow a simple interface -- one where the user interacts with simple and
 complex types in the same way.
 
@@ -56,15 +56,15 @@ Combining this highly dynamic serialization library with the sequential-processi
 at run-time gives a strong foundation for all of the software needs of \ac{ldmx}. Written in C++,
 this software framework enables high performance for all of the major data processing tasks
 necessary for the experiment. Moreover, its design focuses on flexibility and modularity so that
-seemingly disparate data processing tasks can be unified under one framework. Everything from
+seemingly-disparate data processing tasks can be unified under one framework. Everything from
 simulation to detector emulation to event reconstruction to analysis calculations can be done
 within this framework, reading and writing files from this framework and enabling our software to
 be well organized while also centralized in one location.
 
 \subsection{Data Processing Stages}
 The centralized nature of the \ac{ldmx} processing framework makes it much simpler to stay unified
-as a collaboration. Experts are allowed to work on their specialized area of the software and
-shares those improvements with the entire collaboration with ease. Since the flexibility of the
+as a collaboration. Experts are able to work on their specialized area of the software and
+share those improvements with the entire collaboration with ease. Since the flexibility of the
 framework allows for arbitrary groupings of these different data processing stages, we can choose
 to separate them into natural groups that correspond to the different areas on which experts focus
 (diagrammed in \cref{fig:ldmx:sim:data-stages}).
@@ -93,7 +93,7 @@ of interest wastes a lot of computer time.
 Typically, only one out of every ten thousand events actually contains a process we are interested in.
 To make simulation of these processes more computationally feasible, we turn to the common simulation
 techniques of biasing (artificially increasing the probability of a certain process occurring) and
-filtering (ending the simulation of events if certain criteria are not met).
+filtering (proactively ending the simulation of events if certain criteria are not met).
 
 In the \ac{eat} analysis channel, all of our interesting processes occur within the developing
 shower of particles in the \ac{ecal}.
@@ -184,7 +184,7 @@ reject these backgrounds, we need to realistically simulate them within our dete
 \end{enumerate}
 These updates enabled us to more reliably study the known and expected background processes interactions with the \ac{ldmx} detector design and compare this data to simulations of a model of a \ac{dm} production process.
 
-\subsection{Dominate Contributors in this Analysis}
+\subsection{Dominant Contributors in this Analysis}
 First and foremost, the \ac{eat} analysis detailed in \cref{chapter:ldmx:analysis} is focused
 on utilizing data collected with \ac{ldmx} that is not used in the nominal \ac{mm} analysis.
 This design goal produces two requirements on the samples we will analyze.

@@ -14,7 +14,7 @@ baseline detector configuration requires a thin ($\approx 0.1\mathrm{X}_0$) targ
 stages of \ac{ldmx}, when the total \ac{eot} will be lower, a different analysis strategy and
 detector configuration may be optimal to probe the largest amount of the $y$--$m_\chi$ phase
 space.\todo[introduce]{Provide MM search reach to help give conext to y and mchi.} The alternative
-strategy would ignore the dedicated target inside the tracker volume and instead use the \ac{ecal}
+strategy ignores the dedicated target inside the tracker volume and instead uses the \ac{ecal}
 as an active target. The \ac{eat} analysis channel for \ac{ldmx} thus has two primary purposes
 which can be separated by the timeline over which they are relevant.
 \begin{enumerate}
@@ -38,9 +38,10 @@ which can be separated by the timeline over which they are relevant.
 An initial study of the \ac{eat} analysis channel is the primary focus of \cref{part:ldmx} of this
 thesis, focusing primarily on the first (short term) purpose. In this regard, we target an \ac{eot}
 that is reasonable to accomplish early in the running of \ac{ldmx} and avoids particularly
-intricate backgrounds. \num{1e13} \ac{eot} fits these requirements by avoiding the charged current
-production of neutrinos and represents $\sim\qty{10}{\percent}$ of the first full \ac{ldmx} dataset
-and is obtainable within approximately a two weeks of beam time\footnote{%
+intricate backgrounds. A total of \num{1e13} \ac{eot} fits these requirements by avoiding the
+charged current production of neutrinos and represents $\sim\qty{10}{\percent}$
+of the first full \ac{ldmx} dataset which is obtainable within approximately a two weeks
+of nominal beam time\footnote{%
   Assuming the \ac{ldmx} detector apparatus and beam delivery is operating according to specifications,
   we expect the beam to be delivered on a frequency of \qty{37.5}{\mega\hertz} with a duty cycle of $\approx$\num{0.5} and the
   number of electrons within each bunch to be Poisson distributed with $\mu=1$.
@@ -67,9 +68,9 @@ a requirement that the sum of the observed energy in the first twenty layers of 
 is less than \qty{1.5}{\GeV} (\qty{3.16}{\GeV}) for a \qty{4}{\GeV} (\qty{8}{\GeV}) beam.
 This preliminary selection acts as the primary trigger for both of these analyses --
 selecting events that resemble dark-bremsstrahlung via their lower-than-average
-observed energy during data collection -- however, the \ac{eat} analysis channel in the early-running scenario
-may not be collecting data with a fully calibrated energy scale at the trigger level.
-The potential for mis-calibration motivates tightening this missing energy requirement
+observed energy during data collection -- however, the \ac{eat} analysis channel in the early-running
+scenario may not be collecting data with a fully calibrated energy scale at the trigger level.
+The potential for mis-calibration motivates tightening the analysis missing energy requirement
 by \qty{400}{\mega\electronvolt} as well as requiring the sum to be performed over all thirty-four
 layers of the \ac{ecal} instead of only the first twenty.
 \cref{fig:energy-after-trigger} shows the unit-normalized distributions of this total reconstructed
@@ -102,7 +103,7 @@ well below the typical signal of a through-going muon of 80 photoelectrons in an
 
 While this selection does a good job of removing events containing long-living particles, there are some
 events containing several low-energy particles that range out within the \ac{ecal} itself.
-These particles (often due to their number) distribute the energy over a range of cells,
+These particles (often due to their number) distribute energy over a range of cells,
 so we can suppress these events by requiring the spatial distribution of energy within the \ac{ecal} to be small.
 We choose to measure the spatial distribution using the energy-weighted root-mean-squared spread of the
 hits within the \ac{ecal}\footnote{
@@ -264,8 +265,9 @@ ten different times yielding \cref{fig:4gev-smeared-unsmeared-comp}
 and \cref{fig:4gev-smeared-unsmeared-ecal-hit-rms}.
 \cref{fig:4gev-smeared-unsmeared-comp:fail-trigger} reassures us that our signal region
 (below \qty{1.1}{\GeV}) is not polluted with events that would have failed the trigger
-selection even after these rather large calibration changes relative to the trigger calibrations.
-In addition, we can roughly estimate the resulting systematic variation on the background
+selection even after these rather large calibration changes relative to the trigger calibrations
+(i.e. we would not have overestimated our signal efficiency).
+In addition, we can estimate the resulting systematic variation on the background
 event yield within the three final analysis bins to be \qty{5}{\percent} using
 \cref{fig:4gev-smeared-unsmeared-comp:pass-trigger}.
 The final selection on the \ac{ecal} Hit RMS is only affected negligibly as shown in
