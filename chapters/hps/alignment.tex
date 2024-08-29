@@ -5,11 +5,18 @@ Particle detectors used to ``track'' particles (often called ``trackers'') large
 precisely measuring the position of the particle at several different points along its trajectory.
 From these position measurements, we are able to extract other, more physically helpful,
 measurements such as momentum and charge (as long as the particles move through a magnetic field so
-their resulting trajectory is curved in a well known shape). We will not go into the process of
-converting these position measurements into trajectories of individual particles (``tracks'') or
-estimating physical variables of these tracks. Instead, this serves as motivation: without precise
-knowledge of position, we are unable to precisely estimate momenta of particles -- significantly
+their resulting trajectory is curved in a well known shape).
+This process typically proceeds through two steps.
+In the first step, called ``pattern matching'', a set of hits is collected which could plausibly
+be from the path of a charged particle.
+In the second, ``track fitting'' step, the path and the momentum are determined from the
+hits taking into account the magnetic field and hit resolution.
+This serves as motivation: without precise knowledge of position,
+we are unable to precisely estimate momenta of particles -- significantly
 impacting the capabilities of the experiment.
+Inaccurate hit positions result in hits being left off tracks, included
+in tracks where they should not be, or negatively affecting the results
+of the track fitting.
 
 We need all of these position measurements to be relative to the same reference point (i.e. in the
 same coordinate system); thus, the process of measuring particle positions is practically done by
@@ -27,12 +34,14 @@ While there are different stragies to measure position within an individual sens
 (e.g. pixel vs strip tracking detectors), this measurement is not the limiting factor in the
 context of this chapter and is often the measurement whose precision is easier to characterize
 since the individual sensors can be designed, built, and tested individually for a pre-determined
-precision.
+precision relative to a well defined point, such as the center of the sensor.
 
-The second position measurement -- the global position of the sensors themselves -- is where a lot
-of complexity arises. We construct the detector and thus know where we put the sensors, but placing
+The second position measurement -- the global position and orientation of the sensors themselves
+-- is where a lot of complexity arises.
+We construct the detector and thus know where we put the sensors, but placing
 them into position with the precision we desire is extremely difficult (not to mention their
-position could shift slightly once the magnet is turned on).
+position could shift slightly once the magnet is turned on or due to thermal effects as
+the detector temperature changes).
 
 We can gain some understanding of the position precision required with the help of
 \cref{fig:momentum-error-from-position-error}. There, we see that the momentum error roughly scales
@@ -57,44 +66,52 @@ the \emph{relative} error, the overall scale of these measurements are an import
   \label{fig:momentum-error-from-position-error}
 \end{figure}
 
-Just to achieve a rough estimate of the scale of these position measurements, consider a
+To achieve a rough estimate of the scale of these position measurements, consider a
 \qty{2}{\giga\electronvolt} electron curving within a \qty{1}{\tesla} magnetic field. This electron
 would then have a \qty{6.6}{\meter} radius of curvature due to this magnetic field, meaning the
 position measurements within sensors separated by \qty{5}{\centi\meter} would change relative to
 one another by \emph{less than} \qty{1}{\milli\meter}. This absolute measurement of
-$\sim\qty{100}{\micro\meter}$ combined with the necessary \qty{1}{\percent} relative error means we
+$\sim\qty{100}{\micro\meter}$, combined with the necessary \qty{1}{\percent} relative error, means we
 need to know the position measurements to the level of \qty{1}{\micro\meter}.
 
 While we can determine the position of these sensors within millimeter precision during
-construction, gaining another few orders of magnitude in precision knowledge of position is not
-feasible with physical-access tools. \todo[phrasing]{not sure how to separate design position from
-  construction survey from post-construction survey from in-situ alignment measurements with beam
-  particles.} This motivates another measurement ``tool'' that allows us to determine (or more
+construction, we need an ``in-situ'' method which allows us to determine positions
+and angles during operation.
+This motivates another measurement ``tool'' that allows us to determine (or more
 accurately, constrain) the position measurements of our sensors.
 
 \section{Alignment Procedure}
-The tool that we choose to use is the same particles that we will use the tracker to study for our
+The tool that we use is the same particles that we will use the tracker to study for our
 experimental goals. The one change is instead of using the tracker to measure the properties of
 these particles, we will select particles according to our knowledge of their properties so that we
 can use them to constrain the position of the tracker sensors.
 
 This constraint is born out of concrete connection between the physical kinematics of the particles
-and the positions they record in the tracker sensors. We can imbue our knowledge of the shape of
-particle trajectories in magnetic field into the mathematical form of the equations that are fit to
-the position measurements. If the sensors in the detector model were in slightly different
-positions that where they are in the real detector, the data would present fits that are not as
-good (quantitatively, have a higher $\chi^2$). With this in mind, we can slightly ``move'' the
-sensors in the detector model with focus once improving the fits in the data (lowering the
-$\chi^2$). In order to account for the fact that individual tracks may still vary due to our
+and the positions they record in the tracker sensors.
+We can imbue our knowledge of the particle trajectories in the magnetic field into the
+mathematical form of the equations that are fit to the position measurements.
+The mathematical fitting process estimates the best values of the starting position and 3D momentum
+from a set of points given the assumed individual precision of these points.
+This produces a prediction of where the particle ``should have'' passed through each sensor.
+The difference (or ``error'') divided by the expected precision of the hits can be summed
+in quadrature to provide the $\chi^2$ -- a measure of how close the fit and the measurements
+are to one another.
+If the sensors in the detector model were in slightly different
+positions than where they are in the real detector, the data would present fits that are not as
+good (quantitatively, have a higher $\chi^2$).
+With this in mind, we can slightly ``move'' the sensors in the detector model in order to
+improve the fits in the data (lowering the $\chi^2$).
+In order to account for the fact that individual tracks may still vary due to our
 imperfect knowledge of their trajectory shapes (e.g. the trajectory shape assumes only soft
 interactions with the detector material but some tracks could have harder interactions distorting
 their trajectory), we do this procedure over many tracks at once and focus on improving all of
 their fits (minimizing the sum of their $\chi^2$).
 
-This technique relies on the movements of the sensors to be small. The process can easily fall into
-a so-called ``Weak Mode'' where our quantitative measure of how good the fits are is achieving a
-locally minimum value, but the trajectories do not actually align with data. This motivates a
-multi-stage approach to alignment after a tracking detector has already been built.
+This technique relies on the movements of the sensors to be small.
+The process can easily fall into a so-called ``Weak Mode'' where our quantitative measure of
+how good the fits are is achieving a locally minimum value, but the trajectories do not actually
+align with data.
+This motivates a multi-stage approach to alignment after a tracking detector has already been built.
 
 \begin{enumerate}
   \item \textbf{Survey}: Directly measure positions of the sensors relative to other
@@ -104,16 +121,19 @@ multi-stage approach to alignment after a tracking detector has already been bui
 \end{enumerate}
 
 Since physical measurements obtaining the precision we require are so difficult, the survey is
-often split into multiple, cascading measurements as well For example, the positions of the sensors
-are precisely determined relative to their mounting brackets which are then measured relative to
-the holding frame which is then measured relative to the global coordinates within which the
-experiment operates.
+often split into multiple, cascading measurements as well.
+For example, the positions of the sensors are precisely determined relative to their mounting
+brackets which are then measured relative to the holding frame which is then measured relative
+to the global coordinates within which the experiment operates.
 
 The second stage where we perform small movements of the sensors in order to optimize the fit of
-our data to our software detector model is also broken into many smaller stages. The most common
-way is to only allow a certain set of physically motivated movements to occur during certain
-alignment iterations. This can allow us to ``walk'' towards a detector model that is more aligned
+our data to our software detector model is also broken into many smaller stages.
+The most common way is to only allow a certain set of physically motivated movements to occur
+during certain alignment iterations.
+This can allow us to ``walk'' towards a detector model that is more aligned
 with the physical detector while maintaining physical understanding of the changes being made.
+
+\todo[more]{give more detail on software and what I actually did for HPS alignment}
 
 \section{Detector Visualization}
 
@@ -130,6 +150,7 @@ when plotting to make sure that the sensors in the model are within $\pi/2$ of t
 
 \begin{figure}
   \centering
+  \todo[rotate]{Try rotating figure by 90 degrees}
   \includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-abs.pdf}
   \caption{Plotting all six global coordinates completely specifying position and orientation
     of each of the sensors in the \ac{hps} tracking detector. Two different versions of the
@@ -137,8 +158,9 @@ when plotting to make sure that the sensors in the model are within $\pi/2$ of t
   \label{fig:example-det-vis-abs}
 \end{figure}
 
-Of more specific help is looking at the differences of these coordinates between multiple versions
-of the detector model. \cref{fig:example-det-vis-diff} demonstrates this strategy by subtracting
+The differences of these coordinates between multiple versions of the detector model
+provides deeper insight.
+\cref{fig:example-det-vis-diff} demonstrates this strategy by subtracting
 the coordinates of the original detector model (``Original'') from aligned detector model (``Aligned'').
 Specifically, we can observe that the alignment iterations only allowed certain movements
 (for example, no translation along or rotation away from the global $z$ axis was allowed).
@@ -147,6 +169,8 @@ to define the Original detector was close in position and orientation.
 
 \begin{figure}
   \centering
+  \todo[rotate]{Try rotating figure by 90 degrees}
+  \todo[figure]{Add $\Delta$ to the coordinate labels}
   \includegraphics[width=\textwidth]{figures/hps/alignment/example-det-vis-diff.pdf}
   \caption{Plotting all six global coordinates completely specifying position and
     orientation of each of the sensors in the \ac{hps} tracking detector relative to
