@@ -1,0 +1,3 @@
+[submodule "one-offs/eg-align/hps-align"]
+	path = one-offs/eg-align/hps-align
+	url = git@github.com:JeffersonLab/hps-align.git
