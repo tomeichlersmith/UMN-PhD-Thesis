@@ -133,16 +133,28 @@ during certain alignment iterations.
 This can allow us to ``walk'' towards a detector model that is more aligned
 with the physical detector while maintaining physical understanding of the changes being made.
 
-Specifically, \ac{hps} uses Kalman-Filtering for track finding,
+\ac{hps} uses Kalman-Filtering for track finding,
 General Broken Lines \cite{gbl-2012} V03-01-00 for track fitting accounting for multiple-scattering,
 and \textsc{MillepedeII} \cite{millepede-2011} V04-13-01 for determining alignment parameters
 by minimization of the total $\chi^2$.
+However, these tools are not enough to effectively align a tracking detector.
+The \ac{hps} \ac{svt} is relatively small but still contains several hundred alignment parameters.
+As mentioned above, the in-situ alignment procedure generally only allows for certain types
+of movements (i.e. only a certain set of parameters are allowed to change) during single
+alignment iterations, but then the natural question is what types of movements should be allowed.
+While some movements can be well-motivated on physical grounds (for example, moving the sensor
+along its own senstive direction), other movements may still be helpful and so many movement trails
+are required.
+This is where my specific work came in -- I (like several others) worked on testing different
+sets of movements to see if they could help improve the detector alignment.
+Along the way, I also helped develop a suite of helpful side-tools primarily focused
+on visualizing the movements of the model sensors that result from alignment iterations.
+This visualization is primarily helpful to see if the parameters resulting from the quantitative
+minimization algorithm produce realistic movements of the detector model.
 
 \section{Detector Visualization}
 
-In some sense, both of these stages inform the detector model and, as such, a critical piece of
-alignment is a quantitative visualization of this detector model and how it is being modified.
-\cref{fig:example-det-vis-abs} demonstrates a quantitative visualization used within \ac{hps} where
+\cref{fig:example-det-vis-abs} demonstrates a quantitative visualization where
 the positions and orientations of all the sensors within a specific coordinate system are shown.
 This visualization is helpful for verifying that the detector model being used within the software
 is placing the sensors in expected positions and orientations. For example, we observe the $y$ and
