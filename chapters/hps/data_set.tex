@@ -10,12 +10,41 @@ the real data.
 
 \section{Collected Data} \label{sec:hps:data}
 The data used in this study was collected over a series of 82 data collection runs within 2016
-yielding a total of \todo[lookup]{lookup how much total data was collected in 2016} days of
-continuous beam. The full luminosity of this data is estimated to be \qty{10.7}{pb^{-1}}. As
-alluded to in \cref{sec:hps-ecal}, the collected data was triggered in order to focus the sample on
-specific data of interest. The specifics of this trigger are important for simulation as well as
-understanding the accessibility of different models from this dataset. \todo[lookup]{details of
-  2016 pair-wise trigger should be copied in for reference.}
+yielding a total of approximately one week of continuous beam.
+The full luminosity of this data is estimated to be \qty{10.7}{pb^{-1}}.
+As alluded to in \cref{sec:hps-ecal}, the collected data was triggered in order to focus the sample on
+specific data of interest.
+
+\subsection{Pair 1 Trigger} \label{sec:hps:data:trigger}
+The trigger used for this and other physics analyses is the so-called ``Pair 1 Trigger''
+designed to select events where evidence for both an electron and positron have been found.
+This trigger algorithm combines requirements on the energies of the clusters formed at the trigger
+level along with the cluster locations.
+
+After the hits in the \ac{ecal} are clustered, the clusters are selected such that they are of
+high enough quality - implemented with energy $E$ and hit multiplicity $N$ cuts.
+$$
+  E_\mathrm{low} \leq E \leq E_\mathrm{high} \qquad N \geq N_\mathrm{min}
+$$
+With a beam energy of \qty{2.3}{\GeV}, we set $E_\mathrm{high}=\qty{1.4}{\GeV}$ to help remove
+near-full-energy beam electrons from being included within this trigger.
+$E_\mathrm{low} = \qty{0.15}{\GeV}$ and $N_\mathrm{min}=2$ are set to these values to suppress
+the effect of noise.
+
+All possible pairs of clusters passing these criteria where one of the pair is in the top half of
+the \ac{ecal} and the other is in the bottom are then tested with the pair-wise criteria below.
+
+\begin{itemize}
+  \item Energy Sum: $E_\mathrm{sum,low} \leq E_1+E_2 \leq E_\mathrm{sum,high}$ is meant to
+    remove noise (on the low side) and the common single-bremsstrahlung process (high side).
+  \item Energy Difference: $|E_1-E_2| \leq E_\mathrm{diff}$ is meant to select clusters
+    originating from the same particle
+  \item Energy Slope: $E_1 + r_1F \geq E_\mathrm{slope}$ accounts for the expected broadening
+    of a lower-energy particle's location in the magnetic field
+  \item Coplanarity: $|\tan^{-1}(x_1/y_1) - \tan^{-1}(x_2/y_2)| \leq \theta$ enforces the
+    idea that both clusters originated from the same particle
+\end{itemize}
+
 
 \section{Simulation} \label{sec:hps:sim}
 As mentioned the simulation goes through many steps in order to account for the different physics
