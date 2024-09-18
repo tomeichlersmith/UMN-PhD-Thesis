@@ -16,7 +16,7 @@ As alluded to in \cref{sec:hps-ecal}, the collected data was triggered in order 
 specific data of interest.
 
 \subsection{Pair 1 Trigger} \label{sec:hps:data:trigger}
-The trigger used for this and other physics analyses is the so-called ``Pair 1 Trigger''
+The trigger used for this and other physics analyses of the 2016 dataset is the so-called ``Pair 1 Trigger''
 designed to select events where evidence for both an electron and positron have been found.
 This trigger algorithm combines requirements on the energies of the clusters formed at the trigger
 level along with the cluster locations.
@@ -32,18 +32,51 @@ $E_\mathrm{low} = \qty{0.15}{\GeV}$ and $N_\mathrm{min}=2$ are set to these valu
 the effect of noise.
 
 All possible pairs of clusters passing these criteria where one of the pair is in the top half of
-the \ac{ecal} and the other is in the bottom are then tested with the pair-wise criteria below.
+the \ac{ecal} and the other is in the bottom are then tested with further pair-wise criteria.
+Let the top (bottom) cluster have energy $E_\mathrm{top}$ ($E_\mathrm{bot}$) and position
+$(x_\mathrm{top},y_\mathrm{top})$ ($(x_\mathrm{bot},y_\mathrm{bot})$) leading to radius
+$r_\mathrm{top} = \sqrt{x_\mathrm{top}^2+y_\mathrm{top}^2}$
+($r_\mathrm{bot} = \sqrt{x_\mathrm{bot}^2+y_\mathrm{bot}^2}$).
 
-\begin{itemize}
-  \item Energy Sum: $E_\mathrm{sum,low} \leq E_1+E_2 \leq E_\mathrm{sum,high}$ is meant to
-    remove noise (on the low side) and the common single-bremsstrahlung process (high side).
-  \item Energy Difference: $|E_1-E_2| \leq E_\mathrm{diff}$ is meant to select clusters
-    originating from the same particle
-  \item Energy Slope: $E_1 + r_1F \geq E_\mathrm{slope}$ accounts for the expected broadening
-    of a lower-energy particle's location in the magnetic field
-  \item Coplanarity: $|\tan^{-1}(x_1/y_1) - \tan^{-1}(x_2/y_2)| \leq \theta$ enforces the
-    idea that both clusters originated from the same particle
-\end{itemize}
+The total energy of both clusters $E_\mathrm{top}+E_\mathrm{bot}$ is bounded below
+by $E_\mathrm{sum,low}$ to remove noise and above by $E_\mathrm{sum,high}$ to reduce
+the common single-bremsstrahlung background process.
+The clusters are required to have an absolute difference $|E_\mathrm{top}-E_\mathrm{bot}| < E_\mathrm{diff}$
+to select cluster pairs originating from the same particle.
+The energy and position of the lower-energy cluster is required to satisfy
+$E + r F \geq E_\mathrm{slope}$ which accounts for the expected bending of
+the lower-energy particle's location in the magnetic field (which is failed
+by clusters originating from photons which do not bend in the magnetic field).
+$F$ is determined from the geometry of the detector and strength of magnetic
+field to be $\qty{5.5}{\MeV\mm^{-1}}$.
+Finally, the clusters are required to be coplanar within an angle $\phi$ to
+again select for clusters originating from the same particle.
+$$
+  |\tan^{-1}(x_\mathrm{top}/y_\mathrm{top}) - \tan^{-1}(x_\mathrm{bot}/y_\mathrm{bot})| < \phi
+$$
+
+These requirements and the values selected for their thresholds are summarized
+in \cref{tab:pair-1-trigger}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|r|c|c|}
+    \hline
+    Description & Variable & Value \\ \hline
+    Single-Cluster Energy Minimum & $E_\mathrm{low}$ & \qty{0.15}{\GeV} \\
+    Single-Cluster Energy Maximum & $E_\mathrm{high}$ & \qty{1.40}{\GeV} \\
+    Single-Cluster Hit Count Minimum & $N_\mathrm{min}$ & 2 \\
+    \hline
+    Cluster Pair Energy Sum Minimum & $E_\mathrm{sum,low}$ & \qty{0.60}{\GeV} \\
+    Cluster Pair Energy Sum Maximum & $E_\mathrm{sum,high}$ & \qty{2.00}{\GeV} \\
+    Cluster Pair Energy Difference Maximum & $E_\mathrm{diff}$ & \qty{1.14}{\GeV} \\
+    Low-Energy Cluster Slope Minimum & $E_\mathrm{slope}$ & \qty{0.70}{\GeV} \\
+    Cluster Pair Azimuthal Difference Maximum & $\phi$ & \qty{35}{\degree} \\
+    \hline
+  \end{tabular}
+  \caption{Values for cuts used within the Pair 1 Trigger during data collection of the HPS 2016 dataset.}
+  \label{tab:pair-1-trigger}
+\end{table}
 
 
 \section{Simulation} \label{sec:hps:sim}
