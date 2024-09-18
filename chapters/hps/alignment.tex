@@ -133,8 +133,8 @@ during certain alignment iterations.
 This can allow us to ``walk'' towards a detector model that is more aligned
 with the physical detector while maintaining physical understanding of the changes being made.
 
-\ac{hps} uses Kalman-Filtering for track finding,
-General Broken Lines \cite{gbl-2012} V03-01-00 for track fitting accounting for multiple-scattering,
+\ac{hps} uses \ac{kf} for track finding,
+\ac{gbl} \cite{gbl-2012} V03-01-00 for track fitting accounting for multiple-scattering,
 and \textsc{MillepedeII} \cite{millepede-2011} V04-13-01 for determining alignment parameters
 by minimization of the total $\chi^2$.
 However, these tools are not enough to effectively align a tracking detector.

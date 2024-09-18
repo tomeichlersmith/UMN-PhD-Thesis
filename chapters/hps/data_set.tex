@@ -83,8 +83,8 @@ in \cref{tab:pair-1-trigger}.
 As mentioned the simulation goes through many steps in order to account for the different physics
 processes that are of interest in a realistic fashion. In general, these steps are
 \begin{enumerate}
-  \item Generation -- using a tool like {\sc MadGraph/MadEvent}\todo[citation]{MG/ME citation} to generate
-        specific events from Feynman diagrams
+  \item Generation -- using a tool like \textsc{MadGraph/MadEvent}\cite{madgraph4-2004,madgraph5-2014}
+        to generate specific events from Feynman diagrams
   \item Displacement -- if the sample expects to have the decay products be displaced (for example in the
         SIMP signal process), displace these decay products with a \emph{uniform} distribution of decay
         lengths to allow for re-weighting.
@@ -94,14 +94,35 @@ processes that are of interest in a realistic fashion. In general, these steps a
 After this emulation stage, we can treat the simulation the same as the collected data,
 applying the reconstruction and further analysis manipulatiuons and selections.
 
-Moreover, simulated samples of standard data allows us to study how the detector responds in the
-absence of such a signal process. These samples are produced in a similar way as iDM signal - just
-with a different original generation step initializing the event (and inserting the physical
-displacement distribution instead of a uniform one).
+Both simulated samples of standard processes as well as hypothetical signal processes proceed this way
+just with a different original generation step initializing the event. For standard processes, we also
+use a physical displacement distribution as understood from prior measurements rather than a uniform
+one that is more helpful for reweighting later in analysis.
 
 \section{Reconstruction}
-\todo[lookup]{Brief overview of how events are reconstructed,
-  especially with regard to tracks and vertices.}
+Detail on how \ac{hps} reconstructs its electronic signals into physical variables is
+outside the scope of this work; nevertheless, a short summary is helpful to provide
+context for the following analysis. \todo[reference]{where could reader find more detail on HPS recon?}
+
+The two subsystems are first reconstructed separately.
+The \ac{ecal} produces clusters of nearby hits whose energy
+have been corrected by more refind calibration tables.
+The \ac{svt} produces tracks using \ac{kf} to find tracks
+and \ac{gbl} to fit these tracks to the detector model including
+the possibility of in-detector small scatters.
+Tracks are then paired with clusters whose position and energy
+are close to what the track's position and energy would be at
+the \ac{ecal} - such pairs are referred to as reconstructed
+particles.
+Pairs of reconstructed particles are then used to deduce a
+vertex by determing a best-fit location for where the two tracks
+intersect one another.
+The vertex pairs used within this analysis are required to reside
+within opposite volumes (i.e. one particle has a track (cluster)
+in the top half of the \ac{svt} (\ac{ecal}) and the other has its
+constituents in the bottom half); however, vertices from pairs
+without this requirement are reconstructed and available for
+other analyses.
 
 \section{Analysis Pre-Selection}
 The final stage that all events go through is a rudimentary pre-selection which simplifies the
