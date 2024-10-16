@@ -26,3 +26,7 @@ watch:
 # open compiled pdf
 view:
     open thesis.pdf
+
+# build slides
+slides:
+    cd slides && {{ latexmk }} -outdir=obj/ slides.tex
