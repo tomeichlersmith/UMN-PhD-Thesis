@@ -2,81 +2,8 @@
 % thesis.tex: Primary TeX control file for thesis.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \documentclass[11pt, oneside]{mnthesis}
-\usepackage{epsfig} % Allows the inclusion of eps files
-\usepackage{epic} % Enhanced picture mode
-\usepackage{eepic} % Extensions for epic
-%\usepackage{units} % SI unit typesetting
-\usepackage{url} % URL handling
-\usepackage{longtable} % Tables that continue onto multiple pages
-\usepackage{mathrsfs} % Support for \mathscr script
-\usepackage{multirow} % Span rows in tables
-\usepackage{bigstrut} % Space struts in tables up and down
-\usepackage{amssymb} % AMS math symbols and helpers
-\usepackage{graphicx} % Enhanced graphics support
-\usepackage{setspace} % Adjust spacing in captions, single by default
-\usepackage{xspace} % Automatically adjusting space after macros
-\usepackage{amsmath} % \text, and other math formatting options
-\usepackage{siunitx} % \num{} formatting and SI unit formatting
-\usepackage{booktabs} % Enhanced tables with \toprule, etc.
-\usepackage{hyperref} % Add clickable links to other parts of the document
-\usepackage[noabbrev,capitalise]{cleveref} % Automatically determine \cref type
-\usepackage[compat=1.1.0]{tikz-feynman} % for feynman diagrams
-\tikzfeynmanset{
-    warn luatex = {false}
-}
-\usepackage{subcaption}
-
-\usepackage{acronym}
-\acrodef{dm}[DM]{Dark Matter}
-\acrodef{sm}[SM]{Standard Model}
-\acrodef{gr}[GR]{General Relativity}
-\acrodef{cmb}[CMB]{Cosmic Microwave Background}
-\acrodef{bao}[BAO]{Baryon Acoustic Oscillations}
-\acrodef{hep}[HEP]{High Energy Physics}
-\acrodef{wimp}[WIMP]{Weakly Interacting Massive Particle}
-\acrodef{ecal}[ECal]{Electromagnetic Calorimeter}
-\acrodef{hcal}[HCal]{Hadronic Calorimeter}
-\acrodef{ldmx}[LDMX]{Light Dark Matter eXperiment}
-\acrodef{hps}[HPS]{Heavy Photon Search experiment}
-\acrodef{jlab}[JLab]{Thomas Jefferson National Accelerator Laboratory}
-\acrodef{cebaf}[CEBAF]{Continuous Electron Beam Accelerator Facility}
-\acrodef{kf}[KF]{Kalman Filter}
-\acrodef{gbl}[GBL]{General Broken Lines}
-\acrodef{svt}[SVT]{Silicon Vertex Tracker}
-\acrodef{bdt}[BDT]{Boosted Decision Tree}
-\acrodef{eot}[EoT]{Electrons on Target}
-\acrodef{eat}[EaT]{\ac{ecal} as Target}
-\acrodef{mm}[MM]{Missing Momentum}
-
-\acrodef{fee}[FEE]{Full Energy Electron}
-
+\input{preamble}
 \usepackage{todo}
-
-% Configure the siunitx package
-\sisetup{
-    group-separator = {,}, % Use , to separate groups of digits, like 12,345
-    list-final-separator = {, and } % Always use the serial comma in \SIlist
-}
-
-%Environment for drawing on pictures using tikz
-%   #1 Width to adjust image to (default: \textwidth)
-%   #2 Filepath to image
-%Use like:
-%   \begin{tikzimage}[height]{filepath}
-%       ...\draw...( coordinates are in fractions of width/height of image )
-%   \end{tikzimage}
-\newenvironment{tikzimage}[2][\textwidth]{%
-    \begin{tikzpicture}
-        \node[anchor=south west, inner sep=0] (image) at (0,0)
-            {\includegraphics[width=#1]{{#2}}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-}{%
-        \end{scope}
-    \end{tikzpicture}
-}%
-
-% Configure the cleveref package
-\newcommand{\creflastconjunction}{, and } % Always use the serial comma
 
 \linespread{1.3}
 

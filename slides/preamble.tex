@@ -1,3 +1,4 @@
+\input{../preamble}
 
 %fecking magic
 \geometry{mag=1600,truedimen}
@@ -11,16 +12,11 @@
 \definecolor{UMNLightGray}{RGB}{213,214,210}
 
 \usepackage{textpos}
-\usepackage{graphicx} % Allows including images
-\usepackage{multirow}
 \usepackage{epstopdf}
 \usepackage{beamerthemesplit}
 \usepackage{soul}
 \usepackage{xifthen}
-\usepackage{tikz}
 \usepackage{listings}
-\usepackage{siunitx}
-\usepackage{xspace}
 \definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
 \lstdefinestyle{mystyle}{
@@ -166,23 +162,6 @@
 }{%
     \end{column}
   \end{columns}
-}%
-
-%Environment for drawing on pictures using tikz
-%   #1 Height to adjust image to (default: 0.4\textheight)
-%   #2 Filepath to image
-%Use like:
-%   \begin{tikzimage}[height]{filepath}
-%       ...\draw...( coordinates are in fractions of width/height of image )
-%   \end{tikzimage}
-\newenvironment{tikzimage}[2][0.4\textheight]{%
-    \begin{tikzpicture}
-        \node[anchor=south west, inner sep=0] (image) at (0,0)
-            {\includegraphics[height=#1]{{#2}}};
-        \begin{scope}[x={(image.south east)},y={(image.north west)}]
-}{%
-        \end{scope}
-    \end{tikzpicture}
 }%
 
 

@@ -1,12 +1,28 @@
-\documentclass[aspectratio=169]{beamer}
-\input{preamble-update.tex}
-\input{both-style.tex}
+\documentclass[notes,aspectratio=169]{beamer}
+\usepackage{pgfpages}
+\input{preamble}
+\input{both-style}
+%\setbeamertemplate{note page}[plain]
+%\setbeamertemplate{show notes on second screen=right}
 
-\usepackage{hepunits}
-\newcommand{\fourgev}{\qty{4}{GeV}\xspace}
-\newcommand{\eightgev}{\qty{8}{GeV}\xspace}
-\newcommand{\ecal}{ECal}
-\newcommand{\hcal}{HCal}
+\newcommand{\ssection}[2]{%
+  \section{#1}%
+  \begin{frame}[label={#2}]%
+    \vfill%
+    \centering%
+    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}%
+        \usebeamerfont{title}#1\par%
+    \end{beamercolorbox}%
+    \vfill%
+  \end{frame}%
+}%
+
+\newenvironment{sframe}[1]{%
+  \subsection{#1}%
+  \begin{frame}{#1}%
+}{%
+  \end{frame}%
+}%
 
 \title[Fixed Target Searches]{Fixed Target Searches for Dark Matter Production}
 
@@ -16,12 +32,143 @@
   \maketitle
 \end{frame}
 
-\begin{frame}{Background}
+\note[itemize]{
+\item Welcome, I'll be talking about my disseration research focused
+  on two fixed target experiments (HPS and LDMX) looking for the production
+  of dark matter.
+\item Please offer feedback -- first attempt to unify the two experiments into one talk.
+\item Trying to focus on making talk cohesive
+}
+
+\begin{frame}{Outline}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \tableofcontents
+    \end{column}
+    \begin{column}{0.5\textwidth}
+    \end{column}
+  \end{columns}
 \end{frame}
 
-\sectionframe{LDMX}
+\note[itemize]{
+\item Background to get us on the same footing and using the same vocabulary
+\item Motivate category of DM that experiments are searching for
+\item Go through my analyses within both experiments
+}
 
-\sectionframe{HPS}
+\ssection{Background}{background}
+
+\subsection{HEP Vocabulary}
+
+\begin{frame}{Standard Model}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \includegraphics[width=\textwidth]{../figures/intro/Standard_Model_of_Elementary_Particles.svg.png}
+        \caption{Credit to user Cush on wikipedia for providing this diagram.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      \begin{itemize}
+        \item \boldcol{UMNSunny}{Law} -- summary of a set of consistent observations about phenomena
+        \item \boldcol{UMNSunny}{Model} -- package of ``laws'' and their mathematical forms from which we can make predictions about future observations
+      \end{itemize}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Laws are summaries of observations and models
+  are just packaging these laws with some mathematical sugar
+\item The SM is the most quantitatively accurate physics model ever known to human kind.
+\item It is a package of particles and their interactions (also represented by particles)
+  from which we can -- with a specific mathematical framework -- make predictions about
+  our observations.
+\item \textbf{BUT} it fails to account for all observed phenomena (e.g. \emph{gravity})
+}
+
+%\begin{frame}{Feynman Diagram}
+%\end{frame}
+%
+%\begin{frame}{Particle Mixing}
+%  \begin{columns}
+%    \begin{column}{0.4\textwidth}
+%      \begin{figure}
+%        \includegraphics[width=\textwidth]{%
+%          ../figures/intro/Kaon-box-diagram-with-bar.pdf%
+%        }
+%        \caption{Figure created by user NikNaks on Wikipedia.}
+%      \end{figure}
+%    \end{column}
+%  \end{columns}
+%\end{frame}
+%
+%\begin{frame}{Displaced Decay Vertices}
+%  \begin{columns}
+%    \begin{column}{0.5\textwidth}
+%      \begin{figure}
+%        \begin{tikzimage}[0.6\textwidth]{../figures/intro/bubble-chamber.jpeg}
+%          \definecolor{brilliantrose}{rgb}{1.0, 0.33, 0.64}
+%          % \draw[step=0.1,black,thin] (0.0,0.0) grid (1.0,1.0);
+%          \node (prod) at (0.4,0.54) {};
+%          \node[circle,draw=brilliantrose] (decay) at (0.515,0.54) {};
+%          \draw[dashed,brilliantrose,thick] (prod) -- (decay);
+%      
+%          \node (beam1) at (0.1,0.5) {\color{brilliantrose}\(\pi^-\)};
+%          \node (beam2) at (0.2,0.5) {};
+%          \draw[->,brilliantrose,thick] (beam1) -- (beam2);
+%        \end{tikzimage}
+%        \caption{Image of CERN's first liquid hydrogen bubble chamber from 1960.}
+%      \end{figure}
+%    \end{column}
+%  \end{columns}
+%\end{frame}
+
+\subsection{Dark Matter}
+\begin{frame}{Dark Matter}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[width=\textwidth]{../figures/theory/rotation-curve-evidence-for-dm.png}
+        \caption{Stuff is spinning too fast!}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \includegraphics[width=\textwidth]{%
+          ../figures/intro/bullet-cluster.jpg
+        }
+        \caption{Gravitational lensing (blue) and infrared (pink) observations
+        show mass in different places!}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item One of the phenomena the SM doesn't account for is DM
+\item We know it exists
+}
+
+\begin{frame}{Thermal Relic Dark Matter}
+  \begin{block}{Narrow Wealth of Possibilities}
+    Make the simple assumption that \ac{dm} has always been here.
+  \end{block}
+  \vfill
+  \begin{figure}
+    \centering
+    \input{../figures/theory/mass-scale}
+    \caption{Mass scale of Thermal Relic \ac{dm}.
+      The regions in red are excluded by applying the thermal relic assumption
+      to our observations of the universe's early evolution.}
+    \label{fig:dm-mass-scale}
+  \end{figure}
+  \boldcol{UMNSunny}{Both LDMX and HPS are searching for production of Light DM with electrons.}
+\end{frame}
+
+\ssection{LDMX}{ldmx}
+
+\ssection{HPS}{hps}
 
 \begin{backup}
 
