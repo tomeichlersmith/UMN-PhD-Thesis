@@ -9,16 +9,9 @@
 \setbeameroption{show notes}
 %\setbeameroption{show notes on second screen}
 
-\newcommand{\ssection}[2]{%
+\newcommand{\ssection}[1]{%
   \section{#1}%
-  \begin{frame}[label={#2}]%
-    \vfill%
-    \centering%
-    \begin{beamercolorbox}[sep=8pt,center,shadow=true,rounded=true]{title}%
-        \usebeamerfont{title}#1\par%
-    \end{beamercolorbox}%
-    \vfill%
-  \end{frame}%
+  \sectionframe{#1}%
 }%
 
 \newenvironment{sframe}[1]{%
@@ -28,7 +21,9 @@
   \end{frame}%
 }%
 
-\title[Fixed Target Searches]{Fixed Target Searches for Dark Matter Production}
+\title[Fixed Target DM Searches: HPS and LDMX]{%
+  Searches for Dark Matter Production in Two Fixed Target Experiments: HPS and LDMX%
+}
 
 \begin{document}
 
@@ -50,6 +45,9 @@
       \tableofcontents
     \end{column}
     \begin{column}{0.5\textwidth}
+      \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector.png}
+      \\
+      \includegraphics[width=\textwidth]{../figures/hps/experiment/hps-diagram.pdf}
     \end{column}
   \end{columns}
 \end{frame}
@@ -60,7 +58,7 @@
 \item Go through my analyses within both experiments
 }
 
-\ssection{Background}{background}
+\ssection{Background}
 
 \subsection{HEP Vocabulary}
 
@@ -76,6 +74,7 @@
       \begin{itemize}
         \item \boldcol{UMNSunny}{Law} -- summary of a set of consistent observations about phenomena
         \item \boldcol{UMNSunny}{Model} -- package of ``laws'' and their mathematical forms from which we can make predictions about future observations
+        \item \boldcol{UMNSunny}{Orthogonal} -- used to emphasize that two different analyses are statistically independent
       \end{itemize}
     \end{column}
   \end{columns}
@@ -182,9 +181,127 @@
 \item Particles are lighter than WIMPs so referred to as Light DM
 }
 
-\ssection{LDMX}{ldmx}
+\begin{frame}{A Benchmark Model}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \input{../figures/theory/enable-dark-mixing}
+        \caption{Heavy field $\Phi$ enabling mixing between standard and dark photons.}
+      \end{figure}
 
-\ssection{HPS}{hps}
+      The required connection between standard and dark sector provides an
+      effective mixing of the standard and dark photons at our energy scales.
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \centering
+        \input{../figures/theory/dark-brem}
+        \caption{Dark bremsstrahlung process.}
+      \end{figure}
+      
+      Mixing allows for a new process producing dark particles
+
+      \boldcol{UMNSunny}{Both HPS and LDMX search for this production mechanism}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item The thermal relic assumption combined with curiosity for the lower masses
+  requires the introduction of a new field which is presumably much heavier
+  (i.e. harder to produce and observe) than our current energies.
+\item This required connection does provide an effictive mixing of the standard
+  and dark photons (like how kaons can mix) at our energy scales
+\item Allowing for this mixing then gives a new process that can produce
+  dark particles in our experiments -- dark bremsstrahlung
+\item Both HPS and LDMX search for dark brem; however, they have different
+  tactics to look for it
+}
+
+\ssection{LDMX}
+
+\note[itemize]{
+\item First, let's talk about the experiment I started with
+\item The Light Dark Matter eXperiment is a \textbf{Missing Momentum} search for
+  the dark bremsstralung production of dark particles with an electron beam
+\item i.e. We assume that the dark photon that is produced ``stays in'' the dark sector
+  and the momentum it had is not observable by our detector
+}
+
+\subsection{Experiment}
+\begin{frame}{Missing Momentum Search}
+  \begin{columns}
+    \begin{column}{0.25\textwidth}
+      \begin{block}{To Do MM Search}
+        Need faithful ID of even very rare SM processes
+      \end{block}
+    \end{column}
+    \begin{column}{0.7\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/ldmx/experiment/reaction_staircase_with_designDrivers.pdf}
+        \caption{Credit to Tim Nelson}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item LDMX, as mentioned, is a MM search and, to do MM, we need to be able to faithfully
+  ID very rare SM processes
+\item Here is a diagram of prominent SM processes ordered by their relative rate
+\item Blue -- high rate processes that we can ID with fast total energy calculation 
+  (given we know how many electrons are coming in)
+\item Pink -- rarer processes that are more complicated requiring more granular
+  information about what happens to the products of the electron's interactions
+  (hadronic calorimeter, silicon recoil tracker)
+\item Red -- very rare processes that we will not be able to remove
+  (but could constrain using measurements of these processes by other experiments)
+}
+
+\begin{frame}{Experiment}
+  \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector.png}
+\end{frame}
+
+\note[itemize]{
+\item These processes motivate a staged design consisting of a tracker (tagger
+  for incoming and recoil for outgoing), ECal for electrons/positrons and photons,
+  HCal for hadrons (e.g. protons/neutrons) and muson, and a TrigScint to
+  quickly count electrons and help ECal make trigger decision in time.
+\item Hosted at SLAC Natl Accelerator Lab, recieving beam from LCLS-II 
+\item Beam facility upgrading from \qty{4}{\GeV} to \qty{8}{\GeV}, LDMX may see
+  some \qty{4}{\GeV} beam depending on how schedules line up but a majority
+  of data will be taken with \qty{8}{\GeV}
+}
+
+\subsection{New, Orthogonal Analysis Channel}
+\begin{frame}{Using the ECal as Target}
+\end{frame}
+
+\subsection{Sensitivity in Early Running}
+\begin{frame}{Sensitivity in Early Running}
+\end{frame}
+
+\ssection{HPS}
+
+\subsection{Experiment}
+\begin{frame}{Experiment}
+\end{frame}
+
+\subsection{Dark Sector Model}
+\begin{frame}{Strongly-Interacting Dark Sector}
+\end{frame}
+
+\subsection{Orthogonal Reconstruction Categories}
+\begin{frame}{L1L1 and L1L2}
+\end{frame}
+
+\subsection{Cut Optimization Procedure}
+
+\subsection{Subsample Results}
+
+\ssection{Conclusion}
 
 \begin{backup}
 
