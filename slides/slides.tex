@@ -261,22 +261,75 @@
 }
 
 \begin{frame}{Experiment}
-  \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector.png}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector.png}
+    \caption{Credit to Christian Herwig for original diagram}
+  \end{figure}
 \end{frame}
 
 \note[itemize]{
-\item These processes motivate a staged design consisting of a tracker (tagger
-  for incoming and recoil for outgoing), ECal for electrons/positrons and photons,
-  HCal for hadrons (e.g. protons/neutrons) and muson, and a TrigScint to
-  quickly count electrons and help ECal make trigger decision in time.
+\item These processes motivate a staged design
+  \begin{itemize}
+    \item a tracker (tagger for incoming and recoil for outgoing)
+    \item ECal for electrons/positrons and photons
+    \item HCal for hadrons (e.g. protons/neutrons) and muons
+    \item a TrigScint to quickly count electrons and help ECal make trigger decision in time.
+  \end{itemize}
 \item Hosted at SLAC Natl Accelerator Lab, recieving beam from LCLS-II 
 \item Beam facility upgrading from \qty{4}{\GeV} to \qty{8}{\GeV}, LDMX may see
   some \qty{4}{\GeV} beam depending on how schedules line up but a majority
   of data will be taken with \qty{8}{\GeV}
+\item \textbf{Thin target to help momentum resolution.} -- most electrons pass through
+  only minimally interacting
+\item Can we still use this data we would collect anyways?
 }
 
 \subsection{New, Orthogonal Analysis Channel}
 \begin{frame}{Using the ECal as Target}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector-eat-signal.png}
+    \caption{Credit to Christian Herwig for original diagram}
+  \end{figure}
+\end{frame}
+
+\note[itemize]{
+\item Yes we can!
+\item If the dark brem process exists and would happen in the thin target,
+  it would also happen within other parts of our detector -- namely the ECal
+  which has a lot of material and would recieve similar numbers of electrons as
+  the target
+\item Use the Ecal as another Target for our dark brem search
+\item Shift focus to \textbf{Missing Energy} search
+\item Use upstream detectors to confirm near-beam-energy electron entering ECal \\
+  (orthogonality condition, MM search requires significant loss within thin target)
+\item ECal has more material $\to$ more ``chances'' for dark brem to happen \\
+  (about $\sim 3$ times more when accounting for acceptance and trigger efficiency)
+}
+
+\begin{frame}{Familiar Culprits}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{../figures/ldmx/simulation/8gev-ecal-by-nuc.pdf}
+        \caption{\footnotesize Reconstructed energy fraction separated by 
+        energy going into nuclear processes.}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{block}{Simulation Requirement}
+        Electron reaches ECal with $> 87.5\%$ of the original beam energy.
+      \end{block}
+
+      Standard processes mimicking our signal are similar to thin-target analysis
+      \begin{itemize}
+        \item ``Nuclear'' processes (electrons and photons interacting with nuclei to produce hadrons)
+        \item Muon pair production (via high-energy photon)
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \subsection{Sensitivity in Early Running}
