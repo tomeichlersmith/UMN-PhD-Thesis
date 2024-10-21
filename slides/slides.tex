@@ -364,18 +364,79 @@
 
 \ssection{HPS}
 
+\note[itemize]{
+\item HPS takes a different approach towards searching for dark brem
+\item Instead of looking for extra events with missing energy/momentum,
+  we look for extra events with a specific reconstructed quantities
+}
+
 \subsection{Experiment}
 \begin{frame}{Experiment}
+  \includegraphics[width=\textwidth]{../figures/hps/experiment/hps-diagram.pdf}
 \end{frame}
+
+\note[itemize]{
+\item Searching for highly-displaced electron-positron pairs with specific mass
+\item High rate of incident electrons to overcome mixing twice
+  \begin{itemize}
+    \item[$\to$] most pass through thin target without much interaction\
+    \item[$\to$] hole in detector to let this high rate of (uninteresting) electrons pass without
+  irradiating detector
+  \end{itemize}
+\item ECal to quickly observe multiple candidate particles and make data collection decision
+\item Silicon Vertex Tracker to reconstruct tracks and vertices
+\item Benefits
+  \begin{itemize}
+    \item Physical quantities come with any DM observation
+    \item More specific event topology required for standard process to be considered background
+  \end{itemize}
+\item Downsides
+  \begin{itemize}
+    \item Need to ``go through'' mixing twice and thus need much higher data volume
+    \item Dark sector needs to be ``more defined'' so we can predict
+      how it decays back into standard particles
+  \end{itemize}
+\item Many possible dark sectors yield the correct thermal relic abundance
+\item Choose one to focus on for further analysis
+}
 
 \subsection{Dark Sector Model}
 \begin{frame}{Strongly-Interacting Dark Sector}
+  \begin{columns}
+    \begin{column}{0.6\textwidth}
+      \begin{figure}
+        \input{../figures/hps/experiment/dark-brem-simp-decay}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+      {\color{UMNMaroon}
+      \textbf{S}trongly-\textbf{I}nteracting \\
+      \textbf{M}assive \textbf{P}articles
+      }
+      \begin{itemize}
+        \item Dark sector contains ``dark quarks'' -- $\pi_D$ and $V_D$ are mesons like
+          standard $\pi$ and $\rho$
+        \good Decouples production rate from decay rate
+        \bad  Missing energy lost to $\pi_D$ during decay chain
+      \end{itemize}
+      $$
+        m_\mathrm{reco} = m_{V_D} \qquad
+        z_\mathrm{reco} \sim e^{-z/(c\tau_{V_D})}
+      $$
+    \end{column}
+  \end{columns}
 \end{frame}
+
+\note[itemize]{
+\item HPS's 2016 dataset is relatively small meaning a simpler dark sector that has
+  the dark photon decaying back to electron-positron pair itself was not reachable
+\item SIMPs decouple the production and decay rate allowing real sensitivity for HPS
+  within this smaller dataset
+}
 
 \subsection{Orthogonal Reconstruction Categories}
 \begin{frame}{L1L1 and L1L2}
 \end{frame}
-
 \subsection{Cut Optimization Procedure}
 
 \subsection{Subsample Results}

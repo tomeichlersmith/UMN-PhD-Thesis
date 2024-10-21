@@ -37,31 +37,7 @@ particles, has a greater potential of being observed within \ac{hps} and is disc
 
 \begin{figure}
   \centering
-  \begin{tikzpicture}
-    \begin{feynman}
-      \vertex (a) {$e^{-}$};
-      \vertex [right= of a](d);
-      \vertex [below=of d, blob,label={below:$Z$}] (e) {};
-      \vertex [right= of d] (b);
-      \vertex [above right= of b] (g) {$e^{-}$};
-      \vertex [below right= of b] (aprime_decay);
-      \vertex [below right= of aprime_decay] (rhod_decay);
-      \vertex [above right= of aprime_decay] (dm) {$\pi_D$};
-      \vertex [below right= of rhod_decay] (i);
-      \vertex [above right= of i] (j) {$e^{-}$};
-      \vertex [below right= of i] (k) {$e^{+}$};
-      \diagram*[large] {
-      (a) -- [fermion] (d),
-      (d) -- [boson] (e),
-      (d) -- [fermion] (b),
-      (b) -- [fermion] (g),
-      (b) -- [boson, edge label={$A'$}] (aprime_decay) -- [double, edge label={$V_D$}] (rhod_decay),
-      (aprime_decay) -- [scalar] (dm),
-      (rhod_decay) -- [boson, edge label={$A'^*$}] (i),
-      (k) -- [fermion] (i) -- [fermion] (j),
-      };
-    \end{feynman}
-  \end{tikzpicture}
+  \input{figures/hps/experiment/dark-brem-simp-decay}
   \caption{
     Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair
     through SIMP composite particle $V_D$ with the emission of a lighter SIMP composite particle $\pi_D$.
