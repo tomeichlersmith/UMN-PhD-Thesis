@@ -30,3 +30,29 @@ view:
 # build slides
 slides:
     cd slides && {{ latexmk }} -outdir=obj/ slides.tex
+
+# present slides with pympress
+present: slides
+    cd slides && pympress obj/slides.pdf
+
+# make sure this location can present with pympress
+init-present:
+  #!/bin/sh
+  sudo apt-get install \
+    python3 \
+    python3-pip \
+    libgtk-3-0 \
+    libpoppler-glib8 \
+    libcairo2 \
+    python3-gi \
+    python3-cairo \
+    python3-gi-cairo \
+    gobject-introspection \
+    libgirepository-1.0-1 \
+    libgirepository1.0-dev \
+    gir1.2-gtk-3.0 \
+    gir1.2-poppler-0.18
+  cd slides
+  python3 -m venv venv --system-site-packages --prompt present
+  . venv/bin/activate
+  pip install pympress

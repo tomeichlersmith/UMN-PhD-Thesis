@@ -7,7 +7,7 @@
 \usepackage{pgfpages}
 \setbeamertemplate{note page}[plain]
 \setbeameroption{show notes}
-%\setbeameroption{show notes on second screen}
+\addtobeamertemplate{note page}{}{\thispdfpagelabel{notes:\insertframenumber}}
 
 \newcommand{\ssection}[1]{%
   \section{#1}%
@@ -917,6 +917,22 @@
 \ssection{Conclusion}
 
 \begin{frame}{Conclusion}
+  Many ways to search for many types of \ac{dm}
+  
+  \begin{block}{LDMX}
+    Missing momentum/energy search still in preparatory stages
+  \end{block}
+
+  \begin{block}{HPS}
+    Excess highly-displaced events at specific mass searching within
+    data for different \ac{dm} models
+  \end{block}
+
+  \begin{center}
+    \color{UMNSunny}
+    Both enable investigation of novel phase space
+    in physics' quest to find \ac{dm}
+  \end{center}
 \end{frame}
 
 \begin{backup}
