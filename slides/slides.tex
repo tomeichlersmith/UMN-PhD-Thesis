@@ -75,6 +75,7 @@
         \item \boldcol{UMNSunny}{Law} -- summary of a set of consistent observations about phenomena
         \item \boldcol{UMNSunny}{Model} -- package of ``laws'' and their mathematical forms from which we can make predictions about future observations
         \item \boldcol{UMNSunny}{Orthogonal} -- used to emphasize that two different analyses are statistically independent
+%        \item \boldcol{UMNSunny}{Event} -- a piece of data (one ``row'' of our data ``table''), a short period of time around a single electron entering the detector volume
       \end{itemize}
     \end{column}
   \end{columns}
@@ -338,7 +339,7 @@
     \item ``Nuclear'' processes
     \item ``Di-Muon'' production via high-energy photons
   \end{itemize}
-\item 
+\item Handling these background will depend on the volume of data we collect
 }
 
 \subsection{Sensitivity in Early Running}
@@ -353,14 +354,244 @@
     \begin{column}{0.55\textwidth}
       \begin{itemize}
         \item Targeting $\sim 5$ expected signal events for a few possible thermal relic models
-        \item 
+        \item Focus on \num{1e13} \ac{eot}
+        \item $\sim\qty{2}{week}$ nominal beam time
+      \end{itemize}
+
+      \begin{block}{Early Running}
+        Focus on first contact with real data
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item We choose to focuse on \num{1e13} \ac{eot} for two key reasons
+  \begin{enumerate}
+    \item Amounts to $\sim 5$ signal events for a few possible thermal relic models \\
+      (discovery is hard for EaT -- focusing on exclusion)
+    \item Only would require $\sim\qty{2}{week}$ nominal beam time
+  \end{enumerate}
+\item Also points out that this EaT analysis can probably be a first-contact analysis
+\item Add goals of simplicity and robustness to insulate analysis from complexities of first data
+}
+
+\begin{frame}{Mid-shower Simulation Samples}
+  Requirements
+  \begin{itemize}
+    \item Save computer time
+    \item Save computer space
+    \item focus on specific processes that are interesting to us \\
+      (signal itself or standard processes that mimick it)
+  \end{itemize}
+  \vfill
+  \begin{block}{Solution for Mid-Shower Samples}
+    \begin{enumerate}
+      \item \boldcol{UMNSunny}{Sort} simulation so higher-energy particles go first
+      \item \boldcol{UMNSunny}{Bias} the process-of-interest for these high-energy particles
+      \item \boldcol{UMNSunny}{Filter} out events that do not pass criteria
+    \end{enumerate}
+  \end{block}
+\end{frame}
+
+\note[itemize]{
+\item Don't have real data yet -- need to simulate it
+\item We also are focusing on specific processes (``Nuclear'' and ``Dimuon'') ocurring
+  within the developing shower in the ECal
+\item \textit{Requirements}
+\item Developed a method to do just that -- \textit{Solution}
+\item Since LDMX's beam provider LCLS-II is being upgraded separately,
+  we have the potential to observe \fourgev or \eightgev beams.
+\item With this technique, generated ``Nuclear'' and ``Dimuon'' samples
+  statistically equivalent to \num{1e13} \ac{eot} -- combined to represent
+  total ``Background''
+\item \eightgev is more likely so I'll default to those figures
+}
+
+\begin{frame}{Applying the Same Trigger}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=0.9\textwidth]{../figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      Use same data-collection trigger as nominal search
+
+      \begin{block}{Robustness}
+        We apply a cut on the full energy (all layers) at 400 MeV
+        tighter than the trigger threshold,
+        which should remove the impact of up to $\sim 10\%$
+        miscalibration in the calorimeter trigger
+        during early running.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item The nominal data-collection trigger is missing energy in the first 20
+  layers of the ECal (front two thirds)
+\item Tighten this cut slightly for this first-contact analysis to avoid
+  contamination from miscalibration (events ``crossing'' the boundary)
+\item Good News: we are already seeing separation between signal and background
+  (roughly flat vs sharply falling)
+\item Still need to remove the bulk of this background so that we can distinguish
+  the small number of signal events on top of it
+}
+
+\begin{frame}{Quiet HCal}
+  \begin{block}{}
+    No bar within the HCal with a total signal $> \qty{10}{PE}$
+  \end{block}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/nm1-hcal-max-pe-4gev-1e13norm.pdf}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/nm1-hcal-max-pe-8gev-1e13norm.pdf}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{itemize}
+        \item Typical signal of a muon is $\sim\qty{80}{PE}$
+        \item Confirm energy missing from ECal is not in HCal
       \end{itemize}
     \end{column}
   \end{columns}
 \end{frame}
 
-\begin{frame}{Sensitivity in Early Running}
+\note[itemize]{
+\item First, let's confirm that the energy missing from ECal is not in the HCal
+\item Typical low-energy signals in the HCal are $\sim\qty{80}{PE}$ with many signals
+  far exceeding that
+\item We require no bar in the HCal to exceed \qty{10}{PE} far below this typical value
+  but still above the expected noise level
+\item \textit{Explanatory Comma} N-1 plots show the cut variable in question after
+  all other selections have been applied. Evidence that the cut is being helpful.
+}
+
+\begin{frame}{Thin ECal Shower}
+  \begin{block}{}
+    Energy-weighted transverse RMS of hits with amplitude $\geq 0.5E_\mathrm{MIP}$
+    to be $<\qty{20}{\mm}$
+  \end{block}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/nm1-ecal-rms-4gev-1e13norm.pdf}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/nm1-ecal-rms-8gev-1e13norm.pdf}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \begin{itemize}
+        \item Confirm energy didn't spread out within non-sensitive material in ECal
+      \end{itemize}
+    \end{column}
+  \end{columns}
 \end{frame}
+
+\note[itemize]{
+\item Not all parts of the ECal can detect energy deposits
+\item Indirectly check that energy wasn't ``lost'' to these non-sensitive parts
+\item Require observed hits to be ``thinly'' distributed around each other
+\item Only including hits whose amplitude is above a higher threshold
+  than our readout threshold ($\sim0.1E_\mathrm{MIP}$) to insulate against miscalibration
+}
+
+\begin{frame}{Summary of Cutflow}
+  \begin{table}
+    \input{../tables/ldmx/cutflow}
+    \caption{Cutflow for this analysis.
+    Background event yields are estimates for $10^{13}$ EoT.}
+  \end{table}
+  \vfill
+\end{frame}
+
+\note[itemize]{
+\item After these simple, physically-defined selections -- background is reduced by 5 or 7
+  orders of magnitude while maintaining $\sim\qty{50}{\%}$ signal efficiency
+\item Still some background left, how to handle it?
+}
+
+\begin{frame}{Multi-Channel Analysis}
+  \begin{block}{}
+    Search within adjacent ``channels'' or ``bins'' using different shapes to our advantage
+  \end{block}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/final-selection-with-ana-bin-edges-4gev.pdf}
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/ldmx/analysis/final-selection-with-ana-bin-edges-8gev.pdf}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \footnotesize
+      \begin{enumerate}
+        \item Fit background with simple exponential function
+        \item Predict background yield in three channels
+        \item Separate signal efficiency into three channels
+        \item Include systematic uncertainties for ECal miscalibration
+          and HCal PE variation
+        \item \textsc{Combine} estimates 95\% CL upper limit on signal
+          production yield
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Can still use different shapes between signal and background to our advantage
+\item Cut up final energy distribution into three bins (gray lines) with an adjacent
+  control region above analysis energy threshold (black line) up to trigger threshold
+  (right edge)
+\item Signal is roughly evenly distributed across three bins
+\item Background is sharply falling
+\item Fit with control region to help constrain shape and statistical uncertainties
+\item Include systematic uncertainties for ECal miscalibration and HCal PE variation
+\item Use \textsc{Combine} statistical tool to estimate 95\% CL median expected limit
+  on signal production yield
+}
+
+\begin{frame}{Sensitivity in Early Running}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{../figures/ldmx/analysis/reach.pdf}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \begin{itemize}
+        \item For easier comparison, scale upper limit on production yield
+          to lower limit on effective interaction strength $y$ using
+          estimate of signal production rate
+      \end{itemize}
+      \vfill 
+      \begin{block}{New Territory}
+        Able to explore new territory of possible DM while
+        learning more about our detector and setting up for
+        more data enabling the full nominal analysis.
+      \end{block}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Gray is already excluded territory from experiments like NA64, BaBar, and COHERENT
+\item Black lines are specific thermal relic theory expectations
+\item Blue (Orange) is expected limit for this \fourgev (\eightgev) analysis
+\item Red is nominal (missing momentum) analysis with more data at \fourgev
+}
 
 \ssection{HPS}
 
@@ -377,11 +608,11 @@
 
 \note[itemize]{
 \item Searching for highly-displaced electron-positron pairs with specific mass
-\item High rate of incident electrons to overcome mixing twice
+\item High rate $\sim\qty{500}{\MHz}$ of incident electrons to overcome mixing twice
   \begin{itemize}
     \item[$\to$] most pass through thin target without much interaction\
-    \item[$\to$] hole in detector to let this high rate of (uninteresting) electrons pass without
-  irradiating detector
+    \item[$\to$] hole (\qty{15}{mrad}) in detector to let this high rate of
+      (uninteresting) electrons pass without irradiating detector
   \end{itemize}
 \item ECal to quickly observe multiple candidate particles and make data collection decision
 \item Silicon Vertex Tracker to reconstruct tracks and vertices
@@ -432,18 +663,292 @@
   the dark photon decaying back to electron-positron pair itself was not reachable
 \item SIMPs decouple the production and decay rate allowing real sensitivity for HPS
   within this smaller dataset
+\item Observables
+  \begin{itemize}
+    \item[$\to$] Reconstructed mass peaking at dark vector mass
+    \item[$\to$] Excess of highly-displaced vertices from decay length of dark vector
+  \end{itemize}
+}
+
+\begin{frame}{Data Collection Trigger}
+  \begin{figure}
+    \centering
+    \includegraphics[width=\textwidth]{%
+      ../figures/hps/experiment/skmccarty-thesis-fig-27-pair-trigger-depiction.png}
+    \caption{Diagram of ECal Pair Trigger. Fig 27 from S K McCarty Thesis 2020.}
+  \end{figure}
+\end{frame}
+
+\note[itemize]{
+\item Credit to SK McCarty for studying and tuning these trigger parameters
+\item Individual clusters have at least 2 hits and \qty{0.15}{\GeV} and at most \qty{1.40}{\GeV}
+\item Pair energy sum has between \qty{0.6}{\GeV} and \qty{2}{\GeV}
+\item Pair energy difference less than \qty{1.14}{\GeV}
+\item Low energy cluster matching curvature from magnetic field (roughly)
+\item Pair within \qty{35}{\degree} of opposite
+}
+
+\begin{frame}{Preliminary Quality Selections}
+  \begin{columns}
+    \begin{column}{0.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/vertex-pre-selection-efficiency.pdf}
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      Count number of vertices passing the
+      quality selections
+    \end{column}
+    \begin{column}{0.35\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/event-pre-selection-efficiency.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item After this trigger selection, we apply some more selections to focus
+  on higher quality vertices
+\item Credit to A Spellmen for studying and tuning this pre-selection
+\item Requirement that a vertex is reconstructed is biggest difficulty,
+  reflects (roughly) the geometric acceptance of the detector
+\item Onto a few more detailed selections focused on separating signal from background
 }
 
 \subsection{Orthogonal Reconstruction Categories}
 \begin{frame}{L1L1 and L1L2}
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/experiment/hps-reco-category-diagram-l1l1.png}
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/experiment/hps-reco-category-diagram-l1l2.png}
+    \end{column}
+    \begin{column}{0.6\textwidth}
+      Quality of reconstruction is closely tied with how many (and which)
+      tracker layers are hit.
+      \begin{itemize}
+        \item Helpful to separate analyses into reconstruction categories
+      \end{itemize}
+      \vfill
+      \begin{block}{Orthogonal Analyses}
+        Experiment design categories (should) have no effect on observable
+        physics so they are helpful cross checks for each other.
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
+
+\note[itemize]{
+\item \textit{Quality -- Categories}
+\item L1L1 requires all four sensors in first two layers to have hits for both tracks
+\item L1L2 drops the first layer requirement for only one of the tracks
+\item L1L2 vertices are more ``contaminated'' but also reach to higher displacements
+}
+
+\begin{frame}{Basic, Fixed Selection}
+  \begin{itemize}
+    \item \boldcol{UMNSunny}{L1L2}: In the vertex, one of the particles 
+      must have a hit in both sensors in Layer 1 and Layer 2
+      while the other must have a hit in both sensors in Layer 2 and Layer 3.
+      \begin{itemize}
+        \item The reconstruction category I am studying
+      \end{itemize}
+    \item \boldcol{UMNSunny}{Low Momentum Sum}:
+      $\qty{1.0}{\GeV} < P_\mathrm{sum} < \qty{1.9}{\GeV}$
+      \begin{itemize}
+        \item Keeping same signal region as L1L1
+      \end{itemize}
+    \item \boldcol{UMNSunny}{Decay after Target}: $z > z_\mathrm{target}$
+      \begin{itemize}
+        \item Redundant with the \minyzero cut, but ensures decay weights
+          don't unphysically diverge
+      \end{itemize}
+    \item \boldcol{UMNSunny}{Mass Window}: $p_m < 2.8$ (exclusion), $p_m < 1.5$ (search SR),
+      $1.5 < p_m < 4.5$ (search sideband)
+      \begin{itemize}
+        \item Same mass window sizes as L1L1
+      \end{itemize}
+  \end{itemize}
+  $$
+    p_m = \frac{|m_\mathrm{reco}-m_{V_D}|}{\sigma_m}
+  $$
+\end{frame}
+
+\note[itemize]{
+\item The L1L1 category, consisting of higher-quality vertices, has already
+  been studied, helpfully optimizing many selections that are easily applicable
+  to the L1L2 category as well
+\item \textit{Selections}
+}
+
 \subsection{Cut Optimization Procedure}
+\begin{frame}{Helpful Physics Variables}
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/vtx_proj_sig-distribution.pdf}
+      \ac{vps} measures how close vertex
+      is to originating from beam spot
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/max_y0_err-distribution.pdf}
+      \maxyzeroerr requires high precision
+      of vertical impact parameter
+    \end{column}
+    \begin{column}{0.3\textwidth}
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/min_y0-distribution.pdf}
+      \minyzero separates signal and background
+      with better resolution compared to others
+      (like $z$ for example)
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Searching the data has shown these variables to provide help separating
+  signal and background
+\item Two additional quality requirements (\ac{vps} and \maxyzeroerr) followed by
+  \minyzero separation
+}
+
+\begin{frame}{Optimization Procedure}
+  \begin{columns}
+    \begin{column}{0.3\textwidth}
+      {Keep relative signal efficiency high ($> \qty{80}{\%}$)
+      while trimming data tail of \minyzero distribution.}
+      
+      \vfill
+
+      {
+      \includegraphics[width=\textwidth]{%
+        ../figures/hps/analysis/min-y0-after-others.pdf}
+      }
+    \end{column}
+    \begin{column}{0.69\textwidth}
+      \begin{block}{Binomial Significance}
+        Maximize binomial significance $Z_\mathrm{Bi}$
+        within core mass region with best sensitivity
+        and then smooth with a linear fit.
+      \end{block}
+      \includegraphics[width=0.48\textwidth]{%
+        ../figures/hps/analysis/miny0-after-others-zbi-eps2-1e-6.pdf}
+      \includegraphics[width=0.48\textwidth]{%
+        ../figures/hps/analysis/y0-cut-on-data.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Trim the data tail of the \minyzero distribution while keeping the signal efficiency
+  high
+\item After some searching and double-checking, landed on \ac{vps} $< 4$
+  and \maxyzeroerr$< \qty{0.4}{\mm}$
+\item After these additional quality cuts, we then focus on maximizing the binomial
+  significance of the hypothetical signal on top of the background distribution
+  \begin{itemize}
+    \item Signal yield needed to be artificially scaled so that it was on the same
+      order of magnitude as the observed data
+    \item Varying this scale did not alter the chosen cuts except in extreme cases
+  \end{itemize}
+\item The cuts maximizing the $Z_\mathrm{Bi}$ are then smoothed with a linear fit
+  to help alleviate statistical bias
+\item \minyzero cut extending outside of the fit range with a flat value
+\item Undergoing internal HPS review of this selection right now,
+  only show results from 10\% subsample since I have not been approved to unblind yet
+}
 
 \subsection{Subsample Results}
 
+\begin{frame}{Search within 10\% Subsample}
+  \begin{columns}
+    \begin{column}{0.45\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/hps/analysis/search.pdf}
+    \end{column}
+    \begin{column}{0.55\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/hps/analysis/search-min-p-val.pdf}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Search for excess in mass-displacement space using a modified ABCD approach
+\item Do not observe any excess exceeding one sigma global significance (red lines)
+  within the 10\% subsample used for cut optimization
+\item No excess $\to$ move to exclusion
+}
+
+\begin{frame}{Expected Sensitivity from 10\% Subsample}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/hps/analysis/exclusion-estimate.pdf}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{itemize}
+        \item \emph{Naive} (overly-optimistic) estimate
+        \item ``Simple Merging'' combination of OIM results with L1L1
+          \begin{itemize}
+            \item Slightly extends reach in core sensitivity region,
+              probably disregard L1L2 results for $m_{V_D} > \gtrsim \qty{80}{\MeV}$
+          \end{itemize}
+      \end{itemize}
+      \begin{center}
+        \includegraphics[height=0.4\textheight]{../figures/hps/analysis/excl-combination.pdf}
+      \end{center}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Calculate expected signal using SIMP model and use the \ac{oim}
+  to estimate the maximum allowed signal yield
+\item Ratio of these quantities gives the sensitivity within 10\%
+\item Contour drawn at a value of 0.1 is a naive estimate
+\item Combining this result with the L1L1 result solidifies the exclusion
+  and lowers the contour in the core mass region
+}
+
 \ssection{Conclusion}
 
+\begin{frame}{Conclusion}
+\end{frame}
+
 \begin{backup}
+
+\begin{frame}{LDMX Midshower Simulation Samples}
+  \begin{table}
+    \input{../tables/ldmx/samples}
+    \caption{Configuration of the simulation samples used in this analysis. $E_\mathrm{beam}$ is the beam energy being studied ($4$ or $8$ GeV in this work). $m_A$ is the mass of the A' in MeV, $\epsilon$ is the dark brem mixing strength, $E_{\text{primary}}^{\text{ECal Front}}$ is the energy of the primary electron at the front of the ECal, $E_{A'}$ is the energy of the generated A', $E_{\text{tot nuc}}$ is the total energy transferred to nuclear interactions during the event, and $E_{\text{tot}~\mu}$ is the total energy of produced muons.}
+  \end{table}
+\end{frame}
+
+\begin{frame}{HPS Modified ABCD(EF) Search Method}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \centering
+      \includegraphics[width=\textwidth]{../figures/hps/analysis/search-min-p-val.pdf}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \begin{enumerate}
+        \item Fill histogram with data
+        \item Set mass edges at $1.5\sigma$ and $4.5\sigma$ (values optimized by A Spellmen)
+        \item Set upper \minyzero edge at cut value
+        \item Lower other \minyzero edge (a.k.a. $y_0$ ``floor'') from the cut value
+          until there are at least 1k events in region C
+        \item Calculate expected number of events in F
+          and compare to observed number of events
+        \item Estimate p-value by throwing toy experiments in A+E (Poission), B+D
+          and C (Normal) and re-calculating F from these toys
+      \end{enumerate}
+    \end{column}
+  \end{columns}
+\end{frame}
 
 \end{backup}
 
