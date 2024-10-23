@@ -35,6 +35,10 @@ slides:
 present: slides
     cd slides && pympress obj/slides.pdf
 
+# build diagram file for quicker diagram development
+diagram:
+    {{ latexmk }} -pvc -outdir=obj/ diagram.tex
+
 # make sure this location can present with pympress
 init-present:
   #!/bin/sh
