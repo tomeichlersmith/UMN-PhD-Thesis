@@ -152,6 +152,20 @@
 \note[itemize]{
 \item One of the phenomena the SM doesn't account for is DM
 \item We know it exists
+\item Galactic rotation curves
+  \begin{itemize}
+    \item Expected from visible matter in dashed line
+    \item Observed yellow/blue data points
+    \item Either more matter we can't see helping hold these stars
+      in or our model of gravity is wrong
+  \end{itemize}
+\item Grav lensing
+  \begin{itemize}
+    \item Very confident our model of gravity is correct from other measurements
+    \item Additionally, grav lensing data of the bullet cluster
+    \item Infrared signals (pink) differ in location than grav lensing (blue)
+    \item ``heavy'' matter separate from ``visible'' matter
+  \end{itemize}
 }
 
 \begin{frame}{Thermal Relic Dark Matter}
@@ -596,6 +610,7 @@
 \ssection{HPS}
 
 \note[itemize]{
+\item Heavy Photon Search experiment
 \item HPS takes a different approach towards searching for dark brem
 \item Instead of looking for extra events with missing energy/momentum,
   we look for extra events with a specific reconstructed quantities
@@ -758,7 +773,7 @@
     \item \boldcol{UMNSunny}{Low Momentum Sum}:
       $\qty{1.0}{\GeV} < P_\mathrm{sum} < \qty{1.9}{\GeV}$
       \begin{itemize}
-        \item Keeping same signal region as L1L1
+        \item Missing energy ``lost`` to $\pi_D$
       \end{itemize}
     \item \boldcol{UMNSunny}{Decay after Target}: $z > z_\mathrm{target}$
       \begin{itemize}
@@ -768,12 +783,16 @@
     \item \boldcol{UMNSunny}{Mass Window}: $p_m < 2.8$ (exclusion), $p_m < 1.5$ (search SR),
       $1.5 < p_m < 4.5$ (search sideband)
       \begin{itemize}
-        \item Same mass window sizes as L1L1
+        \item electron-positron pair has mass within resolution of $V_D$ test mass
       \end{itemize}
   \end{itemize}
   $$
     p_m = \frac{|m_\mathrm{reco}-m_{V_D}|}{\sigma_m}
   $$
+
+  \begin{block}{Optimization}
+    Optimize further cuts on 10\% subsample of data
+  \end{block}
 \end{frame}
 
 \note[itemize]{
@@ -781,6 +800,8 @@
   been studied, helpfully optimizing many selections that are easily applicable
   to the L1L2 category as well
 \item \textit{Selections}
+\item Using sub-sample of data in order to avoid background simulation that
+  is not trustworthy
 }
 
 \subsection{Cut Optimization Procedure}
@@ -892,10 +913,9 @@
     \begin{column}{0.5\textwidth}
       \begin{itemize}
         \item \emph{Naive} (overly-optimistic) estimate
-        \item ``Simple Merging'' combination of OIM results with L1L1
+        \item Combination of OIM results with L1L1
           \begin{itemize}
-            \item Slightly extends reach in core sensitivity region,
-              probably disregard L1L2 results for $m_{V_D} > \gtrsim \qty{80}{\MeV}$
+            \item Slightly extends reach in core sensitivity region
           \end{itemize}
       \end{itemize}
       \begin{center}
