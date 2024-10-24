@@ -1,16 +1,75 @@
 \documentclass{article}
 \input{preamble}
 
+\usepackage[margin=1in]{geometry}
+
+\tikzmath{%
+  \ecalbarlen=1.5;
+  \ecalbarwidth=0.3;
+}
+
 \begin{document}
 \begin{figure}
   \centering
-  \input{figures/hps/experiment/hps-vertex-diagram}
+  \resizebox{\textwidth}{!}{
+\begin{tikzpicture}
+  %\draw[step=1cm,gray,very thin] (-6,-2) grid (12,2);
+
+  \foreach \layerX/\layerY in {
+    0.0/0.15,
+    2.0/0.30,
+    4.0/0.45,
+    6.0/0.60,
+    8.0/0.75,
+    10.0/0.90
+  }{
+    \draw[HPSTracker, very thick]
+      (\layerX-\sensorhalfsep,-\layerY-\sensorlen)
+      -- (\layerX-\sensorhalfsep,-\layerY)
+      (\layerX+\sensorhalfsep,-\layerY-\sensorlen)
+      -- (\layerX+\sensorhalfsep,-\layerY)
+      (\layerX-\sensorhalfsep,\layerY+\sensorlen)
+      -- (\layerX-\sensorhalfsep,\layerY)
+      (\layerX+\sensorhalfsep,\layerY+\sensorlen)
+      -- (\layerX+\sensorhalfsep,\layerY);
+  }
+  \draw[HPSTracker] (9.0,0.75+\sensorlen) node[above] {\LARGE SVT};
+
+  \foreach \barY in {
+    0.9,
+    1.2,
+    1.5,
+    1.8,
+    2.1
+  }{
+    \draw[draw=HPSEcal,fill=HPSEcal!20!white]
+      (12.0,\barY) rectangle (12+\ecalbarlen,\barY+\ecalbarwidth)
+      (12.0,-\barY) rectangle (12+\ecalbarlen,-\barY-\ecalbarwidth)
+    ;
+  }
+  \draw[HPSEcal] (12+\ecalbarlen/2,2.1+\ecalbarwidth) node[above] {\LARGE ECal};
+
+  \draw[gray,dashed] (\targetx,0) -- (12+\ecalbarlen+0.5,0);
+  
+  \fill[HPSTarget] (\targetx-\targethalfthick,+1) rectangle (\targetx+\targethalfthick,-1);
+  \draw[HPSTarget] (\targetx,-1) node[below] {\LARGE Target};
+
+  \draw[black,very thick,->]
+    (\targetx-1.5,0.0) node[anchor=south east] {\Large\(e^-\)} -- (\targetx-0.2,0.0);
+  \draw[black,very thick,->]
+    (\targetx+1.0,0.05) -- (11.8,1.6) node[anchor=south east] {\Large\(e^-\)};
+  \draw[black,very thick,->]
+    (\targetx+1.0,0.05) -- (11.8,-2.0) node[anchor=north east] {\Large\(e^+\)};
+  \draw[black,very thick,->]
+    (\targetx+0.2,0.05) -- (-1.0,0.5+\sensorlen) node[anchor=east] {\Large\(e^-\)};
+
+%  \node at (\targetx,+2) {L1L1};
+%  \node at (\targetx+1,0.1) [circle,fill,inner sep=1.5pt] {};
+%  \draw[black,->] (\targetx+1,0.1) -- (2.5,2) node[anchor=south west] {\(e^-\)};
+%  \draw[black,->] (\targetx+1,0.1) -- (2.5,-2.2) node[anchor=north west] {\(e^+\)};
+\end{tikzpicture}
+  }
   \caption{Practice Diagram}
 \end{figure}
 
-\begin{figure}
-  \centering
-  \resizebox{0.2\textwidth}{!}{\input{figures/hps/experiment/hps-vertex-diagram}}
-  \caption{Shrunk}
-\end{figure}
 \end{document}
