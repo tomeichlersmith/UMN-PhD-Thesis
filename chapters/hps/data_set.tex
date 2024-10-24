@@ -83,7 +83,7 @@ in \cref{tab:pair-1-trigger}.
 As mentioned the simulation goes through many steps in order to account for the different physics
 processes that are of interest in a realistic fashion. In general, these steps are
 \begin{enumerate}
-  \item Generation -- using a tool like \textsc{MadGraph/MadEvent}\cite{madgraph4-2004,madgraph5-2014}
+  \item Generation -- using a tool like \textsc{MadGraph/MadEvent}\cite{madgraph4-2007,madgraph5-2014}
         to generate specific events from Feynman diagrams
   \item Displacement -- if the sample expects to have the decay products be displaced (for example in the
         SIMP signal process), displace these decay products with a \emph{uniform} distribution of decay
@@ -100,9 +100,7 @@ use a physical displacement distribution as understood from prior measurements r
 one that is more helpful for reweighting later in analysis.
 
 \section{Reconstruction}
-Detail on how \ac{hps} reconstructs its electronic signals into physical variables is
-outside the scope of this work; nevertheless, a short summary is helpful to provide
-context for the following analysis. \todo[reference]{where could reader find more detail on HPS recon?}
+\todo[reference]{where could reader find more detail on HPS recon?}
 
 The two subsystems are first reconstructed separately.
 The \ac{ecal} produces clusters of nearby hits whose energy
@@ -117,7 +115,7 @@ particles.
 Pairs of reconstructed particles are then used to deduce a
 vertex by determing a best-fit location for where the two tracks
 intersect one another.
-The vertex pairs used within this analysis are required to reside
+The particle pairs used within this analysis are required to reside
 within opposite volumes (i.e. one particle has a track (cluster)
 in the top half of the \ac{svt} (\ac{ecal}) and the other has its
 constituents in the bottom half); however, vertices from pairs
@@ -125,18 +123,50 @@ without this requirement are reconstructed and available for
 other analyses.
 
 \section{Analysis Pre-Selection}
-The final stage that all events go through is a rudimentary pre-selection which simplifies the
+The final stage that all events go through is a rudimentary pre-selection which chooses events
+that are of higher quality and conform to our expectation of signal topology and simplifies the
 resulting shape of the data in the event such that final analysis is not as complicated.
-Specifically, the pre-selection for this analysis is requiring exactly one vertex to be
-reconstructed within the event. This requirement naturally disposes of events which are cluttered
-with particles from other beam arrivals (thus causing more than one vertex to be reconstructed) and
+Specifically, the pre-selection for this analysis is requiring exactly one quality vertex to be
+reconstructed within the event.
+This requirement naturally disposes of events which are cluttered with particles from other beam arrivals
+(thus causing more than one vertex to be reconstructed) and
 events which do not have a electron-positron pair within acceptance (thus causing no vertices to be
-reconstructed). \cref{fig:n-vertex-pre-selection} shows the distribution of number of vertices
-within an event for a variety of samples.
+reconstructed).
+The requirements on what a ``quality'' vertex is were developed and optimized with
+prior work\todo[citation]{citation for Alic's thesis} and so they are not explained here; however,
+\cref{fig:vertex-pre-selection} shows the relative efficiency of these requirements.
+\cref{fig:n-vertex-pre-selection} shows the distribution of number of vertices
+that pass these criteria.
+\cref{fig:event-pre-selection} shows the summary of this pre-selection requirement including the relative
+efficiency of the quality vertex requirements.
+
+The largest drop in signal efficiency is from the requirement that a quality vertex is found
+within the event.
+With the relatively high efficiency of the vertex pre-selections, this drop in efficiency
+can be interpreted as mainly due to the geometric acceptance of the \ac{hps} detector.
+Fortunately, the background processes are removed in higher proportion from this requirement.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/hps/dataset/n-vertex-pre-selection-mc-only.pdf}
-  \caption{Number of vertices reconstructed within the simulation samples.}
+  \includegraphics[width=0.5\textwidth]{figures/hps/dataset/vertex-pre-selection-efficiency.pdf}
+  \caption{Relative efficiency of vertex quality pre-selection requirements.}
+  \label{fig:vertex-pre-selection}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/hps/dataset/n-pre-selected-vertices.pdf}
+  \caption{Number of vertices passing the quality pre-selection.}
   \label{fig:n-vertex-pre-selection}
 \end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/hps/dataset/event-pre-selection-efficiency.pdf}
+  \caption{Relative efficiency of pre-selection of events.
+  $N_\mathrm{vtx}$ is the number of vertices passing the vertex pre-selection requirements.
+  Since other triggers for different purposes are present in the data, the Pair 1 Trigger
+  is applied to data but not to simulation.}
+  \label{fig:event-pre-selection}
+\end{figure}
+
