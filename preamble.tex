@@ -90,6 +90,10 @@
 %   define command to draw boilerplate target/L1/L2
 \usetikzlibrary{math}
 
+% colors for diagram
+\definecolor{HPSTarget}{rgb}{0.55,0.52,0.54}
+\definecolor{HPSTracker}{rgb}{0.0,0.5,0.5}
+
 \tikzmath{%
   \openingslope = 0.15; % y changer per x change
   \sensorsep = 0.12; % separation between sensors in a layer
@@ -109,7 +113,7 @@
 }
 
 \newcommand{\drawhpsfirsttwolayers}{%
-  \draw[red,very thick]
+  \draw[HPSTracker, very thick]
     (\layeronex-\sensorhalfsep,-\layeroney-\sensorlen)
     -- (\layeronex-\sensorhalfsep,-\layeroney)
     (\layeronex+\sensorhalfsep,-\layeroney-\sensorlen)
@@ -118,9 +122,9 @@
     -- (\layeronex-\sensorhalfsep,\layeroney)
     (\layeronex+\sensorhalfsep,\layeroney+\sensorlen)
     -- (\layeronex+\sensorhalfsep,\layeroney);
-  \draw[red] (\layeronex,\layeroney+\sensorlen) node[above] {L1};
+  \draw[HPSTracker] (\layeronex,\layeroney+\sensorlen) node[above] {L1};
   
-  \draw[red,very thick]
+  \draw[HPSTracker, very thick]
     (\layertwox-\sensorhalfsep,-\layertwoy-\sensorlen)
     -- (\layertwox-\sensorhalfsep,-\layertwoy)
     (\layertwox+\sensorhalfsep,-\layertwoy-\sensorlen)
@@ -129,12 +133,12 @@
     -- (\layertwox-\sensorhalfsep,\layertwoy)
     (\layertwox+\sensorhalfsep,\layertwoy+\sensorlen)
     -- (\layertwox+\sensorhalfsep,\layertwoy);
-  \draw[red] (\layertwox,\layertwoy+\sensorlen) node[above] {L2};
+  \draw[HPSTracker] (\layertwox,\layertwoy+\sensorlen) node[above] {L2};
   
   \draw[gray,dashed] (\targetx,0) -- (\reflineendx,\reflineendy);
   \draw[gray,dashed] (\targetx,0) -- (\reflineendx,0);
   \draw[gray,dashed] (\targetx,0) -- (\reflineendx,-\reflineendy);
   
-  \fill[blue] (\targetx-\targethalfthick,+1) rectangle (\targetx+\targethalfthick,-1);
-  \draw[blue] (\targetx,-1) node[below] {Target};
+  \fill[HPSTarget] (\targetx-\targethalfthick,+1) rectangle (\targetx+\targethalfthick,-1);
+  \draw[HPSTarget] (\targetx,-1) node[below] {Target};
 }
