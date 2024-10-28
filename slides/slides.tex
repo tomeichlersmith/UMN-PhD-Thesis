@@ -619,18 +619,24 @@
 }
 
 \begin{frame}{Experiment}
-  \includegraphics[width=\textwidth]{../figures/hps/experiment/hps-diagram.pdf}
+  \resizebox{\textwidth}{!}{\input{../figures/hps/experiment/hps-diagram}}
+  \vfill
+  \begin{columns}
+    \begin{column}{0.32\textwidth}
+      High rate $\sim\qty{500}{\MHz}$ of incident electrons
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      \qty{15}{mrad} opening angle to avoid detector damage
+    \end{column}
+    \begin{column}{0.32\textwidth}
+      ECal for trigger and energy, SVT for tracks and vertices
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \note[itemize]{
 \item HPS installed at Thomas Jefferson Natl Lab
 \item Took physics data in 2016, 2019, and 2021 -- scheduled for more data collection in coming years
-\item High rate $\sim\qty{500}{\MHz}$ of incident electrons to overcome mixing twice
-  \begin{itemize}
-    \item[$\to$] most pass through thin target without much interaction\
-    \item[$\to$] hole (\qty{15}{mrad}) in detector to let this high rate of
-      (uninteresting) electrons pass without irradiating detector
-  \end{itemize}
 \item ECal to quickly observe multiple candidate particles and make data collection decision
 \item Silicon Vertex Tracker to reconstruct tracks and vertices
 \item Benefits

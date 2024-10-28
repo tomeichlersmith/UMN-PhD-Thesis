@@ -103,6 +103,8 @@
   \layeronex = -0.2;
   \layertwox = 2.0;
   \targethalfthick = 0.1;
+  \ecalbarlen=1.5;
+  \ecalbarwidth=0.3;
   % can't have a blank line in this block
   %
   % compute locations
@@ -142,4 +144,59 @@
   
   \fill[HPSTarget] (\targetx-\targethalfthick,+1) rectangle (\targetx+\targethalfthick,-1);
   \draw[HPSTarget] (\targetx,-1) node[below] {Target};
+}
+
+\newcommand{\drawhps}{%
+  \foreach \layerX/\layerY in {
+    0.0/0.15,
+    2.0/0.30,
+    4.0/0.45,
+    6.0/0.60,
+    8.0/0.75,
+    10.0/0.90
+  }{
+    \draw[HPSTracker, very thick]
+      (\layerX-\sensorhalfsep,-\layerY-\sensorlen)
+      -- (\layerX-\sensorhalfsep,-\layerY)
+      (\layerX+\sensorhalfsep,-\layerY-\sensorlen)
+      -- (\layerX+\sensorhalfsep,-\layerY)
+      (\layerX-\sensorhalfsep,\layerY+\sensorlen)
+      -- (\layerX-\sensorhalfsep,\layerY)
+      (\layerX+\sensorhalfsep,\layerY+\sensorlen)
+      -- (\layerX+\sensorhalfsep,\layerY);
+  }
+  \draw[HPSTracker] (9.0,0.75+\sensorlen) node[above,font=\LARGE] {SVT};
+
+  \foreach \barY in {
+    0.9,
+    1.2,
+    1.5,
+    1.8,
+    2.1
+  }{
+    \draw[draw=HPSEcal,fill=HPSEcal!20!white]
+      (12.0,\barY) rectangle (12+\ecalbarlen,\barY+\ecalbarwidth)
+      (12.0,-\barY) rectangle (12+\ecalbarlen,-\barY-\ecalbarwidth)
+    ;
+  }
+  \draw[HPSEcal] (12+\ecalbarlen/2,2.1+\ecalbarwidth) node[above,font=\LARGE] {ECal};
+
+  \draw[gray,dashed] (\targetx,0) -- (12+\ecalbarlen+0.5,0);
+  
+  \fill[HPSTarget] (\targetx-\targethalfthick,+1) rectangle (\targetx+\targethalfthick,-1);
+  \draw[HPSTarget] (\targetx,-1) node[below left,font=\LARGE] {Target};
+
+  \node (decay) at (\targetx+1.0,0.05) [circle,fill,inner sep=1.5pt] {};
+  \node (production) at (\targetx,0.0) [circle,fill,inner sep=1.5pt] {};
+
+  \draw[black,very thick,->]
+    (\targetx-1.5,0.0) node[anchor=south east,font=\Large] {\(e^-\)} -- (\targetx-0.2,0.0);
+  \draw[black,very thick,->]
+    (decay) -- (11.8,1.6) node[anchor=south east,font=\Large] {\(e^-\)};
+  \draw[black,very thick,->]
+    (decay) -- (11.8,-2.2) node[anchor=north east,font=\Large] {\(e^+\)};
+  \draw[black,very thick,->]
+    (production) -- (-1.0,-0.5-\sensorlen) node[anchor=east,font=\Large] {\(e^-\)};
+
+  \draw[blue,thick,->] (production) -- (decay) node[midway,above,font=\Large] {\(V_D\)};
 }
