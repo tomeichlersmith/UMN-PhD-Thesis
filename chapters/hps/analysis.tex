@@ -1,6 +1,214 @@
 \chapter{Analysis}
 \label{chapter:hps:analysis}
 
+A search for visibly-decaying \ac{dm} is not novel, many experiments have been purposed
+built for such a search; however, \ac{hps} is specially focused on \ac{dm} that decays
+within shorter distances.
+While \ac{hps} has previously searched \cite{hps-2016-displaced-vtx} for simple dark sectors
+more similar to the benchmark model used within the \ac{ldmx} missing energy search,
+no \ac{dm} was found and the longer decay lengths of this dark sector model greatly
+impacted the resulting sensitivity of \ac{hps}.
+\cref{sec:hps:simps} introduced the idea of \ac{simp} \ac{dm} which has additional
+interest for \ac{hps}.
+Specifically, the increase in complexity of the \ac{dm} model slightly decouples the production
+rate from the decay rate meaning the number of events were \ac{dm} is produced is not as tightly
+connected to how displaced the particles are expected to be within the detector.
+The downside of this decoupling is that some energy is lost to the production of the lighter
+dark meson $\pi_D$ when the dark photon decays within the dark sector; however,
+this also means \ac{hps} has not searched this regime since one of the key selections within
+its previous displaced vertex search was requiring the total momentum of the vertex to
+near the beam energy instead of significantly below it.
+
+With the samples presented in \cref{chapter:hps:dataset}, a search for \acp{simp} within the collected
+data has been performed.
+An additional, orthogonal category of data was introduced to be combined with prior work,
+enabling higher sensitivity to a range of \ac{simp} parameter space.
+
+\section{Signal Yield}
+
+The expected signal yield is a crucial part of any kind of search analysis
+and this one is no exception.
+The prior search within \ac{ldmx} benefited from its missing momentum/energy technique
+in this regard since the mixing strength $\epsilon$ is only connected to the scale of the signal
+yield and not how the signal events would present themselvs in the data.
+In a visible search, the mixing strength also effects the decay length and thus a more intricate
+signal yield estimate is required to account for the fact that changing $\epsilon$ not only changes
+the magnitude but also changes which events are more likely to be observed within data.
+
+In this analysis, we modify the expected signal yield calculation done previously by \ac{hps}
+in \cite{hps-2016-displaced-vtx} to accomodate the two viable decay channels within this \ac{simp} model.
+Nevertheless, the full signal yield calculation is summarized here for reference.
+
+The magnitude of this estimate is set by the relationship between dark photon production cross section
+and the radiative trident differential cross section\cite{bjorken-ap-rate:2009}.
+\begin{equation}
+  \sigma_{A'} = \epsilon^2\frac{3\pi}{2\alpha} m_{A'} \left.\frac{d\sigma_{\gamma^*}}{dm}\right|_{m=m_{A'}}
+\end{equation}
+Multiplying both sides by the dataset's luminosity then gives us event yields.
+\begin{equation}
+  N_{A'} = \epsilon^2\frac{3\pi}{2\alpha} m_{A'} \left.\frac{dN_{\gamma^*}}{dm}\right|_{m=m_{A'}}
+\end{equation}
+The complexity arises when we remember that specifically radiative tridents are not
+directly observable -- they are intertwined with other standard processes that produce
+the same outgoing particles (Bethe-Heitler tridents for example).
+Thus, we estimate the radiative trident differential yield $dN_{\gamma^*}/dm$ by
+modifying the observable trident differential yield $dN_{3e\mathrm{,CR}}/dm_\mathrm{reco}$ by
+two simulation-derived factors.
+The radiative fraction $f_\mathrm{rad}$ estimates the fraction of trident events
+that originate from the radiative process.
+\begin{equation}
+  f_\mathrm{rad} = \frac{dN_{\gamma^*}}{dm} \bigg/ \frac{dN_{3e}}{dm_\mathrm{reco}}
+\end{equation}
+And the radiative acceptance times efficiency $A_\mathrm{rad}$ estimates the
+fraction of trident events that are within the geometric acceptance of the detector
+and pass the trigger and preselection requirements.
+\begin{equation}
+  A_\mathrm{rad} = \frac{dN_{3e,CR}}{dm_\mathrm{reco}} \bigg/ \frac{dN_{3e,\mathrm{gen}}}{dm_\mathrm{reco}}
+\end{equation}
+where CR stands for the Control Region in \Psum.
+Thus, the expected yield of dark photons created within the detector
+but not necessarily within its acceptance or passing selection requirements is
+\begin{equation}
+  N_{A'} = \epsilon^2\frac{3\pi}{2\alpha} m_{A'} 
+    \frac{f_\mathrm{rad}}{A_\mathrm{rad}}
+    \left.\frac{dN_{3e\mathrm{,CR}}}{dm_\mathrm{reco}}\right|_{m=m_{A'}}
+\end{equation}
+Both $f_\mathrm{rad}$ and $A_\mathrm{rad}$ use the event and vertex pre-selection before
+any downstream analysis selections.
+They parameters for these polynomials are given in \cref{tab:rad-poly-coeff}
+and these ingredients along with the resulting $N_{A'}$ is given in \cref{fig:dark-photon-yield-calc}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{c|cc}
+    Coefficient     & $f_\mathrm{rad}$ & $A_\mathrm{rad}$ \\ \hline
+    $c_0$           & 0.10541434 & -0.48922505 \\
+    $c_1$ / MeV     & -0.0011737697 & 0.073733061 \\
+    $c_2$ / MeV$^2$ & \num{7.4487930e-06} & \num{-0.0043873158} \\
+    $c_3$ / MeV$^3$ & \num{-1.6766332e-08} & 0.00013455495 \\
+    $c_4$ / MeV$^4$ & 0.0 & \num{-2.3630535e-06} \\
+    $c_5$ / MeV$^5$ & 0.0 & \num{2.5402516e-08} \\
+    $c_6$ / MeV$^6$ & 0.0 & \num{-1.7090900e-10} \\
+    $c_7$ / MeV$^7$ & 0.0 & \num{7.0355585e-13} \\
+    $c_8$ / MeV$^8$ & 0.0 & \num{-1.6215982e-15} \\
+    $c_9$ / MeV$^9$ & 0.0 & \num{1.6032317e-18} \\
+  \end{tabular}
+  \caption{%
+    Polynomial coefficients for radiative fraction and acceptance functions.
+    All decimal points are given for reproducibility; however, not all
+    of them are significant.
+  }
+  \label{tab:rad-poly-coeff}
+\end{table}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}[T]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hps/analysis/signal-yield/dark-photon-yield-calc-ingredients.pdf}
+    \caption{Ingredients to the total dark photon yield calculation including
+    the observed trident yield (top), radiative fraction (middle), and
+    radiative acceptance (bottom).}
+    \label{fig:dark-photon-yield-calc:ingredients}
+  \end{subfigure}
+  \begin{subfigure}[T]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hps/analysis/signal-yield/dark-photon-yield-calc-result.pdf}
+    \caption{Resulting total dark photon yield.}
+    \label{fig:dark-photon-yield-calc:result}
+  \end{subfigure}
+  \caption{Depiction of dark photon yield calculation using a single run
+  of the data ($\sim\qty{1.6}{\%}$).
+  The gray vertical lines show the bounds of the search using the
+  nominal ratio $m_{A'}/m_{V_D} = 1.66$.}
+  \label{fig:dark-photon-yield-calc}
+\end{figure}
+
+In this signal hypothesis, we do not observe the dark photon's production or decay,
+instead, the dark photon decays to an unobservable dark pion and the neutral dark
+vector meson $V_D$ which in turn is what decays back into a standard model electron-positron pair.
+The above calculation of $N_{A'}$ accounts for the dark photon's production, but
+we need to account for the dark photon's decay and the dark vector meson's decay.
+The first decay has a branching ratio $BR(A'\to\pi_D V_D)$ which is complicated
+by the fact that there are actually two different dark neutral vector mesons that
+fit our requirements.
+The second process is embedded in the decay rate of the dark vector meson to
+electron-positron pairs $\Gamma(V_D\to e^+e^-)$.\footnote{
+  There are other decay processes of the $V_D$!
+  Namely, the so-called ``three-prong'' decay $V_D\to\pi_De^+e^-$ would
+  greatly increase the potential rate at the cost of preventing the $e^+e^-$
+  from reconstructing the $m_{V_D}$ mass resonance.
+}
+Let $E(z)$ be the signal efficiency of the analysis as a function of the $z$ where the
+$V_D$ decayed into the electron-positron pair.
+Then we can sum over the possible $V_D$ and estimate the fraction of $N_{A'}$
+that produce a $V_D$ which decays and passes the analysis requirements.
+\begin{equation}
+  N_\mathrm{sig} = N_{A'}\int_{z_\mathrm{target}}^\infty \sum_{V_D} D_{V_D}(z)E(z) dz
+\end{equation}
+where
+\begin{equation}
+  D_{V_D}(z) = BR(A'\to\pi_D V_D)
+  \frac{e^{-(z-z_\mathrm{target})/(\gamma c \tau_{V_D})}}{\gamma c \tau_{V_D}}
+\end{equation}
+The branching ratio $BR(A'\to\pi_D V_D)$ and lifetime $\tau_{V_D}$ are taken
+from \cite{simp-pheno-2018} (along with the general procedure of this estimate).
+What is important to remember is that the lifetime is dependent on $\epsilon^2$,
+so while increasing $\epsilon^2$ increases $N_{A'}$ it also makes the lifetime shorter
+and thus the $V_D$ decay ``looks'' more like standard un-displaced background.
+
+The $V_D$ energy (and thus the relativisitic $\gamma$) used in $D_{V_D}(z)$
+is only distributed over a small range (within $\mathcal{O}(\qty{100}{\MeV})$)
+so we replace it with the mean $\langle\gamma\rangle$ in order to make the
+calculation more practical.
+Additionally, we impose an upper limit on the decay $z$ to be \qty{25}{\cm} after
+the target since the efficiency of the reconstruction past $\sim\qty{20}{\cm}$ drops to zero.
+\begin{equation}
+  N_\mathrm{sig} = N_{A'}
+    \int_{0}^{\qty{25}{\cm}} dz'
+    \sum_{V_D} \mathrm{BR}(A'\to\pi_D V_D)
+    \frac{e^{-z'/(\langle\gamma\rangle c \tau_{V_D})}}{\langle\gamma\rangle c \tau_{V_D}}
+    E(z'+z_\mathrm{target})
+\end{equation}
+where $z' = z-z_\mathrm{target}$.
+\cref{fig:n-sig-eg:uniform} shows $N_\mathrm{sig}$ with a uniformly perfect signal efficiency
+$E(z) = 1$ to give a sense of scale, but a slightly more realistic example is using a
+step-wise signal efficiency $E(z) = 0.1$ if $\qty{20}{\mm} < z < \qty{100}{\mm}$ and $0$ otherwise
+\cref{fig:n-sig-eg:step}.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/signal-yield/n-sig-uniform-eff-1.0.pdf}
+    \caption{Uniformly perfect signal efficiency with yield dominated by prompt decays.}
+    \label{fig:n-sig-eg:uniform}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/signal-yield/n-sig-step-eff-0.1-after-20.0.pdf}
+    \caption{A step signal efficiency mocking a perfect analysis cut in displaced vertex $z$.}
+    \label{fig:n-sig-eg:step}
+  \end{subfigure}
+  \caption{Expected signal yield $N_\mathrm{sig}$ for some rudimentary example efficiencies.
+  Red contour lines are given at 1 and 1.6\% (the approximate fraction of this data subsample)
+  to give a sense of scale.
+  Values are ``clipped'' to the color bar (for example, a signal yield of \num{2e4} is colored
+  yellow which is marked as \num{1e3}) so we can focus on the important orders of magnitude.}
+  \label{fig:n-sig-eg}
+\end{figure}
+
+In summary, the key point to make here is that the signal efficiency as a function of true
+decay length $E(z)$ is the single analysis-dependent ingredient that effects the resulting
+signal yield.
+The rest of the ingredients are either fixed by the dataset being searched (e.g. trident
+differential production, $f_\mathrm{rad}$, $A_\mathrm{rad}$) or are parameters that we
+vary for the search ($\epsilon^2$, $m_{V_D}$).
+A moderately realistic signal efficiency shows the range of $\epsilon^2$ and $m_{V_D}$
+this dataset has potential sensitivity (\cref{fig:n-sig-eg:step}) which informs the
+ranges these values will take below.
+
+
+\section{Reconstruction Categories}
 The design of \ac{hps} separates reconstructed tracks into categories that are
 not necessarily associated with the underlying physics for which we are searching.
 Specifically, the number of layers (and which layers) that are included within a track
