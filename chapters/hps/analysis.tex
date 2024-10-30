@@ -65,7 +65,8 @@ and pass the trigger and preselection requirements.
 \begin{equation}
   A_\mathrm{rad} = \frac{dN_{3e,CR}}{dm_\mathrm{reco}} \bigg/ \frac{dN_{3e,\mathrm{gen}}}{dm_\mathrm{reco}}
 \end{equation}
-where CR stands for the Control Region in \Psum.
+where CR stands for the Control Region in \Psum
+(see \cref{sec:hps:analysis:variables} for the definition of this variable).
 Thus, the expected yield of dark photons created within the detector
 but not necessarily within its acceptance or passing selection requirements is
 \begin{equation}
@@ -242,6 +243,7 @@ the sensitivity of the \ac{hps} \ac{simp} search.
 \end{figure}
 
 \section{Physics Variables}
+\label{sec:hps:analysis:variables}
 There are many possible variables that could be used to separate candidate signal
 vertices from the standard process backgrounds.
 While this section is not an exhaustive list of all possible variables,
@@ -255,11 +257,10 @@ Thus, a selection on the sum of the momentum magnitudes is applied.
 \begin{equation}
   P_\mathrm{sum} = |\vec{p}_{e^-}|+|\vec{p}_{e^+}|
 \end{equation}
-$P_\mathrm{sum}$ is chosen to lie within the same ranges as the L1L1 analysis.
 Specifically, the Signal Region (SR) used for the actual search requires
-$\qty{1.0}{\GeV} < P_\mathrm{sum} < \qty{1.9}{\GeV}$ and the Control Region (CR)
+$\qty{1.0}{\GeV} < $\Psum$ < \qty{1.9}{\GeV}$ and the Control Region (CR)
 used for determining the trident differential production rate is
-$\qty{1.9}{\GeV} < P_\mathrm{sum} < \qty{2.4}{\GeV}$.
+$\qty{1.9}{\GeV} < $\Psum$ < \qty{2.4}{\GeV}$.
 
 Since we are searching for the dark vector boson $V_D$ via its
 2-body decay into an electron and a positron, we expect the invariant mass of the vertex $m_\text{reco}$
@@ -269,16 +270,13 @@ to be within the resolution of the detector $\sigma_m$ of the mass we are search
 \end{equation}
 Applying an upper limit on $p_m$ is often refered to as a ``mass window''
 since it results in $m_\text{reco}$ residing within a small range around $m_{V_D}$.
-For the exclusion estimate and the optimization studies described in this
-section, we choose $p_m < 2.8$ to align with the L1L1 analysis.
 
 Each vertex can be projected back to the target using its position and total momentum,
 and the location of the vertex at the target can be compared to the beam
-position extracted from a sub-sample of the data (\todo{reference how this is done}).
+position extracted from a sub-sample of the data\todo[citation]{reference how beamspot extraction is done}.
 The separation between the projected position $\vec{x} = (x,y)$ and the beam position
 $\vec{\mu} = (\mu_{x'}, \mu_{y'})$ is then measured
-and normalized by the width of the beam in that direction
-$(\sigma_{x'},\sigma_{y'})$.
+and normalized by the width of the beam in that direction $(\sigma_{x'},\sigma_{y'})$.
 The distribution of the beamspot is allowed to be rotated relative to our
 chosen axes by the angle $\theta_\mathrm{beam}$, meaning we need to rotate $\vec{x}$
 before comparing it to the beam spot.
@@ -304,6 +302,7 @@ For truly-displaced signal vertices, both tracks making the vertex would have
 $y_0$ far from zero while background vertices would have at least one track
 with $y_0$ near zero (undisplaced vertices would have both, but mis-reconstructed
 fake-displaced vertices could have one far from zero).
+\todo[diagram]{Diagram of y0 for truly displaced, undisplaced, and fake-displaced.}
 This motivates selecting vertices based on requiring the minimum of the two
 absolute value $y_0$ to be above a certain threshold.
 \begin{equation}
@@ -357,4 +356,4 @@ falls within the chosen mass window).
 \end{figure}
 
 Vertex $z$ is left for late-stage statistical analysis of the results
-and - being highly correlated with \minyzero - is redundant with this variable.
+and -- being highly correlated with \minyzero -- is redundant with this variable.
