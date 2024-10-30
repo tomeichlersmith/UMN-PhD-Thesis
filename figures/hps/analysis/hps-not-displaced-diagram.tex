@@ -1,0 +1,9 @@
+\begin{tikzpicture}
+  \drawhpsfirsttwolayers
+  \draw[black] (\targetx-\targethalfthick,0) -- (2.5,0);
+
+  \node[align=left] at (\targetx,+2) {Not Displaced\\$y_0^{e^-}\approx\qty{0}{\mm}$\\$y_0^{e^+}\approx\qty{0}{\mm}$};
+  \draw[black,->] (\targetx+\targethalfthick,0.0) -- (2.5,2) node[anchor=north west] {\(e^-\)};
+  \draw[black,->] (\targetx+\targethalfthick,0.0) -- (2.5,-1.8) node[anchor=south west] {\(e^+\)};
+  \node at (\targetx+\targethalfthick,0.0) [circle,fill,inner sep=1.5pt] {};
+\end{tikzpicture}

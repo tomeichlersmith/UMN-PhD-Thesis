@@ -91,7 +91,7 @@
 % HPS Diagrams
 %   using tikz math library to name variables to helpful names
 %   define command to draw boilerplate target/L1/L2
-\usetikzlibrary{math}
+\usetikzlibrary{math,decorations.pathreplacing}
 
 % colors for diagram
 \definecolor{HPSTarget}{rgb}{0.55,0.52,0.54}
@@ -116,6 +116,18 @@
   \sensorhalfsep = \sensorsep / 2;
   \reflineendx = \layertwox+0.5;
   \reflineendy = (\reflineendx - \targetx) * \openingslope;
+  % paths for truly displaced
+  \eleslope=(2-0.1)/(2.5-\targetx-2);
+  \eleyzero=\eleslope*(-2.0)+0.1;
+  \posslope=(-1.8-0.1)/(2.5-\targetx-2);
+  \posyzero=\posslope*(-2.0)+0.1;
+  % paths for fake displaced
+  \fdeleslope = (2-0)/(2.5-\targetx-\targethalfthick);
+  \fdposx = \targetx+1.0;
+  \fdposy = \fdeleslope*(\fdposx-\targetx-\targethalfthick);
+  \fdposslope = (-1.8-\fdposy)/(2.5-\fdposx);
+  \fdposyzero = \fdposslope*(\targetx-\fdposx)+\fdposy;
+  \fdbadhity = \fdposslope*(\layeronex-\fdposx)+\fdposy;
 }
 
 \newcommand{\drawhpsfirsttwolayers}{%

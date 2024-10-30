@@ -302,7 +302,11 @@ For truly-displaced signal vertices, both tracks making the vertex would have
 $y_0$ far from zero while background vertices would have at least one track
 with $y_0$ near zero (undisplaced vertices would have both, but mis-reconstructed
 fake-displaced vertices could have one far from zero).
-\todo[diagram]{Diagram of y0 for truly displaced, undisplaced, and fake-displaced.}
+\cref{fig:hps-displace-eg} shows some diagrams that illuminate this effect.
+While there are many ways for a vertex to end up being ``fake displaced''
+(for example, a missing or mis-chosen hit in the first layer like the example shown
+in \cref{fig:hps-displace-eg}), forcing both $y_0$ to be far from zero removes
+these background processes.
 This motivates selecting vertices based on requiring the minimum of the two
 absolute value $y_0$ to be above a certain threshold.
 \begin{equation}
@@ -311,6 +315,23 @@ absolute value $y_0$ to be above a certain threshold.
 which more sharply distinguishes truly displaced vertices compared to the
 vertex $z$ often muddled by fake-displaced vertices where one track is
 mis-reconstructed at high $|y_0|$.
+
+\begin{figure}
+  \begin{subfigure}{0.32\textwidth}
+    \resizebox{\textwidth}{!}{\input{figures/hps/analysis/hps-truly-displaced-diagram}}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \resizebox{\textwidth}{!}{\input{figures/hps/analysis/hps-fake-displaced-diagram}}
+  \end{subfigure}
+  \begin{subfigure}{0.32\textwidth}
+    \resizebox{\textwidth}{!}{\input{figures/hps/analysis/hps-not-displaced-diagram}}
+  \end{subfigure}
+  \caption{Diagrams of examples for how different types of vertices effect the observed
+  values of $y_0$. Truly displaced vertices (left) have both tracks whose $y_0$ is far
+  from $\qty{0}{\mm}$ while fake displaced vertices (middle) and not displaced (right)
+  have at least one if not both tracks with $y_0\approx\qty{0}{\mm}$.}
+  \label{fig:hps-displace-eg}
+\end{figure}
 
 The track fit uncertainty of the vertical impact parameter $\sigma_{y_0}$
 is a helpful quality parameter measuring how confident the track fit is

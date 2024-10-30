@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+  \drawhpsfirsttwolayers
+  \draw[black] (\targetx-\targethalfthick,0) -- (2.5,0);
+  \node[align=left] at (\targetx,+2) {Fake Displaced\\$y_0^{e^-}\approx\qty{0}{\mm}$};
+
+  \draw[black,->] (\targetx+\targethalfthick,0.0) -- (2.5,2) node[anchor=north west] {\(e^-\)};
+  \draw[black,->] (\fdposx, \fdposy) -- (2.5,-1.8) node[anchor=south west] {\(e^+\)};
+  \node at (\fdposx,\fdposy) [circle,fill,inner sep=1.5pt] {};
+
+  \draw[black,dotted] (\fdposx,\fdposy) -- (\targetx,\fdposyzero);
+  \node at (\layeronex,\fdbadhity) [circle,draw,fill=white,inner sep=1.5pt] {};
+
+  \draw[decoration={brace,raise=5pt},decorate]
+    (\targetx,0) -- node[left=6pt] {$y_{0}^{e^+}$} (\targetx,\fdposyzero);
+\end{tikzpicture}

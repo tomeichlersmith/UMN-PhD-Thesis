@@ -1,0 +1,15 @@
+\begin{tikzpicture}
+  \drawhpsfirsttwolayers
+  \draw[black] (\targetx-\targethalfthick,0) -- (2.5,0);
+  \node[align=left] at (\targetx,+2) {Truly\\Displaced};
+  \node at (\targetx+2,0.1) [circle,fill,inner sep=1.5pt] {};
+  \draw[black,->] (\targetx+2.0,0.1) -- (2.5,2) node[anchor=north west] {\(e^-\)};
+  \draw[black,->] (\targetx+2.0,0.1) -- (2.5,-1.8) node[anchor=south west] {\(e^+\)};
+  \draw[black,dotted]
+    (\targetx+2,0.1) -- (\targetx,\eleyzero)
+    (\targetx+2,0.1) -- (\targetx,\posyzero);
+  \draw[decoration={brace,raise=5pt},decorate]
+    (\targetx,\eleyzero) -- node[left=6pt] {$y_{0}^{e^-}$} (\targetx,0);
+  \draw[decoration={brace,raise=5pt},decorate]
+    (\targetx,0) -- node[left=6pt] {$y_{0}^{e^+}$} (\targetx,\posyzero);
+\end{tikzpicture}
