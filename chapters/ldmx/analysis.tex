@@ -78,11 +78,15 @@ energy within the \ac{ecal} after the trigger has been applied.
 
 \begin{figure}[htb]
     \centering
-    \begin{tabular}{cc}
-         \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/energy-after-trigger-4gev.pdf}
-         &
-         \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
-    \end{tabular}
+    \begin{subfigure}{0.48\textwidth}
+         \includegraphics[width=\textwidth]{%
+           figures/ldmx/analysis/energy-after-trigger-4gev.pdf}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+         \includegraphics[width=\textwidth]{%
+           figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
+    \end{subfigure}
     \caption{
     The total reconstructed energy in all layers of the ECal ($E_\text{ECAL}$).
     The signal and background distributions are normalized such that their integral is one.
@@ -124,12 +128,21 @@ we will exploit in the final statistical analysis of these samples.
 
 \begin{figure}
     \centering
-    \begin{tabular}{cc}
-        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-4gev-1e13norm.pdf} &
-        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-4gev-1e13norm.pdf} \\
-        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-8gev-1e13norm.pdf} &
-        \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-8gev-1e13norm.pdf} \\
-    \end{tabular}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-4gev-1e13norm.pdf}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-4gev-1e13norm.pdf}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/ldmx/analysis/nm1-hcal-max-pe-8gev-1e13norm.pdf}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/ldmx/analysis/nm1-ecal-rms-8gev-1e13norm.pdf}
+    \end{subfigure}
     \caption{Variables used in signal selection for the \ac{eat} analysis channel.
     In each figure, all other cuts are applied except for the variable in question.
     Some of the bins are empty in which case the upper Poisson limit given the total
@@ -157,11 +170,13 @@ we will exploit in the final statistical analysis of these samples.
 
 \begin{figure}[htb]
     \centering
-    \begin{tabular}{cc}
-       \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-4gev.pdf}
-       &
-       \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-8gev.pdf}
-    \end{tabular}
+    \begin{subfigure}{0.48\textwidth}
+       \includegraphics[width=\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-4gev.pdf}
+    \end{subfigure}
+    ~
+    \begin{subfigure}{0.48\textwidth}
+       \includegraphics[width=\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-8gev.pdf}
+    \end{subfigure}
     \centering
     \caption{The total reconstructed energy in all layers of the \ac{ecal} ($E_\text{ECAL}$)
     as a fraction of the beam energy ($E_\text{Beam}$) for all samples that
@@ -196,11 +211,13 @@ in order to help set the scale of the background in a data-driven way.
 
 \begin{figure}[htb]
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/4gev-cumulative-bkgd-fit.pdf}
-    &
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/8gev-cumulative-bkgd-fit.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/4gev-cumulative-bkgd-fit.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/8gev-cumulative-bkgd-fit.pdf}
+  \end{subfigure}
   \caption{%
     Exponential fit of the total simulated background distribution.
     The shaded region is a 95\% confidence band on the fit which is interpreted
@@ -216,11 +233,13 @@ shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction
 
 \begin{figure}[htb]
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/4gev-integrated-bkgd-fit.pdf}
-    &
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/analysis/8gev-integrated-bkgd-fit.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/4gev-integrated-bkgd-fit.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/8gev-integrated-bkgd-fit.pdf}
+  \end{subfigure}
   \caption{%
     Background prediction within the three final analysis bins (blue)
     compared to the unconstrained simulation prediction in gray.

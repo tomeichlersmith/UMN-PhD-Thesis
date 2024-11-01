@@ -1,7 +1,8 @@
 % shared import of packages and command definitions for slides and text
 
 \usepackage{silence} % silence warnings
-\WarningFilter{tikz-feynman}{The key you tried} % silence LuaTeX-only warnings
+% dont have tikz-feynman tell me LuaTex would be better on every vertex and line
+\WarningFilter{tikz-feynman}{The key you tried}
 
 \usepackage{epsfig} % Allows the inclusion of eps files
 \usepackage{epic} % Enhanced picture mode
