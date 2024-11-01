@@ -234,11 +234,13 @@ system at a significant rate.
 
 \begin{figure}
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/4gev-ecal-by-nuc.pdf}
-    &
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/8gev-ecal-by-nuc.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/4gev-ecal-by-nuc.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/8gev-ecal-by-nuc.pdf}
+  \end{subfigure}
   \caption{The total reconstructed energy within the \ac{ecal} as a fraction of the beam energy
   separated by the total nuclear energy within the event (the energy going into the photon-nuclear
   and electron-nuclear processes).}
@@ -297,11 +299,13 @@ the shower (an example of this is shown in \cref{fig:dimuon-z}).
 
 \begin{figure}
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/dimuon-z-4gev.pdf}
-    &
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/dimuon-z-8gev.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/dimuon-z-4gev.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/dimuon-z-8gev.pdf}
+  \end{subfigure}
   \caption{
     Longitudinal location ($z$) where the $\mu^+$ was produced within the simulation
     for a variety of biasing factors $B$ for the 4 GeV beam (left) and 8 GeV beam (right).
@@ -324,11 +328,13 @@ signal region in this missing energy search.
 
 \begin{figure}
   \centering
-  \begin{tabular}{cc}
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/unbiased-biased-comp-4gev.pdf}
-    &
-    \includegraphics[width=0.49\textwidth]{figures/ldmx/simulation/unbiased-biased-comp-8gev.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/unbiased-biased-comp-4gev.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/unbiased-biased-comp-8gev.pdf}
+  \end{subfigure}
   \caption{\ac{ecal} reconstructed energy $E_\text{ECAL}$ as a fraction of the beam energy
   $E_\text{Beam}$ comparing the unbiased and biased samples scaled to the same \ac{eot}.
   The 4 GeV (8 GeV) beam case is shown on the left (right).}
@@ -404,10 +410,13 @@ while maintaining trigger efficiency.
   \centering
   \todo[figure cleanup]{Comment about phase space requirement, maybe include showing
   how the distribution evolves with the phase space requirement and then the trigger requirement.}
-  \begin{tabular}{cc}
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/ap_energy.pdf} &
-    \includegraphics[width=0.48\textwidth]{figures/ldmx/simulation/db_z.pdf}
-  \end{tabular}
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/ap_energy.pdf}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/ldmx/simulation/db_z.pdf}
+  \end{subfigure}
   \caption{Distributions of simulated signal events with a \qty{4}{\giga\electronvolt} beam.
   The energy of the produced dark photon is shown on the left while the longitudinal
   location where the production occurred is on the right.}
