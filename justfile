@@ -12,7 +12,7 @@ latexmk_prefix := if use_denv == "true" {
   ""
 }
 
-latexmk_opts := "-pdf -shell-escape -bibtex -f"
+latexmk_opts := "-pdf -shell-escape -bibtex -f -outdir=obj/"
 latexmk := latexmk_prefix + "latexmk " + latexmk_opts
 
 # compile thesis pdf into repo root directory
@@ -29,7 +29,7 @@ view:
 
 # build slides
 slides:
-    cd slides && {{ latexmk }} -outdir=obj/ slides.tex
+    cd slides && {{ latexmk }} slides.tex
 
 # present slides with pympress
 present: slides

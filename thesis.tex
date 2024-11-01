@@ -7,21 +7,6 @@
 
 \linespread{1.3}
 
-% Compile only the chapters listed here
-\includeonly{
-    preliminaries/title,
-    chapters/groundwork/intro,
-    chapters/groundwork/theory,
-    chapters/ldmx/experiment,
-    chapters/ldmx/simulation,
-    chapters/ldmx/analysis,
-    chapters/hps/experiment,
-    chapters/hps/alignment,
-    chapters/hps/data_set,
-    chapters/hps/analysis,
-    chapters/conclusion/conclusion,
-}
-
 \begin{document}
 \bibliographystyle{hunsrt} % style of bibliography
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,29 +14,29 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Title and other sections that come before the body of the document
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\include{preliminaries/title}
+\input{preliminaries/title}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Now lets include the body of the document...
+% Now lets input the body of the document...
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \part{Laying the Groundwork}
-\include{chapters/groundwork/intro}
-\include{chapters/groundwork/theory}
+\input{chapters/groundwork/intro}
+\input{chapters/groundwork/theory}
 
 \part{LDMX} \label{part:ldmx}
-\include{chapters/ldmx/experiment}
-\include{chapters/ldmx/simulation}
-\include{chapters/ldmx/analysis}
+\input{chapters/ldmx/experiment}
+\input{chapters/ldmx/simulation}
+\input{chapters/ldmx/analysis}
 
 \part{HPS} \label{part:hps}
-\include{chapters/hps/experiment}
-\include{chapters/hps/alignment}
-\include{chapters/hps/data_set}
-\include{chapters/hps/analysis}
+\input{chapters/hps/experiment}
+\input{chapters/hps/alignment}
+\input{chapters/hps/data_set}
+\input{chapters/hps/analysis}
 
 \part{Conclusion} \label{part:conclusion}
-\include{chapters/conclusion/conclusion}
+\input{chapters/conclusion/conclusion}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
