@@ -25,6 +25,7 @@ An additional, orthogonal category of data was introduced to be combined with pr
 enabling higher sensitivity to a range of \ac{simp} parameter space.
 
 \section{Signal Yield}
+\label{sec:hps:signal-yield}
 
 The expected signal yield is a crucial part of any kind of search analysis
 and this one is no exception.
@@ -277,7 +278,7 @@ along $m_\mathrm{reco}$ in data so no selection on $p_m$ is imposed when searchi
 
 Each vertex can be projected back to the target using its position and total momentum,
 and the location of the vertex at the target can be compared to the beam
-position extracted from a sub-sample of the data\todo[citation]{reference how beamspot extraction is done}.
+position extracted from 1\% of each data-collection run.
 The separation between the projected position $\vec{x} = (x,y)$ and the beam position
 $\vec{\mu} = (\mu_{x'}, \mu_{y'})$ is then measured
 and normalized by the width of the beam in that direction $(\sigma_{x'},\sigma_{y'})$.
@@ -384,9 +385,284 @@ Vertex $z$ is left for late-stage statistical analysis of the results
 and -- being highly correlated with \minyzero -- is redundant with this variable.
 
 \section{Selection}
+The selection on these variables was optimized using a subsample of the collected
+data amounting to $\approx10\%$ of the full sample.
+All of the variables except the last, separating variable (\minyzero) were varied
+while keeping the relative signal efficiency high ($>\qty{80}{\%}$), focused on
+removing the highly-displaced events leading to the long tail in data observed
+in \cref{fig:data-signal-comp:min-y0}.
+\cref{fig:min-y0-after-others} shows the cleaned \minyzero distribution after
+these selections.
+There are still a few highly-displaced events left; however, removing them
+incurs a higher penalty on signal efficiency and leads to a lower resulting
+sensitivity estimate so they are left in the sample.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/hps/analysis/min-y0-after-others.pdf}
+  \caption{%
+    \minyzero distribution after the other selections (L1L2, \Psum in SR, reconstructed
+    mass lying in mass window, \ac{vps} $< 4$, and \maxyzeroerr$< \qty{0.4}{\mm}$.
+  }
+  \label{fig:min-y0-after-others}
+\end{figure}
+
+The final variable \minyzero was chosen by maximizing the binomial significance
+of the expected signal at $\epsilon^2=\num{1e-6}$ over the observed data for this \qty{10}{\%} subsample.
+In this subsample, the expected signal was artificially scaled such that it would
+be on the same order-of-magnitude as the observed data (specifically, a scaling factor
+of $0.1/\epsilon$ was found to work well although variations in this scaling factor did not vary
+the chosen selections by much).
+
+The \minyzero values chosen by this maximization (\cref{fig:miny0-opt}) are ragged due to the finite
+nature of the subsample on which they are being chosen.
+In order to avoid over-biasing the selection to this arbitrarily-chosen subsample,
+the actual cuts used in the final analysis are smoothed by fitting a line to the area
+whose maximumim binomial significance is above zero and then continuining this line with flat
+values outside this region.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/miny0-after-others-zbi-eps2-1e-6.pdf}
+    \caption{%
+      Binomial significance ($Z_\mathrm{Bi}$) for a range of masses and \minyzero cut choices
+      with the points maximizing $Z_\mathrm{Bi}$ for each mass drawn in red circles and the linear fit with
+      its flat continuation as a red line.
+    }
+    \label{fig:miny0-opt:zbi}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/miny0-cut-after-others-fit-eps2-1e-6.pdf}
+    \caption{%
+      Values maximing the binomial signficance (blue) along with the linear fit and flat extension (orange).
+    }
+    \label{fig:miny0-opt:fit}
+  \end{subfigure}
+  \caption{%
+    Binomail significance (left) being maximized after the \ac{vps}$< 4$ and
+    \maxyzeroerr$<\qty{0.4}{\mm}$ cuts leading to cuts (right, blue) which are
+    smoothed into a continuous function (right, orange) as described in the text.
+  }
+  \label{fig:miny0-opt}
+\end{figure}
+
+In summary, this optimization procedure led to the following cuts.
+\begin{itemize}
+  \item L1L2: In the vertex, one of the particles must have a hit in both sensors in
+    layer 1 and layer 2 while the other must have a hit in both sensors in layer 2 and layer 3.
+  \item Low Momentum Sum: $\qty{1.0}{\GeV} < $\Psum$ < \qty{1.9}{\mm}$
+  \item Decay after Target: $z > z_\mathrm{target}$
+  \item Vertex Projects Back to Beamspot: \ac{vps} $< 4$
+  \item Good Vertical Resolution: \maxyzeroerr$< \qty{0.4}{\mm}$
+\end{itemize}
+A search for a statistically-significant excess of highly-displaced events
+reconstructed within resolution of a specific mass is then performed at this point.
+The sensitivity is estimated using two additional cuts.
+\begin{itemize}
+  \item Within Mass Window: $p_m < 2.8$
+  \item Truly Displaced: \minyzero$> y_{0,\min}^\mathrm{cut}$
+\end{itemize}
+where
+%$p_m$ and $y_{0,\min}^\mathrm{cut}$ are evaluated at the mass point $m_{V_D}$ we are testing,
+\begin{equation} \label{eq:miny0-cut-func}
+  y_{0,\min}^\mathrm{cut}(m_\mathrm{reco}) = \begin{cases}
+    A & m_\mathrm{reco} \leq \qty{40}{\MeV} \\
+    B+Cm_\mathrm{reco} & \qty{40}{\MeV} < m_\mathrm{reco} < \qty{120}{\MeV} \\
+    D & m_\mathrm{reco} \geq \qty{120}{\MeV} 
+  \end{cases}
+\end{equation}
+and the parameters of this function are given in \cref{tab:miny0-cut-params}.
+
+\begin{table}
+  \centering
+  \begin{tabular}{c|c}
+    Parameter & Value \\ \hline
+    $A$ & \qty{1.66}{\mm} \\
+    $B$ & \qty{1.86}{\mm} \\
+    $C$ & \qty{-5.1e-03}{\mm/\MeV} \\
+    $D$ & \qty{1.25}{\mm}
+  \end{tabular}
+  \caption{Parameters for \cref{eq:miny0-cut-func}.}
+  \label{tab:miny0-cut-params}
+\end{table}
+
+These selections lead to 60\todo[update]{update with 100\% results after unblinding}
+highly-displaced events in data left which can be seen in \cref{fig:y0-cut-on-data}.
+The total signal efficiency of this analysis as a function of reconstructed $z$
+\cref{fig:signal-efficiency:l1l2} is of the same magnitude but slightly further displaced
+than the L1L1 analysis \cref{fig:signal-efficiency:l1l1}.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.5\textwidth]{figures/hps/analysis/results/y0-cut-on-data.pdf}
+  \caption{\minyzero distribution for the 10\% data sample with the
+  $y_{0,\min}^\mathrm{cut}$ function overlayed in red.}
+  \label{fig:y0-cut-on-data}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/signal-efficiency.pdf}
+    \caption{L1L2}
+    \label{fig:signal-efficiency:l1l2}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/l1l1-signal-efficiency.pdf}
+    \caption{L1L1}
+    \label{fig:signal-efficiency:l1l1}
+  \end{subfigure}
+  \caption{Signal efficiency as a function of $z$ and mass scale $m_{V_D}$ for
+  this analysis (left) and L1L1 (right).}
+  \label{fig:signal-efficiency}
+\end{figure}
 
 \section{Results}
+With the selection fixed, we can analyze the full sample of data without fear of
+statistical bias.
 
 \subsection{Search}
+The first stage in this analysis is to perform the search for an excess of highly-displaced
+events above what could be expected by the background.
+The signal model we are searching for would have extra events that are both highly-displaced
+and centered on a specific resonant mass; thus, the search is performed in the \minyzero -- $m_\mathrm{reco}$
+space.
+The expected number of background events is estimated using a variation of the ABCD technique
+\todo[citation]{is there a citation for the ABCD technique?}
+with two sidebands in mass (one below and one above the mass window in which we are searching)
+and one sideband in \minyzero (one below the highly-dipsplaced region).
+The sidebands in mass are defined in terms of the mass resolution of the detector $\sigma_m$
+and the values defining these edges were optimized within the L1L1 analysis.
+The sideband in \minyzero is defined such that the region within the mass window but
+at lower displacment (Region C) has at least one thousand events within it to avoid signal contaminating
+the background estimation.
+
+\cref{tab:abcdef-regions} gives the definition of these regions.
+\cref{fig:search:all} shows the search results comparing the expected number of events to the
+observed along with a corresponding p-value estimated using ten thousand toy experiments.\footnote{
+  Each toy experiment is constructed by sampling a toy values for regions C (normally distributed about actual value),
+  B+D (normally distributed about actual value), and A+E (poisson distributed about actual value) and
+  then re-calculating the expected number in region F. The number of toy experiments whose expected
+  value in F was greater than or equal to the observed number in F divided by the total number of
+  toy experiments is then our estimate p-value.
+}
+\cref{fig:search:min-p-val} shows an example of the search calculation using the mass point resulting
+in the smallest p-value.
+
+\todo[update]{Update comments on search results after unblinding.}
+
+\begin{table}
+  \centering
+  \begin{tabular}{c|cc}
+    Region & $m_\mathrm{reco}$ Range & \minyzero Range \\ \hline
+    A & $(m_{V_D}-4.5\sigma_m,m_{V_D}-1.5\sigma_m)$ & $(y_{0,\min}^\mathrm{cut},\infty)$ \\
+    B & $(m_{V_D}-4.5\sigma_m,m_{V_D}-1.5\sigma_m)$ & $(y_{0,\min}^\mathrm{floor},y_{0,\min}^\mathrm{cut})$ \\
+    C & $(m_{V_D}-1.5\sigma_m,m_{V_D}+1.5\sigma_m)$ & $(y_{0,\min}^\mathrm{floor},y_{0,\min}^\mathrm{cut})$ \\
+    D & $(m_{V_D}+1.5\sigma_m,m_{V_D}+4.5\sigma_m)$ & $(y_{0,\min}^\mathrm{floor},y_{0,\min}^\mathrm{cut})$ \\
+    E & $(m_{V_D}+1.5\sigma_m,m_{V_D}+4.5\sigma_m)$ & $(y_{0,\min}^\mathrm{cut},\infty)$ \\
+    F & $(m_{V_D}-1.5\sigma_m,m_{V_D}+1.5\sigma_m)$ & $(y_{0,\min}^\mathrm{cut},\infty)$
+  \end{tabular}
+  \caption{%
+    Region definitions for use in background estimation via sidebands.
+    Region F is the signal region in which we are searching for an excess.
+    $m_{V_D}$ is the mass point we are searching for,
+    $\sigma_m$ is the detector mass resolution evaluated at $m_{V_D}$,
+    $y_{0,\min}^\mathrm{cut}$ is the optimized cut value evaluated at $m_{V_D}$,
+    and $y_{0,\min}^\mathrm{floor}$ is the maximum value of $y_{0,\min}$ such that region C
+    has at least one thousand events in it.
+  }
+  \label{tab:abcdef-regions}
+\end{table}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/search.pdf}
+    \caption{Expected and observed events (top) with their p-values (bottom).}
+    \label{fig:search:all}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/search-min-p-val.pdf}
+    \caption{Search calculation yielding the minimum p-value
+    (with $y_{0,\min}^\mathrm{cut}$ in light red).}
+    \label{fig:search:min-p-val}
+  \end{subfigure}
+  \caption{Search results on 10\% of the data.}
+  \label{fig:search}
+\end{figure}
 
 \subsection{Sensitivity and Exclusion}
+With no significant excess observed, we can then move towards estimating the sensitivity of
+the analysis and then using that to exclude certain regions of parameter space.
+The sensitivity estimate is rather simple; just a ratio between the expected signal yield
+and the maximum signal yield allowed by the observed data distribution.
+\cref{sec:hps:signal-yield} already described the expected signal calculation used here
+as well as previously within the selection optimization (shown in \cref{fig:hps-signal-yield:expected}).
+The maximum signal yield allowed is calculated using the \ac{oim} \cite{yellin-oim:2002}
+which leverages the differing shape between signal and background and allows for the scale
+of the background to be unknown.
+The \ac{oim} result is shown in \cref{fig:hps-signal-yield:allowed}.
+
+\cref{fig:sensitivity} shows the sensitivity along with the exclusion contour drawn where the sensitivity
+equals one enclosing the area where the expected yield exceeds what is allowed and is there for excluded
+for both this L1L2 analysis and the L1L1 analysis for comparison.
+We can combine these sensitivity estimates in order to get a final sensitivity and exclusion contour
+by adding the signal efficiencies and the observed data distributions of the two categories together
+before re-calculating the expected and maximum allowed signal yield (the ``Simple Merging'' technique
+from \cite{yellin-oim-combine:2011}).
+
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/expected-signal.pdf}
+    \caption{Expected}
+    \label{fig:hps-signal-yield:expected}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/max-signal-allowed.pdf}
+    \caption{Maximum Allowed}
+    \label{fig:hps-signal-yield:allowed}
+  \end{subfigure}
+  \caption{Signal yield for the L1L2 reconstruction category with the described cuts
+  showing the theoretical expecation (left) and the maximum allowed (right) derived
+  using the \ac{oim}.}
+  \label{fig:hps-signal-yield}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/exclusion-estimate.pdf}
+    \caption{L1L2}
+    \label{fig:sensitivity:l1l2}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/l1l1-exclusion-estimate.pdf}
+    \caption{L1L1}
+    \label{fig:sensitivity:l1l1}
+  \end{subfigure}
+  \caption{Sensitivity of this analysis as predicted using the 10\% data subsample.
+  The red contour is drawn at 0.1 giving a naive exclusion estimate.}
+  \label{fig:sensitivity}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \includegraphics[width=\textwidth]{figures/hps/analysis/results/excl-combination.pdf}
+  \end{subfigure}
+  \caption{%
+    Naive exclusion contours for L1L1, L1L2, and their combination
+    using the ``Simple Merging'' technique.
+  }
+  \label{fig:combine-comp}
+\end{figure}
