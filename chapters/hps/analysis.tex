@@ -1,8 +1,8 @@
 \chapter{Analysis}
 \label{chapter:hps:analysis}
 
-A search for visibly-decaying \ac{dm} is not novel, many experiments have been purposed
-built for such a search; however, \ac{hps} is specially focused on \ac{dm} that decays
+A search for visibly-decaying \ac{dm} is not novel, many experiments have been purposed-built
+for such a search; however, \ac{hps} is specially focused on \ac{dm} that decays
 within shorter distances.
 While \ac{hps} has previously searched \cite{hps-2016-displaced-vtx} for simple dark sectors
 more similar to the benchmark model used within the \ac{ldmx} missing energy search,
@@ -11,12 +11,12 @@ impacted the resulting sensitivity of \ac{hps}.
 \cref{sec:hps:simps} introduced the idea of \ac{simp} \ac{dm} which has additional
 interest for \ac{hps}.
 Specifically, the increase in complexity of the \ac{dm} model slightly decouples the production
-rate from the decay rate meaning the number of events were \ac{dm} is produced is not as tightly
+rate from the decay rate meaning the number of events where \ac{dm} is produced is not as tightly
 connected to how displaced the particles are expected to be within the detector.
 The downside of this decoupling is that some energy is lost to the production of the lighter
 dark meson $\pi_D$ when the dark photon decays within the dark sector; however,
 this also means \ac{hps} has not searched this regime since one of the key selections within
-its previous displaced vertex search was requiring the total momentum of the vertex to
+its previous displaced vertex search was requiring the total momentum of the vertex to be
 near the beam energy instead of significantly below it.
 
 With the samples presented in \cref{chapter:hps:dataset}, a search for \acp{simp} within the collected
@@ -35,10 +35,8 @@ yield and not how the signal events would present themselvs in the data.
 In a visible search, the mixing strength also effects the decay length and thus a more intricate
 signal yield estimate is required to account for the fact that changing $\epsilon$ not only changes
 the magnitude but also changes which events are more likely to be observed within data.
-
 In this analysis, we modify the expected signal yield calculation done previously by \ac{hps}
-in \cite{hps-2016-displaced-vtx} to accomodate the two viable decay channels within this \ac{simp} model.
-Nevertheless, the full signal yield calculation is summarized here for reference.
+\cite{hps-2016-displaced-vtx} to accomodate the two viable decay channels within this \ac{simp} model.
 
 The magnitude of this estimate is set by the relationship between dark photon production cross section
 and the radiative trident differential cross section\cite{bjorken-ap-rate:2009}.
@@ -76,29 +74,30 @@ but not necessarily within its acceptance or passing selection requirements is
     \left.\frac{dN_{3e\mathrm{,CR}}}{dm_\mathrm{reco}}\right|_{m=m_{A'}}
 \end{equation}
 Both $f_\mathrm{rad}$ and $A_\mathrm{rad}$ use the event and vertex pre-selection before
-any downstream analysis selections.
-They parameters for these polynomials are given in \cref{tab:rad-poly-coeff}
-and these ingredients along with the resulting $N_{A'}$ is given in \cref{fig:dark-photon-yield-calc}.
+any downstream analysis selections, so they are common amongst all potential analysis channels
+that share this pre-selection; however, they both vary as a function of the dark photon mass.
+Polynomials were fit to the simulation-derived values for these ratios and
+the parameters for these polynomials are given in \cref{tab:rad-poly-coeff}.
+These ingredients along with the resulting $N_{A'}$ is shown in \cref{fig:dark-photon-yield-calc}
+using a run corresponding to $\approx1.6\%$ of the entire dataset.
 
 \begin{table}
   \centering
   \begin{tabular}{c|cc}
     Coefficient     & $f_\mathrm{rad}$ & $A_\mathrm{rad}$ \\ \hline
-    $c_0$           & 0.10541434 & -0.48922505 \\
-    $c_1$ / MeV     & -0.0011737697 & 0.073733061 \\
-    $c_2$ / MeV$^2$ & \num{7.4487930e-06} & \num{-0.0043873158} \\
-    $c_3$ / MeV$^3$ & \num{-1.6766332e-08} & 0.00013455495 \\
-    $c_4$ / MeV$^4$ & 0.0 & \num{-2.3630535e-06} \\
-    $c_5$ / MeV$^5$ & 0.0 & \num{2.5402516e-08} \\
-    $c_6$ / MeV$^6$ & 0.0 & \num{-1.7090900e-10} \\
-    $c_7$ / MeV$^7$ & 0.0 & \num{7.0355585e-13} \\
-    $c_8$ / MeV$^8$ & 0.0 & \num{-1.6215982e-15} \\
-    $c_9$ / MeV$^9$ & 0.0 & \num{1.6032317e-18} \\
+    $c_0$           & 0.105 & -0.489 \\
+    $c_1$ / MeV     & \num{-1.17e-03} & 0.0737 \\
+    $c_2$ / MeV$^2$ & \num{7.44e-06} & \num{-4.34e-03} \\
+    $c_3$ / MeV$^3$ & \num{-1.67e-08} & \num{1.34e-04} \\
+    $c_4$ / MeV$^4$ & 0.0 & \num{-2.36e-06} \\
+    $c_5$ / MeV$^5$ & 0.0 & \num{2.54e-08} \\
+    $c_6$ / MeV$^6$ & 0.0 & \num{-1.71e-10} \\
+    $c_7$ / MeV$^7$ & 0.0 & \num{7.03e-13} \\
+    $c_8$ / MeV$^8$ & 0.0 & \num{-1.62e-15} \\
+    $c_9$ / MeV$^9$ & 0.0 & \num{1.60e-18} \\
   \end{tabular}
   \caption{%
     Polynomial coefficients for radiative fraction and acceptance functions.
-    All decimal points are given for reproducibility; however, not all
-    of them are significant.
   }
   \label{tab:rad-poly-coeff}
 \end{table}
@@ -206,7 +205,7 @@ The rest of the ingredients are either fixed by the dataset being searched (e.g.
 differential production, $f_\mathrm{rad}$, $A_\mathrm{rad}$) or are parameters that we
 vary for the search ($\epsilon^2$, $m_{V_D}$).
 A moderately realistic signal efficiency shows the range of $\epsilon^2$ and $m_{V_D}$
-this dataset has potential sensitivity (\cref{fig:n-sig-eg:step}) which informs the
+in which this dataset has potential sensitivity (\cref{fig:n-sig-eg:step}) which informs the
 ranges these values will take below.
 
 
@@ -271,8 +270,8 @@ to be within the resolution of the detector $\sigma_m$ of the mass we are search
 \end{equation}
 Applying an upper limit on $p_m$ is often refered to as a ``mass window''
 since it results in $m_\text{reco}$ residing within a small range around $m_{V_D}$.
-For optimizing the selections and estimating the sensitivity of \ac{hps},
-the selection $p_m < 2.8$ is used.
+For optimizing the other selections and estimating the sensitivity of \ac{hps},
+$p_m < 2.8$ is used.
 The search for a potential excess of \ac{simp}-like events is using sidebands
 along $m_\mathrm{reco}$ in data so no selection on $p_m$ is imposed when searching.
 
@@ -374,7 +373,7 @@ falls within the chosen mass window).
     \label{fig:data-signal-comp:min-y0}
   \end{subfigure}
   \caption{%
-    Distributions of cut variables for a few example mass points.
+    Distributions of cut variables for a few example mass points and $\approx10\%$ of the full data sample.
     The vertices are required to be L1L2, have their momentum sum be within
     the signal region, and their invariant mass within the specified mass window.
   }
@@ -395,21 +394,21 @@ in \cref{fig:data-signal-comp:min-y0}.
 these selections.
 There are still a few highly-displaced events left; however, removing them
 incurs a higher penalty on signal efficiency and leads to a lower resulting
-sensitivity estimate so they are left in the sample.
+sensitivity estimated from this subsample.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.5\textwidth]{figures/hps/analysis/min-y0-after-others.pdf}
   \caption{%
     \minyzero distribution after the other selections (L1L2, \Psum in SR, reconstructed
-    mass lying in mass window, \ac{vps} $< 4$, and \maxyzeroerr$< \qty{0.4}{\mm}$.
+    mass lying in mass window, \ac{vps} $< 4$, and \maxyzeroerr$< \qty{0.4}{\mm}$).
   }
   \label{fig:min-y0-after-others}
 \end{figure}
 
 The final variable \minyzero was chosen by maximizing the binomial significance
 of the expected signal at $\epsilon^2=\num{1e-6}$ over the observed data for this \qty{10}{\%} subsample.
-In this subsample, the expected signal was artificially scaled such that it would
+For this optimization, the expected signal was artificially scaled such that it would
 be on the same order-of-magnitude as the observed data (specifically, a scaling factor
 of $0.1/\epsilon$ was found to work well although variations in this scaling factor did not vary
 the chosen selections by much).
@@ -448,7 +447,7 @@ values outside this region.
   \label{fig:miny0-opt}
 \end{figure}
 
-In summary, this optimization procedure led to the following cuts.
+In summary, the following cuts developed for this analysis are
 \begin{itemize}
   \item L1L2: In the vertex, one of the particles must have a hit in both sensors in
     layer 1 and layer 2 while the other must have a hit in both sensors in layer 2 and layer 3.
@@ -465,7 +464,6 @@ The sensitivity is estimated using two additional cuts.
   \item Truly Displaced: \minyzero$> y_{0,\min}^\mathrm{cut}$
 \end{itemize}
 where
-%$p_m$ and $y_{0,\min}^\mathrm{cut}$ are evaluated at the mass point $m_{V_D}$ we are testing,
 \begin{equation} \label{eq:miny0-cut-func}
   y_{0,\min}^\mathrm{cut}(m_\mathrm{reco}) = \begin{cases}
     A & m_\mathrm{reco} \leq \qty{40}{\MeV} \\
@@ -603,20 +601,27 @@ the analysis and then using that to exclude certain regions of parameter space.
 The sensitivity estimate is rather simple; just a ratio between the expected signal yield
 and the maximum signal yield allowed by the observed data distribution.
 \cref{sec:hps:signal-yield} already described the expected signal calculation used here
-as well as previously within the selection optimization (shown in \cref{fig:hps-signal-yield:expected}).
+as well as previously within the selection optimization.
+\cref{fig:hps-signal-yield:expected} shows the final expected signal yield for this selection
+using the full data sample.
 The maximum signal yield allowed is calculated using the \ac{oim} \cite{yellin-oim:2002}
-which leverages the differing shape between signal and background and allows for the scale
-of the background to be unknown.
+which leverages the differing shape between signal and background and allows for the presence
+of unknown background to alter its scale.
 The \ac{oim} result is shown in \cref{fig:hps-signal-yield:allowed}.
 
-\cref{fig:sensitivity} shows the sensitivity along with the exclusion contour drawn where the sensitivity
-equals one enclosing the area where the expected yield exceeds what is allowed and is there for excluded
-for both this L1L2 analysis and the L1L1 analysis for comparison.
+\cref{fig:sensitivity} shows the sensitivity for both this analysis of L1L2 and the L1L1 analysis
+for comparison along with a contour drawn where the sensitivity equals one.
+This contour encloses the excluded parameter space where the expected yield exceeds what is allowed.
 We can combine these sensitivity estimates in order to get a final sensitivity and exclusion contour
 by adding the signal efficiencies and the observed data distributions of the two categories together
 before re-calculating the expected and maximum allowed signal yield (the ``Simple Merging'' technique
 from \cite{yellin-oim-combine:2011}).
 
+In this region of parameter space, \textsc{Experiment}\todo[lookup]{what experiment set the 1e-6 line?}
+excluded the parameters above $\epsilon^2 = 10^{-6}$, so this analysis excludes marginal new parameter
+space.
+Nevertheless, this analysis was the first of its kind (low-\Psum) for \ac{hps} and thus
+opens the door to further refinement and investigation with later and larger datasets.
 
 \begin{figure}
   \centering
