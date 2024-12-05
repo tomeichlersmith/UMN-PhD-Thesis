@@ -1,17 +1,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % experiment.tex: Chapter describing the experiment
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Heavy Photon Search}
+\chapter{The Heavy Photon Search Experiment}
 \label{chapter:hps:experiment}
 
-\acf{hps} is a fixed-target experiment currently in operation at \ac{jlab}
-which is focused on search for short-length (few centimeter) decays of new particles.
+The \acf{hps} is a fixed-target experiment currently installed at \ac{jlab},
+which is focused on the search for short-length (few centimeter) decays of new particles.
 In order to search for these visible signatures of new particles,
 \ac{hps} must be able to precisely reconstruct the produced \ac{sm} particle
 kinematics and then use this information to estimate their origin point (their
 ``vertex'').
-This reconstruction is enabled by two key detector components whose design
-will be motivated using the model studied in more detail in this part.
+
+The baseline focus for \ac{hps} is to search for rare interactions which
+produce dark photons that return back to the normal sector after a brief lifetime.
+This search is the origin for the name of the experiment and the primary
+motivation for the design of the two key detector components described in
+more detail below.
+We will instead consider a model where some of the energy remains within
+the dark sector.
+%, attempting to utilize the same detector and data sample designed for loss-less search
 
 \section{Strongly Interacting Massive Particles}
 \label{sec:hps:simps}
@@ -23,13 +30,13 @@ how it decays back to \ac{sm} particles. These theories propose new specific ver
 constructing the Feynman diagrams and for the vertex factors within the calculations.
 
 To be even more specific, we could hypothesize that the dark sector consists of particles that
-interact with each other strongly in the same sense of the standard quarks. These \acp{simp}
+interact with each other strongly in an analagous sense as the standard quarks. These \acp{simp}
 \cite{simp-mechanism-2014,simp-pheno-2018} would then form
 composite particles similar to how standard quarks form composite particles like protons and
 neutrons. Since we expect our experiments to not reach the energies required to separate the
 constiuents of these composite particles, the composite particles themselves would be the dark
 matter candidates and the ones we represent within our diagrams. A dark sector consisting of \acp{simp} 
-would have a plethora of composite particles which we could observe; however of particular
+would have a plethora of composite particles which we could produce; however of particular
 importance is that there could be a composite particle that has similar enough properties to the
 dark photon that it could ``mix'' with it and decay in a way that emits fewer dark particles:
 \cref{fig:dark-brem-simp-decay}. This decay, since it has less energy ``lost'' to the dark
@@ -41,13 +48,13 @@ particles, has a greater potential of being observed within \ac{hps} and is disc
   \caption{
     Diagram of dark brem production of a dark photon followed by its decay back into an electron-positron pair
     through \ac{simp} composite particle $V_D$ with the emission of a lighter \ac{simp} composite particle $\pi_D$.
-    The two-particle vertex $V_D-A'$ is only allowed since they share enough quantum properties to mix.
+    The two-particle vertex $V_D-A'$ is allowed since they share enough quantum properties to mix.
   }
   \label{fig:dark-brem-simp-decay}
 \end{figure}
 
 Importantly, \cref{fig:dark-brem-simp-decay} has two vertices where \ac{dm} and \ac{sm} particles
-interact -- these two vertices represent the fact that such a visible decay is subsequently less
+interact -- these two vertices determine that such a visible decay is subsequently less
 probable since both of these vertices carry with them the weak mixing factor $\epsilon$. The lower
 probability of these visible decays is a general property of such signatures and motivates
 experiments focused on collecting large data volumes in order to overcome the limitation imposed by
@@ -56,12 +63,14 @@ significantly high -- high enough to prevent sensitive detector elements from be
 within its path.
 
 The observable outgoing particles of \cref{fig:dark-brem-simp-decay} can be mimiced by existing
-\ac{sm} processes. The most prominent background process is trident production \cref{fig:trident}
-which enables the production of the electron-positron pair through the radiation of the virtual
-photon (\cref{fig:trident:radiative}) or through direct electromagnetic interaction with the
-nucleus and a virtual lepton (\cref{fig:trident:bethe-heitler}). The upside of this trident
-production process is that it is \emph{prompt} -- i.e. the produced electron and positron originate
-from within the target. The position of this vertex is a separation from the signal process
+\ac{sm} processes. The most prominent background process is trident production.
+\cref{fig:trident} shows processes which produce the electron-positron pair through the radiation
+of the virtual photon (\cref{fig:trident:radiative}) or through direct electromagnetic interaction with the
+nucleus and a virtual lepton (\cref{fig:trident:bethe-heitler}).
+The difference between a \ac{dm} signal process and this trident
+production process is that the trident process is \emph{prompt}
+-- i.e. the produced electron and positron originate from within the target.
+The position of this vertex is a separation from the signal process
 \cref{fig:dark-brem-simp-decay} where the vertex of the produced electron and positron would be
 observably displaced downstream of the target due to the non-zero lifetime of the dark sector
 particle $V_D$.
@@ -133,8 +142,8 @@ These design drivers have led to the the apparatus discussed below.
 alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
 \cite{mrsolt-thesis-2020,skmccarty-thesis-2020}.
 Hall B primarily hosts the CLAS-12 experiment in the bulk of its hall; nevertheless,
-behind the CLAS-12 experiment \ac{hps} is situated
-within an alcove such that it can collect data whenever CLAS-12 is not operational (for example,
+\ac{hps} is situated within an alcove behind the CLAS-12 experiment
+such that it can collect data whenever CLAS-12 is not operational (for example,
 when its components are being upgraded or fixed).
 
 \ac{cebaf} \cite{cebaf-12GeV-2012,cebaf-opportunities-2012,cebaf-2013} is able to
@@ -144,7 +153,7 @@ portions consist of linear accelerators and the curve portions steer the beam wi
 dipole magnets either back into the straight portions or into experimental halls.
 Since \ac{cebaf} delivers electrons at such a high rate, \ac{hps} must be able to
 handle these high radiation loads. Designed to be a small experiment to fit within
-the Hall B alcove, \ac{hps} elected to be built in two halves that straddle the primary
+the Hall B alcove, \ac{hps} is built in two halves that straddle the primary
 path of the beam where the highest amount of radiation would be. Both of the subsystems
 within \ac{hps} are split into these two halves as shown in \cref{fig:hps-full-render}
 and \cref{fig:hps-diagram}.
