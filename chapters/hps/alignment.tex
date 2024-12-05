@@ -34,7 +34,7 @@ While there are different stragies to measure position within an individual sens
 (e.g. pixel vs strip tracking detectors), this measurement is not the limiting factor in the
 context of this chapter and is often the measurement whose precision is easier to characterize
 since the individual sensors can be designed, built, and tested individually for a pre-determined
-precision relative to a well defined point, such as the center of the sensor.
+precision relative to a well-defined point, such as the center of the sensor.
 
 The second position measurement -- the global position and orientation of the sensors themselves
 -- is where a lot of complexity arises.
@@ -78,7 +78,7 @@ While we can determine the position of these sensors within millimeter precision
 construction, we need an ``in-situ'' method which allows us to determine positions
 and angles during operation.
 This motivates another measurement ``tool'' that allows us to determine (or more
-accurately, constrain) the position measurements of our sensors.
+accurately, constrain) the position of our sensors.
 
 \section{Alignment Procedure}
 The tool that we use is the same particles that we will use the tracker to study for our
@@ -109,9 +109,9 @@ their fits (minimizing the sum of their $\chi^2$).
 
 This technique relies on the movements of the sensors to be small.
 The process can easily fall into a so-called ``Weak Mode'' where our quantitative measure of
-how good the fits are is achieving a locally minimum value, but the trajectories do not actually
+how good the fits are is achieving a local minimum value, but the trajectories do not actually
 align with data.
-This motivates a multi-stage approach to alignment after a tracking detector has already been built.
+This motivates a multi-stage approach to aligning a tracking detector.
 
 \begin{enumerate}
   \item \textbf{Survey}: Directly measure positions of the sensors relative to other
@@ -133,11 +133,11 @@ during certain alignment iterations.
 This can allow us to ``walk'' towards a detector model that is more aligned
 with the physical detector while maintaining physical understanding of the changes being made.
 
-\ac{hps} uses \ac{kf} for track finding,
+\ac{hps} uses a \ac{kf} algorithm for track finding,
 \ac{gbl} \cite{gbl-2012} V03-01-00 for track fitting accounting for multiple-scattering,
 and \textsc{MillepedeII} \cite{millepede-2011} V04-13-01 for determining alignment parameters
 by minimization of the total $\chi^2$.
-However, these tools are not enough to effectively align a tracking detector.
+However, these tools are not enough to effectively align a tracking detector automatically.
 The \ac{hps} \ac{svt} is relatively small but still contains several hundred alignment parameters.
 As mentioned above, the in-situ alignment procedure generally only allows for certain types
 of movements (i.e. only a certain set of parameters are allowed to change) during single
@@ -145,7 +145,7 @@ alignment iterations, but then the natural question is what types of movements s
 While some movements can be well-motivated on physical grounds (for example, moving the sensor
 along its own senstive direction), other movements may still be helpful and so many movement trails
 are required.
-This is where my specific work came in -- I (like several others) worked on testing different
+This is where my specific work occurred -- working on testing different
 sets of movements to see if they could help improve the detector alignment.
 Along the way, I also helped develop a suite of helpful side-tools primarily focused
 on visualizing the movements of the model sensors that result from alignment iterations.
@@ -192,20 +192,20 @@ to define the Original detector was close in position and orientation.
 \end{figure}
 
 \section{Results}
-This movement of the sensor positions within our detector model is all well-and-good,
+The visualization of the movement of the sensor positions within our detector model is all well-and-good,
 but we should actually be investigating how these movements affect the reconstructed
 physical variables of tracks when using the updated detector model.
 In general, the physical variables that should be investigated can depend on the
 priorities of the experiment; for this analysis within \ac{hps} we wish to inspect
 two key features.
 \begin{itemize}
-  \item Momentum Magnitude -- the total magnitude of the momentum of the reconstructed
+  \item \textbf{Momentum Magnitude} -- the total magnitude of the momentum of the reconstructed
     track is a key component in all analyses done with \ac{hps} data and thus is a
     priority to be well understood. Often, it is also common to inspect the momentum
     magnitude for different types of tracks so that it can be understood to in even
     finer detail. (i.e. $p$ vs $\tan\lambda$, $p$ vs $\phi$, $p$ separated by charge,
     etc.)
-  \item Beamspot Position -- the extrapolation of the track back to the target is
+  \item \textbf{Beamspot Position} -- the extrapolation of the track back to the target is
     another helpful variable for analyses and can be checked directly since \ac{hps}
     has other means for estimating the beam spot on the target.
 \end{itemize}
