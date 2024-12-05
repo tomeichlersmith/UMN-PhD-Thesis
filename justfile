@@ -25,7 +25,7 @@ watch:
 
 # open compiled pdf
 view:
-    open thesis.pdf
+    open obj/thesis.pdf
 
 # build slides
 slides:
