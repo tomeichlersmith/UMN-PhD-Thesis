@@ -11,6 +11,7 @@ the real data.
 \section{Collected Data} \label{sec:hps:data}
 The data used in this study was collected over a series of 82 data collection runs within 2016
 yielding a total of approximately one week of continuous beam.
+\todo[detail]{Need to explain luminosity with example from SM, maybe tridents?}
 The full luminosity of this data is estimated to be \qty{10.7}{pb^{-1}}.
 As alluded to in \cref{sec:hps-ecal}, the collected data was triggered in order to focus the sample on
 specific data of interest.
@@ -104,7 +105,7 @@ one that is more helpful for reweighting later in analysis.
 
 The two subsystems are first reconstructed separately.
 The \ac{ecal} produces clusters of nearby hits whose energy
-have been corrected by more refind calibration tables.
+have been corrected by more refined calibration tables.
 The \ac{svt} produces tracks using \ac{kf} to find tracks
 and \ac{gbl} to fit these tracks to the detector model including
 the possibility of in-detector small scatters.
@@ -132,8 +133,8 @@ This requirement naturally disposes of events which are cluttered with particles
 (thus causing more than one vertex to be reconstructed) and
 events which do not have a electron-positron pair within acceptance (thus causing no vertices to be
 reconstructed).
-The requirements on what a ``quality'' vertex is were developed and optimized with
-prior work\cite{aspellman-thesis-2024} and so they are not explained here; however,
+The requirements for a ``quality'' vertex were developed and optimized by 
+prior work\cite{aspellman-thesis-2024} and are standardized within \ac{hps} analyses.
 \cref{fig:vertex-pre-selection} shows the relative efficiency of these requirements.
 \cref{fig:n-vertex-pre-selection} shows the distribution of number of vertices
 that pass these criteria.
