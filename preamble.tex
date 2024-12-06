@@ -124,15 +124,51 @@
   % paths for truly displaced
   \eleslope=(2-0.1)/(2.5-\targetx-2);
   \eleyzero=\eleslope*(-2.0)+0.1;
+  \elelayeronestereoy=\eleslope*(\layeronex - \sensorhalfsep+1.0)+0.1;
+  \elelayeroneaxialy=\eleslope*(\layeronex + \sensorhalfsep+1.0)+0.1;
+  \elelayertwostereoy=\eleslope*(\layertwox - \sensorhalfsep+1.0)+0.1;
+  \elelayertwoaxialy=\eleslope*(\layertwox + \sensorhalfsep+1.0)+0.1;
   \posslope=(-1.8-0.1)/(2.5-\targetx-2);
   \posyzero=\posslope*(-2.0)+0.1;
+  \poslayeronestereoy=\posslope*(\layeronex - \sensorhalfsep+1.0)+0.1;
+  \poslayeroneaxialy=\posslope*(\layeronex + \sensorhalfsep+1.0)+0.1;
+  \poslayertwostereoy=\posslope*(\layertwox - \sensorhalfsep+1.0)+0.1;
+  \poslayertwoaxialy=\posslope*(\layertwox + \sensorhalfsep+1.0)+0.1;
+  % paths for not displaced
+  \ndeleslope = (2-0)/(2.5-\targetx-\targethalfthick);
+  \ndelelayeronestereoy=\ndeleslope*(\layeronex - \sensorhalfsep - \targetx - \targethalfthick);
+  \ndelelayeroneaxialy=\ndeleslope*(\layeronex + \sensorhalfsep - \targetx - \targethalfthick);
+  \ndelelayertwostereoy=\ndeleslope*(\layertwox - \sensorhalfsep - \targetx - \targethalfthick);
+  \ndelelayertwoaxialy=\ndeleslope*(\layertwox + \sensorhalfsep - \targetx - \targethalfthick);
+  \ndposslope = (-1.8-0)/(2.5-\targetx-\targethalfthick);
+  \ndposlayeronestereoy=\ndposslope*(\layeronex - \sensorhalfsep - \targetx - \targethalfthick);
+  \ndposlayeroneaxialy=\ndposslope*(\layeronex + \sensorhalfsep - \targetx - \targethalfthick);
+  \ndposlayertwostereoy=\ndposslope*(\layertwox - \sensorhalfsep - \targetx - \targethalfthick);
+  \ndposlayertwoaxialy=\ndposslope*(\layertwox + \sensorhalfsep - \targetx - \targethalfthick);
   % paths for fake displaced
   \fdeleslope = (2-0)/(2.5-\targetx-\targethalfthick);
+  \fdelelayeronestereoy=\fdeleslope*(\layeronex - \sensorhalfsep - \targetx - \targethalfthick);
+  \fdelelayeroneaxialy=\fdeleslope*(\layeronex + \sensorhalfsep - \targetx - \targethalfthick);
+  \fdelelayertwostereoy=\fdeleslope*(\layertwox - \sensorhalfsep - \targetx - \targethalfthick);
+  \fdelelayertwoaxialy=\fdeleslope*(\layertwox + \sensorhalfsep - \targetx - \targethalfthick);
   \fdposx = \targetx+1.0;
   \fdposy = \fdeleslope*(\fdposx-\targetx-\targethalfthick);
   \fdposslope = (-1.8-\fdposy)/(2.5-\fdposx);
   \fdposyzero = \fdposslope*(\targetx-\fdposx)+\fdposy;
-  \fdbadhity = \fdposslope*(\layeronex-\fdposx)+\fdposy;
+  \fdbadhitstereoy = \fdposslope*(\layeronex-\sensorhalfsep-\fdposx)+\fdposy;
+  \fdbadhitaxialy = \fdposslope*(\layeronex+\sensorhalfsep-\fdposx)+\fdposy;
+  \fdposlayertwostereoy=\fdposslope*(\layertwox - \sensorhalfsep - \fdposx)+\fdposy;
+  \fdposlayertwoaxialy=\fdposslope*(\layertwox + \sensorhalfsep - \fdposx)+\fdposy;
+  % true path is from center of target to L2 hits
+  \fdpostruslope = (\fdposslope*(\layertwox-\fdposx)+\fdposy-0)/(\layertwox-\targetx-\targethalfthick);
+  \fdtruhitstereoy = \fdpostruslope*(\layeronex-\sensorhalfsep-\targetx-\targethalfthick);
+  \fdtruhitaxialy = \fdpostruslope*(\layeronex+\sensorhalfsep-\targetx-\targethalfthick);
+}
+
+\tikzset{
+  vertex/.style={diamond,fill,inner sep=1.5pt},
+  hit/.style={circle,fill,inner sep=1.5pt},
+  miss/.style={circle,draw,fill=white,inner sep=1.0pt}
 }
 
 \newcommand{\drawhpsfirsttwolayers}{%
