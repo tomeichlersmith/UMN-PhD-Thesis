@@ -1,13 +1,13 @@
-\chapter{Analysis}
+\chapter{HPS Analysis}
 \label{chapter:hps:analysis}
 
 A search for visibly-decaying \ac{dm} is not novel, many experiments have been purposed-built
 for such a search; however, \ac{hps} is specially focused on \ac{dm} that decays
 within shorter distances.
-While \ac{hps} has previously searched \cite{hps-2016-displaced-vtx} for simple dark sectors
-more similar to the benchmark model used within the \ac{ldmx} missing energy search,
-no \ac{dm} was found and the longer decay lengths of this dark sector model greatly
-impacted the resulting sensitivity of \ac{hps}.
+While \ac{hps} has previously searched for simple dark sectors
+more similar to the benchmark model used within the \ac{ldmx} missing energy search \cite{hps-2016-displaced-vtx},
+no \ac{dm} was found and the relatively longer decay lengths of this dark sector model
+harmed the signal efficiency of the analysis and decreased the resulting sensitivity.
 \cref{sec:hps:simps} introduced the idea of \ac{simp} \ac{dm} which has additional
 interest for \ac{hps}.
 Specifically, the increase in complexity of the \ac{dm} model slightly decouples the production
@@ -31,12 +31,22 @@ The expected signal yield is a crucial part of any kind of search analysis
 and this one is no exception.
 The prior search within \ac{ldmx} benefited from its missing momentum/energy technique
 in this regard since the mixing strength $\epsilon$ is only connected to the scale of the signal
-yield and not how the signal events would present themselvs in the data.
-In a visible search, the mixing strength also effects the decay length and thus a more intricate
+yield and not how the signal events would present themselves in the data.
+In a visible search, the mixing strength also affects the decay length and thus a more intricate
 signal yield estimate is required to account for the fact that changing $\epsilon$ not only changes
 the magnitude but also changes which events are more likely to be observed within data.
 In this analysis, we modify the expected signal yield calculation done previously by \ac{hps}
 \cite{hps-2016-displaced-vtx} to accomodate the two viable decay channels within this \ac{simp} model.
+
+The fundamental premise of this calculation is re-weighting events based on their decay length
+so that they appear to have been drawn from a specific mixing strength's decay distribution.
+Specifically, we integrate over a decay weighting factor multiplied by the signal efficiency
+both as a function of the decay length in or to estimate the total signal yield for a specific
+mixing strength.
+The details of this calculation are presented in this section since they are relatively novel and
+not presented fully in another publication; however, this does force me to deviate from my previous
+commitment to few mathematical equations and jargony language.
+Skip to \cref{sec:hps:recon-cat} if this detail does not interest you.
 
 The magnitude of this estimate is set by the relationship between dark photon production cross section
 and the radiative trident differential cross section\cite{bjorken-ap-rate:2009}.
@@ -210,6 +220,7 @@ ranges these values will take below.
 
 
 \section{Reconstruction Categories}
+\label{sec:hps:recon-cat}
 The design of \ac{hps} separates reconstructed tracks into categories that are
 not necessarily associated with the underlying physics for which we are searching.
 Specifically, the number of layers (and which layers) that are included within a track
@@ -270,10 +281,11 @@ to be within the resolution of the detector $\sigma_m$ of the mass we are search
 \end{equation}
 Applying an upper limit on $p_m$ is often refered to as a ``mass window''
 since it results in $m_\text{reco}$ residing within a small range around $m_{V_D}$.
-For optimizing the other selections and estimating the sensitivity of \ac{hps},
-$p_m < 2.8$ is used.
+For optimizing the other selections, $p_m < 2.8$ is used.
 The search for a potential excess of \ac{simp}-like events is using sidebands
 along $m_\mathrm{reco}$ in data so no selection on $p_m$ is imposed when searching.
+The estimate of the resulting sensitivity uses the signal region selection from
+the search of $p_m < 1.5$.
 
 Each vertex can be projected back to the target using its position and total momentum,
 and the location of the vertex at the target can be compared to the beam
@@ -298,6 +310,7 @@ projected back to the target and the beam spot can be quantified by
 \end{equation}
 I refer to this as \ac{vps} since it represents how significantly
 a vertex deviates from originating at the beam spot.
+% maybe comment on how an upper limit on this variable is useful?
 
 Since the detector's tracking modules are oriented to be most senstive in the
 vertical direction, the vertical impact parameter $y_0$ has higher precision compared
