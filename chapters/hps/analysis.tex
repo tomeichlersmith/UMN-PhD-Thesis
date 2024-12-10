@@ -568,7 +568,10 @@ observed along with a corresponding p-value estimated using ten thousand toy exp
 \cref{fig:search:min-p-val} shows an example of the search calculation using the mass point resulting
 in the smallest p-value.
 
-\todo[update]{Update comments on search results after unblinding.}
+A few mass points had an excess of events observed within the signal region; however,
+these excesses never exceeded a global significance of $3\sigma$ and thus are understood
+as rare but normal statistical fluctuations.
+The lowest p-value observed was \num{1.1e-03} which only barely exceeded $2\sigma$ global significance.
 
 \begin{table}
   \centering
@@ -612,8 +615,8 @@ in the smallest p-value.
 \end{figure}
 
 \subsection{Sensitivity and Exclusion}
-With no significant excess observed, we can then move towards estimating the sensitivity of
-the analysis and then using that to exclude certain regions of parameter space.
+With no statistically-significant excess observed, we can then move towards estimating the sensitivity of
+the analysis and then to exclude certain regions of parameter space.
 The sensitivity estimate is rather simple; just a ratio between the expected signal yield
 and the maximum signal yield allowed by the observed data distribution.
 \cref{sec:hps:signal-yield} already described the expected signal calculation used here
@@ -626,16 +629,12 @@ of unknown background to alter its scale.
 The \ac{oim} result is shown in \cref{fig:hps-signal-yield:allowed}.
 
 \cref{fig:sensitivity} shows the sensitivity for both this analysis of L1L2 and the L1L1 analysis
-for comparison along with a contour drawn where the sensitivity equals one.
-This contour encloses the excluded parameter space where the expected yield exceeds what is allowed.
-We can combine these sensitivity estimates in order to get a final sensitivity and exclusion contour
-by adding the signal efficiencies and the observed data distributions of the two categories together
-before re-calculating the expected and maximum allowed signal yield (the ``Simple Merging'' technique
-from \cite{yellin-oim-combine:2011}).
+for comparison along with a contour drawn where the sensitivity equals one after being suppressed
+by potential systematic errors.
 
+This contour encloses the excluded parameter space where the expected yield exceeds what is allowed.
 In this region of parameter space, \textsc{Experiment}\todo[lookup]{what experiment set the 1e-6 line?}
-excluded the parameters above $\epsilon^2 = 10^{-6}$, so this analysis excludes marginal new parameter
-space.
+excluded the parameters above $\epsilon^2 = 10^{-6}$, so this analysis does not exclude new parameter space.
 Nevertheless, this analysis was the first of its kind (low-\Psum) for \ac{hps} and thus
 opens the door to further refinement and investigation with later and larger datasets.
 
@@ -671,19 +670,7 @@ opens the door to further refinement and investigation with later and larger dat
     \caption{L1L1}
     \label{fig:sensitivity:l1l1}
   \end{subfigure}
-  \caption{Sensitivity of this analysis as predicted using the 10\% data subsample.
-  The red contour is drawn at 0.1 giving a naive exclusion estimate.}
+  \caption{Sensitivity of this analysis with contour drawn including systematic errors
+  surpressing the expected signal yield.}
   \label{fig:sensitivity}
-\end{figure}
-
-\begin{figure}
-  \centering
-  \begin{subfigure}{0.48\textwidth}
-    \includegraphics[width=\textwidth]{figures/hps/analysis/results/excl-combination.pdf}
-  \end{subfigure}
-  \caption{%
-    Naive exclusion contours for L1L1, L1L2, and their combination
-    using the ``Simple Merging'' technique.
-  }
-  \label{fig:combine-comp}
 \end{figure}
