@@ -32,9 +32,9 @@ us to unify the various aspects of processing the data held within an event.
 
 The event processing framework designed, developed, and maintained by \ac{ldmx} is designed to
 allow the flexibility necessary to do the wide range of tasks necessary for the experiment. The C++
-framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost \todo[citation]{need a
-  citaiton for Boost libraries} for logging, and Python \cite{python} for dynamic run-time
-configuration. As diagramed in \cref{fig:ldmx:sim:data-flow}, the design is a sequential model: the
+framework uses CERN's ROOT \cite{cernroot} for data serialization, Boost for logging,
+and Python \cite{python} for dynamic run-time configuration.
+As diagramed in \cref{fig:ldmx:sim:data-flow}, the design is a sequential model: the
 ``event bus" stops at the individual processors in a certain sequence. The individual processors
 can inspect the data currently on the bus and board more passengers onto the bus for later
 processors to use and which can be eventually serialized into the output ROOT file. The processors can
