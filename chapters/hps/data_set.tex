@@ -9,9 +9,20 @@ expect, is a complicated multi-stage procedure in order to appropriately reflect
 the real data.
 
 \section{Collected Data} \label{sec:hps:data}
+In \ac{hep}, the volume of data is often measured in a particular unit that is convenient
+because it is the inverse unit for a variable that we also often measure (and compare to
+the calculation form our models): cross section.
+Simply, rare processes have lower cross sections and therefore we often are looking for
+processes that have cross sections in units of picobarn (pb).
+Expressing the data volume in units of pb$^{-1}$ is referred to as the luminosity and
+allows us to quickly estimate the number of expected events from a given process by multiplying
+this luminosity by a process's cross section.
+For example, the radiative trident process (\cref{fig:trident:radiative}) has an estimated
+cross section of \qty{66.36e6}{pb}, so we expect $\approx\num{7.1e8}$ instances
+of the radiative trident process to occur given the full luminosity of the data.
+
 The data used in this study was collected over a series of 82 data collection runs within 2016
 yielding a total of approximately one week of continuous beam.
-\todo[detail]{Need to explain luminosity with example from SM, maybe tridents?}
 The full luminosity of this data is estimated to be \qty{10.7}{pb^{-1}}.
 As alluded to in \cref{sec:hps-ecal}, the collected data was triggered in order to focus the sample on
 specific data of interest.
