@@ -12,8 +12,8 @@ While this design is optimal for a large number of \ac{eot}, the strategy has so
 a low \ac{eot} data run. To limit multiple scattering which ruins momentum measurements, the
 baseline detector configuration requires a thin ($\approx 0.1\mathrm{X}_0$) target. In the early
 stages of \ac{ldmx}, when the total \ac{eot} will be lower, a different analysis strategy and
-detector configuration may be optimal to probe the largest amount of the $y$--$m_\chi$ phase
-space.\todo[introduce]{Provide MM search reach to help give conext to y and mchi.} The alternative
+detector configuration may be optimal to probe the largest amount of the $y$--$m_\chi$ phase space.
+The alternative
 strategy ignores the dedicated target inside the tracker volume and instead uses the \ac{ecal}
 as an active target. The \ac{eat} analysis channel for \ac{ldmx} thus has two primary purposes
 which can be separated by the timeline over which they are relevant.
@@ -101,9 +101,9 @@ energy within the \ac{ecal} after the trigger has been applied.
 After this total energy requirement, there are still backgrounds left and those that remain are largely
 events where a significant fraction of the energy is carried by particles difficult to contain (or even observe)
 within the \ac{ecal} (neutrons, $K_L$, or muons for example).
-To suppress these types of persistent backgrounds, the event is required to have less than 10 photoelectrons
+To suppress these types of persistent backgrounds, the event is required to have less than 10 \ac{pe}
 deposited in any single bar of the \ac{hcal} -- $\max(\mathrm{PE}_\mathrm{HCal}) < 10$ --
-well below the typical signal of a through-going muon of 80 photoelectrons in any single bar.
+well below the typical signal of a through-going muon of 80 \ac{pe} in any single bar.
 
 While this selection does a good job of removing events containing long-living particles, there are some
 events containing several low-energy particles that range out within the \ac{ecal} itself.
@@ -338,22 +338,43 @@ distribution.)
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.5\textwidth]{figures/ldmx/analysis/systematics/max-pe-scan-4gev.pdf}
-  \caption{Various reach lines for the 4GeV beam case as we vary the cut on
-  maximum \ac{hcal} PE. We observe minimal movement in the final reach as a function
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/systematics/max-pe-scan-4gev.pdf}
+    \caption{Reach lines for the 4GeV case as we vary the cut on maximum \ac{hcal} \ac{pe}.}
+    \label{fig:4gev-max-pe-scan:reach}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/systematics/max-pe-scan-4gev-msa-ratio.pdf}
+    \caption{Ratio of the maximum allowed signal yield to the nominal value with the cut at 10 \ac{pe}.}
+    \label{fig:4gev-max-pe-scan:ratio}
+  \end{subfigure}
+  \caption{Reach (left) and maximum allowed yield (right) comparisons for the 4GeV beam case
+  as we vary the cut on maximum \ac{hcal} \ac{pe}.
+  We observe minimal movement in the final reach as a function
   of this cut; nevertheless, the biggest change occurs around a threshold of 30.}
   \label{fig:4gev-max-pe-scan}
 \end{figure}
 
-Figure \ref{fig:4gev-max-pe-scan} shows how the final reach (see \cref{sec:ldmx:analysis:reach})
+\cref{fig:4gev-max-pe-scan:reach} shows how the final reach (see \cref{sec:ldmx:analysis:reach})
 changes depending on this cut.
 While not much movement is observed, we can see separation ocurring when the threshold
-goves above $\sim 30$.
+goves above $\sim 30$ (more clearly seen in \cref{fig:4gev-max-pe-scan:ratio}).
 With this in mind, we estimate our ``tolerance'' to a systematic error on the maximum
-\ac{hcal} PE to be $1 - B_{< 10}/B_{< 20}$ where $B_{< M}$ is the background yield
-with the maximum \ac{hcal} PE threshold $M$.
+\ac{hcal} \ac{pe} to be $1 - B_{< 10}/B_{< 20}$ where $B_{< M}$ is the background yield
+with the maximum \ac{hcal} \ac{pe} threshold $M$.
 This yields an analysis-bin-dependent systematic uncertainty of $0.0$, $0.6$, and $0.7$
 for the low, medium, and high $E_\text{frac}$ analysis bins respectively.
+
+While deduced from inspecting the effect on the final reach, the ultimate systematic
+variation of 10 \ac{pe} could also be reasonable determined by thinking about how the \ac{hcal}
+would be calibrated.
+The \ac{hcal} would use observations of through-going muons to set the overall scale of \ac{pe}
+as observed by the \ac{hcal} bars and electronics.
+In the simulation a single through-going muon typically deposits $\approx\qty{80}{\ac{pe}}$,
+so a variation of $\sim10\%$ would be equivalent to the \qty{10}{\ac{pe}} deduced earlier.
 
 \section{Reach}
 \label{sec:ldmx:analysis:reach}
