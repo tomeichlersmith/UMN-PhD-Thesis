@@ -7,20 +7,66 @@ While neither has progressed far enough to exclude new parameter space
 (or potentially discover \ac{dm} that was previously out of reach),
 both experiments take novel approaches towards this search.
 These approaches are required because the traditional tactics have not
-yielded discovery and are unable to reach into the specific regions
-of parameter space that are accessible by \ac{ldmx} and \ac{hps}.
+yielded discovery and are unable to reach into these specific regions
+of parameter space.
 
 As newer and smaller experiments compared to other \ac{hep} experiments,
 different excitements and difficulties arise.
+While participating in the full breadth of a particle physics experiment
+has taught me a lot and given me opportunity to carve my own path of learning,
+the lack of larger support structures has revealed some specifically intricate
+problems that \ac{ldmx} and \ac{hps} share.
 
 \section{Simulation Validity}
+The design and initial studies of any experiment requires some simulation
+of the measurements it could perform.
+After the experiment has been constructed and collects data, the simulation
+is still incredibly useful for studying how \emph{known} processes present
+themselves within the observations.
+The collected data \emph{could} have a previously-unknown and rare process
+within it, so we must be careful to avoid biasing our analysis in such a
+way that would ruin the validity of our results.
+A reasonable strategy is simply to avoid studying all of the data at once
+and instead design and optimize the analysis on a particular subset of the
+data.
+This process is called ``blinding'' and was used in \cref{part:hps};
+however, this also naturally means the analysis can easily be optimized
+only for the special events within the subset and the events outside of
+this subset are unaccounted for.
+
+A valid simulation, one which correctly predicts the scale and shape
+of the observable distributions, is a valuable tool that could partially
+or completely replace this blinding procedure.
+In this case, the simulated observations could be used to help design
+and optimize the analysis; avoiding bias while also allowing the analysis
+to explore the full breadth of potential events that could be seen.
+
+While the ``valid simulation'' I describe here is not necessarily possible,
+we can move forward towards it in order to make future analyses better.
+One of the first studies that will be done with new \ac{ldmx} data will
+be comparing how our simulated events compare to the events actually being
+collected by the real detector.
+Returning to these comparisons for \ac{hps} and its subsequent, larger
+sets of data is being done and will be beneficial for those analyses as well.
 
 \section{Tracking Reconstruction}
 Most of my work on tracking and the alignment of a tracking detector
 was done within the context of \ac{hps}.
-This particular tracking detector is somewhat a ``trial by fire'' due
+This particular tracking detector is somewhat of a ``trial by fire'' due
 to its delicate, two-sided nature required by the specific physics for
 which we are searching.
+Nevertheless, this experience has given me a solid introduction to charged
+particle tracking.
+
+As discussed in \cref{chapter:hps:alignment}, charged particle tracking is
+very complicated and it almost certainly requires familiarity with the
+equally-complicated process of alignment.
+Going forward, both \ac{ldmx} and \ac{hps} require robust and solid tracking
+software in order to make the interpretations of such intricate algorithms simpler.
+Without the backing of a larger collaboration to more completely test
+and validate this complicated software, using a shared tracking framework
+like ACTS\cite{acts} is necessary, a strategy starting to be employed in both
+experiments.
 
 \section{Reflection}
 This dissertation work has shown me the full breadth of a particle physics experiment.
