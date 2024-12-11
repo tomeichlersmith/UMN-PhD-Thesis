@@ -84,12 +84,12 @@ be emphasized that all subsystems of \ac{ldmx} have their own custom implementat
 stages in order to realistically emulate and reconstruct the data within their subsystem.
 
 \subsection{Biasing and Filtering Technique} \label{sec:bias-and-filter}
-\todo[set scale]{Give number of particle estimates to help set the scale of interactions and particles.}
 Many of the processes most interesting for a \ac{dm} search within \ac{ldmx} are rare relative to
 processes that are ``easier'' to reject by normal data processing.
 In many cases, the rarity of these more interesting processes is a computational roadblock
-since waiting for the entire detector simulation to complete before looking for these processes
-of interest wastes a lot of computer time.
+since waiting for the entire detector simulation (hundreds to thousands of particles each with dozens
+if not hundreds of interactions) to complete before looking for these processes of interest
+wastes a lot of computer time.
 Typically, only one out of every ten thousand events actually contains a process we are interested in.
 To make simulation of these processes more computationally feasible, we turn to the common simulation
 techniques of biasing (artificially increasing the probability of a certain process occurring) and
