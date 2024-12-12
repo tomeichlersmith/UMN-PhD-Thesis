@@ -78,7 +78,10 @@ to separate them into natural groups that correspond to the different areas on w
 
 In this work (as the chapter title implies), we focus mainly on the detector simulation stage where
 events are produced using random sampling of relevant physical phase spaces in a way geared towards
-realistically modeling the detector and particles interacting with it. The downstream stages,
+realistically modeling the detector and particles interacting with it.
+\ac{ldmx} like most \ac{hep} experiments use \textsc{Geant4}\cite{geant4} to help perform this
+complicated detector simulation.
+The downstream stages,
 namely electronic emulation and reconstruction, are not described further here; however, it should
 be emphasized that all subsystems of \ac{ldmx} have their own custom implementations of these
 stages in order to realistically emulate and reconstruct the data within their subsystem.
@@ -106,9 +109,8 @@ in which particles are simulated does not change how the physics is modeled.
 We choose to process particles in two groups -- ``high'' and ``low'' energy --
 where the high-energy particles are all processed before the low-energy particles.
 The border between these two (called the ``Sorting Threshold'') is configurable by the user and
-enables a specific \textsc{Geant4} function\footnote{
-The \texttt{NewStage} function of any \texttt{STACKING} \texttt{UserAction}s. 
-} to be called mid-shower after all of the high-energy particles are processed
+enables a specific \textsc{Geant4} function
+to be called mid-shower after all of the high-energy particles are processed
 (i.e. simulated until their total energy falls below the Sorting Threshold).
 
 Suppose we know from studying other (unbiased or low-bias) samples that showers need to have
@@ -121,7 +123,8 @@ when the event transitions from the high-energy group to the low-energy group of
 
 Now, this infrastructure of determining a minimum simulated energy and having an energy-based
 sorting of the processing order already helps improve the computational efficiency of these 
-simluation samples (from $\sim 6$k CPU-hours to $\sim 30$ CPU-hours for $\sim 1$B EoT equivalent).
+simluation samples (from $\sim 6$k CPU-hours to $\sim 30$ CPU-hours for the ``important'' events from 
+$\sim 1$B events).
 Nevertheless, it is still extremely inefficient (most simulated events do not pass our filter requirements)
 and so we add biasing in order to artificially increase the rate of the process we wish the sample to focus on.
 Since the processes we are interested in biasing are connected to particles that are abundant
@@ -136,7 +139,7 @@ Biasing Factor when counting them.
 The simulation engine we use does this weight calculation for us and it accounts for both the
 biasing factor (beginning the weight with a factor of $1/B$) and unbiased processes happening
 to a particle with biasing enabled (increasing the event weight to reflect that physical processes
-at the natural rate have ocurred)
+at the natural rate have ocurred).
 
 \begin{table}[htb]
     \centering
@@ -349,9 +352,10 @@ our detector.
 
 With this focus in mind, we developed a dark bremsstrahlung simulation method that allows for the
 visible particle (the recoiling lepton) to be distributed according to a full matrix element
-calculation (via MG/ME) while the incident particle can have variable energy and be handled by Geant4
-directly. This novel simulation technique allows for the dark bremsstrahlung process to be treated
-(from Geant4's perspective) on the same footing as the background processes while maintaining the
+calculation (via MG/ME) while the incident particle can have variable energy and be handled by
+\textsc{Geant4} directly.
+This novel simulation technique allows for the dark bremsstrahlung process to be treated
+(from \textsc{Geant4}'s perspective) on the same footing as the background processes while maintaining the
 precision of a matrix-calculator method.
 
 \subsection{G4DarkBreM}
