@@ -1,9 +1,5 @@
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% simulation.tex: Chapter on MC production:
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{Simulation}
+\chapter{Mid-Shower Simulation}
 \label{chapter:ldmx:simulation}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \ac{ldmx} (like many other HEP experiments) uses an intricate software stack in order to realistically and efficiently simulate particle interactions with the detector, emulate the electronics that would be used to measure these interactions, and reconstruct the output of these electronics into physically-understandable variables.
 These software tasks are accomplished by a wide swath of different software packages, some of which custom-written for \ac{ldmx}, most of which written in C++.
@@ -16,7 +12,7 @@ One of the core principles helping organize HEP data is the concept of an ``even
 of \ac{ldmx}, an event is the data collected within a small window of time around the arrival of a
 beam electron into our detector apparatus. In essence, each event within the software is
 independent from one another; however, they all share a similar structure to the information they
-hold. A natural example is a data table: a row has the same values in each of its columns as all
+hold. A natural example is a data table: a row has the same variables in each of its columns as all
 the other rows. Events behave the same way; however, unlike a data table, the structure of an event
 can be more intricate than simply a series of values corresponding to different column titles.
 While our basic ``unit'' of data is an event, we require many events in order to make statistical
@@ -124,7 +120,7 @@ when the event transitions from the high-energy group to the low-energy group of
 Now, this infrastructure of determining a minimum simulated energy and having an energy-based
 sorting of the processing order already helps improve the computational efficiency of these 
 simluation samples (from $\sim 6$k CPU-hours to $\sim 30$ CPU-hours for the ``important'' events from 
-$\sim 1$B events).
+$\sim 1$B total events).
 Nevertheless, it is still extremely inefficient (most simulated events do not pass our filter requirements)
 and so we add biasing in order to artificially increase the rate of the process we wish the sample to focus on.
 Since the processes we are interested in biasing are connected to particles that are abundant
@@ -169,6 +165,7 @@ the simulation that need to align may change depending on the specific physics
 for which we are biasing and filtering.
 
 \section{Standard Processes}
+\label{sec:ldmx:sim:standard-processes}
 As displayed in \cref{fig:ldmx-bkgd-staircase}, there are a few categories of physics processes
 that are described by the standard model and we expect to happen within our experiment. These
 ``background'' processes -- while interesting for other analyses of \ac{ldmx} data -- should be
@@ -300,6 +297,14 @@ While the biasing and filtering should improve the speed of the simulation,
 it should not observably distort this distribution which roughly follows the development of
 the shower (an example of this is shown in \cref{fig:dimuon-z}).
 
+We can confirm that our biased and filtered simulations are properly extending
+the tail of the distributions in which we are interested.
+\cref{fig:unbiased-biased-comp} shows a comparison between a large unbiased
+sample that has been scaled to the same equivalent \ac{eot} as the biased and
+filtered samples -- there we see that the biased samples properly and smoothly
+extend the low reconstructed energy fraction tail which corresponds to the
+signal region in this missing energy search.
+
 \begin{figure}
   \centering
   \begin{subfigure}{0.48\textwidth}
@@ -320,14 +325,6 @@ the shower (an example of this is shown in \cref{fig:dimuon-z}).
   }
   \label{fig:dimuon-z}
 \end{figure}
-
-We can confirm that our biased and filtered simulations are properly extending
-the tail of the distributions in which we are interested.
-\cref{fig:unbiased-biased-comp} shows a comparison between a large unbiased
-sample that has been scaled to the same equivalent \ac{eot} as the biased and
-filtered samples -- there we see that the biased samples properly and smoothly
-extend the low reconstructed energy fraction tail which corresponds to the
-signal region in this missing energy search.
 
 \begin{figure}
   \centering
@@ -408,7 +405,7 @@ into the shower).
 We can observe the normal shower development behavior in the location of the dark bremsstrahlung
 and we can see the simulation-level cut on the dark photon energy at half the beam energy
 (in this case \qty{2}{\giga\electronvolt}) which is imposed to improve computational efficiency
-while maintaining trigger efficiency.
+without losing events that would otherwise pass the downstream trigger requirement.
 
 \begin{figure}
   \centering

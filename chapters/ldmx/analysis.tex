@@ -1,4 +1,4 @@
-\chapter{Analysis}
+\chapter{Missing Energy Search}
 \label{chapter:ldmx:analysis}
 
 One of the primary strengths of the \ac{ldmx} detector design is its ability to use the tagging and
@@ -8,7 +8,7 @@ beam. Moreover, the tagging and recoil tracker system gives \ac{ldmx} the potent
 suppress backgrounds or potentially study \ac{dm} properties by studying the transverse momenta of
 electrons recoiling from dark-bremsstrahlung candidate events.
 
-While this design is optimal for a large number of \ac{eot}, the strategy has some limitations for
+While this design is optimal for a large number of \acf{eot}, the strategy has some limitations for
 a low \ac{eot} data run. To limit multiple scattering which ruins momentum measurements, the
 baseline detector configuration requires a thin ($\approx 0.1\mathrm{X}_0$) target. In the early
 stages of \ac{ldmx}, when the total \ac{eot} will be lower, a different analysis strategy and
@@ -39,7 +39,7 @@ An initial study of the \ac{eat} analysis channel is the primary focus of \cref{
 thesis, focusing primarily on the first (short term) purpose. In this regard, we target an \ac{eot}
 that is reasonable to accomplish early in the running of \ac{ldmx} and avoids particularly
 intricate backgrounds. A total of \num{1e13} \ac{eot} fits these requirements by avoiding the
-charged current production of neutrinos and represents $\sim\qty{10}{\percent}$
+charged current production of neutrinos and represents $\sim\qty{2.5}{\percent}$
 of the first full \ac{ldmx} dataset which is obtainable within approximately a two weeks
 of nominal beam time\footnote{%
   Assuming the \ac{ldmx} detector apparatus and beam delivery is operating according to specifications,
@@ -54,7 +54,7 @@ With these design goals in mind, a simple ``cut-and-count'' analysis has been de
 simplicity of this analysis is one of its strengths, enabling it to be applicable despite potential
 surprises arising from first encounters with real data. The bulk of time and effort on this first
 investigation was focused on making this investigation \emph{possible} via the introduction of
-midshower process filtering and a dark bremsstrahlung simulatin process described in
+midshower process filtering and a dark bremsstrahlung simulation process described in
 \cref{chapter:ldmx:simulation}.
 
 \section{Selection}
@@ -76,7 +76,7 @@ layers of the \ac{ecal} instead of only the first twenty.
 \cref{fig:energy-after-trigger} shows the unit-normalized distributions of this total reconstructed
 energy within the \ac{ecal} after the trigger has been applied.
 
-\begin{figure}[htb]
+\begin{figure}
     \centering
     \begin{subfigure}{0.48\textwidth}
          \includegraphics[width=\textwidth]{%
@@ -88,11 +88,11 @@ energy within the \ac{ecal} after the trigger has been applied.
            figures/ldmx/analysis/energy-after-trigger-8gev.pdf}
     \end{subfigure}
     \caption{
-    The total reconstructed energy in all layers of the ECal ($E_\text{ECAL}$).
+    The total reconstructed energy in all layers of the ECal ($E_\text{ECal}$).
     The signal and background distributions are normalized such that their integral is one.
     The \qty{4}{\GeV} beam is shown on the left and the \qty{8}{\GeV} beam is shown
     on the right.
-    The events falling into bins with $E_\text{ECAL} > \qty{1.5}{\GeV}~(\qty{3.16}{\GeV})$
+    The events falling into bins with $E_\text{ECal} > \qty{1.5}{\GeV}~(\qty{3.16}{\GeV})$
     for \qty{4}{\GeV} (\qty{8}{GeV}) are omitted from this plot but included in efficiency calculations.
     }
     \label{fig:energy-after-trigger}
@@ -154,7 +154,7 @@ we will exploit in the final statistical analysis of these samples.
     \label{fig:selection-variables}
 \end{figure}
 
-\begin{table}[htb]
+\begin{table}
     \centering
     \input{tables/ldmx/cutflow}
     \caption{
@@ -168,7 +168,45 @@ we will exploit in the final statistical analysis of these samples.
     \label{tab:cutflow}
 \end{table}
 
-\begin{figure}[htb]
+An additional, sneaky selection has also been applied due to how the simulation samples were constructed.
+As mentioned in \cref{sec:ldmx:sim:standard-processes}, the simulation samples have a filter requiring
+the primary electron to arrive at the \ac{ecal} with at least 87.5\% of the beam energy.
+This simulation filter is attempting to replicate a requirement by the tracking system that would
+be applied after the trigger requirement when analyzing real data.
+Studies of other simulation samples without this tracker requirement showed that while the tracker is
+required to help confirm a near-full-energy electron arrives at the \ac{ecal}, it keeps over 90\% of the 
+events that are interesting for this analysis (i.e. nothing interesting happens in the thin target).
+\cref{fig:tracker-req} shows example figures from these studies that confirm the necessity of the tracker
+while also displaying that it is highly efficient.
+Due to the tracker requirement's high efficiency and the large separation between events that are acceptable
+into this analysis and events that are not, we neglect any systematic error (more on this in \cref{sec:ldmx:analysis:systematics})
+related to this selection and instead plan to set the tracker requirement's value to whatever threshold is necessary
+to keep the 90\% efficiency when studying real data.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/x-res-in-fringe-field.pdf}
+    \caption{Difference in $x$ position along the electron's path between
+    different energy electrons. This shows that the change in position is smaller
+    than a single \ac{ecal} cell width, but it is well within a conservaitive
+    alignment of the tracking detector.}
+  \end{subfigure}
+  ~
+  \begin{subfigure}{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/ldmx/analysis/peff-by-trig-sum-with-profile-8gev.pdf}
+    \caption{Comparison of trigger sum in the \ac{ecal} to the primary electron's
+    energy at the \ac{ecal}. Below the horizontal gray line are the events that
+    pass the trigger where there is large separation between events where something
+    interesting happens in the target (left) and in the \ac{ecal} (right).}
+  \end{subfigure}
+  \caption{Studies of how the tracker requirement affect the simulation samples.}
+  \label{fig:tracker-req}
+\end{figure}
+
+\begin{figure}
     \centering
     \begin{subfigure}{0.48\textwidth}
        \includegraphics[width=\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-4gev.pdf}
@@ -178,7 +216,7 @@ we will exploit in the final statistical analysis of these samples.
        \includegraphics[width=\textwidth]{figures/ldmx/analysis/final-selection-with-ana-bin-edges-8gev.pdf}
     \end{subfigure}
     \centering
-    \caption{The total reconstructed energy in all layers of the \ac{ecal} ($E_\text{ECAL}$)
+    \caption{The total reconstructed energy in all layers of the \ac{ecal} ($E_\text{ECal}$)
     as a fraction of the beam energy ($E_\text{Beam}$) for all samples that
     pass the selection criteria except the selection on \ac{ecal} energy.
     The \qty{4}{\GeV} beam is shown on the left and the \qty{8}{\GeV} beam is shown on the right.
@@ -209,7 +247,7 @@ This constraint reduces the uncertainty on the background prediction while also 
 as an example of what an analysis using real data could do -- this same region could be utilized
 in order to help set the scale of the background in a data-driven way.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \begin{subfigure}{0.48\textwidth}
     \includegraphics[width=\textwidth]{figures/ldmx/analysis/4gev-cumulative-bkgd-fit.pdf}
@@ -231,7 +269,7 @@ in order to help set the scale of the background in a data-driven way.
 The fit is then used to provide a background prediction within each of the three analysis bins,
 shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction for comparison.
 
-\begin{figure}[htb]
+\begin{figure}
   \centering
   \begin{subfigure}{0.48\textwidth}
     \includegraphics[width=\textwidth]{figures/ldmx/analysis/4gev-integrated-bkgd-fit.pdf}
@@ -252,6 +290,7 @@ shown in \cref{fig:bkgd-pred} along with the unconstrained simulation prediction
 \end{figure}
 
 \section{Systematics and Background Uncertainty}
+\label{sec:ldmx:analysis:systematics}
 Besides the statistical uncertainty due to the finite size of the simulation sample
 (whose estimation is represented by the \qty{95}{\percent} confidence intervals around the fit),
 there is additional sources of uncertainty that originate from the experimental design
@@ -290,7 +329,7 @@ In addition, we can estimate the resulting systematic variation on the backgroun
 event yield within the three final analysis bins to be \qty{5}{\percent} using
 \cref{fig:4gev-smeared-unsmeared-comp:pass-trigger}.
 The final selection on the \ac{ecal} Hit RMS is only affected negligibly as shown in
-\cref{fig:4gev-smeared-unsmeared-ecal-hit-rms} where the distribution only chagnes by
+\cref{fig:4gev-smeared-unsmeared-ecal-hit-rms} where the distribution only changes by
 $\lesssim\qty{5}{\percent}$ within the range of potential cuts.
 
 \begin{figure}
