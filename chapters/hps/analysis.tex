@@ -1,4 +1,4 @@
-\chapter{HPS Analysis}
+\chapter{Displaced Vertex Search}
 \label{chapter:hps:analysis}
 
 A search for visibly-decaying \ac{dm} is not novel, many experiments have been purposed-built
@@ -22,7 +22,7 @@ near the beam energy instead of significantly below it.
 With the samples presented in \cref{chapter:hps:dataset}, a search for \acp{simp} within the collected
 data has been performed.
 An additional, orthogonal category of data was introduced to be combined with prior work,
-enabling higher sensitivity to a range of \ac{simp} parameter space.
+enabling investigation of a larger portion of the already-collected data.
 
 \section{Signal Yield}
 \label{sec:hps:signal-yield}
@@ -41,11 +41,11 @@ In this analysis, we modify the expected signal yield calculation done previousl
 The fundamental premise of this calculation is re-weighting events based on their decay length
 so that they appear to have been drawn from a specific mixing strength's decay distribution.
 Specifically, we integrate over a decay weighting factor multiplied by the signal efficiency
-both as a function of the decay length in or to estimate the total signal yield for a specific
+as a function of the decay length in order to estimate the total signal yield for a specific
 mixing strength.
 The details of this calculation are presented in this section since they are relatively novel and
 not presented fully in another publication; however, this does force me to deviate from my previous
-commitment to few mathematical equations and jargony language.
+commitment to few mathematical equations and less jargony language.
 Skip to \cref{sec:hps:recon-cat} if this detail does not interest you.
 
 The magnitude of this estimate is set by the relationship between dark photon production cross section
@@ -169,7 +169,7 @@ so while increasing $\epsilon^2$ increases $N_{A'}$ it also makes the lifetime s
 and thus the $V_D$ decay ``looks'' more like standard un-displaced background.
 
 The $V_D$ energy (and thus the relativisitic $\gamma$) used in $D_{V_D}(z)$
-is only distributed over a small range (within $\mathcal{O}(\qty{100}{\MeV})$)
+is only distributed over a small range (within $<\mathcal{O}(\qty{1}{\GeV})$)
 so we replace it with the mean $\langle\gamma\rangle$ in order to make the
 calculation more practical.
 Additionally, we impose an upper limit on the decay $z$ to be \qty{25}{\cm} after
@@ -269,9 +269,9 @@ Thus, a selection on the sum of the momentum magnitudes is applied.
   P_\mathrm{sum} = |\vec{p}_{e^-}|+|\vec{p}_{e^+}|
 \end{equation}
 Specifically, the Signal Region (SR) used for the actual search requires
-$\qty{1.0}{\GeV} < $\Psum$ < \qty{1.9}{\GeV}$ and the Control Region (CR)
+$\qty{1.0}{\GeV} < P_\mathrm{sum} < \qty{1.9}{\GeV}$ and the Control Region (CR)
 used for determining the trident differential production rate is
-$\qty{1.9}{\GeV} < $\Psum$ < \qty{2.4}{\GeV}$.
+$\qty{1.9}{\GeV} < P_\mathrm{sum} < \qty{2.4}{\GeV}$.
 
 Since we are searching for the dark vector boson $V_D$ via its
 2-body decay into an electron and a positron, we expect the invariant mass of the vertex $m_\text{reco}$
@@ -349,7 +349,8 @@ mis-reconstructed at high $|y_0|$.
   from $\qty{0}{\mm}$ while fake displaced vertices (middle) and not displaced (right)
   have at least one if not both tracks with $y_0\approx\qty{0}{\mm}$.
   The diamonds are the reconstructed vertex, the solid circles are the reconstructed hits,
-  and the empty circles are ``missed'' hits.}
+  and the empty circles are ``missed'' hits either because the particle did not pass
+  through those sensors (left) or due to some physical or electronic inefficiencies (center and right).}
   \label{fig:hps-displace-eg}
 \end{figure}
 
@@ -466,8 +467,8 @@ values outside this region.
 In summary, the following cuts developed for this analysis are
 \begin{itemize}
   \item L1L2: In the vertex, one of the particles must have a hit in both sensors in
-    layer 1 and layer 2 while the other must have a hit in both sensors in layer 2 and layer 3.
-  \item Low Momentum Sum: $\qty{1.0}{\GeV} < $\Psum$ < \qty{1.9}{\mm}$
+    layer 1 and layer 2 while the other must not satisfy this requirement.
+  \item Low Momentum Sum: $\qty{1.0}{\GeV} < P_\mathrm{sum} < \qty{1.9}{\mm}$
   \item Decay after Target: $z > z_\mathrm{target}$
   \item Vertex Projects Back to Beamspot: \ac{vps} $< 4$
   \item Good Vertical Resolution: \maxyzeroerr$< \qty{0.4}{\mm}$
@@ -476,7 +477,7 @@ A search for a statistically-significant excess of highly-displaced events
 reconstructed within resolution of a specific mass is then performed at this point.
 The sensitivity is estimated using two additional cuts.
 \begin{itemize}
-  \item Within Mass Window: $p_m < 2.8$
+  \item Within Mass Window: $p_m < 1.5$
   \item Truly Displaced: \minyzero$> y_{0,\min}^\mathrm{cut}$
 \end{itemize}
 where
