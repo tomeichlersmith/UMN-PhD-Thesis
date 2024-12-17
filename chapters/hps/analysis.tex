@@ -372,23 +372,26 @@ falls within the chosen mass window).
 
 \begin{figure}
   \centering
-  \begin{subfigure}{0.30\textwidth}
-    \includegraphics[width=\textwidth]{figures/hps/analysis/vtx_proj_sig-distribution.pdf}
-    \caption{\ac{vps}}
-    \label{fig:data-signal-comp:vps}
-  \end{subfigure}
-  ~
-  \begin{subfigure}{0.30\textwidth}
-    \includegraphics[width=\textwidth]{figures/hps/analysis/max_y0_err-distribution.pdf}
-    \caption{\maxyzeroerr}
-    \label{fig:data-signal-comp:max-y0-err}
-  \end{subfigure}
-  ~
-  \begin{subfigure}{0.30\textwidth}
-    \includegraphics[width=\textwidth]{figures/hps/analysis/min_y0-distribution.pdf}
-    \caption{\minyzero}
-    \label{fig:data-signal-comp:min-y0}
-  \end{subfigure}
+  \begin{tabular}{cc}
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/hps/analysis/vtx_proj_sig-distribution.pdf}
+      \caption{\ac{vps}}
+      \label{fig:data-signal-comp:vps}
+    \end{subfigure}
+    &
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/hps/analysis/min_y0-distribution.pdf}
+      \caption{\minyzero}
+      \label{fig:data-signal-comp:min-y0}
+    \end{subfigure}
+    \\
+    \begin{subfigure}{0.48\textwidth}
+      \includegraphics[width=\textwidth]{figures/hps/analysis/max_y0_err-distribution.pdf}
+      \caption{\maxyzeroerr}
+      \label{fig:data-signal-comp:max-y0-err}
+    \end{subfigure}
+    &
+  \end{tabular}
   \caption{%
     Distributions of cut variables for a few example mass points and $\approx10\%$ of the full data sample.
     The vertices are required to be L1L2, have their momentum sum be within
