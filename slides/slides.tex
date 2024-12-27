@@ -47,7 +47,7 @@
     \begin{column}{0.5\textwidth}
       \includegraphics[width=\textwidth]{../figures/ldmx/experiment/detector.png}
       \\
-      \resizebox{!}{\textwidth}{../figures/hps/experiment/hps-diagram}
+      \resizebox{\textwidth}{!}{\input{../figures/hps/experiment/hps-diagram}}
     \end{column}
   \end{columns}
 \end{frame}
@@ -75,7 +75,7 @@
         \item \boldcol{UMNSunny}{Law} -- summary of a set of consistent observations about phenomena
         \item \boldcol{UMNSunny}{Model} -- package of ``laws'' and their mathematical forms from which we can make predictions about future observations
         \item \boldcol{UMNSunny}{Orthogonal} -- used to emphasize that two different analyses are statistically independent
-%        \item \boldcol{UMNSunny}{Event} -- a piece of data (one ``row'' of our data ``table''), a short period of time around a single electron entering the detector volume
+        \item \boldcol{UMNSunny}{Event} -- a piece of data (one ``row'' of our data ``table''), a short period of time around a single electron entering the detector volume
       \end{itemize}
     \end{column}
   \end{columns}
@@ -93,40 +93,54 @@
 
 %\begin{frame}{Feynman Diagram}
 %\end{frame}
-%
-%\begin{frame}{Particle Mixing}
-%  \begin{columns}
-%    \begin{column}{0.4\textwidth}
-%      \begin{figure}
-%        \includegraphics[width=\textwidth]{%
-%          ../figures/intro/Kaon-box-diagram-with-bar.pdf%
-%        }
-%        \caption{Figure created by user NikNaks on Wikipedia.}
-%      \end{figure}
-%    \end{column}
-%  \end{columns}
-%\end{frame}
-%
-%\begin{frame}{Displaced Decay Vertices}
-%  \begin{columns}
-%    \begin{column}{0.5\textwidth}
-%      \begin{figure}
-%        \begin{tikzimage}[0.6\textwidth]{../figures/intro/bubble-chamber.jpeg}
-%          \definecolor{brilliantrose}{rgb}{1.0, 0.33, 0.64}
-%          % \draw[step=0.1,black,thin] (0.0,0.0) grid (1.0,1.0);
-%          \node (prod) at (0.4,0.54) {};
-%          \node[circle,draw=brilliantrose] (decay) at (0.515,0.54) {};
-%          \draw[dashed,brilliantrose,thick] (prod) -- (decay);
-%      
-%          \node (beam1) at (0.1,0.5) {\color{brilliantrose}\(\pi^-\)};
-%          \node (beam2) at (0.2,0.5) {};
-%          \draw[->,brilliantrose,thick] (beam1) -- (beam2);
-%        \end{tikzimage}
-%        \caption{Image of CERN's first liquid hydrogen bubble chamber from 1960.}
-%      \end{figure}
-%    \end{column}
-%  \end{columns}
-%\end{frame}
+
+\begin{frame}{Particle Mixing}
+  \begin{columns}
+    \begin{column}{0.4\textwidth}
+      \begin{figure}
+        \includegraphics[width=\textwidth]{%
+          ../figures/intro/Kaon-box-diagram-with-bar.pdf%
+        }
+        \caption{Figure created by user NikNaks on Wikipedia.}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item The quantum nature of the Standard Model leads to some odd behavior
+\item One odd behavior is this idea of mixing where, from a certain perspective,
+  particles ``change'' into other particles with some probability
+\item
+}
+
+\begin{frame}{Displaced Decay Vertices}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \begin{tikzimage}[0.6\textwidth]{../figures/intro/bubble-chamber.jpeg}
+          \definecolor{brilliantrose}{rgb}{1.0, 0.33, 0.64}
+          % \draw[step=0.1,black,thin] (0.0,0.0) grid (1.0,1.0);
+          \node (prod) at (0.4,0.54) {};
+          \node[circle,draw=brilliantrose] (decay) at (0.515,0.54) {};
+          \draw[dashed,brilliantrose,thick] (prod) -- (decay);
+      
+          \node (beam1) at (0.1,0.5) {\color{brilliantrose}\(\pi^-\)};
+          \node (beam2) at (0.2,0.5) {};
+          \draw[->,brilliantrose,thick] (beam1) -- (beam2);
+        \end{tikzimage}
+        \caption{Image of CERN's first liquid hydrogen bubble chamber from 1960.}
+      \end{figure}
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\note[itemize]{
+\item Our particle detectors are not perfect and they cannot detect all particles
+\item This leads to particles appearing to appear out of nowhere
+\item Particles our detector cannot see (for example, the neutral $\Lambda$ does not leave a track here)
+  then decay into particles we can see leading to a ``displaced vertex''
+}
 
 \subsection{Dark Matter}
 \begin{frame}{Dark Matter}
@@ -435,15 +449,18 @@
 
 \begin{frame}{Missing Energy Signature}
   \begin{columns}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.3\textwidth}
       \begin{enumerate}
         \item Energy measurement significantly below beam energy
         \item Nothing ``escaped'' the ECal
         \item Nothing ``funky'' happened in the ECal
       \end{enumerate}
     \end{column}
-    \begin{column}{0.5\textwidth}
-      \color{red}TODO: diagrams of escaping and funky
+    \begin{column}{0.7\textwidth}
+      \begin{tikzimage}[\textwidth]{figs/ldmx-funky-and-escape-diagram.png}
+        \node[anchor=south,align=center] at (0.25,1.0) {Escaped};
+        \node[anchor=south,align=center] at (0.75,1.0) {Funky};
+      \end{tikzimage}
     \end{column}
   \end{columns}
 \end{frame}
