@@ -33,7 +33,11 @@ slides:
 
 # present slides with pympress
 present: slides
-    cd slides && pympress obj/slides.pdf
+    #!/bin/sh
+    set -ex
+    cd slides
+    . venv/bin/activate
+    pympress obj/slides.pdf
 
 # build diagram file for quicker diagram development
 diagram:
