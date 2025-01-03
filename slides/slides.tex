@@ -104,6 +104,15 @@
         \caption{Figure created by user NikNaks on Wikipedia.}
       \end{figure}
     \end{column}
+    \begin{column}{0.6\textwidth}
+      Observations of particles ``changing'' into other particles with some probability
+      (like neutral kaons).
+      \begin{itemize}
+        \item With quark model, we can describe this mixing with a Feynman diagram
+        \item But also, at lower energies, we can just represent this process with
+          an effective vertex
+      \end{itemize}
+    \end{column}
   \end{columns}
 \end{frame}
 
@@ -111,12 +120,18 @@
 \item The quantum nature of the Standard Model leads to some odd behavior
 \item One odd behavior is this idea of mixing where, from a certain perspective,
   particles ``change'' into other particles with some probability
-\item
+\item We observe this ``mixing'' in systems like the neutral kaon which mixes
+  with its own anti-particle
+\item The quarks from the SM offer an explanation (via the lower Feynman diagram)
+  that does quantitatively align with measurements
+\item However, we can also just treat this detailed Feynman diagram as an effective
+  vertex between the two kaons -- helpful if we are at lower energies where we only
+  are observing the kaons themselves
 }
 
 \begin{frame}{Displaced Decay Vertices}
   \begin{columns}
-    \begin{column}{0.5\textwidth}
+    \begin{column}{0.8\textwidth}
       \begin{figure}
         \begin{tikzimage}[0.6\textwidth]{../figures/intro/bubble-chamber.jpeg}
           \definecolor{brilliantrose}{rgb}{1.0, 0.33, 0.64}
@@ -627,12 +642,64 @@
 
 \subsection{Experiment}
 \begin{frame}{Visible Signature}
-  {\color{red}Physics reset, remind of goals}
+  \begin{columns}
+    \begin{column}{0.5\textwidth}
+      \begin{figure}
+        \begin{tikzpicture}
+          \begin{feynman}
+            \vertex (beamorigin) {$e^{-}$};
+            \vertex [right=of beamorigin] (beamspacer) {};
+            \vertex [right=of beamspacer, circle, fill] (target) {};
+            \vertex [above right= of target] (recoilspacer) {};
+            \vertex [above right= of recoilspacer] (recoil) {$e^{-}$};
+            \vertex [below right= of target] (propagate);
+            \vertex [below right= of propagate, circle, fill] (decay) {};
+            \vertex [above right= of decay] (produced) {$e^{-}$};
+            \vertex [below right= of decay] (positron) {$e^{+}$};
+            \diagram*[large] {
+              (beamorigin) -- [fermion] (target) -- [fermion] (recoil),
+              (positron) -- [fermion] (decay) -- [fermion] (produced),
+              (target) -- [scalar, edge label={\boldcol{UMNMaroon}{?}}] (decay)
+            };
+          \end{feynman}
+        \end{tikzpicture}
+      \end{figure}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+      \boldcol{UMNMaroon}{Some particle} is created and then eventually
+      decays back to particles we can observe.
+
+      \begin{block}{Displaced}
+        Observe produced particles ``far'' from target location due
+        to lifetime of \boldcol{UMNMaroon}{?}
+      \end{block}
+
+      \begin{block}{Resonant}
+        Produced particles reconstruct the mass of \boldcol{UMNMaroon}{?}
+      \end{block}
+    \end{column}
+  \end{columns}
 \end{frame}
 
 \note[itemize]{
-\item HPS can throw away a majority of the electrons that don't do anything interesting
-\item Searching for highly-displaced electron-positron pairs with specific mass
+\item If light thermal-relic DM exists, then it interacts with SM particles somehow
+\item After it is produced from dark brem, it could similarly go back into SM particles we can then observe
+\item Particle question mark gets created and decays somehow but we can observe the electrons and positron
+  interacting with it
+\item This signature of new physics is what HPS was built for
+\item Focused on electron-positron pairs that are displaced and reconstruct the mass of a previously unknown particle
+\item Benefits
+  \begin{itemize}
+    \item Physical quantities come with any DM observation
+    \item More specific event topology required for standard process to be considered background
+    \item HPS can throw away a majority of the electrons that don't do anything interesting
+  \end{itemize}
+\item Downsides
+  \begin{itemize}
+    \item Need to ``go through'' mixing twice and thus need much higher data volume
+    \item Dark sector needs to be ``more defined'' so we can predict
+      how it decays back into standard particles
+  \end{itemize}
 }
 
 \begin{frame}{Experiment}
@@ -656,17 +723,6 @@
 \item Took physics data in 2016, 2019, and 2021 -- scheduled for more data collection in coming years
 \item ECal to quickly observe multiple candidate particles and make data collection decision
 \item Silicon Vertex Tracker to reconstruct tracks and vertices
-\item Benefits
-  \begin{itemize}
-    \item Physical quantities come with any DM observation
-    \item More specific event topology required for standard process to be considered background
-  \end{itemize}
-\item Downsides
-  \begin{itemize}
-    \item Need to ``go through'' mixing twice and thus need much higher data volume
-    \item Dark sector needs to be ``more defined'' so we can predict
-      how it decays back into standard particles
-  \end{itemize}
 \item Many possible dark sectors yield the correct thermal relic abundance
   simpler one (dark photon returns back to ele-pos pair) has already been searched for
 \item Choose one to focus on for further analysis
