@@ -815,7 +815,6 @@
 \item Credit to A Spellmen for studying and tuning this pre-selection
 \item Requirement that a vertex is reconstructed is biggest difficulty,
   reflects (roughly) the geometric acceptance of the detector
-\item Onto a few more detailed selections focused on separating signal from background
 }
 
 \subsection{Orthogonal Reconstruction Categories}
@@ -889,6 +888,33 @@
   is not trustworthy
 }
 
+\begin{frame}{Helpful Physics Variable}
+  \begin{block}{Vertical Impact Parameter $y_0$}
+    gives helpful insight into displaced nature of vertex
+  \end{block}
+  \begin{figure}
+    \begin{subfigure}{0.32\textwidth}
+      \resizebox{\textwidth}{!}{\input{../figures/hps/analysis/hps-truly-displaced-diagram}}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \resizebox{\textwidth}{!}{\input{../figures/hps/analysis/hps-fake-displaced-diagram}}
+    \end{subfigure}
+    \begin{subfigure}{0.32\textwidth}
+      \resizebox{\textwidth}{!}{\input{../figures/hps/analysis/hps-not-displaced-diagram}}
+    \end{subfigure}
+  \end{figure}
+  $$
+    y_{0,\min} = \min(|y_0^{e^+}|,|y_0^{e^-}|)
+  $$
+\end{frame}
+
+\note[itemize]{
+\item Exploring data found that the vertical impact parameter $y_0$ is helpful
+\item Both tracks high for truly displaced
+\item Either or both near zero for fake and not displaced
+\item Use variable ``minimum y zero'' to make this distinction
+}
+
 \subsection{Cut Optimization Procedure}
 \begin{frame}{Helpful Physics Variables}
   \begin{columns}
@@ -915,10 +941,9 @@
 \end{frame}
 
 \note[itemize]{
-\item Searching the data has shown these variables to provide help separating
-  signal and background
-\item Two additional quality requirements (\ac{vps} and \maxyzeroerr) followed by
-  \minyzero separation
+\item Two additional quality requirements help \minyzero
+\item \ac{vps} helps ensure vertex originates from beamspot
+\item Limiting error on $y_0$
 }
 
 \begin{frame}{Optimization Procedure}
@@ -963,8 +988,7 @@
 \item The cuts maximizing the $Z_\mathrm{Bi}$ are then smoothed with a linear fit
   to help alleviate statistical bias
 \item \minyzero cut extending outside of the fit range with a flat value
-\item Undergoing internal HPS review of this selection right now,
-  only show results from 10\% subsample since I have not been approved to unblind yet
+\item Unblind...
 }
 
 \subsection{Results}
