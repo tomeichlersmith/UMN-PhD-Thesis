@@ -54,15 +54,17 @@ particles, has a greater potential of being observed within \ac{hps} and is disc
 \end{figure}
 
 Importantly, \cref{fig:dark-brem-simp-decay} has two vertices where \ac{dm} and \ac{sm} particles
-interact -- these two vertices determine that such a visible decay is subsequently less
-probable since both of these vertices carry with them the weak mixing factor $\epsilon$. The lower
-probability of these visible decays is a general property of such signatures and motivates
-experiments focused on collecting large data volumes in order to overcome the limitation imposed by
-this lower probability. With this in mind, \ac{hps} has been built to observe a beam whose rate is
-significantly high -- high enough to prevent sensitive detector elements from being placed directly
-within its path.
+interact -- both of these two vertices carry with them the weak mixing factor $\epsilon$.
+The first vertex where the $A'$ is produced suppresses the rate that this process occurs by a factor
+of $\epsilon^2$ similar to the previous case with \ac{ldmx}, but the second vertex does not affect the rate.
+Since, in this model and other visible-signature models, the dark matter being produced cannot
+viably decay to other dark matter (because $m_{A'} < 2 m_\chi$ for example), this second vertex forces
+a longer decay length.
+\ac{hps} has been built to observe a beam whose rate is significantly high in order to help overcome not
+only the low production rate but also the acceptance and efficiency of observing the electron and positron
+decay products -- high enough to prevent sensitive detector elements from being placed directly within its path.
 
-The observable outgoing particles of \cref{fig:dark-brem-simp-decay} can be mimiced by existing
+The observable outgoing particles of \cref{fig:dark-brem-simp-decay} can be mimicked by existing
 \ac{sm} processes. The most prominent background process is trident production.
 \cref{fig:trident} shows processes which produce the electron-positron pair through the radiation
 of the virtual photon (\cref{fig:trident:radiative}) or through direct electromagnetic interaction with the
@@ -143,8 +145,7 @@ alcove at \ac{jlab} and utilizes the \ac{cebaf} to provide its beam
 \cite{mrsolt-thesis-2020,skmccarty-thesis-2020}.
 Hall B primarily hosts the CLAS-12 experiment in the bulk of its hall; nevertheless,
 \ac{hps} is situated within an alcove behind the CLAS-12 experiment
-such that it can collect data whenever CLAS-12 is not operational (for example,
-when its components are being upgraded or fixed).
+such that it can collect data whenever CLAS-12 is not operational.
 
 \ac{cebaf} \cite{cebaf-12GeV-2012,cebaf-opportunities-2012,cebaf-2013} is able to
 provide a near-continuous electron beam ranging in energy up to $12$ GeV in steps
@@ -190,9 +191,10 @@ are arranged in the two halves separated by the center beam line. In each half, 
 into layers with the first three layers consisting of one module while the last three layers
 consisting of two modules to increase angular acceptance relative to the target.
 \cref{fig:hps-svt-render} shows a rendering of the \ac{svt} with the sensitive detector elements
-shown as red rectangles.\footnote{ This diagram and the description within this thesis is focused
+shown as red rectangles.\footnote{%
+  This diagram and the description within this thesis is focused
   on the \ac{hps} \ac{svt} from its physics run in 2016. Various \ac{hps} components have been
-  upgraded for subsequent runs. }
+  upgraded for subsequent runs.}
 
 The two halves of the \ac{svt} are positioned to form a \qty{15}{\milli\radian} angular gap
 relative to the target in order to avoid the largest amount of radiation from the beam. The first
@@ -201,8 +203,8 @@ the target and \qty{0.5}{\mm} from the beam line in order to maximize acceptance
 \ac{svt} is enclosed in a vacuum box to limit secondary production of particles and is liquid
 cooled to help prevent radiation damage.
 
-The \ac{svt} modules are readout by APV25 chips which report six samples every \qty{24}{\ns}. These
-samples are only dumped to disk upon receiving a trigger signal from the calorimter system
+The \ac{svt} modules are readout by APV25 chips which report six samples separated by \qty{24}{\ns}.
+These samples are only dumped to disk upon receiving a trigger signal from the calorimeter system
 (\cref{sec:hps-ecal}).
 
 All together, the \ac{svt} has been observed to have \num{10}~\% momentum resolution,
