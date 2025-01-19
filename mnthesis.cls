@@ -78,8 +78,7 @@
 % They are a bit larger to handle lines with overfull boxes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% My Definitions
+% Full US Letter Page
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setlength{\paperheight}{11.0in}
 \setlength{\paperwidth}{8.5in}
@@ -104,6 +103,30 @@
 \setlength{\textheight}{7.85in}
 
 \setlength{\footskip}{0.4in}
+
+% Half Page for Book
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\setlength{\paperheight}{8.5in}
+%\setlength{\paperwidth}{5.5in}
+%
+%\setlength{\leftmargin}{0.5in}
+%\setlength{\rightmargin}{0.5in}
+%\setlength{\oddsidemargin}{0.275in}
+%\setlength{\evensidemargin}{0.05in}%{0.1in} % default -> 3.4 cm even side
+%
+%\setlength{\topmargin}{0.125in}
+%\setlength{\headheight}{0.2in}
+%\setlength{\headsep}{0.05in}
+%
+%\setlength{\footskip}{0.2in}%{0.4in}
+%
+%\setlength{\marginparsep}{0in}
+%\setlength{\marginparwidth}{0in}
+%
+%\setlength{\textwidth}{4.000in}
+%%\setlength{\textheight}{8.25in}
+%\setlength{\textheight}{7.000in}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
