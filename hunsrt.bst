@@ -15,6 +15,7 @@ ENTRY
     author
     booktitle
     chapter
+    collaboration
     edition
     editor
     eprint
@@ -183,6 +184,17 @@ FUNCTION {emphasize}
   if$
 }
 
+FUNCTION {format.collaboration}
+{ collaboration empty$
+    { "" }
+    { collaboration num.names$ #1 >
+        {" (" collaboration * " Collaborations)" * }
+        {" (" collaboration * " Collaboration)" * }
+    if$
+    }
+  if$
+}
+
 INTEGERS { nameptr namesleft numnames }
 
 FUNCTION {format.names}
@@ -212,6 +224,7 @@ FUNCTION {format.names}
       namesleft #1 - 'namesleft :=
     }
   while$
+  format.collaboration *
 }
 
 FUNCTION {format.authors}
