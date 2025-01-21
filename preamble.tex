@@ -22,6 +22,7 @@
 \usepackage{hyperref} % Add clickable links to other parts of the document
 \usepackage{subcaption}
 \usepackage{graphicx} % Allows including images
+\usepackage{relsize} % for \smaller in \babar
 
 \usepackage[noabbrev,capitalise]{cleveref} % Automatically determine \cref type
 
@@ -45,9 +46,11 @@
 \newcommand{\ecal}{ECal\xspace}
 \newcommand{\hcal}{HCal\xspace}
 
-\usepackage{slantsc} % allow to combine italics and small caps
-% would work according to slantsc as long as font provides slant variants of small caps
-\newcommand{\babar}{{\itshape\scshape BaBar}\xspace}
+% absolute, official way according to Bertrand
+\newcommand{\babar}{%
+  \mbox{\slshape B\kern-0.1em{\smaller A}\kern-0.1em B\kern-0.1em{\smaller A\kern-0.2em R}}%
+  \xspace
+}
 
 \usepackage{acronym}
 \acrodef{dm}[DM]{Dark Matter}
