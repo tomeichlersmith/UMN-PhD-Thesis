@@ -5,7 +5,7 @@ This repository contains the LaTeX code for my UMN PhD Thesis.
 ### Build Locally
 
 One can also build this thesis with a container that already has all the latex
-tools we need. I use [denv](tomeichlersmith.github.io/denv) to interact with
+tools we need. I use [denv](https://tomeichlersmith.github.io/denv) to interact with
 containers in this way, a config for `denv` is already in this repository so
 one can just run the commands above without having to install anything else
 if a container runner `denv` supports is already installed (e.g. docker).
@@ -33,7 +33,7 @@ the prefix required for the object being referenced. For example,
 Additionally, `cleveref` can handle multiple references at once.
 `\cref{fig:my_fig,fig:my_fig2}` produces "figures 1 and 2".
 
-In the [main thesis file](thesis_masters.tex), the following is set:
+In the [main thesis file](thesis.tex), the following is set:
 
 ```latex
 \newcommand{\creflastconjunction}{, and } % Always use the serial comma
@@ -67,7 +67,7 @@ The package also provides `\num{12345}` which will format numbers (just like
 `\SI`) but without adding units. The previous example produces "12,345" for
 instance.
 
-In the [main thesis file](thesis_masters.tex), the following default options
+In the [main thesis file](thesis.tex), the following default options
 are set:
 
 ```latex
