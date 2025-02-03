@@ -16,6 +16,24 @@ denv latexmk -pvc -pdf thesis.tex
 denv build_and_watch
 ```
 
+### Prep for Printing
+I used [lulu.com](https://lulu.com) to professionally print and bind my thesis.
+This does have additional requirements, most importantly to embed the fonts into the
+final PDF.
+I did this after-the-fact, but I presume anyone looking to do this in the future
+could pass these PDF settings to `latexmk`.
+The downside of embedding the fonts is that the final PDF size more than doubles
+which can be avoided when simply sharing the PDF with other users reading it digitally.
+
+```
+ps2pdf \
+  -dPDFSETTINGS=/prepress \
+  -dEmbedAllFonts=true \
+  -dMaxSubsetPct=100 \
+  -dCompatibilityLevel=1.3 \
+  thesis.ps thesis.pdf
+```
+
 ## Additional Packages
 
 The thesis template comes with some useful additional packages. They are
