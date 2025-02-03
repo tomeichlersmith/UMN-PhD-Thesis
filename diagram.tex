@@ -44,8 +44,24 @@
 %%  \draw[black,->] (\targetx+1,0.1) -- (2.5,-2.2) node[anchor=north west] {\(e^+\)};
 %\end{tikzpicture}
 
-\begin{tikzpicture}
-  \drawhps
-\end{tikzpicture}
+% all white dark brem feynman diagram
+% to be converted to a PNG so I can put it on dark backgrounds
+%\begin{tikzpicture}
+%  \begin{feynman}[white,draw=white,fill=white]%inline]
+%    \vertex (beam) at (\targetx-3.0,4.0) {\(e^-\)};
+%    \vertex [right= of beam] (d);
+%    \vertex [below=of d, blob, white, label={below:$Z$}] (e) {};
+%    \vertex [right= of d] (b);
+%    \vertex [above right= of b] (g) {$e^{-}$};
+%    \vertex [below right= of b] (aprime_decay) {$A'$};
+%    \diagram*[large] {
+%    (beam) -- [fermion,white] (d),
+%    (d) -- [boson,white] (e),
+%    (d) -- [fermion,white] (b),
+%    (b) -- [fermion,white] (g),
+%    (b) -- [boson,white] (aprime_decay),
+%    };
+%  \end{feynman}
+%\end{tikzpicture}
 
 \end{document}
